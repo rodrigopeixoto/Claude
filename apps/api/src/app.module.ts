@@ -13,6 +13,7 @@ import { SlotsModule } from './slots/slots.module';
 import { WebhooksModule } from './webhooks/webhooks.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ApiKeysModule } from './api-keys/api-keys.module';
+import { OAuthConfigsModule } from './oauth-configs/oauth-configs.module';
 import { CryptoModule } from './common/crypto/crypto.module';
 
 @Module({
@@ -32,6 +33,7 @@ import { CryptoModule } from './common/crypto/crypto.module';
     WebhooksModule,
     NotificationsModule,
     ApiKeysModule,
+    OAuthConfigsModule,
   ],
 })
 export class AppModule {}

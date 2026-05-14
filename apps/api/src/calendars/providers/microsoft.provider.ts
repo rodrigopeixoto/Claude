@@ -4,40 +4,47 @@ import { ConfidentialClientApplication } from '@azure/msal-node';
 import { Client } from '@microsoft/microsoft-graph-client';
 import { CalendarProvider, BusyInterval, TokenSet } from './calendar-provider.interface';
 
+export interface MicrosoftCredentials {
+  clientId: string;
+  clientSecret: string;
+}
+
 @Injectable()
 export class MicrosoftCalendarProvider implements CalendarProvider {
-  private readonly clientId: string;
-  private readonly clientSecret: string;
+  private readonly defaultClientId: string;
+  private readonly defaultClientSecret: string;
   private readonly tenantId: string;
   private readonly redirectUri: string;
-  private readonly msal: ConfidentialClientApplication;
 
   constructor(private config: ConfigService) {
-    this.clientId = config.get<string>('MICROSOFT_CLIENT_ID', '');
-    this.clientSecret = config.get<string>('MICROSOFT_CLIENT_SECRET', '');
+    this.defaultClientId = config.get<string>('MICROSOFT_CLIENT_ID', '');
+    this.defaultClientSecret = config.get<string>('MICROSOFT_CLIENT_SECRET', '');
     this.tenantId = config.get<string>('MICROSOFT_TENANT_ID', 'common');
     this.redirectUri = config.get<string>('MICROSOFT_REDIRECT_URI', '');
+  }
 
-    this.msal = new ConfidentialClientApplication({
+  private buildMsal(credentials?: MicrosoftCredentials): ConfidentialClientApplication {
+    return new ConfidentialClientApplication({
       auth: {
-        clientId: this.clientId,
-        clientSecret: this.clientSecret,
+        clientId: credentials?.clientId || this.defaultClientId,
+        clientSecret: credentials?.clientSecret || this.defaultClientSecret,
         authority: `https://login.microsoftonline.com/${this.tenantId}`,
       },
     });
   }
 
-  getAuthUrl(state: string): string {
-    return this.buildAuthUrl(state, this.redirectUri, ['Calendars.Read']);
+  getAuthUrl(state: string, credentials?: MicrosoftCredentials): string {
+    return this.buildAuthUrl(state, this.redirectUri, ['Calendars.Read'], credentials);
   }
 
-  getAnonAuthUrl(state: string, redirectUri: string): string {
-    return this.buildAuthUrl(state, redirectUri, ['Calendars.Read.Shared']);
+  getAnonAuthUrl(state: string, redirectUri: string, credentials?: MicrosoftCredentials): string {
+    return this.buildAuthUrl(state, redirectUri, ['Calendars.Read.Shared'], credentials);
   }
 
-  private buildAuthUrl(state: string, redirectUri: string, scopes: string[]): string {
+  private buildAuthUrl(state: string, redirectUri: string, scopes: string[], credentials?: MicrosoftCredentials): string {
+    const clientId = credentials?.clientId || this.defaultClientId;
     const params = new URLSearchParams({
-      client_id: this.clientId,
+      client_id: clientId,
       response_type: 'code',
       redirect_uri: redirectUri,
       scope: [...scopes, 'offline_access', 'openid'].join(' '),
@@ -47,16 +54,17 @@ export class MicrosoftCalendarProvider implements CalendarProvider {
     return `https://login.microsoftonline.com/${this.tenantId}/oauth2/v2.0/authorize?${params}`;
   }
 
-  async exchangeCode(code: string): Promise<TokenSet> {
-    return this.exchange(code, this.redirectUri);
+  async exchangeCode(code: string, credentials?: MicrosoftCredentials): Promise<TokenSet> {
+    return this.exchange(code, this.redirectUri, credentials);
   }
 
-  async exchangeCodeWithRedirect(code: string, redirectUri: string): Promise<TokenSet> {
-    return this.exchange(code, redirectUri);
+  async exchangeCodeWithRedirect(code: string, redirectUri: string, credentials?: MicrosoftCredentials): Promise<TokenSet> {
+    return this.exchange(code, redirectUri, credentials);
   }
 
-  private async exchange(code: string, redirectUri: string): Promise<TokenSet> {
-    const result = await this.msal.acquireTokenByCode({
+  private async exchange(code: string, redirectUri: string, credentials?: MicrosoftCredentials): Promise<TokenSet> {
+    const msal = this.buildMsal(credentials);
+    const result = await msal.acquireTokenByCode({
       code,
       redirectUri,
       scopes: ['Calendars.Read', 'offline_access'],
@@ -68,8 +76,9 @@ export class MicrosoftCalendarProvider implements CalendarProvider {
     };
   }
 
-  async refreshToken(refreshToken: string): Promise<TokenSet> {
-    const result = await this.msal.acquireTokenByRefreshToken({
+  async refreshToken(refreshToken: string, credentials?: MicrosoftCredentials): Promise<TokenSet> {
+    const msal = this.buildMsal(credentials);
+    const result = await msal.acquireTokenByRefreshToken({
       refreshToken,
       scopes: ['Calendars.Read', 'offline_access'],
     });
@@ -80,23 +89,14 @@ export class MicrosoftCalendarProvider implements CalendarProvider {
     };
   }
 
-  async getFreeBusy(
-    accessToken: string,
-    _calendarId: string,
-    timeMin: Date,
-    timeMax: Date,
-  ): Promise<BusyInterval[]> {
-    const client = Client.init({
-      authProvider: (done) => done(null, accessToken),
-    });
-
+  async getFreeBusy(accessToken: string, _calendarId: string, timeMin: Date, timeMax: Date): Promise<BusyInterval[]> {
+    const client = Client.init({ authProvider: (done) => done(null, accessToken) });
     const response = await client.api('/me/calendarView').query({
       startDateTime: timeMin.toISOString(),
       endDateTime: timeMax.toISOString(),
       $select: 'start,end,showAs',
       $top: 100,
     }).get();
-
     const events: any[] = response.value ?? [];
     return events
       .filter((e) => e.showAs !== 'free' && e.showAs !== 'workingElsewhere')

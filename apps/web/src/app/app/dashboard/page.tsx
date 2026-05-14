@@ -1,8 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { meetingsApi } from '@/lib/api';
+import { meetingsApi, calendarsApi } from '@/lib/api';
 import { formatDate } from '@/lib/utils';
+import ConnectCalendarModal from '@/components/ConnectCalendarModal';
 
 const STATUS_LABELS: Record<string, string> = {
   OPEN: 'Aberta',
@@ -21,17 +22,30 @@ const STATUS_COLORS: Record<string, string> = {
 export default function DashboardPage() {
   const [meetings, setMeetings] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [connections, setConnections] = useState<any[]>([]);
 
   useEffect(() => {
-    meetingsApi.list()
-      .then((res) => setMeetings(res.data))
+    Promise.all([
+      meetingsApi.list(),
+      calendarsApi.list(),
+    ])
+      .then(([meetRes, calRes]) => {
+        setMeetings(meetRes.data);
+        setConnections(calRes.data);
+        if (calRes.data.length === 0) {
+          setShowModal(true);
+        }
+      })
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      {showModal && <ConnectCalendarModal onClose={() => setShowModal(false)} />}
+
+      <div className="flex items-center justify-between mb-2">
         <h1 className="text-2xl font-bold text-gray-900">Suas Reuniões</h1>
         <Link
           href="/app/meetings/new"
@@ -39,6 +53,24 @@ export default function DashboardPage() {
         >
           + Nova Reunião
         </Link>
+      </div>
+
+      <div className="flex items-center gap-3 mb-6">
+        {connections.length === 0 ? (
+          <span className="text-sm text-amber-600 bg-amber-50 px-3 py-1 rounded-full">
+            Nenhum calendário conectado
+          </span>
+        ) : (
+          <span className="text-sm text-green-700 bg-green-50 px-3 py-1 rounded-full">
+            {connections.length} calendário(s) conectado(s)
+          </span>
+        )}
+        <button
+          onClick={() => setShowModal(true)}
+          className="text-sm text-indigo-600 hover:underline"
+        >
+          + Conectar calendário
+        </button>
       </div>
 
       {loading ? (

@@ -51,4 +51,17 @@ export const inviteApi = {
 export const calendarsApi = {
   list: () => api.get('/calendars'),
   remove: (id: string) => api.delete(`/calendars/${id}`),
+  getGoogleAuthUrl: (configId?: string) =>
+    api.get('/calendars/auth/google', { params: configId ? { configId } : {} }),
+  getMicrosoftAuthUrl: (configId?: string) =>
+    api.get('/calendars/auth/microsoft', { params: configId ? { configId } : {} }),
+};
+
+export const oauthConfigsApi = {
+  list: (provider?: 'GOOGLE' | 'MICROSOFT') =>
+    api.get('/oauth-configs', { params: provider ? { provider } : {} }),
+  create: (data: { provider: 'GOOGLE' | 'MICROSOFT'; label: string; clientId: string; clientSecret: string; isDefault?: boolean }) =>
+    api.post('/oauth-configs', data),
+  setDefault: (id: string) => api.post(`/oauth-configs/${id}/default`),
+  remove: (id: string) => api.delete(`/oauth-configs/${id}`),
 };

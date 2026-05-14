@@ -36,8 +36,25 @@ model User {
   calendarConnections CalendarConnection[]
   meetings            Meeting[]
   apiKeys             ApiKey[]
+  oauthConfigs        OAuthConfig[]
 
   @@map("users")
+}
+
+model OAuthConfig {
+  id           String           @id @default(uuid())
+  userId       String           @map("user_id")
+  provider     CalendarProvider
+  label        String           @default("Minha Conta")
+  clientId     String           @map("client_id")
+  clientSecret String           @map("client_secret")
+  isDefault    Boolean          @default(false) @map("is_default")
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("oauth_configs")
 }
 
 model CalendarConnection {

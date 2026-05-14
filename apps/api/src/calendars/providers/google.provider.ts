@@ -3,26 +3,35 @@ import { ConfigService } from '@nestjs/config';
 import { google } from 'googleapis';
 import { CalendarProvider, BusyInterval, TokenSet } from './calendar-provider.interface';
 
+export interface GoogleCredentials {
+  clientId: string;
+  clientSecret: string;
+}
+
 @Injectable()
 export class GoogleCalendarProvider implements CalendarProvider {
-  private readonly clientId: string;
-  private readonly clientSecret: string;
+  private readonly defaultClientId: string;
+  private readonly defaultClientSecret: string;
   private readonly redirectUri: string;
+  private readonly anonRedirectUri: string;
 
   constructor(private config: ConfigService) {
-    this.clientId = config.get<string>('GOOGLE_CLIENT_ID', '');
-    this.clientSecret = config.get<string>('GOOGLE_CLIENT_SECRET', '');
+    this.defaultClientId = config.get<string>('GOOGLE_CLIENT_ID', '');
+    this.defaultClientSecret = config.get<string>('GOOGLE_CLIENT_SECRET', '');
     this.redirectUri = config.get<string>('GOOGLE_REDIRECT_URI', '');
+    this.anonRedirectUri = config.get<string>('GOOGLE_ANON_REDIRECT_URI', '');
   }
 
-  private createClient(accessToken?: string, refreshToken?: string) {
-    const client = new google.auth.OAuth2(this.clientId, this.clientSecret, this.redirectUri);
+  private createClient(credentials?: GoogleCredentials, accessToken?: string, refreshToken?: string) {
+    const clientId = credentials?.clientId || this.defaultClientId;
+    const clientSecret = credentials?.clientSecret || this.defaultClientSecret;
+    const client = new google.auth.OAuth2(clientId, clientSecret, this.redirectUri);
     if (accessToken) client.setCredentials({ access_token: accessToken, refresh_token: refreshToken });
     return client;
   }
 
-  getAuthUrl(state: string): string {
-    const client = this.createClient();
+  getAuthUrl(state: string, credentials?: GoogleCredentials): string {
+    const client = this.createClient(credentials);
     return client.generateAuthUrl({
       access_type: 'offline',
       prompt: 'consent',
@@ -31,8 +40,10 @@ export class GoogleCalendarProvider implements CalendarProvider {
     });
   }
 
-  getAnonAuthUrl(state: string, redirectUri: string): string {
-    const client = new google.auth.OAuth2(this.clientId, this.clientSecret, redirectUri);
+  getAnonAuthUrl(state: string, redirectUri: string, credentials?: GoogleCredentials): string {
+    const clientId = credentials?.clientId || this.defaultClientId;
+    const clientSecret = credentials?.clientSecret || this.defaultClientSecret;
+    const client = new google.auth.OAuth2(clientId, clientSecret, redirectUri);
     return client.generateAuthUrl({
       access_type: 'offline',
       prompt: 'consent',
@@ -41,8 +52,8 @@ export class GoogleCalendarProvider implements CalendarProvider {
     });
   }
 
-  async exchangeCode(code: string): Promise<TokenSet> {
-    const client = this.createClient();
+  async exchangeCode(code: string, credentials?: GoogleCredentials): Promise<TokenSet> {
+    const client = this.createClient(credentials);
     const { tokens } = await client.getToken(code);
     return {
       accessToken: tokens.access_token!,
@@ -51,8 +62,10 @@ export class GoogleCalendarProvider implements CalendarProvider {
     };
   }
 
-  async exchangeCodeWithRedirect(code: string, redirectUri: string): Promise<TokenSet> {
-    const client = new google.auth.OAuth2(this.clientId, this.clientSecret, redirectUri);
+  async exchangeCodeWithRedirect(code: string, redirectUri: string, credentials?: GoogleCredentials): Promise<TokenSet> {
+    const clientId = credentials?.clientId || this.defaultClientId;
+    const clientSecret = credentials?.clientSecret || this.defaultClientSecret;
+    const client = new google.auth.OAuth2(clientId, clientSecret, redirectUri);
     const { tokens } = await client.getToken(code);
     return {
       accessToken: tokens.access_token!,
@@ -61,25 +74,19 @@ export class GoogleCalendarProvider implements CalendarProvider {
     };
   }
 
-  async refreshToken(refreshToken: string): Promise<TokenSet> {
-    const client = this.createClient(undefined, refreshToken);
-    const { credentials } = await client.refreshAccessToken();
+  async refreshToken(refreshToken: string, credentials?: GoogleCredentials): Promise<TokenSet> {
+    const client = this.createClient(credentials, undefined, refreshToken);
+    const { credentials: creds } = await client.refreshAccessToken();
     return {
-      accessToken: credentials.access_token!,
-      refreshToken: credentials.refresh_token ?? refreshToken,
-      expiresAt: new Date(credentials.expiry_date!),
+      accessToken: creds.access_token!,
+      refreshToken: creds.refresh_token ?? refreshToken,
+      expiresAt: new Date(creds.expiry_date!),
     };
   }
 
-  async getFreeBusy(
-    accessToken: string,
-    calendarId: string,
-    timeMin: Date,
-    timeMax: Date,
-  ): Promise<BusyInterval[]> {
-    const client = this.createClient(accessToken);
+  async getFreeBusy(accessToken: string, calendarId: string, timeMin: Date, timeMax: Date): Promise<BusyInterval[]> {
+    const client = this.createClient(undefined, accessToken);
     const calendar = google.calendar({ version: 'v3', auth: client });
-
     const response = await calendar.freebusy.query({
       requestBody: {
         timeMin: timeMin.toISOString(),
@@ -87,11 +94,7 @@ export class GoogleCalendarProvider implements CalendarProvider {
         items: [{ id: calendarId }],
       },
     });
-
     const busy = response.data.calendars?.[calendarId]?.busy ?? [];
-    return busy.map((b) => ({
-      start: new Date(b.start!),
-      end: new Date(b.end!),
-    }));
+    return busy.map((b) => ({ start: new Date(b.start!), end: new Date(b.end!) }));
   }
 }
