@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CalendarProvider {
+  GOOGLE
+  MICROSOFT
+}
+
+enum MeetingStatus {
+  DRAFT
+  OPEN
+  CONFIRMED
+  CANCELLED
+}
+
+enum ParticipantStatus {
+  PENDING
+  CONNECTED
+  DECLINED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  calendarConnections CalendarConnection[]
+  meetings            Meeting[]
+  apiKeys             ApiKey[]
+
+  @@map("users")
+}
+
+model CalendarConnection {
+  id           String           @id @default(uuid())
+  userId       String           @map("user_id")
+  provider     CalendarProvider
+  accessToken  String           @map("access_token")
+  refreshToken String           @map("refresh_token")
+  tokenExpiry  DateTime         @map("token_expiry")
+  calendarId   String           @default("primary") @map("calendar_id")
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, provider])
+  @@map("calendar_connections")
+}
+
+model Meeting {
+  id                  String        @id @default(uuid())
+  organizerId         String        @map("organizer_id")
+  title               String
+  description         String?
+  durationMin         Int           @map("duration_min")
+  dateRangeStart      DateTime      @map("date_range_start")
+  dateRangeEnd        DateTime      @map("date_range_end")
+  timeWindowStart     String        @map("time_window_start")
+  timeWindowEnd       String        @map("time_window_end")
+  timezone            String        @default("UTC")
+  status              MeetingStatus @default(OPEN)
+  confirmedAt         DateTime?     @map("confirmed_at")
+  confirmedSlotStart  DateTime?     @map("confirmed_slot_start")
+  createdAt           DateTime      @default(now()) @map("created_at")
+  updatedAt           DateTime      @updatedAt @map("updated_at")
+
+  organizer    User          @relation(fields: [organizerId], references: [id], onDelete: Cascade)
+  participants Participant[]
+
+  @@map("meetings")
+}
+
+model Participant {
+  id         String            @id @default(uuid())
+  meetingId  String            @map("meeting_id")
+  email      String
+  name       String?
+  status     ParticipantStatus @default(PENDING)
+  provider   CalendarProvider?
+  createdAt  DateTime          @default(now()) @map("created_at")
+  updatedAt  DateTime          @updatedAt @map("updated_at")
+
+  meeting              Meeting               @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+  inviteTokens         InviteToken[]
+  anonymousCalendarAccess AnonymousCalendarAccess?
+
+  @@unique([meetingId, email])
+  @@map("participants")
+}
+
+model InviteToken {
+  id            String      @id @default(uuid())
+  participantId String      @map("participant_id")
+  token         String      @unique @default(uuid())
+  expiresAt     DateTime    @map("expires_at")
+  usedAt        DateTime?   @map("used_at")
+  createdAt     DateTime    @default(now()) @map("created_at")
+
+  participant Participant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  @@map("invite_tokens")
+}
+
+model AnonymousCalendarAccess {
+  id            String           @id @default(uuid())
+  participantId String           @unique @map("participant_id")
+  provider      CalendarProvider
+  accessToken   String           @map("access_token")
+  refreshToken  String           @map("refresh_token")
+  tokenExpiry   DateTime         @map("token_expiry")
+  calendarId    String           @default("primary") @map("calendar_id")
+  createdAt     DateTime         @default(now()) @map("created_at")
+  updatedAt     DateTime         @updatedAt @map("updated_at")
+
+  participant Participant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  @@map("anonymous_calendar_access")
+}
+
+model ApiKey {
+  id         String    @id @default(uuid())
+  name       String
+  keyHash    String    @unique @map("key_hash")
+  userId     String    @map("user_id")
+  scopes     String[]  @default(["meetings:read", "meetings:write"])
+  createdAt  DateTime  @default(now()) @map("created_at")
+  lastUsedAt DateTime? @map("last_used_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("api_keys")
+}
+
+model Webhook {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  url       String
+  secret    String
+  events    String[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("webhooks")
+}
