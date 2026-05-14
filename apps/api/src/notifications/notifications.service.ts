@@ -4,18 +4,21 @@ import { Resend } from 'resend';
 
 @Injectable()
 export class NotificationsService {
-  private readonly resend: Resend;
+  private readonly resend: Resend | null;
   private readonly from: string;
   private readonly webUrl: string;
   private readonly logger = new Logger(NotificationsService.name);
 
   constructor(private config: ConfigService) {
-    this.resend = new Resend(config.get<string>('RESEND_API_KEY', ''));
+    const apiKey = config.get<string>('RESEND_API_KEY', '');
+    this.resend = apiKey ? new Resend(apiKey) : null;
+    if (!apiKey) this.logger.warn('RESEND_API_KEY not set — emails will be skipped');
     this.from = config.get<string>('EMAIL_FROM', 'noreply@meetscheduler.com');
     this.webUrl = config.get<string>('WEB_URL', 'http://localhost:3000');
   }
 
   async sendInvite(email: string, name: string | null, meeting: any, token: string) {
+    if (!this.resend) return;
     const inviteUrl = `${this.webUrl}/invite/${token}`;
     const subject = `You're invited to: ${meeting.title}`;
 
@@ -32,6 +35,7 @@ export class NotificationsService {
   }
 
   async sendConfirmation(email: string, name: string | null, meeting: any) {
+    if (!this.resend) return;
     const subject = `Meeting confirmed: ${meeting.title}`;
     try {
       await this.resend.emails.send({
