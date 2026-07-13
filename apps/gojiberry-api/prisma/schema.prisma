@@ -1,0 +1,213 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SignalType {
+  JOB_CHANGE
+  FUNDING_ROUND
+  LINKEDIN_ENGAGEMENT
+  CONTENT_POST
+  HIRING_SURGE
+}
+
+enum MessageStatus {
+  DRAFT
+  QUEUED
+  SENT
+  FAILED
+}
+
+enum MessageChannel {
+  EMAIL
+  LINKEDIN
+}
+
+enum CampaignStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  COMPLETED
+  STOPPED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  companyName String? @map("company_name")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  icpProfiles IcpProfile[]
+  leads       Lead[]
+  messages    Message[]
+  campaigns   Campaign[]
+  apiKeys     ApiKey[]
+  webhooks    Webhook[]
+
+  @@map("users")
+}
+
+model IcpProfile {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  name        String
+  prompt      String
+  criteria    Json
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  leads Lead[]
+  campaigns Campaign[]
+
+  @@map("icp_profiles")
+}
+
+model Lead {
+  id             String   @id @default(uuid())
+  userId         String   @map("user_id")
+  icpProfileId   String?  @map("icp_profile_id")
+  fullName       String   @map("full_name")
+  title          String
+  company        String
+  companyDomain  String?  @map("company_domain")
+  companySize    String?  @map("company_size")
+  industry       String?
+  location       String?
+  email          String?
+  linkedinUrl    String?  @map("linkedin_url")
+  intentScore    Int      @default(0) @map("intent_score")
+  enrichment     Json?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  icpProfile IcpProfile? @relation(fields: [icpProfileId], references: [id], onDelete: SetNull)
+  signals    Signal[]
+  messages   Message[]
+  enrollments CampaignEnrollment[]
+
+  @@map("leads")
+}
+
+model Signal {
+  id          String     @id @default(uuid())
+  leadId      String     @map("lead_id")
+  type        SignalType
+  headline    String
+  description String
+  sourceUrl   String?    @map("source_url")
+  detectedAt  DateTime   @default(now()) @map("detected_at")
+
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@map("signals")
+}
+
+model Message {
+  id          String         @id @default(uuid())
+  userId      String         @map("user_id")
+  leadId      String         @map("lead_id")
+  campaignId  String?        @map("campaign_id")
+  channel     MessageChannel @default(EMAIL)
+  subject     String?
+  body        String
+  status      MessageStatus  @default(DRAFT)
+  generatedByAi Boolean      @default(true) @map("generated_by_ai")
+  sentAt      DateTime?      @map("sent_at")
+  createdAt   DateTime       @default(now()) @map("created_at")
+  updatedAt   DateTime       @updatedAt @map("updated_at")
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lead     Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  campaign Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+
+  @@map("messages")
+}
+
+model Campaign {
+  id           String         @id @default(uuid())
+  userId       String         @map("user_id")
+  icpProfileId String?        @map("icp_profile_id")
+  name         String
+  status       CampaignStatus @default(DRAFT)
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+
+  user        User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  icpProfile  IcpProfile?          @relation(fields: [icpProfileId], references: [id], onDelete: SetNull)
+  steps       CampaignStep[]
+  enrollments CampaignEnrollment[]
+  messages    Message[]
+
+  @@map("campaigns")
+}
+
+model CampaignStep {
+  id              String         @id @default(uuid())
+  campaignId      String         @map("campaign_id")
+  order           Int
+  delayDays       Int            @default(0) @map("delay_days")
+  channel         MessageChannel @default(EMAIL)
+  subjectTemplate String?        @map("subject_template")
+  bodyTemplate    String         @map("body_template")
+
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  @@unique([campaignId, order])
+  @@map("campaign_steps")
+}
+
+model CampaignEnrollment {
+  id          String           @id @default(uuid())
+  campaignId  String           @map("campaign_id")
+  leadId      String           @map("lead_id")
+  status      EnrollmentStatus @default(ACTIVE)
+  currentStep Int              @default(0) @map("current_step")
+  nextSendAt  DateTime         @default(now()) @map("next_send_at")
+  createdAt   DateTime         @default(now()) @map("created_at")
+
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  lead     Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@unique([campaignId, leadId])
+  @@map("campaign_enrollments")
+}
+
+model ApiKey {
+  id         String    @id @default(uuid())
+  name       String
+  keyHash    String    @unique @map("key_hash")
+  userId     String    @map("user_id")
+  scopes     String[]  @default(["leads:read", "leads:write"])
+  createdAt  DateTime  @default(now()) @map("created_at")
+  lastUsedAt DateTime? @map("last_used_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("api_keys")
+}
+
+model Webhook {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  url       String
+  secret    String
+  events    String[]
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("webhooks")
+}

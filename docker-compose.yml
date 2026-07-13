@@ -19,6 +19,28 @@ services:
     volumes:
       - redis_data:/data
 
+  gojiberry-postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: gojiberry
+      POSTGRES_PASSWORD: gojiberry
+      POSTGRES_DB: gojiberry
+    ports:
+      - "5433:5432"
+    volumes:
+      - gojiberry_postgres_data:/var/lib/postgresql/data
+
+  gojiberry-redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    volumes:
+      - gojiberry_redis_data:/data
+
 volumes:
   postgres_data:
   redis_data:
+  gojiberry_postgres_data:
+  gojiberry_redis_data:
