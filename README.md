@@ -1,3 +1,14 @@
+# Monorepo
+
+This repo hosts two independent products:
+
+- **Meet Scheduler** (`apps/api`, `apps/web`, `packages/sdk`) — documented below.
+- **Pipeline Signal** (`apps/gojiberry-api`, `apps/gojiberry-web`, `packages/gojiberry-sdk`) — an AI go-to-market/sales-intelligence app inspired by Gojiberry AI. See [`apps/gojiberry-api/README.md`](apps/gojiberry-api/README.md) for setup.
+
+They run on separate ports and separate Postgres/Redis instances (see `docker-compose.yml`) so both can be developed at the same time.
+
+---
+
 # Meet Scheduler
 
 Sistema de agendamento de reuniões multi-plataforma. Encontra horários livres comuns entre participantes de diferentes organizações que usam Google Calendar ou Microsoft Outlook — sem expor detalhes dos eventos de ninguém.
