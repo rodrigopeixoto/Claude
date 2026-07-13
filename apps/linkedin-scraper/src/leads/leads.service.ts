@@ -47,7 +47,10 @@ export class LeadsService {
   async findOne(id: string) {
     const lead = await this.prisma.lead.findUnique({
       where: { id },
-      include: { posts: { orderBy: { createdAt: 'desc' } }, outreachItems: { orderBy: { createdAt: 'desc' } } },
+      include: {
+        posts: { orderBy: [{ postedAt: 'desc' }, { createdAt: 'desc' }] },
+        outreachItems: { orderBy: { createdAt: 'desc' } },
+      },
     });
     if (!lead) throw new NotFoundException(`Lead ${id} not found`);
     return lead;

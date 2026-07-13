@@ -36,7 +36,7 @@ export class OutreachService {
   async generateDraft(dto: GenerateDraftDto) {
     const lead = await this.prisma.lead.findUnique({
       where: { id: dto.leadId },
-      include: { posts: { orderBy: { createdAt: 'desc' }, take: 1 } },
+      include: { posts: { orderBy: [{ postedAt: 'desc' }, { createdAt: 'desc' }], take: 1 } },
     });
     if (!lead) throw new NotFoundException(`Lead ${dto.leadId} not found`);
 

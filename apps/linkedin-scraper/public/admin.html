@@ -190,7 +190,12 @@
 
           <button class="secondary btn-scrape-posts">Buscar posts recentes</button>
           <div class="posts-status msg"></div>
-          <details class="posts-list"><summary>Ver posts salvos (${lead._count?.posts ?? 0})</summary><div class="posts-content msg">Carregando...</div></details>
+          <details class="posts-list" open><summary>Ver posts salvos (${lead._count?.posts ?? 0}) — escolha qual usar em {{post}}</summary><div class="posts-content msg">Carregando...</div></details>
+
+          <label style="display:flex; align-items:center; gap:0.4rem; font-weight:400">
+            <input type="checkbox" class="auto-generate" style="width:auto" checked />
+            Gerar rascunho automaticamente ao escolher um post
+          </label>
 
           <label>Tipo</label>
           <select class="draft-type">
@@ -199,7 +204,7 @@
           </select>
           <label>Template <span style="font-weight:400;color:var(--muted)">({{firstName}}, {{fullName}}, {{company}}, {{headline}}, {{post}})</span></label>
           <p class="hint" style="font-size:0.78rem;color:var(--muted);margin:0 0 0.4rem">
-            <code>{{post}}</code> puxa automaticamente o texto do post mais recente salvo acima (só funciona se o template incluir esse placeholder).
+            <code>{{post}}</code> usa o texto do post selecionado na lista acima (só funciona se o template incluir esse placeholder).
           </p>
           <textarea class="draft-template" placeholder="Oi {{firstName}}, vi seu post sobre &quot;{{post}}&quot;...">Oi {{firstName}}, vi seu post sobre "{{post}}" — muito relevante pro que você faz em {{headline}}${lead.company ? ' na {{company}}' : ''}. Adoraria trocar uma ideia!</textarea>
           <button class="btn-generate">Gerar rascunho</button>
@@ -211,22 +216,34 @@
         const leadId = card.dataset.leadId;
         const postsDetails = card.querySelector('.posts-list');
         const postsContent = card.querySelector('.posts-content');
+        const autoGenerate = card.querySelector('.auto-generate');
+        let selectedPostId = null;
 
         async function loadPosts() {
           postsContent.textContent = 'Carregando...';
           try {
             const lead = await api(`/leads/${leadId}`);
-            postsDetails.querySelector('summary').textContent = `Ver posts salvos (${lead.posts.length})`;
+            postsDetails.querySelector('summary').textContent = `Ver posts salvos (${lead.posts.length}) — escolha qual usar em {{post}}`;
             if (!lead.posts.length) {
+              selectedPostId = null;
               postsContent.innerHTML = '<div class="empty" style="padding:0.5rem 0">Nenhum post salvo ainda — use "Buscar posts recentes" acima.</div>';
               return;
             }
-            postsContent.innerHTML = lead.posts.map((post) => `
-              <div style="border-top:1px solid var(--border); padding:0.6rem 0">
-                <div class="meta">${post.postedAt ? new Date(post.postedAt).toLocaleDateString('pt-BR') : 'data desconhecida'}${post.postUrl ? ` · <a class="nav" href="${escapeHtml(post.postUrl)}" target="_blank" rel="noopener">abrir post</a>` : ''}</div>
-                <div style="font-size:0.85rem; white-space:pre-wrap">${escapeHtml(post.text || '(sem texto)')}</div>
-              </div>
+            selectedPostId = lead.posts[0].id; // most recent, pre-selected
+            postsContent.innerHTML = lead.posts.map((post, i) => `
+              <label style="display:block; border-top:1px solid var(--border); padding:0.6rem 0; cursor:pointer">
+                <input type="radio" name="post-${leadId}" value="${post.id}" style="width:auto; vertical-align:top" ${i === 0 ? 'checked' : ''} />
+                <span class="meta">${post.postedAt ? new Date(post.postedAt).toLocaleDateString('pt-BR') : 'data desconhecida'}${post.postUrl ? ` · <a class="nav" href="${escapeHtml(post.postUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">abrir post</a>` : ''}</span>
+                <div style="font-size:0.85rem; white-space:pre-wrap; margin-left:1.3rem">${escapeHtml(post.text || '(sem texto)')}</div>
+              </label>
             `).join('');
+
+            postsContent.querySelectorAll('input[type=radio]').forEach((radio) => {
+              radio.addEventListener('change', () => {
+                selectedPostId = radio.value;
+                if (autoGenerate.checked) card.querySelector('.btn-generate').click();
+              });
+            });
           } catch (err) {
             postsContent.innerHTML = `<div class="msg error">${escapeHtml(err.message)}</div>`;
           }
@@ -235,6 +252,7 @@
         postsDetails.addEventListener('toggle', () => {
           if (postsDetails.open) loadPosts();
         }, { once: false });
+        loadPosts();
 
         card.querySelector('.btn-scrape-posts').addEventListener('click', async (e) => {
           const btn = e.target;
@@ -276,7 +294,9 @@
           const template = card.querySelector('.draft-template').value;
           btn.disabled = true;
           try {
-            const draft = await api('/outreach/drafts/generate', { method: 'POST', body: { leadId, type, template } });
+            const body = { leadId, type, template };
+            if (selectedPostId) body.postId = selectedPostId;
+            const draft = await api('/outreach/drafts/generate', { method: 'POST', body });
             resultEl.innerHTML = `
               <label>Rascunho gerado (revise antes de enfileirar)</label>
               <textarea class="edited-draft">${escapeHtml(draft.draftText)}</textarea>
