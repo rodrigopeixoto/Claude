@@ -5,5 +5,6 @@ import { LinkedinController } from './linkedin.controller';
 @Module({
   providers: [LinkedinService],
   controllers: [LinkedinController],
+  exports: [LinkedinService],
 })
 export class LinkedinModule {}

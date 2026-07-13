@@ -9,6 +9,7 @@ export class LinkedinService implements OnModuleInit {
   private defaultActorId: string;
   private profileUrlField: string;
   private defaultSearchActorId: string;
+  private defaultPostsActorId: string;
 
   constructor(private config: ConfigService) {}
 
@@ -18,6 +19,23 @@ export class LinkedinService implements OnModuleInit {
     this.defaultActorId = this.config.get<string>('APIFY_LINKEDIN_ACTOR_ID') || '';
     this.profileUrlField = this.config.get<string>('APIFY_PROFILE_URL_FIELD') || 'profileUrls';
     this.defaultSearchActorId = this.config.get<string>('APIFY_SEARCH_ACTOR_ID') || '';
+    this.defaultPostsActorId = this.config.get<string>('APIFY_POSTS_ACTOR_ID') || '';
+  }
+
+  /** Starts a run of the configured LinkedIn posts-scraping actor for the given profile URLs. */
+  async startPostsScrape(urls: string[], maxPosts?: number, actorId?: string) {
+    const targetActor = actorId || this.defaultPostsActorId;
+    if (!targetActor) {
+      throw new NotFoundException(
+        'No posts actor configured. Set APIFY_POSTS_ACTOR_ID or pass actorId explicitly.',
+      );
+    }
+
+    const run = await this.client
+      .actor(targetActor)
+      .start({ targetUrls: urls, maxPosts: maxPosts || 5 });
+
+    return { runId: run.id, actorId: targetActor, datasetId: run.defaultDatasetId, status: run.status };
   }
 
   /** Starts a run of the configured LinkedIn profile-scraping actor for the given profile URLs. */

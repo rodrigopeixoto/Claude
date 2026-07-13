@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<title>LinkedIn Scraper — CRM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #666;
+    --border: #d8d8d8;
+    --accent: #0a66c2;
+    --card: #f7f7f8;
+    --ok: #1a7f37;
+    --bad: #d33;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --fg: #e8e8e8;
+      --muted: #999;
+      --border: #333;
+      --accent: #4a9eff;
+      --card: #1c1c1e;
+      --ok: #4caf6d;
+      --bad: #ff6b6b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--fg); }
+  main { max-width: 860px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+  a.nav { font-size: 0.85rem; color: var(--accent); text-decoration: none; }
+  p.subtitle { color: var(--muted); margin-top: 0.25rem; margin-bottom: 1rem; font-size: 0.9rem; }
+  label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; margin-top: 0.8rem; }
+  input[type="text"], input[type="password"], input[type="number"], textarea, select {
+    width: 100%; padding: 0.5rem 0.65rem; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); color: var(--fg); font-size: 0.9rem; font-family: inherit;
+  }
+  textarea { min-height: 70px; resize: vertical; }
+  button {
+    padding: 0.5rem 1.1rem; border: none; border-radius: 8px; background: var(--accent);
+    color: #fff; font-size: 0.88rem; font-weight: 600; cursor: pointer; margin-top: 0.6rem; margin-right: 0.4rem;
+  }
+  button.secondary { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+  button.danger { background: var(--bad); }
+  button:disabled { opacity: 0.5; cursor: default; }
+  .statbar {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin: 1rem 0 1.5rem;
+  }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.8rem; background: var(--card); }
+  .stat .label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; }
+  .stat .value { font-size: 1.1rem; font-weight: 700; margin-top: 0.15rem; }
+  .stat .value.ok { color: var(--ok); }
+  .stat .value.bad { color: var(--bad); }
+  .tabs { display: flex; gap: 0.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; flex-wrap: wrap; }
+  .tab { padding: 0.5rem 0.8rem; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--muted); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; background: var(--card); margin-bottom: 0.8rem; }
+  .card h3 { margin: 0 0 0.2rem; font-size: 1rem; }
+  .card .meta { color: var(--muted); font-size: 0.82rem; margin-bottom: 0.5rem; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px;
+    background: var(--accent); color: #fff; margin-left: 0.4rem; vertical-align: middle;
+  }
+  .badge.type-message { background: #7a4fd1; }
+  .msg { font-size: 0.85rem; margin-top: 0.5rem; }
+  .msg.error { color: var(--bad); }
+  .msg.success { color: var(--ok); }
+  details summary { cursor: pointer; font-size: 0.82rem; color: var(--muted); }
+  .empty { color: var(--muted); font-size: 0.88rem; padding: 1rem 0; }
+</style>
+</head>
+<body>
+<main>
+  <a class="nav" href="/">&larr; Busca</a>
+  <h1>CRM de Outreach</h1>
+  <p class="subtitle">Leads, rascunhos e fila de envio manual — os limites diários e o horário comercial são aplicados pela API.</p>
+
+  <label for="apiKey">x-api-key</label>
+  <input type="password" id="apiKey" placeholder="SCRAPER_API_KEY" autocomplete="off" />
+
+  <div class="statbar" id="statbar"></div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="leads">Leads</div>
+    <div class="tab" data-tab="queue">Fila de envio</div>
+    <div class="tab" data-tab="sent">Enviados</div>
+    <div class="tab" data-tab="withdraw">Retirar convites</div>
+  </div>
+
+  <div id="panel-leads" class="panel active"></div>
+  <div id="panel-queue" class="panel"></div>
+  <div id="panel-sent" class="panel"></div>
+  <div id="panel-withdraw" class="panel"></div>
+</main>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const apiKeyInput = $('apiKey');
+  apiKeyInput.value = localStorage.getItem('scraperApiKey') || '';
+  apiKeyInput.addEventListener('change', () => localStorage.setItem('scraperApiKey', apiKeyInput.value.trim()));
+
+  function headers(json) {
+    const h = { 'x-api-key': apiKeyInput.value.trim() };
+    if (json) h['Content-Type'] = 'application/json';
+    return h;
+  }
+
+  function escapeHtml(str) {
+    return String(str ?? '').replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
+  }
+
+  async function api(path, options = {}) {
+    const res = await fetch(`/api/v1${path}`, {
+      method: options.method || 'GET',
+      headers: headers(!!options.body),
+      body: options.body ? JSON.stringify(options.body) : undefined,
+    });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(body.message ? [].concat(body.message).join(', ') : `Erro ${res.status}`);
+    return body;
+  }
+
+  document.querySelectorAll('.tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach((p) => p.classList.remove('active'));
+      tab.classList.add('active');
+      $(`panel-${tab.dataset.tab}`).classList.add('active');
+      loadTab(tab.dataset.tab);
+    });
+  });
+
+  async function refreshStats() {
+    try {
+      const stats = await api('/outreach/stats');
+      const t = stats.today;
+      $('statbar').innerHTML = `
+        <div class="stat">
+          <div class="label">Horário comercial</div>
+          <div class="value ${stats.isWithinBusinessHours ? 'ok' : 'bad'}">${stats.isWithinBusinessHours ? 'Dentro' : 'Fora'}</div>
+        </div>
+        <div class="stat">
+          <div class="label">Convites hoje</div>
+          <div class="value ${t.connectionsSent >= t.connectionLimit ? 'bad' : ''}">${t.connectionsSent}/${t.connectionLimit}</div>
+        </div>
+        <div class="stat">
+          <div class="label">Mensagens hoje</div>
+          <div class="value ${t.messagesSent >= t.messageLimit ? 'bad' : ''}">${t.messagesSent}/${t.messageLimit}</div>
+        </div>
+        <div class="stat">
+          <div class="label">Total hoje</div>
+          <div class="value ${t.totalSent >= t.totalLimit ? 'bad' : ''}">${t.totalSent}/${t.totalLimit}</div>
+        </div>
+      `;
+    } catch (e) {
+      $('statbar').innerHTML = `<div class="msg error">${escapeHtml(e.message)}</div>`;
+    }
+  }
+
+  function typeBadge(type) {
+    return type === 'message'
+      ? '<span class="badge type-message">mensagem</span>'
+      : '<span class="badge">convite</span>';
+  }
+
+  // ---- Leads tab ----
+  async function loadLeads() {
+    const panel = $('panel-leads');
+    panel.innerHTML = '<div class="empty">Carregando...</div>';
+    try {
+      const leads = await api('/leads');
+      if (!leads.length) {
+        panel.innerHTML = '<div class="empty">Nenhum lead ainda. Salve leads a partir da busca em <a class="nav" href="/">/</a>.</div>';
+        return;
+      }
+      panel.innerHTML = leads.map((lead) => `
+        <div class="card" data-lead-id="${lead.id}">
+          <h3>${escapeHtml(lead.fullName || lead.linkedinUrl)}</h3>
+          <div class="meta">${escapeHtml(lead.headline || '')}${lead.company ? ' · ' + escapeHtml(lead.company) : ''}</div>
+          <div class="meta"><a class="nav" href="${escapeHtml(lead.linkedinUrl)}" target="_blank" rel="noopener">${escapeHtml(lead.linkedinUrl)}</a></div>
+          <div class="meta">${lead._count?.posts ?? 0} post(s) salvos · ${lead._count?.outreachItems ?? 0} outreach</div>
+
+          <button class="secondary btn-scrape-posts">Buscar posts recentes</button>
+          <div class="posts-status msg"></div>
+
+          <label>Tipo</label>
+          <select class="draft-type">
+            <option value="connection_request">Convite de conexão</option>
+            <option value="message">Mensagem</option>
+          </select>
+          <label>Template <span style="font-weight:400;color:var(--muted)">({{firstName}}, {{fullName}}, {{company}}, {{headline}}, {{post}})</span></label>
+          <textarea class="draft-template" placeholder="Oi {{firstName}}, vi seu post sobre &quot;{{post}}&quot;...">Oi {{firstName}}, vi que você trabalha com {{headline}}${lead.company ? ' na {{company}}' : ''}. Adoraria trocar uma ideia!</textarea>
+          <button class="btn-generate">Gerar rascunho</button>
+          <div class="draft-result"></div>
+        </div>
+      `).join('');
+
+      panel.querySelectorAll('.card').forEach((card) => {
+        const leadId = card.dataset.leadId;
+
+        card.querySelector('.btn-scrape-posts').addEventListener('click', async (e) => {
+          const btn = e.target;
+          const statusEl = card.querySelector('.posts-status');
+          btn.disabled = true;
+          try {
+            statusEl.className = 'posts-status msg';
+            statusEl.textContent = 'Iniciando scraping de posts...';
+            const run = await api(`/leads/${leadId}/posts/scrape`, { method: 'POST', body: {} });
+            for (let i = 0; i < 30; i++) {
+              const status = await api(`/linkedin/runs/${run.runId}`);
+              statusEl.textContent = `Status: ${status.status}`;
+              if (status.status === 'SUCCEEDED') {
+                const imported = await api(`/leads/${leadId}/posts/import`, { method: 'POST', body: { runId: run.runId } });
+                statusEl.className = 'posts-status msg success';
+                statusEl.textContent = `${imported.imported} post(s) importado(s).`;
+                return;
+              }
+              if (['FAILED', 'ABORTED', 'TIMED-OUT'].includes(status.status)) {
+                throw new Error(`Run terminou com status ${status.status}`);
+              }
+              await new Promise((r) => setTimeout(r, 3000));
+            }
+            throw new Error('Tempo limite esperando o scraping de posts.');
+          } catch (err) {
+            statusEl.className = 'posts-status msg error';
+            statusEl.textContent = err.message;
+          } finally {
+            btn.disabled = false;
+          }
+        });
+
+        card.querySelector('.btn-generate').addEventListener('click', async (e) => {
+          const btn = e.target;
+          const resultEl = card.querySelector('.draft-result');
+          const type = card.querySelector('.draft-type').value;
+          const template = card.querySelector('.draft-template').value;
+          btn.disabled = true;
+          try {
+            const draft = await api('/outreach/drafts/generate', { method: 'POST', body: { leadId, type, template } });
+            resultEl.innerHTML = `
+              <label>Rascunho gerado (revise antes de enfileirar)</label>
+              <textarea class="edited-draft">${escapeHtml(draft.draftText)}</textarea>
+              <button class="btn-save-draft">Salvar edição</button>
+              <button class="btn-queue-draft">Enfileirar</button>
+              <div class="queue-status msg"></div>
+            `;
+            resultEl.querySelector('.btn-save-draft').addEventListener('click', async () => {
+              const draftText = resultEl.querySelector('.edited-draft').value;
+              await api(`/outreach/${draft.id}`, { method: 'PATCH', body: { draftText } });
+              resultEl.querySelector('.queue-status').className = 'queue-status msg success';
+              resultEl.querySelector('.queue-status').textContent = 'Edição salva.';
+            });
+            resultEl.querySelector('.btn-queue-draft').addEventListener('click', async () => {
+              try {
+                const draftText = resultEl.querySelector('.edited-draft').value;
+                await api(`/outreach/${draft.id}`, { method: 'PATCH', body: { draftText } });
+                await api(`/outreach/${draft.id}/queue`, { method: 'POST' });
+                resultEl.querySelector('.queue-status').className = 'queue-status msg success';
+                resultEl.querySelector('.queue-status').textContent = 'Enfileirado! Veja a aba "Fila de envio".';
+              } catch (err) {
+                resultEl.querySelector('.queue-status').className = 'queue-status msg error';
+                resultEl.querySelector('.queue-status').textContent = err.message;
+              }
+            });
+          } catch (err) {
+            resultEl.innerHTML = `<div class="msg error">${escapeHtml(err.message)}</div>`;
+          } finally {
+            btn.disabled = false;
+          }
+        });
+      });
+    } catch (e) {
+      panel.innerHTML = `<div class="msg error">${escapeHtml(e.message)}</div>`;
+    }
+  }
+
+  // ---- Queue tab ----
+  async function loadQueue() {
+    const panel = $('panel-queue');
+    panel.innerHTML = '<div class="empty">Carregando...</div>';
+    try {
+      const { items } = await api('/outreach/queue');
+      if (!items.length) {
+        panel.innerHTML = '<div class="empty">Fila vazia.</div>';
+        return;
+      }
+      panel.innerHTML = items.map((item) => `
+        <div class="card" data-id="${item.id}">
+          <h3>${escapeHtml(item.lead.fullName || item.lead.linkedinUrl)} ${typeBadge(item.type)}</h3>
+          <div class="meta"><a class="nav" href="${escapeHtml(item.lead.linkedinUrl)}" target="_blank" rel="noopener">abrir perfil no LinkedIn</a></div>
+          <textarea class="edit-text">${escapeHtml(item.draftText)}</textarea>
+          <button class="secondary btn-save">Salvar edição</button>
+          <button class="btn-mark-sent">Já enviei manualmente — marcar como enviado</button>
+          <button class="secondary btn-skip">Pular</button>
+          <div class="msg action-status"></div>
+        </div>
+      `).join('');
+
+      panel.querySelectorAll('.card').forEach((card) => {
+        const id = card.dataset.id;
+        const statusEl = card.querySelector('.action-status');
+
+        card.querySelector('.btn-save').addEventListener('click', async () => {
+          try {
+            await api(`/outreach/${id}`, { method: 'PATCH', body: { draftText: card.querySelector('.edit-text').value } });
+            statusEl.className = 'msg action-status success';
+            statusEl.textContent = 'Salvo.';
+          } catch (err) {
+            statusEl.className = 'msg action-status error';
+            statusEl.textContent = err.message;
+          }
+        });
+
+        card.querySelector('.btn-mark-sent').addEventListener('click', async () => {
+          try {
+            await api(`/outreach/${id}/mark-sent`, { method: 'POST' });
+            await refreshStats();
+            loadQueue();
+          } catch (err) {
+            statusEl.className = 'msg action-status error';
+            statusEl.textContent = err.message;
+          }
+        });
+
+        card.querySelector('.btn-skip').addEventListener('click', async () => {
+          try {
+            await api(`/outreach/${id}/status`, { method: 'POST', body: { status: 'skipped' } });
+            loadQueue();
+          } catch (err) {
+            statusEl.className = 'msg action-status error';
+            statusEl.textContent = err.message;
+          }
+        });
+      });
+    } catch (e) {
+      panel.innerHTML = `<div class="msg error">${escapeHtml(e.message)}</div>`;
+    }
+  }
+
+  // ---- Sent tab ----
+  async function loadSent() {
+    const panel = $('panel-sent');
+    panel.innerHTML = '<div class="empty">Carregando...</div>';
+    try {
+      const items = await api('/outreach?status=sent');
+      if (!items.length) {
+        panel.innerHTML = '<div class="empty">Nenhum item enviado ainda.</div>';
+        return;
+      }
+      panel.innerHTML = items.map((item) => `
+        <div class="card" data-id="${item.id}">
+          <h3>${escapeHtml(item.lead.fullName || item.lead.linkedinUrl)} ${typeBadge(item.type)}</h3>
+          <div class="meta">Enviado em ${new Date(item.sentAt).toLocaleString('pt-BR')}</div>
+          <div class="meta">${escapeHtml(item.draftText)}</div>
+          <button class="secondary btn-status" data-status="accepted">Marcar aceito</button>
+          <button class="secondary btn-status" data-status="replied">Marcar respondido</button>
+          <div class="msg action-status"></div>
+        </div>
+      `).join('');
+
+      panel.querySelectorAll('.card').forEach((card) => {
+        const id = card.dataset.id;
+        const statusEl = card.querySelector('.action-status');
+        card.querySelectorAll('.btn-status').forEach((btn) => {
+          btn.addEventListener('click', async () => {
+            try {
+              await api(`/outreach/${id}/status`, { method: 'POST', body: { status: btn.dataset.status } });
+              loadSent();
+            } catch (err) {
+              statusEl.className = 'msg action-status error';
+              statusEl.textContent = err.message;
+            }
+          });
+        });
+      });
+    } catch (e) {
+      panel.innerHTML = `<div class="msg error">${escapeHtml(e.message)}</div>`;
+    }
+  }
+
+  // ---- Withdraw tab ----
+  async function loadWithdraw() {
+    const panel = $('panel-withdraw');
+    panel.innerHTML = '<div class="empty">Carregando...</div>';
+    try {
+      const items = await api('/outreach/due-for-withdrawal');
+      if (!items.length) {
+        panel.innerHTML = '<div class="empty">Nenhum convite pendente de retirada.</div>';
+        return;
+      }
+      panel.innerHTML = `<p class="meta">Convites enviados há mais de 10 dias sem resposta — retire-os manualmente no LinkedIn e marque aqui.</p>` + items.map((item) => `
+        <div class="card" data-id="${item.id}">
+          <h3>${escapeHtml(item.lead.fullName || item.lead.linkedinUrl)}</h3>
+          <div class="meta">Enviado em ${new Date(item.sentAt).toLocaleString('pt-BR')}</div>
+          <a class="nav" href="${escapeHtml(item.lead.linkedinUrl)}" target="_blank" rel="noopener">abrir perfil no LinkedIn</a>
+          <button class="secondary btn-withdrawn">Já retirei — marcar como retirado</button>
+          <div class="msg action-status"></div>
+        </div>
+      `).join('');
+
+      panel.querySelectorAll('.card').forEach((card) => {
+        const id = card.dataset.id;
+        const statusEl = card.querySelector('.action-status');
+        card.querySelector('.btn-withdrawn').addEventListener('click', async () => {
+          try {
+            await api(`/outreach/${id}/status`, { method: 'POST', body: { status: 'withdrawn' } });
+            loadWithdraw();
+            refreshStats();
+          } catch (err) {
+            statusEl.className = 'msg action-status error';
+            statusEl.textContent = err.message;
+          }
+        });
+      });
+    } catch (e) {
+      panel.innerHTML = `<div class="msg error">${escapeHtml(e.message)}</div>`;
+    }
+  }
+
+  function loadTab(tab) {
+    if (tab === 'leads') loadLeads();
+    else if (tab === 'queue') loadQueue();
+    else if (tab === 'sent') loadSent();
+    else if (tab === 'withdraw') loadWithdraw();
+  }
+
+  refreshStats();
+  loadTab('leads');
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id            String         @id @default(cuid())
+  linkedinUrl   String         @unique
+  fullName      String?
+  headline      String?
+  company       String?
+  location      String?
+  raw           String? // full scraped profile JSON, as text
+  createdAt     DateTime       @default(now())
+  posts         Post[]
+  outreachItems OutreachItem[]
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  postUrl   String?
+  text      String?
+  postedAt  DateTime?
+  createdAt DateTime @default(now())
+}
+
+model OutreachItem {
+  id            String    @id @default(cuid())
+  leadId        String
+  lead          Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  type          String // "connection_request" | "message"
+  draftText     String
+  status        String    @default("draft") // draft, queued, sent, accepted, replied, skipped, withdrawn
+  createdAt     DateTime  @default(now())
+  queuedAt      DateTime?
+  sentAt        DateTime?
+  withdrawDueAt DateTime? // only set for connection_request, sentAt + 10 days
+}

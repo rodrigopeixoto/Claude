@@ -37,6 +37,7 @@
     padding: 2rem 1.25rem 4rem;
   }
   h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+  a { color: var(--accent); }
   p.subtitle { color: var(--muted); margin-top: 0; margin-bottom: 1.5rem; font-size: 0.9rem; }
   label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; margin-top: 1rem; }
   .hint { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; font-weight: 400; }
@@ -105,7 +106,7 @@
 <body>
 <main>
   <h1>LinkedIn Scraper</h1>
-  <p class="subtitle">Interface local de teste — dispara o scraping via Apify e mostra o resultado.</p>
+  <p class="subtitle">Interface local de teste — dispara o scraping via Apify e mostra o resultado. &middot; <a href="/admin.html">Abrir CRM de outreach &rarr;</a></p>
 
   <label for="apiKey">x-api-key</label>
   <input type="password" id="apiKey" placeholder="SCRAPER_API_KEY" autocomplete="off" />
@@ -292,14 +293,41 @@
       const name = [item.firstName, item.lastName].filter(Boolean).join(' ') || item.fullName || item.publicIdentifier || 'Perfil';
       const headline = item.headline || '';
       const url = item.linkedinUrl || '';
+      const company = item.currentPosition?.[0]?.companyName || '';
+      const location = item.location?.linkedinText || '';
       const card = document.createElement('div');
       card.className = 'card';
       card.innerHTML = `
         <h3>${escapeHtml(name)}</h3>
         <div class="headline">${escapeHtml(headline)}</div>
         ${url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(url)}</a>` : ''}
+        <div>
+          <button class="btn-save-lead" ${url ? '' : 'disabled'}>Salvar como lead</button>
+          <span class="save-lead-status" style="font-size:0.8rem;color:var(--muted)"></span>
+        </div>
         <details style="margin-top:0.6rem"><summary>JSON completo</summary><pre>${escapeHtml(JSON.stringify(item, null, 2))}</pre></details>
       `;
+      const saveBtn = card.querySelector('.btn-save-lead');
+      const saveStatus = card.querySelector('.save-lead-status');
+      saveBtn.addEventListener('click', async () => {
+        const apiKey = apiKeyInput.value.trim();
+        if (!apiKey) return (saveStatus.textContent = 'Informe o x-api-key.');
+        saveBtn.disabled = true;
+        try {
+          await fetch('/api/v1/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey },
+            body: JSON.stringify({ linkedinUrl: url, fullName: name, headline, company, location, raw: item }),
+          }).then(async (res) => {
+            const body = await res.json();
+            if (!res.ok) throw new Error(body.message || 'Erro ao salvar lead');
+          });
+          saveStatus.textContent = 'Salvo! Veja no CRM.';
+        } catch (err) {
+          saveStatus.textContent = err.message;
+          saveBtn.disabled = false;
+        }
+      });
       resultsEl.appendChild(card);
     }
   }
