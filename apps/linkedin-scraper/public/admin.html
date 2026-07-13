@@ -190,6 +190,7 @@
 
           <button class="secondary btn-scrape-posts">Buscar posts recentes</button>
           <div class="posts-status msg"></div>
+          <details class="posts-list"><summary>Ver posts salvos (${lead._count?.posts ?? 0})</summary><div class="posts-content msg">Carregando...</div></details>
 
           <label>Tipo</label>
           <select class="draft-type">
@@ -197,7 +198,10 @@
             <option value="message">Mensagem</option>
           </select>
           <label>Template <span style="font-weight:400;color:var(--muted)">({{firstName}}, {{fullName}}, {{company}}, {{headline}}, {{post}})</span></label>
-          <textarea class="draft-template" placeholder="Oi {{firstName}}, vi seu post sobre &quot;{{post}}&quot;...">Oi {{firstName}}, vi que você trabalha com {{headline}}${lead.company ? ' na {{company}}' : ''}. Adoraria trocar uma ideia!</textarea>
+          <p class="hint" style="font-size:0.78rem;color:var(--muted);margin:0 0 0.4rem">
+            <code>{{post}}</code> puxa automaticamente o texto do post mais recente salvo acima (só funciona se o template incluir esse placeholder).
+          </p>
+          <textarea class="draft-template" placeholder="Oi {{firstName}}, vi seu post sobre &quot;{{post}}&quot;...">Oi {{firstName}}, vi seu post sobre "{{post}}" — muito relevante pro que você faz em {{headline}}${lead.company ? ' na {{company}}' : ''}. Adoraria trocar uma ideia!</textarea>
           <button class="btn-generate">Gerar rascunho</button>
           <div class="draft-result"></div>
         </div>
@@ -205,6 +209,32 @@
 
       panel.querySelectorAll('.card').forEach((card) => {
         const leadId = card.dataset.leadId;
+        const postsDetails = card.querySelector('.posts-list');
+        const postsContent = card.querySelector('.posts-content');
+
+        async function loadPosts() {
+          postsContent.textContent = 'Carregando...';
+          try {
+            const lead = await api(`/leads/${leadId}`);
+            postsDetails.querySelector('summary').textContent = `Ver posts salvos (${lead.posts.length})`;
+            if (!lead.posts.length) {
+              postsContent.innerHTML = '<div class="empty" style="padding:0.5rem 0">Nenhum post salvo ainda — use "Buscar posts recentes" acima.</div>';
+              return;
+            }
+            postsContent.innerHTML = lead.posts.map((post) => `
+              <div style="border-top:1px solid var(--border); padding:0.6rem 0">
+                <div class="meta">${post.postedAt ? new Date(post.postedAt).toLocaleDateString('pt-BR') : 'data desconhecida'}${post.postUrl ? ` · <a class="nav" href="${escapeHtml(post.postUrl)}" target="_blank" rel="noopener">abrir post</a>` : ''}</div>
+                <div style="font-size:0.85rem; white-space:pre-wrap">${escapeHtml(post.text || '(sem texto)')}</div>
+              </div>
+            `).join('');
+          } catch (err) {
+            postsContent.innerHTML = `<div class="msg error">${escapeHtml(err.message)}</div>`;
+          }
+        }
+
+        postsDetails.addEventListener('toggle', () => {
+          if (postsDetails.open) loadPosts();
+        }, { once: false });
 
         card.querySelector('.btn-scrape-posts').addEventListener('click', async (e) => {
           const btn = e.target;
@@ -221,6 +251,8 @@
                 const imported = await api(`/leads/${leadId}/posts/import`, { method: 'POST', body: { runId: run.runId } });
                 statusEl.className = 'posts-status msg success';
                 statusEl.textContent = `${imported.imported} post(s) importado(s).`;
+                postsDetails.open = true;
+                loadPosts();
                 return;
               }
               if (['FAILED', 'ABORTED', 'TIMED-OUT'].includes(status.status)) {
