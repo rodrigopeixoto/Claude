@@ -1,12 +1,14 @@
 import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ApifyClient } from 'apify-client';
+import { SearchProfilesDto } from './dto/linkedin.dto';
 
 @Injectable()
 export class LinkedinService implements OnModuleInit {
   private client: ApifyClient;
   private defaultActorId: string;
   private profileUrlField: string;
+  private defaultSearchActorId: string;
 
   constructor(private config: ConfigService) {}
 
@@ -15,6 +17,7 @@ export class LinkedinService implements OnModuleInit {
     this.client = new ApifyClient({ token });
     this.defaultActorId = this.config.get<string>('APIFY_LINKEDIN_ACTOR_ID') || '';
     this.profileUrlField = this.config.get<string>('APIFY_PROFILE_URL_FIELD') || 'profileUrls';
+    this.defaultSearchActorId = this.config.get<string>('APIFY_SEARCH_ACTOR_ID') || '';
   }
 
   /** Starts a run of the configured LinkedIn profile-scraping actor for the given profile URLs. */
@@ -29,6 +32,25 @@ export class LinkedinService implements OnModuleInit {
     const run = await this.client
       .actor(targetActor)
       .start({ [this.profileUrlField]: urls });
+
+    return { runId: run.id, actorId: targetActor, datasetId: run.defaultDatasetId, status: run.status };
+  }
+
+  /** Starts a filtered LinkedIn people-search run (no login/cookies required). */
+  async startProfileSearch(dto: SearchProfilesDto) {
+    const targetActor = dto.actorId || this.defaultSearchActorId;
+    if (!targetActor) {
+      throw new NotFoundException(
+        'No search actor configured. Set APIFY_SEARCH_ACTOR_ID or pass actorId explicitly.',
+      );
+    }
+
+    const { actorId: _actorId, ...filters } = dto;
+    const input = Object.fromEntries(
+      Object.entries(filters).filter(([, value]) => value !== undefined && value !== null),
+    );
+
+    const run = await this.client.actor(targetActor).start(input);
 
     return { runId: run.id, actorId: targetActor, datasetId: run.defaultDatasetId, status: run.status };
   }

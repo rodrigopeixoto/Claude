@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { LinkedinService } from './linkedin.service';
-import { ScrapeProfilesDto, RunActorDto } from './dto/linkedin.dto';
+import { ScrapeProfilesDto, RunActorDto, SearchProfilesDto } from './dto/linkedin.dto';
 import { ApiKeyGuard } from '../common/guards/api-key.guard';
 
 @ApiTags('linkedin')
@@ -15,6 +15,12 @@ export class LinkedinController {
   @ApiOperation({ summary: 'Start scraping the given LinkedIn profile URLs via Apify' })
   scrapeProfiles(@Body() dto: ScrapeProfilesDto) {
     return this.linkedin.startProfileScrape(dto.urls, dto.actorId);
+  }
+
+  @Post('search')
+  @ApiOperation({ summary: 'Start a filtered LinkedIn people search (no login/cookies required)' })
+  searchProfiles(@Body() dto: SearchProfilesDto) {
+    return this.linkedin.startProfileSearch(dto);
   }
 
   @Post('run')

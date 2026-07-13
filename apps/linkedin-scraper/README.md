@@ -14,14 +14,16 @@ Preencher no `.env`:
 - `APIFY_API_TOKEN`: token da sua conta Apify (Apify Console → Settings → Integrations).
 - `APIFY_LINKEDIN_ACTOR_ID`: ID do actor do Apify Store que faz o scraping de perfis do LinkedIn. Configurado por padrão para `harvestapi/linkedin-profile-scraper`; troque na [Apify Store](https://apify.com/store) se quiser outro.
 - `APIFY_PROFILE_URL_FIELD`: nome do campo de input que esse actor espera para receber a lista de URLs (varia por actor; para o `harvestapi/linkedin-profile-scraper` é `urls`).
+- `APIFY_SEARCH_ACTOR_ID`: actor usado por `POST /linkedin/search` (busca com filtros, sem login/cookies). Padrão: `harvestapi/linkedin-profile-search`.
 
-O actor padrão (`harvestapi/linkedin-profile-scraper`) tem dois modos de cobrança (campo `profileScraperMode`, não exposto por `POST /linkedin/profiles`): "Profile details no email" (~$4/1k) e "Profile details + email search" (~$10/1k). Sem esse campo ele usa o modo padrão sem busca de e-mail. Para escolher o modo de e-mail, use `POST /linkedin/run` passando `profileScraperMode` no `input`.
+O actor padrão de perfis (`harvestapi/linkedin-profile-scraper`) tem dois modos de cobrança (campo `profileScraperMode`, não exposto por `POST /linkedin/profiles`): "Profile details no email" (~$4/1k) e "Profile details + email search" (~$10/1k). Sem esse campo ele usa o modo padrão sem busca de e-mail. Para escolher o modo de e-mail, use `POST /linkedin/run` passando `profileScraperMode` no `input`.
 
 ```bash
 pnpm --filter linkedin-scraper dev
 ```
 
-Swagger UI disponível em `http://localhost:3002/api/docs`.
+- **Interface de teste**: `http://localhost:3002/` — página HTML simples com abas "Por URL" e "Busca avançada" pra disparar scrapes e ver o resultado sem precisar de curl/Postman.
+- **Swagger UI**: `http://localhost:3002/api/docs`.
 
 ## Endpoints
 
@@ -36,6 +38,26 @@ Inicia um run do actor configurado (`APIFY_LINKEDIN_ACTOR_ID`) para uma lista de
 ```
 
 Retorna `{ runId, actorId, datasetId, status }`. O run roda de forma assíncrona no Apify — use o endpoint abaixo para consultar o resultado.
+
+### `POST /api/v1/linkedin/search`
+
+Inicia uma busca filtrada de perfis (actor `APIFY_SEARCH_ACTOR_ID`), sem precisar de URLs específicas nem de login no LinkedIn.
+
+```json
+{
+  "searchQuery": "Product Designer",
+  "locations": ["São Paulo, Brazil"],
+  "currentCompanies": ["https://www.linkedin.com/company/google/"],
+  "currentJobTitles": ["Product Designer"],
+  "seniorityLevelIds": ["120"],
+  "profileLanguages": ["Portuguese"],
+  "maxItems": 20
+}
+```
+
+Filtros suportados: `searchQuery`, `locations`, `currentCompanies`, `pastCompanies`, `schools`, `currentJobTitles`, `pastJobTitles`, `firstNames`, `lastNames`, `industryIds` (códigos numéricos), `seniorityLevelIds`, `profileLanguages`, `companyHeadcount`, `maxItems`, `profileScraperMode`. Veja os enums completos no Swagger.
+
+**Não suportado** (exigem sessão autenticada do LinkedIn, fora de escopo aqui): grau de conexão (1º/2º/3º), "contratando já", conexões-de/seguidores-de um perfil específico, interesse em voluntariado, categorias de serviço (esse último existe em outro actor: `harvestapi/linkedin-profile-search-by-services`, acessível via `POST /linkedin/run`).
 
 ### `POST /api/v1/linkedin/run`
 
