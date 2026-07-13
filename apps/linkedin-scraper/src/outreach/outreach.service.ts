@@ -3,6 +3,8 @@ import { PrismaService } from '../prisma/prisma.service';
 import { OutreachLimitsService } from './outreach-limits.service';
 import { GenerateDraftDto } from './dto/outreach.dto';
 
+const CONNECTION_REQUEST_CHAR_LIMIT = 300; // LinkedIn's hard cap on connection-request notes
+
 @Injectable()
 export class OutreachService {
   constructor(
@@ -49,15 +51,31 @@ export class OutreachService {
       post = found;
     }
 
+    // Connection-request notes are capped at 300 chars by LinkedIn, so keep the
+    // {{post}} excerpt short enough that the template's own wording still fits.
+    const postExcerptLength = dto.type === 'connection_request' ? 80 : 200;
+
     const firstName = lead.fullName?.split(' ')[0] || '';
-    const draftText = dto.template
+    let draftText = dto.template
       .replaceAll('{{firstName}}', firstName)
       .replaceAll('{{fullName}}', lead.fullName || '')
       .replaceAll('{{company}}', lead.company || '')
       .replaceAll('{{headline}}', lead.headline || '')
-      .replaceAll('{{post}}', post?.text?.slice(0, 200) || '');
+      .replaceAll('{{post}}', post?.text?.slice(0, postExcerptLength) || '');
+
+    if (dto.type === 'connection_request' && draftText.length > CONNECTION_REQUEST_CHAR_LIMIT) {
+      draftText = this.truncateToLimit(draftText, CONNECTION_REQUEST_CHAR_LIMIT);
+    }
 
     return this.createDraft(dto.leadId, dto.type, draftText);
+  }
+
+  /** Truncates at the last word boundary within range, so we don't cut mid-word unless necessary. */
+  private truncateToLimit(text: string, limit: number): string {
+    const cut = text.slice(0, limit - 1);
+    const lastSpace = cut.lastIndexOf(' ');
+    const trimmed = lastSpace > limit * 0.6 ? cut.slice(0, lastSpace) : cut;
+    return `${trimmed.trimEnd()}…`;
   }
 
   async updateDraft(id: string, draftText: string) {
