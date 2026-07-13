@@ -34,6 +34,8 @@ export const icpApi = {
 export const leadsApi = {
   generate: (icpProfileId: string, count?: number) =>
     api.post('/leads/generate', { icpProfileId, count }),
+  sourceReal: (domains: string[], opts?: { icpProfileId?: string; department?: string; seniority?: string }) =>
+    api.post('/leads/source-real', { domains, ...opts }),
   list: (icpProfileId?: string) => api.get('/leads', { params: icpProfileId ? { icpProfileId } : {} }),
   get: (id: string) => api.get(`/leads/${id}`),
 };

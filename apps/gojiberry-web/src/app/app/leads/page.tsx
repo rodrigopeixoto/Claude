@@ -26,7 +26,15 @@ export default function LeadsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Leads</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold text-gray-900">Leads</h1>
+        <Link
+          href="/app/leads/real"
+          className="px-4 py-2 bg-brand-ink text-white rounded-lg text-sm font-medium hover:opacity-90"
+        >
+          + Buscar leads reais
+        </Link>
+      </div>
 
       {loading ? (
         <p className="text-gray-500">Carregando...</p>
@@ -46,6 +54,7 @@ export default function LeadsPage() {
                 <th className="px-4 py-3 font-medium">Cargo</th>
                 <th className="px-4 py-3 font-medium">Empresa</th>
                 <th className="px-4 py-3 font-medium">Setor</th>
+                <th className="px-4 py-3 font-medium">Origem</th>
                 <th className="px-4 py-3 font-medium">Sinais</th>
                 <th className="px-4 py-3 font-medium">Score</th>
               </tr>
@@ -61,6 +70,17 @@ export default function LeadsPage() {
                   <td className="px-4 py-3 text-gray-600">{lead.title}</td>
                   <td className="px-4 py-3 text-gray-600">{lead.company}</td>
                   <td className="px-4 py-3 text-gray-600">{lead.industry ?? '—'}</td>
+                  <td className="px-4 py-3">
+                    {lead.source === 'hunter' ? (
+                      <span className="text-xs px-2 py-1 rounded-full font-medium bg-green-100 text-green-700">
+                        Real
+                      </span>
+                    ) : (
+                      <span className="text-xs px-2 py-1 rounded-full font-medium bg-gray-100 text-gray-500">
+                        Demo (IA)
+                      </span>
+                    )}
+                  </td>
                   <td className="px-4 py-3 text-gray-600">{lead._count?.signals ?? 0}</td>
                   <td className="px-4 py-3">
                     <span className={`text-xs px-2 py-1 rounded-full font-medium ${scoreColor(lead.intentScore)}`}>

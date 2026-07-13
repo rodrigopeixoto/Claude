@@ -29,8 +29,10 @@ export interface Lead {
   industry?: string;
   location?: string;
   email?: string;
+  emailStatus?: string;
   linkedinUrl?: string;
   intentScore: number;
+  source: 'mock' | 'hunter';
   enrichment?: Record<string, unknown>;
   createdAt: string;
 }

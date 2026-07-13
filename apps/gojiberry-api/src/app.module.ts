@@ -6,6 +6,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
 import { CryptoModule } from './common/crypto/crypto.module';
 import { AiModule } from './common/ai/ai.module';
+import { HunterModule } from './common/hunter/hunter.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { IcpModule } from './icp/icp.module';
@@ -25,6 +26,7 @@ import { ApiKeysModule } from './api-keys/api-keys.module';
     RedisModule,
     CryptoModule,
     AiModule,
+    HunterModule,
     AuthModule,
     UsersModule,
     IcpModule,

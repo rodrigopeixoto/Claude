@@ -74,9 +74,28 @@ export default function LeadDetailPage() {
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">{lead.fullName}</h1>
+              <div className="flex items-center gap-2">
+                <h1 className="text-2xl font-bold text-gray-900">{lead.fullName}</h1>
+                {lead.source === 'hunter' ? (
+                  <span className="text-xs px-2 py-1 rounded-full font-medium bg-green-100 text-green-700">
+                    Lead real
+                  </span>
+                ) : (
+                  <span className="text-xs px-2 py-1 rounded-full font-medium bg-gray-100 text-gray-500">
+                    Demo (IA)
+                  </span>
+                )}
+              </div>
               <p className="text-gray-600">{lead.title} · {lead.company}</p>
               <p className="text-sm text-gray-400 mt-1">{lead.location}</p>
+              {lead.email && (
+                <p className="text-sm text-gray-500 mt-1">
+                  {lead.email}
+                  {lead.emailStatus && (
+                    <span className="ml-1 text-xs text-gray-400">({lead.emailStatus})</span>
+                  )}
+                </p>
+              )}
             </div>
             <span className="text-sm px-3 py-1 rounded-full bg-brand-light/20 text-brand-dark font-semibold">
               Score {lead.intentScore}

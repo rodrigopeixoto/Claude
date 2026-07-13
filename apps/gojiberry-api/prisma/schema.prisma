@@ -86,8 +86,10 @@ model Lead {
   industry       String?
   location       String?
   email          String?
+  emailStatus    String?  @map("email_status")
   linkedinUrl    String?  @map("linkedin_url")
   intentScore    Int      @default(0) @map("intent_score")
+  source         String   @default("mock")
   enrichment     Json?
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")

@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { LeadsService } from './leads.service';
 import { LeadsController } from './leads.controller';
 import { MockEnrichmentProvider } from './providers/mock-enrichment.provider';
+import { ApolloEnrichmentProvider } from './providers/apollo-enrichment.provider';
 import { ENRICHMENT_PROVIDER } from './providers/enrichment-provider.interface';
 import { IcpModule } from '../icp/icp.module';
 
@@ -10,8 +11,10 @@ import { IcpModule } from '../icp/icp.module';
   providers: [
     LeadsService,
     MockEnrichmentProvider,
-    // Swap the useClass below for a real provider implementation to go live.
-    { provide: ENRICHMENT_PROVIDER, useClass: MockEnrichmentProvider },
+    ApolloEnrichmentProvider,
+    // Real company enrichment via Apollo.io (falls back to mock without an
+    // APOLLO_API_KEY, without a company domain, or on API failure).
+    { provide: ENRICHMENT_PROVIDER, useClass: ApolloEnrichmentProvider },
   ],
   controllers: [LeadsController],
   exports: [LeadsService],

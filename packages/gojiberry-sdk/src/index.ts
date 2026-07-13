@@ -69,6 +69,14 @@ class LeadsClient {
     return res.data;
   }
 
+  async sourceReal(
+    domains: string[],
+    opts?: { icpProfileId?: string; department?: string; seniority?: string },
+  ): Promise<Lead[]> {
+    const res = await this.http.post('/leads/source-real', { domains, ...opts });
+    return res.data;
+  }
+
   async list(icpProfileId?: string): Promise<Lead[]> {
     const res = await this.http.get('/leads', { params: icpProfileId ? { icpProfileId } : {} });
     return res.data;
