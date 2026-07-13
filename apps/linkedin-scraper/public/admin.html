@@ -111,6 +111,30 @@
     return h;
   }
 
+  function charLimitFor(type) {
+    return type === 'connection_request' ? 300 : 8000;
+  }
+
+  // Adds a live "X/limit caracteres" counter under a textarea, turning red past the limit
+  // and disabling `blockButtons` while over. Returns a function to re-check (e.g. after type changes).
+  function attachCharCounter(textarea, type, blockButtons = []) {
+    const limit = charLimitFor(type);
+    const counter = document.createElement('div');
+    counter.style.cssText = 'font-size:0.75rem;color:var(--muted);margin-top:0.2rem;text-align:right';
+    textarea.insertAdjacentElement('afterend', counter);
+
+    function update() {
+      const len = textarea.value.length;
+      const over = len > limit;
+      counter.textContent = `${len}/${limit} caracteres${over ? ' — excede o limite do LinkedIn' : ''}`;
+      counter.style.color = over ? 'var(--bad)' : 'var(--muted)';
+      blockButtons.forEach((btn) => { btn.disabled = over; });
+    }
+
+    textarea.addEventListener('input', update);
+    update();
+  }
+
   function escapeHtml(str) {
     return String(str ?? '').replace(/[&<>"']/g, (c) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
@@ -304,6 +328,11 @@
               <button class="btn-queue-draft">Enfileirar</button>
               <div class="queue-status msg"></div>
             `;
+            attachCharCounter(
+              resultEl.querySelector('.edited-draft'),
+              type,
+              [resultEl.querySelector('.btn-queue-draft')],
+            );
             resultEl.querySelector('.btn-save-draft').addEventListener('click', async () => {
               const draftText = resultEl.querySelector('.edited-draft').value;
               await api(`/outreach/${draft.id}`, { method: 'PATCH', body: { draftText } });
@@ -359,6 +388,13 @@
       panel.querySelectorAll('.card').forEach((card) => {
         const id = card.dataset.id;
         const statusEl = card.querySelector('.action-status');
+        const item = items.find((i) => i.id === id);
+
+        attachCharCounter(
+          card.querySelector('.edit-text'),
+          item.type,
+          [card.querySelector('.btn-mark-sent')],
+        );
 
         card.querySelector('.btn-save').addEventListener('click', async () => {
           try {
