@@ -64,6 +64,28 @@ export class LeadsService {
     return this.linkedin.startPostsScrape([lead.linkedinUrl], maxPosts);
   }
 
+  /** Best-effort date parsing — actor output shapes for "posted at" vary and are often nested objects, not plain strings. */
+  private parsePostedAt(value: unknown): Date | null {
+    if (value == null) return null;
+
+    if (typeof value === 'number' || typeof value === 'string') {
+      const date = new Date(value);
+      return isNaN(date.getTime()) ? null : date;
+    }
+
+    if (typeof value === 'object') {
+      const candidate = value as Record<string, unknown>;
+      for (const key of ['timestamp', 'iso', 'date', 'value']) {
+        if (candidate[key] != null) {
+          const parsed = this.parsePostedAt(candidate[key]);
+          if (parsed) return parsed;
+        }
+      }
+    }
+
+    return null;
+  }
+
   async importPosts(id: string, runId: string) {
     await this.getLeadOrThrow(id);
     const run = await this.linkedin.getRun(runId);
@@ -76,15 +98,10 @@ export class LeadsService {
     for (const item of items) {
       const text = (item.text as string) ?? (item.content as string) ?? null;
       const postUrl = (item.url as string) ?? (item.postUrl as string) ?? null;
-      const postedAtRaw = (item.postedAt as string) ?? (item.date as string) ?? (item.publishedAt as string) ?? null;
+      const postedAt = this.parsePostedAt(item.postedAt ?? item.date ?? item.publishedAt);
 
       await this.prisma.post.create({
-        data: {
-          leadId: id,
-          text,
-          postUrl,
-          postedAt: postedAtRaw ? new Date(postedAtRaw) : null,
-        },
+        data: { leadId: id, text, postUrl, postedAt },
       });
       imported++;
     }
