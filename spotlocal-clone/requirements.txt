@@ -1,0 +1,7 @@
+# mock_api_server.py and its real_model.py/sazonalidade.py run on the
+# Python standard library only, EXCEPT:
+pytrends>=4.9.2  # unofficial Google Trends client, used by sazonalidade.py
+                 # for the real seasonality signal (ext.saz). Pure Python,
+                 # no API key. Install with: pip install -r requirements.txt
+                 # If unavailable, sazonalidade.py falls back gracefully to
+                 # the holiday-calendar-only signal; the server still runs.

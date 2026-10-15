@@ -28,6 +28,7 @@ from pathlib import Path
 
 import ibge_data
 import osm_competitors
+import sazonalidade
 
 ROOT = Path(__file__).resolve().parent
 CIDADES_DIR = ROOT / "cidades"
@@ -234,6 +235,9 @@ def gerar_resultado(params, variant="an"):
     proj_slope = (cidade.get("proj") or [0, 0, 0, 0])[1] if cidade else 0
     dec = round(_clamp(proj_slope / 100.0, -0.1, 0.1), 3)
 
+    # --- Real signal 4: seasonality (Google Trends + holidays, INMET where applicable) ---
+    saz_idx, saz_fonte = sazonalidade.get_seasonal_index(cidade.get("uf", "") if cidade else "", neg_id)
+
     result = {
         "N": {"id": neg_id, "nome": neg_id.capitalize(), "area": neg["area_m2"]},
         "B": {
@@ -255,6 +259,7 @@ def gerar_resultado(params, variant="an"):
                 "populacao": pop_fonte,
                 "concorrencia_osm": osm_fonte,
                 "traffic_e_concorrencia_local": "cidades_js(spotlocal_osm_receita)",
+                "sazonalidade": saz_fonte,
             },
         },
         "prov": prov,
@@ -273,7 +278,7 @@ def gerar_resultado(params, variant="an"):
             "dlvOn": delivery_on,
             "tk": ticket,
             "proj": [round(prov["lucro"] * (1 + dec * m / 2.0), 2) for m in range(13)],
-            "saz": [1.0] * 12,  # no public monthly-seasonality index wired up; neutral default
+            "saz": saz_idx,  # real: Google Trends (+ holiday calendar, + INMET where applicable) - see sazonalidade.py
         },
     }
     return result

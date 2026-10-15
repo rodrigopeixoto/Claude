@@ -11,3 +11,6 @@ prisma/migrations/
 __pycache__/
 spotlocal-clone/data_cache/ibge.json
 spotlocal-clone/data_cache/overpass.json
+spotlocal-clone/data_cache/trends.json
+spotlocal-clone/data_cache/feriados.json
+spotlocal-clone/data_cache/inmet.json
