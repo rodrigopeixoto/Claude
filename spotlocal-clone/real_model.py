@@ -26,6 +26,7 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
+import demografia_setor
 import ibge_data
 import osm_competitors
 import sazonalidade
@@ -238,6 +239,17 @@ def gerar_resultado(params, variant="an"):
     # --- Real signal 4: seasonality (Google Trends + holidays, INMET where applicable) ---
     saz_idx, saz_fonte = sazonalidade.get_seasonal_index(cidade.get("uf", "") if cidade else "", neg_id)
 
+    # --- Real signal 5: neighborhood-level (NOT per-street) IBGE Censo 2022
+    # census-sector demographics - population by sex/age and household-head
+    # income. Pilot: Recife and Sao Paulo only; any other city gracefully
+    # reports unavailable/not_piloted (see demografia_setor.py). Never raises.
+    try:
+        demografia_setor_ctx = demografia_setor.get_estimate(cidade_slug, bairro, ponto_tipo)
+    except Exception as e:
+        print(f"[real_model] WARNING: demografia_setor lookup failed: {e}")
+        demografia_setor_ctx = {"disponivel": False, "motivo": "unavailable",
+                                 "fonte": "ibge_censo2022_setor_censitario(estimativa_vizinhanca)"}
+
     result = {
         "N": {"id": neg_id, "nome": neg_id.capitalize(), "area": neg["area_m2"]},
         "B": {
@@ -261,6 +273,7 @@ def gerar_resultado(params, variant="an"):
                 "traffic_e_concorrencia_local": "cidades_js(spotlocal_osm_receita)",
                 "sazonalidade": saz_fonte,
             },
+            "demografiaSetor": demografia_setor_ctx,
         },
         "prov": prov,
         "pess": pess,

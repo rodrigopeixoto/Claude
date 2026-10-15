@@ -5,3 +5,11 @@ pytrends>=4.9.2  # unofficial Google Trends client, used by sazonalidade.py
                  # no API key. Install with: pip install -r requirements.txt
                  # If unavailable, sazonalidade.py falls back gracefully to
                  # the holiday-calendar-only signal; the server still runs.
+shapely>=2.0     # only needed to RE-RUN build_census_sector_cache.py (parses
+                 # IBGE GeoPackage sector polygons into centroids). Not
+                 # imported by the running server itself - demografia_setor.py
+                 # only reads the JSON cache that script produces, using the
+                 # standard library.
+openpyxl>=3.1    # only needed to re-read the IBGE .xlsx column dictionaries
+                 # while building/verifying the census-sector cache; not
+                 # imported by the running server.

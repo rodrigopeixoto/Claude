@@ -14,3 +14,9 @@ spotlocal-clone/data_cache/overpass.json
 spotlocal-clone/data_cache/trends.json
 spotlocal-clone/data_cache/feriados.json
 spotlocal-clone/data_cache/inmet.json
+spotlocal-clone/data_cache/*.gpkg
+spotlocal-clone/data_cache/*.xlsx
+spotlocal-clone/data_cache/setores_demografia_BR.zip
+spotlocal-clone/data_cache/setores_renda_BR.zip
+spotlocal-clone/data_cache/setores_demografia.json
+spotlocal-clone/data_cache/extract_tmp/
