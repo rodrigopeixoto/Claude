@@ -202,10 +202,10 @@ def gerar_resultado(params, variant="an"):
     renda_fator = _clamp(renda_bairro / renda_cidade, 0.6, 1.6) if renda_cidade else 1.0
     ticket = round(neg["ticket"] * renda_fator, 2)
 
-    ped_dia = ped / 30.0  # bundled `ped` is a monthly pedestrian-flow figure
+    ped_dia = ped  # bundled `ped` is already a daily pedestrian-flow figure
     concorrencia_penalidade = 1.0 / (1.0 + 0.06 * concorrentes)
     pop_fator = _clamp((pop_ibge or 1_000_000) / 1_000_000.0, 0.5, 2.5) ** 0.15
-    cli_dia_base = max(5, round(ped_dia * neg["capture"] * 1000 * concorrencia_penalidade * pop_fator))
+    cli_dia_base = max(5, round(ped_dia * neg["capture"] * concorrencia_penalidade * pop_fator))
 
     delivery_on = neg_id not in ("barbearia", "academia", "oficina", "clinica", "estudio", "escola", "cursinho")
 
