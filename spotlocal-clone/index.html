@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpotLocal · onde abrir seu negócio</title>
+  <meta name="description" content="Veja, rua por rua, quantos clientes por dia, quanto faturamento e qual o saldo esperado para abrir seu pequeno negócio nas 27 capitais. Comece grátis, com dados públicos do IBGE, Receita Federal e OpenStreetMap.">
+  <link rel="canonical" href="https://www.spotlocal.com.br/">
+  <!-- Prévia ao compartilhar no WhatsApp, Instagram etc.: og:image (JPG 1200x630) e og:url com endereço completo. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="SpotLocal">
+  <meta property="og:title" content="SpotLocal · descubra se a rua dá para o seu negócio">
+  <meta property="og:description" content="Clientes por dia, faturamento, custos e um veredito para cada rua das 27 capitais. Comece grátis, com dados públicos.">
+  <meta property="og:url" content="https://www.spotlocal.com.br/">
+  <meta property="og:image" content="https://www.spotlocal.com.br/assets/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SpotLocal: seu negócio vai dar certo naquela rua?">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#5746C8"><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="app.css?v=22"><link rel="stylesheet" href="street-world.css?v=12"><link rel="stylesheet" href="business-setup.css?v=22"><link rel="stylesheet" href="extras.css?v=35"><link rel="stylesheet" href="simulador.css?v=24"><link rel="stylesheet" href="agentes.css?v=12"><link rel="stylesheet" href="relatorio.css?v=14">
+  <style>.map-canvas .nb:focus-visible { outline: none; stroke: var(--ink); stroke-width: 3; }</style>
+  <script>
+    /* Falhas inesperadas: registra no console e mostra um aviso discreto, sem derrubar a tela. */
+    (function () {
+      var ultimo = 0, timer = 0;
+      function aviso() {
+        var agora = Date.now(), t = document.getElementById("toast");
+        if (!t || agora - ultimo < 8000) return;
+        ultimo = agora;
+        t.textContent = "Algo deu errado. Recarregue a página.";
+        t.hidden = false;
+        clearTimeout(timer);
+        timer = setTimeout(function () { t.hidden = true; }, 6000);
+      }
+      window.addEventListener("error", function (e) {
+        if (/ResizeObserver loop/.test(e.message || "") || (e.error && (e.error.pcPendente || e.error.pcRemoto))) return;
+        aviso();
+      });
+      window.addEventListener("unhandledrejection", function (e) {
+        if (e.reason && (e.reason.pcPendente || e.reason.pcRemoto)) return;
+        console.warn("SpotLocal: promessa rejeitada sem tratamento", e.reason);
+        aviso();
+      });
+    })();
+  </script>
+  <script defer src="config.js?v=14"></script><script defer src="model-lite.js?v=13"></script><script defer src="remote.js?v=12"></script><script defer src="data.js?v=59"></script><script defer src="business-setup.js?v=25"></script><script defer src="brasil.js?v=19"></script><script defer src="mapa.js?v=27"></script><script defer src="analise.js?v=32"></script><script defer src="imoveis.js?v=12"></script><script defer src="simulador.js?v=28"></script><script defer src="agentes.js?v=16"></script><script defer src="relatorio.js?v=20"></script><script defer src="concorrentes.js?v=17"></script><script defer src="app.js?v=34"></script><script defer src="loja.js?v=12"></script>
+</head>
+<body>
+  <a class="skip" href="#content">Ir para o conteúdo</a>
+  <aside class="sidebar">
+    <a href="#inicio" class="brand" aria-label="SpotLocal, versão beta, início"><img src="assets/logo.svg" alt="SpotLocal" width="176" height="44"><span class="beta-tag" aria-hidden="true">Beta</span></a>
+    <p class="brand-sub">O lugar do seu negócio.</p>
+    <nav class="desktop-nav" aria-label="Navegação principal" id="desktopNav"></nav>
+    <div class="side-note"><span class="tiny-pin">✓</span><b>Uma decisão, vários olhares.</b><p>Explore a região, entenda os números e compare seus pontos.</p></div>
+    <a class="about-link" href="#fontes">De onde vêm os dados ↗</a>
+    <a class="about-link" href="sobre.html" style="margin-top:8px">Sobre o projeto</a>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <a href="#inicio" class="mobile-brand" aria-label="SpotLocal, versão beta, início"><img src="assets/logo.svg" alt="SpotLocal" width="156" height="39"><span class="beta-tag" aria-hidden="true">Beta</span></a>
+      <span class="desktop-context" id="breadcrumb">Seu próximo negócio</span>
+      <button class="city-button" id="cityButton" aria-label="Escolher cidade"></button>
+    </header>
+    <div class="beta-bar" id="betaBar" role="note" hidden><span class="beta-tag">Beta</span><p><b>Versão de testes.</b> Os números são estimativas e o modelo ainda está sendo ajustado.</p><button type="button" class="beta-x" data-beta-fechar aria-label="Fechar aviso">×</button></div>
+    <main id="content" tabindex="-1"></main>
+    <footer class="app-foot">Estimativas para explorar possibilidades. Confira o ponto pessoalmente.<a href="#fontes">Ver fontes e premissas</a></footer>
+  </div>
+  <nav class="bottom-nav" id="bottomNav" aria-label="Navegação no celular"></nav>
+  <dialog id="dialog" aria-labelledby="dialogTitle"><div id="dialogBody"></div></dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

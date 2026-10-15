@@ -1,0 +1,6 @@
+# SpotLocal · robots.txt
+# Tudo liberado (o Google precisa ler .js e .css para entender o app).
+User-agent: *
+Allow: /
+
+Sitemap: https://www.spotlocal.com.br/sitemap.xml

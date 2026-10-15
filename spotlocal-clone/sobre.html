@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre o SpotLocal</title>
+  <meta name="description" content="O SpotLocal estima, rua por rua, clientes por dia, faturamento e saldo para quem vai abrir um pequeno negócio nas 27 capitais, com dados públicos. Conheça o projeto e as parcerias.">
+  <meta name="theme-color" content="#5746C8">
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="canonical" href="https://www.spotlocal.com.br/sobre.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="SpotLocal">
+  <meta property="og:title" content="SpotLocal · veja se a rua paga a conta antes de abrir">
+  <meta property="og:description" content="Clientes por dia, faturamento e saldo para cada rua das 27 capitais. Comece grátis, com dados públicos. Parcerias para imobiliárias e portais.">
+  <meta property="og:url" content="https://www.spotlocal.com.br/sobre.html">
+  <meta property="og:image" content="https://www.spotlocal.com.br/assets/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --violet: #5746c8; --violet-dark: #40349b; --violet-soft: #eeeafa; --lilac: #f5f2fd;
+      --coral: #f5784a; --coral-soft: #fff0e8; --coral-ink: #78301a;
+      --ink: #242039; --muted: #716d80; --bg: #f8f7fb; --line: #e9e6f0;
+      --good: #177354; --good-bg: #e7f5ee; --warn: #936011; --warn-bg: #fff2d9;
+      --shadow: 0 10px 34px #27203c0d;
+      --font: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--font); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--violet); }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { letter-spacing: -0.04em; line-height: 1.12; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; border-radius: 6px; }
+    .skip { position: fixed; top: -100px; left: 16px; background: #fff; padding: 12px 16px; z-index: 50; border-radius: 10px; }
+    .skip:focus-visible { top: 10px; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 700px) { .wrap { padding: 0 32px; } }
+
+    /* topo */
+    .top { position: sticky; top: 0; z-index: 20; background: #ffffffe6; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+    .top .logo img { width: 148px; }
+    .top nav { display: none; gap: 26px; font-size: 14px; font-weight: 600; }
+    .top nav a { color: var(--muted); text-decoration: none; }
+    .top nav a:hover { color: var(--violet); }
+    @media (min-width: 900px) { .top nav { display: flex; } .top .logo img { width: 168px; } }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 20px; border-radius: 14px; font-weight: 700; font-size: 15px; text-decoration: none; white-space: nowrap; }
+    .btn.coral { background: var(--coral); color: #2e160e; }
+    .btn.coral:hover { background: #f26a37; }
+    .btn.ghost { background: #ffffff1f; color: #fff; box-shadow: inset 0 0 0 1px #ffffff40; }
+    .btn.ghost:hover { background: #ffffff2e; }
+    .btn.soft { background: var(--violet-soft); color: var(--violet); }
+    .btn.small { min-height: 40px; padding: 8px 14px; font-size: 14px; border-radius: 12px; }
+    .arrow { font-size: 1.1em; line-height: 1; }
+
+    /* hero */
+    .hero { margin-top: 20px; background: var(--violet); color: #fff; border-radius: 28px; position: relative; overflow: hidden; display: grid; }
+    .hero:before, .hero:after { content: ""; position: absolute; border-radius: 50%; border: 1px solid #ffffff1c; pointer-events: none; }
+    .hero:before { width: 520px; height: 520px; right: -160px; top: -200px; }
+    .hero:after { width: 300px; height: 300px; right: -40px; top: -80px; }
+    .hero-copy { padding: 30px 22px 6px; position: relative; z-index: 1; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; background: #ffffff1f; padding: 6px 12px; border-radius: 999px; }
+    .pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); display: inline-block; }
+    .hero h1 { font-size: 34px; margin: 18px 0 14px; font-weight: 780; max-width: 620px; }
+    .hero h1 em { font-style: normal; color: #ffd9c7; }
+    .hero p.lead { color: #e8e3ff; font-size: 17px; max-width: 540px; }
+    .hero .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 8px; }
+    .hero .note { font-size: 13px; color: #cfc7fb; margin-top: 10px; }
+    .hero-art { position: relative; z-index: 1; padding: 0 14px 10px; justify-self: center; width: min(360px, 88%); }
+    @media (min-width: 900px) {
+      .hero { grid-template-columns: 1.25fr 1fr; align-items: center; margin-top: 28px; min-height: 470px; }
+      .hero-copy { padding: 54px 20px 54px 56px; }
+      .hero h1 { font-size: 52px; }
+      .hero-art { width: 100%; max-width: 440px; padding: 30px 40px 30px 0; }
+    }
+
+    /* seções */
+    section { padding: 56px 0 8px; }
+    @media (min-width: 900px) { section { padding: 88px 0 8px; } }
+    .eyebrow { font-size: 13px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); margin-bottom: 10px; }
+    .sec-title { font-size: 30px; max-width: 720px; }
+    .sec-lead { color: var(--muted); font-size: 17px; max-width: 680px; margin-top: 12px; }
+    @media (min-width: 900px) { .sec-title { font-size: 40px; } }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); }
+    sup a { text-decoration: none; font-weight: 700; font-size: 11px; padding: 0 2px; }
+
+    /* problema */
+    .stats { display: grid; gap: 14px; margin-top: 30px; }
+    @media (min-width: 760px) { .stats { grid-template-columns: repeat(3, 1fr); } }
+    .stat { padding: 24px; }
+    .stat strong { display: block; font-size: 42px; letter-spacing: -0.05em; line-height: 1; color: var(--violet); }
+    .stat.hot strong { color: var(--coral); }
+    .stat p { margin-top: 10px; color: var(--muted); font-size: 15px; }
+    .stat p b { color: var(--ink); }
+    .callout { margin-top: 18px; padding: 22px 24px; background: var(--lilac); border-radius: 20px; font-size: 16px; display: grid; gap: 8px; }
+    .callout b { color: var(--violet-dark); }
+
+    /* passos */
+    .steps { display: grid; gap: 14px; margin-top: 30px; counter-reset: s; }
+    @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+    .step { padding: 22px; display: grid; grid-template-columns: 84px 1fr; gap: 16px; align-items: start; }
+    @media (min-width: 860px) { .step { grid-template-columns: 1fr; padding: 26px; } }
+    .step img { width: 84px; height: 84px; object-fit: contain; background: var(--lilac); border-radius: 20px; padding: 6px; }
+    @media (min-width: 860px) { .step img { width: 112px; height: 112px; } }
+    .step .n { counter-increment: s; font-size: 13px; font-weight: 750; color: var(--violet); background: var(--violet-soft); border-radius: 999px; padding: 3px 10px; display: inline-block; margin-bottom: 8px; }
+    .step .n:before { content: "Passo " counter(s); }
+    .step h3 { font-size: 20px; margin-bottom: 6px; }
+    .step p { color: var(--muted); font-size: 15px; }
+
+    /* números */
+    .numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 30px; }
+    @media (min-width: 900px) { .numbers { grid-template-columns: repeat(5, 1fr); } }
+    .num { padding: 20px; }
+    .num strong { display: block; font-size: 30px; letter-spacing: -0.05em; line-height: 1.05; }
+    .num span { display: block; color: var(--muted); font-size: 14px; margin-top: 6px; }
+    .num.big { grid-column: 1 / -1; background: var(--violet); color: #fff; border: 0; }
+    .num.big span { color: #e2dcff; }
+    @media (min-width: 900px) { .num.big { grid-column: auto; } .num strong { font-size: 34px; } }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .chips span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; font-size: 14px; font-weight: 600; }
+
+    /* exemplos */
+    .shots { display: grid; gap: 16px; margin-top: 30px; }
+    @media (min-width: 860px) { .shots { grid-template-columns: 1fr 1fr; } .shots .s1 { grid-column: 1 / -1; } .shots .s1 { display: grid; grid-template-columns: 1.9fr 1fr; } .shots .s1 img { border-bottom: 0; border-right: 1px solid var(--line); height: 100%; object-fit: cover; } .shots .s1 figcaption { align-self: center; padding: 24px; } }
+    .shot { overflow: hidden; margin: 0; }
+    .shot img { width: 100%; border-bottom: 1px solid var(--line); }
+    .shot figcaption { padding: 14px 18px 16px; font-size: 14px; color: var(--muted); }
+    .shot figcaption b { color: var(--ink); display: block; font-size: 15px; margin-bottom: 2px; }
+    .fine { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+    /* dados */
+    .sources { display: grid; gap: 12px; margin-top: 30px; }
+    @media (min-width: 860px) { .sources { grid-template-columns: repeat(2, 1fr); } }
+    .src { padding: 20px 22px; display: grid; gap: 6px; }
+    .src h3 { font-size: 18px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .src p { color: var(--muted); font-size: 15px; }
+    .tag { font-size: 12px; font-weight: 750; padding: 3px 9px; border-radius: 999px; letter-spacing: 0; }
+    .tag.real { background: var(--good-bg); color: var(--good); }
+    .tag.est { background: var(--warn-bg); color: var(--warn); }
+    .honest { margin-top: 16px; padding: 22px 24px; border-radius: 20px; background: var(--warn-bg); color: #4b3407; }
+    .honest h3 { font-size: 18px; margin-bottom: 8px; }
+    .honest ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 15px; }
+
+    /* validação */
+    .valid { margin-top: 30px; display: grid; gap: 0; overflow: hidden; }
+    @media (min-width: 860px) { .valid { grid-template-columns: 0.75fr 1.25fr; } }
+    .valid-art { background: var(--lilac); display: grid; place-items: center; padding: 22px; }
+    .valid-art img { width: min(220px, 60%); }
+    .valid-body { padding: 26px; }
+    .valid-body h3 { font-size: 22px; margin-bottom: 10px; }
+    .valid-body > p { color: var(--muted); font-size: 15px; }
+    .bars { margin: 20px 0 16px; display: grid; gap: 12px; }
+    .bar { display: grid; grid-template-columns: 64px 1fr; align-items: center; gap: 12px; font-size: 14px; }
+    .bar .track { height: 30px; background: #f1eff6; border-radius: 10px; position: relative; overflow: hidden; }
+    .bar .fill { position: absolute; inset: 0 auto 0 0; border-radius: 10px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; font-weight: 750; font-size: 13px; color: #fff; white-space: nowrap; }
+    .bar .fill.real { width: 50%; background: var(--ink); }
+    .bar .range { position: absolute; top: 0; bottom: 0; left: 28.5%; width: 41.5%; background: #ddd7f7; border-radius: 10px; }
+    .bar .core { position: absolute; top: 4px; bottom: 4px; left: 54%; width: 2%; background: var(--violet); border-radius: 6px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; font-size: 13px; color: var(--ink); }
+    .legend .k { display: inline-block; width: 14px; height: 10px; border-radius: 3px; margin-right: 7px; vertical-align: 0; }
+    .core-k { background: var(--violet); } .range-k { background: #ddd7f7; }
+    .bar .lbl { position: absolute; left: 10px; top: 0; bottom: 0; display: flex; align-items: center; font-weight: 750; font-size: 13px; color: var(--violet-dark); }
+    .scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); padding-left: 76px; margin-top: -4px; }
+    .valid-body .fine { margin-top: 12px; }
+
+    /* para quem */
+    .who { display: grid; gap: 12px; margin-top: 30px; }
+    @media (min-width: 700px) { .who { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1000px) { .who { grid-template-columns: repeat(5, 1fr); } }
+    .who .card { padding: 20px; }
+    .who .ic { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--violet-soft); color: var(--violet); margin-bottom: 12px; }
+    .who .ic svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .who h3 { font-size: 17px; margin-bottom: 6px; }
+    .who p { color: var(--muted); font-size: 14px; }
+    @media (max-width: 699px) { .who .card { display: grid; grid-template-columns: 44px 1fr; gap: 0 14px; padding: 16px 18px; } .who .ic { margin: 0; grid-row: span 2; } .who h3 { margin: 2px 0 2px; } }
+
+    /* parcerias */
+    .partner { margin-top: 30px; background: var(--ink); color: #fff; border-radius: 28px; overflow: hidden; display: grid; position: relative; }
+    .partner-copy { padding: 30px 22px; position: relative; z-index: 1; }
+    .partner .eyebrow { color: #ffb08f; }
+    .partner h2 { font-size: 30px; max-width: 560px; }
+    .partner .lead { color: #cbc7d8; margin-top: 12px; max-width: 560px; font-size: 16px; }
+    .offers { display: grid; gap: 10px; margin: 22px 0 24px; padding: 0; list-style: none; }
+    .offers li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; font-size: 15px; color: #e7e4ef; }
+    .offers li b { color: #fff; }
+    .offers .ok { width: 28px; height: 28px; border-radius: 9px; background: #ffffff14; display: grid; place-items: center; color: #ffb08f; font-weight: 800; font-size: 14px; }
+    .contact { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+    .contact .mail { font-weight: 700; color: #fff; word-break: break-all; }
+    .todo { background: #ffd9c7; color: var(--coral-ink); font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 6px; letter-spacing: .02em; }
+    .partner-art { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 22px 26px; align-content: center; }
+    .partner-art img { background: #ffffff0d; border-radius: 18px; padding: 6px; }
+    @media (min-width: 900px) {
+      .partner { grid-template-columns: 1.3fr 1fr; align-items: center; }
+      .partner-copy { padding: 52px 20px 52px 52px; }
+      .partner h2 { font-size: 40px; }
+      .partner-art { padding: 40px 44px 40px 10px; }
+    }
+    .plans { display: grid; gap: 12px; margin-top: 16px; }
+    @media (min-width: 760px) { .plans { grid-template-columns: repeat(3, 1fr); } }
+    .plan { padding: 20px; }
+    .plan .when { font-size: 12px; font-weight: 750; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .plan h3 { font-size: 18px; margin: 6px 0; }
+    .plan p { color: var(--muted); font-size: 14px; }
+    .plan.now { border-color: #cfc8f3; background: #fbfaff; }
+    .plan.now .when { color: var(--good); }
+
+    /* final */
+    .final { margin: 64px 0 0; text-align: center; padding: 40px 22px; background: var(--violet-soft); border-radius: 28px; }
+    .final h2 { font-size: 30px; }
+    .final p { color: var(--muted); margin: 10px auto 22px; max-width: 520px; }
+    @media (min-width: 900px) { .final { margin-top: 96px; padding: 60px; } .final h2 { font-size: 40px; } }
+
+    footer { margin-top: 56px; border-top: 1px solid var(--line); background: #fff; padding: 36px 0 44px; font-size: 14px; color: var(--muted); }
+    .foot-grid { display: grid; gap: 26px; }
+    @media (min-width: 900px) { .foot-grid { grid-template-columns: 1fr 1.6fr; } }
+    .foot-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; }
+    .foot-links a { text-decoration: none; font-weight: 600; }
+    footer h3 { font-size: 15px; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+    footer ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+    footer ol a { word-break: break-word; }
+    footer .disc { margin-top: 18px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="SpotLocal, abrir o app"><img src="assets/logo.svg" alt="SpotLocal" width="168" height="42"></a>
+      <nav aria-label="Seções">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#dados">Dados</a>
+        <a href="#para-quem">Para quem é</a>
+        <a href="#parcerias">Parcerias</a>
+      </nav>
+      <a class="btn coral small" href="index.html">Experimentar grátis</a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="wrap">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="pill"><i></i> Versão beta · comece grátis</span>
+          <h1>Antes de assinar o aluguel, veja se <em>a rua paga a conta.</em></h1>
+          <p class="lead">O SpotLocal estima, rua por rua, quantos clientes por dia, quanto faturamento e quanto sobra no fim do mês para o seu pequeno negócio, nas 27 capitais, com dados públicos.</p>
+          <div class="ctas">
+            <a class="btn coral" href="index.html">Experimentar grátis <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn ghost" href="#parcerias">Sou imobiliária ou portal</a>
+          </div>
+          <p class="note">Sem cadastro. Seus pontos ficam no seu navegador.</p>
+        </div>
+        <img class="hero-art" src="assets/cidade-3d.webp" alt="Ilustração 3D de uma loja de esquina marcada com um pino de localização" width="768" height="768">
+      </div>
+    </div>
+
+    <!-- O problema -->
+    <section id="problema" aria-labelledby="t-problema">
+      <div class="wrap">
+        <p class="eyebrow">O problema</p>
+        <h2 class="sec-title" id="t-problema">Escolher o ponto ainda é uma aposta no escuro.</h2>
+        <p class="sec-lead">Quem abre uma padaria, uma barbearia ou uma loja costuma decidir o endereço por intuição, por uma visita num horário qualquer ou pelo anúncio que apareceu primeiro. E o Brasil nunca abriu tantas empresas.</p>
+        <div class="stats">
+          <div class="card stat"><strong>5,1 mi</strong><p><b>empresas abertas em 2025</b>, recorde histórico. 96% são pequenos negócios.<sup><a href="#f1" aria-label="Fonte 1">1</a></sup></p></div>
+          <div class="card stat hot"><strong>38%</strong><p>das empresas nascidas em 2017 <b>ainda funcionavam cinco anos depois</b>.<sup><a href="#f2" aria-label="Fonte 2">2</a></sup></p></div>
+          <div class="card stat"><strong>30%</strong><p>dos negócios de <b>comércio</b> fecham em até cinco anos, a maior taxa entre os setores.<sup><a href="#f3" aria-label="Fonte 3">3</a></sup></p></div>
+        </div>
+        <div class="callout">
+          <p><b>O ponto não é a única causa de fechamento</b>, mas é a decisão mais difícil de desfazer: contrato de aluguel de anos, reforma, clientela que se forma num lugar só.</p>
+          <p>Os números acima vêm de pesquisas com métodos diferentes (o IBGE acompanha empresas com registro; o Sebrae separa MEI, micro e pequenas empresas). Por isso não se somam nem se comparam diretamente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section id="como-funciona" aria-labelledby="t-como">
+      <div class="wrap">
+        <p class="eyebrow">Como funciona</p>
+        <h2 class="sec-title" id="t-como">Três passos, poucos minutos.</h2>
+        <div class="steps">
+          <article class="card step">
+            <img src="assets/padaria.webp" alt="" width="512" height="512" loading="lazy">
+            <div><span class="n"></span><h3>Conte do seu negócio</h3><p>Escolha um dos 15 segmentos (ou descreva o seu nicho) e informe ticket médio, margem, equipe, aluguel, horários e o público que quer atender.</p></div>
+          </article>
+          <article class="card step">
+            <img src="assets/roupas.webp" alt="" width="512" height="512" loading="lazy">
+            <div><span class="n"></span><h3>Explore a cidade</h3><p>No mapa, compare bairros por oportunidade, renda, densidade e concorrentes. Cada rua com comércio vira um ponto colorido pelo veredito.</p></div>
+          </article>
+          <article class="card step">
+            <img src="assets/restaurante.webp" alt="" width="512" height="512" loading="lazy">
+            <div><span class="n"></span><h3>Veja o veredito da rua</h3><p>Clientes por dia, faturamento, custos e saldo em três cenários, projeção dos primeiros 24 meses, movimento por hora e uma rua animada em 3D. Salve, compare até três pontos e baixe o relatório em PDF.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- O que já existe -->
+    <section id="cobertura" aria-labelledby="t-cobertura">
+      <div class="wrap">
+        <p class="eyebrow">O que já existe</p>
+        <h2 class="sec-title" id="t-cobertura">Todas as capitais, rua por rua.</h2>
+        <p class="sec-lead">Não é uma maquete: a base de dados já cobre as 27 capitais e funciona no celular.</p>
+        <div class="numbers">
+          <div class="card num big"><strong>27</strong><span>capitais, de Boa Vista a Porto Alegre</span></div>
+          <div class="card num"><strong>2.711</strong><span>bairros, distritos e regiões</span></div>
+          <div class="card num"><strong>119 mil</strong><span>ruas com comércio analisáveis</span></div>
+          <div class="card num"><strong>45,9 mi</strong><span>moradores nas áreas cobertas (Censo 2022)</span></div>
+          <div class="card num"><strong>3,2 mi</strong><span>empresas ativas localizadas (CNPJ)</span></div>
+        </div>
+        <div class="chips" aria-label="Recursos">
+          <span>15 segmentos + nicho</span><span>Público popular, médio ou alto</span><span>Mapa de calor</span><span>Movimento por hora</span><span>Rua em 3D</span><span>Projeção de 24 meses</span><span>Simulador “E se?”</span><span>Clientes virtuais</span><span>Delivery</span><span>Relatório em PDF</span><span>Link para compartilhar</span><span>Salvar e comparar</span><span>Links para pontos para alugar no bairro</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exemplos -->
+    <section id="exemplos" aria-labelledby="t-exemplos">
+      <div class="wrap">
+        <p class="eyebrow">Exemplo de resultado</p>
+        <h2 class="sec-title" id="t-exemplos">Do mapa da cidade ao saldo do mês.</h2>
+        <div class="shots">
+          <figure class="card shot s1">
+            <img src="assets/sobre/mapa.webp" alt="Mapa do Recife com o bairro das Graças em destaque, pontos coloridos em cada rua e painel com moradores, renda e concorrentes" width="1200" height="692" loading="lazy">
+            <figcaption><b>Explorar: bairro das Graças, Recife</b>Cada bolinha é uma rua com comércio: verde fecha a conta, amarelo fica no limite, vermelho não paga os custos.</figcaption>
+          </figure>
+          <figure class="card shot s2">
+            <img src="assets/sobre/analise.webp" alt="Análise do ponto com veredito favorável, cerca de 18 clientes por dia, faturamento de R$ 105,9 mil e saldo de R$ 24 mil por mês" width="1200" height="650" loading="lazy">
+            <figcaption><b>Análise do ponto</b>Veredito, clientes por dia, faturamento e saldo, sempre com a faixa entre o cenário pessimista e o otimista.</figcaption>
+          </figure>
+          <figure class="card shot s3">
+            <img src="assets/sobre/rua-3d.webp" alt="Rua em 3D com uma loja, pedestres, carros e a receita estimada do dia" width="1200" height="649" loading="lazy">
+            <figcaption><b>Um dia simulado na rua</b>Pessoas e carros passando, clientes entrando e a receita acumulando hora a hora.</figcaption>
+          </figure>
+        </div>
+        <p class="fine">Telas reais do app, para uma loja de moda masculina de exemplo na Av. Conselheiro Rosa e Silva (Graças, Recife). Os valores mudam com os números de cada negócio.</p>
+      </div>
+    </section>
+
+    <!-- Dados -->
+    <section id="dados" aria-labelledby="t-dados">
+      <div class="wrap">
+        <p class="eyebrow">De onde vêm os dados</p>
+        <h2 class="sec-title" id="t-dados">Fontes públicas, com o que é estimativa dito às claras.</h2>
+        <div class="sources">
+          <div class="card src"><h3>IBGE · Censo 2022 <span class="tag real">dado oficial</span></h3><p>Moradores, renda e idade por setor censitário, somados num raio de 400 m em volta do ponto.</p></div>
+          <div class="card src"><h3>Receita Federal · CNPJ <span class="tag real">dado oficial</span></h3><p>Empresas ativas por rua e por ramo, e quantas abriram e fecharam desde 2024. A posição no mapa é aproximada a partir do endereço.</p></div>
+          <div class="card src"><h3>OpenStreetMap <span class="tag real">dado aberto</span></h3><p>Ruas, escolas, faculdades, hospitais, shoppings, galerias e parques que aumentam o movimento por perto. © colaboradores do OpenStreetMap.</p></div>
+          <div class="card src"><h3>FipeZap <span class="tag est">referência</span></h3><p>Preço do metro quadrado, usado como ponto de partida para o aluguel quando você não informa o valor real.</p></div>
+        </div>
+        <div class="honest">
+          <h3>O que é estimativa do modelo</h3>
+          <ul>
+            <li>Quantas pessoas e carros passam na rua: na maioria das ruas não existe contagem pública. O modelo estima pelo tipo de via, pelo comércio e pelos polos próximos.</li>
+            <li>Quantos desses viram clientes e quanto gastam: premissas por ramo, ajustadas pela renda e pela concorrência.</li>
+            <li>Aluguel comercial e custos de referência quando você não informa os seus.</li>
+          </ul>
+          <p class="fine" style="color:#6b4e12">Por isso o app mostra faixas, um nível de confiança por cidade e a aba "Dados e premissas" com cada número usado. Confira o ponto pessoalmente antes de decidir.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Validação -->
+    <section id="validacao" aria-labelledby="t-valid">
+      <div class="wrap">
+        <p class="eyebrow">Validação</p>
+        <h2 class="sec-title" id="t-valid">Primeiro teste com uma loja de verdade.</h2>
+        <article class="card valid">
+          <div class="valid-art"><img src="assets/roupas.webp" alt="" width="512" height="512" loading="lazy"></div>
+          <div class="valid-body">
+            <h3>Moda masculina numa galeria das Graças, Recife</h3>
+            <p>Ticket médio de R$ 230, 3 funcionários, 30 m². Comparamos o que o modelo previa com o faturamento real informado pelo dono.</p>
+            <div class="bars" role="img" aria-label="Faturamento real de cerca de 100 mil reais por mês; modelo previu cerca de 110 mil reais no cenário provável, com faixa de 57 a 140 mil reais">
+              <div class="bar"><span>Real</span><div class="track"><div class="fill real">~R$ 100 mil</div></div></div>
+              <div class="bar"><span>Modelo</span><div class="track"><span class="range"></span><span class="core"></span></div></div>
+            </div>
+            <div class="scale" aria-hidden="true"><span>R$ 0</span><span>R$ 100 mil</span><span>R$ 200 mil</span></div>
+            <div class="legend" aria-hidden="true"><span><i class="k core-k"></i>Modelo, cenário provável: ~R$ 110 mil</span><span><i class="k range-k"></i>Faixa pessimista a otimista: R$ 57–140 mil</span></div>
+            <p class="fine">O cenário provável do modelo ficou em ~R$ 110 mil por mês; a faixa completa vai de R$ 57 mil a R$ 140 mil. Esta loja também foi usada para conferir a calibração do ramo de moda. É um caso só: bom sinal, não prova. Estamos procurando mais negócios dispostos a comparar os números.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Para quem -->
+    <section id="para-quem" aria-labelledby="t-quem">
+      <div class="wrap">
+        <p class="eyebrow">Para quem é</p>
+        <h2 class="sec-title" id="t-quem">Feito para quem decide onde abrir.</h2>
+        <div class="who">
+          <div class="card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16l-1.5-5h-13z"/><path d="M5 10v9h14v-9"/><path d="M10 19v-5h4v5"/></svg></div><h3>Empreendedores</h3><p>Compare ruas antes de assinar contrato e saiba quanto de aluguel o negócio aguenta.</p></div>
+          <div class="card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div><h3>Imobiliárias</h3><p>Mostre a quem procura um ponto comercial o potencial de cada imóvel, com números.</p></div>
+          <div class="card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/><path d="M8 11h6M11 8v6"/></svg></div><h3>Portais de aluguel</h3><p>Leve até seus anúncios quem já está decidindo o bairro e o tipo de negócio.</p></div>
+          <div class="card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/></svg></div><h3>Contadores e consultores</h3><p>Uma primeira conta de viabilidade para levar ao cliente antes da abertura da empresa.</p></div>
+          <div class="card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Franqueadoras</h3><p>Triagem de praças e bairros para novas unidades nas capitais.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parcerias -->
+    <section id="parcerias" aria-labelledby="t-parc">
+      <div class="wrap">
+        <div class="partner">
+          <div class="partner-copy">
+            <p class="eyebrow">Parcerias</p>
+            <h2 id="t-parc">Anuncie pontos comerciais para quem está decidindo onde abrir.</h2>
+            <p class="lead">Quem usa o SpotLocal já escolheu o ramo, o bairro e quanto pode pagar de aluguel. É o momento exato de ver um imóvel.</p>
+            <ul class="offers">
+              <li><span class="ok" aria-hidden="true">✓</span><span><b>Seus anúncios na análise da rua:</b> links para lojas e salas para alugar naquele bairro, identificados como parceiro.</span></li>
+              <li><span class="ok" aria-hidden="true">✓</span><span><b>Potencial do imóvel em números</b> para seus corretores usarem na conversa com o lojista.</span></li>
+              <li><span class="ok" aria-hidden="true">✓</span><span><b>Dados de procura por bairro e segmento</b>, agregados e sem identificar ninguém.</span></li>
+            </ul>
+            <div class="contact">
+              <!-- TROCAR: substitua contato@spotlocal.com.br pelo e-mail real (aqui e no href). -->
+              <a class="btn coral" href="/cdn-cgi/l/email-protection#187b77766c796c77586b68776c74777b7974367b7775367a6a276b6d7a727d7b6c2548796a7b7d6a71793d2a284b68776c54777b7974">Quero conversar</a>
+              <span class="mail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85e6eaebf1e4f1eac5f6f5eaf1e9eae6e4e9abe6eae8abe7f7">[email&#160;protected]</a></span>
+            </div>
+          </div>
+          <div class="partner-art" aria-hidden="true">
+            <img src="assets/padaria.webp" alt="" width="512" height="512" loading="lazy">
+            <img src="assets/farmacia.webp" alt="" width="512" height="512" loading="lazy">
+            <img src="assets/barbearia.webp" alt="" width="512" height="512" loading="lazy">
+            <img src="assets/pet.webp" alt="" width="512" height="512" loading="lazy">
+            <img src="assets/acai.webp" alt="" width="512" height="512" loading="lazy">
+            <img src="assets/academia.webp" alt="" width="512" height="512" loading="lazy">
+          </div>
+        </div>
+        <div class="plans">
+          <div class="card plan now"><p class="when">Hoje</p><h3>Tudo grátis na fase de testes</h3><p>Mapa, veredito, análise completa, projeção de 24 meses, simulador, clientes virtuais, relatório em PDF e comparação de pontos, sem cadastro e sem pagar nada.</p></div>
+          <div class="card plan"><p class="when">Próximo passo</p><h3>Mais casos reais</h3><p>Comparar o modelo com o faturamento de mais lojas, em mais ramos e cidades, e publicar o resultado.</p></div>
+          <div class="card plan"><p class="when">Depois</p><h3>Plano profissional</h3><p>Para contadores, corretores e consultores que analisam vários pontos por mês.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="final">
+        <h2>Qual rua vai ser a sua?</h2>
+        <p>Escolha a cidade, conte do seu negócio e veja o veredito. Leva poucos minutos e não pede cadastro.</p>
+        <a class="btn coral" href="index.html">Experimentar grátis <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <img src="assets/logo.svg" alt="SpotLocal" width="150" height="37" loading="lazy">
+        <p style="margin-top:10px">Estimativas para explorar possibilidades, não garantia de resultado nem recomendação de investimento.</p>
+        <nav class="foot-links" aria-label="Rodapé">
+          <a href="index.html">Abrir o app</a><a href="index.html#fontes">Fontes e premissas</a><a href="termos.html">Termos de uso</a><a href="privacidade.html">Privacidade</a>
+        </nav>
+      </div>
+      <div id="fontes">
+        <h3>Fontes citadas nesta página</h3>
+        <ol>
+          <li id="f1">Agência Sebrae, "É recorde: 5,1 milhões de empresas foram abertas em 2025", 26/01/2026, com dados da Receita Federal. <a href="https://agenciasebrae.com.br/economia-e-politica/e-recorde-51-milhoes-de-empresas-foram-abertas-em-2025/" rel="noopener">agenciasebrae.com.br</a></li>
+          <li id="f2">IBGE, Demografia das Empresas e Estatísticas de Empreendedorismo 2022, divulgada em 05/12/2024: taxa de sobrevivência de 37,9% após cinco anos para as empresas nascidas em 2017. <a href="https://www.ibge.gov.br/estatisticas/economicas/comercio/22649-demografia-das-empresas-e-estatisticas-de-empreendedorismo.html" rel="noopener">ibge.gov.br</a> · <a href="https://agenciabrasil.ebc.com.br/economia/noticia/2024-12/brasil-tinha-79-milhoes-de-empresas-ativas-em-2022-diz-ibge/" rel="noopener">Agência Brasil</a></li>
+          <li id="f3">Sebrae, Sobrevivência de Empresas, divulgada em 16/06/2021: mortalidade em cinco anos de 30,2% no comércio (29% entre MEI, 21,6% entre microempresas e 17% entre empresas de pequeno porte). <a href="https://agenciasebrae.com.br/economia-e-politica/tres-em-cada-10-mei-fecham-as-portas-em-ate-cinco-anos-de-atividade-no-brasil" rel="noopener">agenciasebrae.com.br</a></li>
+        </ol>
+        <p class="disc">Mapas e ruas: © colaboradores do OpenStreetMap (ODbL). O SpotLocal é um projeto independente, sem vínculo com IBGE, Receita Federal, Sebrae, FipeZap ou com os portais de imóveis citados.</p>
+      </div>
+    </div>
+  </footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
