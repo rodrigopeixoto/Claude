@@ -20,3 +20,8 @@ spotlocal-clone/data_cache/setores_demografia_BR.zip
 spotlocal-clone/data_cache/setores_renda_BR.zip
 spotlocal-clone/data_cache/setores_demografia.json
 spotlocal-clone/data_cache/extract_tmp/
+# street_index_<cidade>.json files are the opposite of the cache/build files
+# above: small, committed, static assets the frontend fetches directly
+# (built by build_street_index.py). Keep them tracked even if a broader
+# data_cache ignore rule is ever added above.
+!spotlocal-clone/data_cache/street_index_*.json

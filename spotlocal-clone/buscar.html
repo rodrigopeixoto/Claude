@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpotLocal · buscar ruas por índice</title>
+  <meta name="description" content="Rankeie ruas das capitais brasileiras por circulação (veículos + pedestres) e densidade populacional residencial, para quem está avaliando onde investir, sem travar em um tipo de negócio.">
+  <link rel="canonical" href="https://www.spotlocal.com.br/buscar.html">
+  <meta name="theme-color" content="#5746C8"><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="app.css?v=22">
+  <style>
+    /* Page-specific additions only - everything else (sidebar, topbar,
+       bottom-nav, colors, buttons, fields) reuses app.css as-is. */
+    .busca-wrap { padding: 18px 20px 90px; max-width: 980px; }
+    .busca-head h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.02em; }
+    .busca-head p { margin: 0 0 18px; color: var(--muted, #716d80); font-size: 14px; max-width: 640px; }
+    .busca-filtros { display: grid; grid-template-columns: 1fr; gap: 12px; background: #fff; border: 1px solid var(--line, #e9e6f0); border-radius: 16px; padding: 16px; margin-bottom: 18px; }
+    @media (min-width: 720px) { .busca-filtros { grid-template-columns: repeat(4, 1fr); align-items: end; } }
+    .busca-filtros .field { margin: 0; }
+    .busca-filtros label { display: block; font-size: 12px; font-weight: 700; color: var(--muted, #716d80); margin-bottom: 6px; }
+    .busca-filtros input, .busca-filtros select { width: 100%; box-sizing: border-box; }
+    .busca-status { font-size: 13px; color: var(--muted, #716d80); margin: 0 0 12px; }
+    .rua-lista { display: flex; flex-direction: column; gap: 10px; }
+    .rua-card { background: #fff; border: 1px solid var(--line, #e9e6f0); border-radius: 14px; padding: 14px 16px; display: grid; gap: 8px; }
+    .rua-card .rua-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .rua-card h3 { margin: 0; font-size: 15.5px; letter-spacing: -0.01em; }
+    .rua-card .rua-sub { font-size: 12.5px; color: var(--muted, #716d80); margin-top: 2px; }
+    .rua-score { font-weight: 800; font-size: 15px; color: var(--violet, #5746c8); white-space: nowrap; }
+    .rua-nums { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; }
+    .rua-nums b { display: block; font-size: 14.5px; }
+    .conf-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; text-transform: lowercase; }
+    .conf-alta { background: var(--good-bg, #e7f5ee); color: var(--good, #177354); }
+    .conf-media { background: var(--warn-bg, #fff2d9); color: var(--warn, #936011); }
+    .conf-baixa { background: #f1eef9; color: var(--muted, #716d80); }
+    .busca-rodape-nota { font-size: 12px; color: var(--muted, #716d80); margin-top: 18px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Ir para o conteúdo</a>
+  <aside class="sidebar">
+    <a href="index.html" class="brand" aria-label="SpotLocal, versão beta, início"><img src="assets/logo.svg" alt="SpotLocal" width="176" height="44"><span class="beta-tag" aria-hidden="true">Beta</span></a>
+    <p class="brand-sub">O lugar do seu negócio.</p>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a href="index.html"><span>Início</span></a>
+      <a href="buscar.html" class="active" aria-current="page"><span>Buscar ruas</span></a>
+    </nav>
+    <div class="side-note"><span class="tiny-pin">✓</span><b>Ranking, não um único ponto.</b><p>Compare ruas inteiras por circulação e densidade de moradores, sem escolher um tipo de negócio primeiro.</p></div>
+    <a class="about-link" href="index.html#fontes">De onde vêm os dados ↗</a>
+    <a class="about-link" href="sobre.html" style="margin-top:8px">Sobre o projeto</a>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <a href="index.html" class="mobile-brand" aria-label="SpotLocal, versão beta, início"><img src="assets/logo.svg" alt="SpotLocal" width="156" height="39"><span class="beta-tag" aria-hidden="true">Beta</span></a>
+      <span class="desktop-context">Buscar ruas por índice</span>
+    </header>
+    <main id="content" tabindex="-1">
+      <div class="busca-wrap">
+        <div class="busca-head">
+          <h1>Ruas por circulação + densidade</h1>
+          <p>Rankeie as ruas de uma capital por um índice combinando circulação real (veículos + pedestres) e densidade populacional residencial — pensado para quem avalia onde investir, não para um negócio específico.</p>
+        </div>
+        <div class="busca-filtros">
+          <div class="field">
+            <label for="fCidade">Cidade</label>
+            <select id="fCidade"></select>
+          </div>
+          <div class="field">
+            <label for="fCirc">Circulação mínima</label>
+            <input type="number" id="fCirc" min="0" step="500" value="0">
+          </div>
+          <div class="field">
+            <label for="fDens">Densidade mínima</label>
+            <input type="number" id="fDens" min="0" step="100" value="0">
+          </div>
+          <div class="field">
+            <label for="fOrd">Ordenar por</label>
+            <select id="fOrd">
+              <option value="score">Índice (score)</option>
+              <option value="circulacao">Circulação</option>
+              <option value="densidade">Densidade</option>
+              <option value="renda">Renda média</option>
+            </select>
+          </div>
+        </div>
+        <p class="busca-status" id="status">Carregando…</p>
+        <div class="rua-lista" id="lista"></div>
+        <p class="busca-rodape-nota" id="nota"></p>
+      </div>
+    </main>
+    <footer class="app-foot">Estimativas para explorar possibilidades. Confira o ponto pessoalmente.<a href="index.html#fontes">Ver fontes e premissas</a></footer>
+  </div>
+  <nav class="bottom-nav" aria-label="Navegação no celular">
+    <a href="index.html"><span>Início</span></a>
+    <a href="buscar.html" class="active" aria-current="page"><span>Buscar</span></a>
+  </nav>
+
+  <script src="data.js?v=59"></script>
+  <script>
+    "use strict";
+    (function () {
+      var $ = function (id) { return document.getElementById(id); };
+      var money = function (v) {
+        if (!Number.isFinite(v)) return "—";
+        return Math.round(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+      };
+      var num = function (v) { return Number.isFinite(v) ? Math.round(v).toLocaleString("pt-BR") : "—"; };
+      var esc = function (s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      };
+
+      var cidades = (window.PC_RUAS_DISPONIVEIS || []).slice();
+      var capitaisById = {};
+      (window.PC_CAPITAIS || []).forEach(function (c) { capitaisById[c.id] = c; });
+      // Keep the dropdown in the same order/labels as the rest of the site
+      // (PC_CAPITAIS), filtered to only the cities that actually have a
+      // bundled cidades/<id>.js street file (same list app.js/mapa.js use).
+      var ordenadas = (window.PC_CAPITAIS || [])
+        .filter(function (c) { return cidades.indexOf(c.id) !== -1; })
+        .map(function (c) { return c; });
+      if (!ordenadas.length) ordenadas = cidades.map(function (id) { return { id: id, nome: id, uf: "" }; });
+
+      var sel = $("fCidade");
+      sel.innerHTML = ordenadas.map(function (c) {
+        return '<option value="' + esc(c.id) + '">' + esc(c.nome) + (c.uf ? " · " + esc(c.uf) : "") + "</option>";
+      }).join("");
+      var inicial = ordenadas.some(function (c) { return c.id === "recife"; }) ? "recife" : (ordenadas[0] || {}).id;
+      if (inicial) sel.value = inicial;
+
+      var cache = {};
+      var atual = null;
+
+      function render() {
+        var status = $("status"), lista = $("lista"), nota = $("nota");
+        if (!atual) return;
+        var circMin = parseFloat($("fCirc").value) || 0;
+        var densMin = parseFloat($("fDens").value) || 0;
+        var ord = $("fOrd").value;
+        var ruas = atual.ruas.filter(function (r) {
+          return (r.circulacao || 0) >= circMin && (r.densidade || 0) >= densMin;
+        });
+        ruas = ruas.slice().sort(function (a, b) { return (b[ord] || 0) - (a[ord] || 0); });
+        var top = ruas.slice(0, 200);
+        status.textContent = ruas.length + " de " + atual.ruas.length + " ruas de " + atual.nome +
+          (ruas.length > top.length ? " (mostrando as 200 melhores)" : "");
+        lista.innerHTML = top.map(function (r) {
+          return (
+            '<article class="rua-card">' +
+              '<div class="rua-top">' +
+                '<div><h3>' + esc(r.nome) + "</h3>" +
+                '<div class="rua-sub">' + esc(r.bairro || "") + " · " + esc(tipoNome(r.tipo)) + "</div></div>" +
+                '<div class="rua-score">' + (r.score != null ? r.score.toFixed(1) : "—") + "<div style=\"font-weight:500;font-size:11px;color:#716d80\">índice</div></div>" +
+              "</div>" +
+              '<div class="rua-nums">' +
+                '<span>Circulação<b>' + num(r.circulacao) + "/dia</b></span>" +
+                '<span>Densidade<b>' + num(r.densidade) + "</b></span>" +
+                '<span>Renda média<b>' + money(r.renda) + "</b></span>" +
+                '<span><span class="conf-badge conf-' + esc(r.confianca || "baixa") + '">confiança ' + esc(r.confianca || "baixa") + "</span></span>" +
+              "</div>" +
+            "</article>"
+          );
+        }).join("") || '<div class="empty"><p>Nenhuma rua passou nesses filtros. Reduza os mínimos de circulação/densidade.</p></div>';
+        nota.textContent = atual.fonteDensidadeNota || "";
+      }
+
+      function tipoNome(t) {
+        return { local: "Rua interna", corredor: "Avenida / corredor", polo: "Polo comercial", orla: "Orla" }[t] || t || "—";
+      }
+
+      function carregar(cidadeId) {
+        var status = $("status");
+        if (cache[cidadeId]) { atual = cache[cidadeId]; render(); return; }
+        status.textContent = "Carregando…";
+        $("lista").innerHTML = "";
+        fetch("/api/index/" + encodeURIComponent(cidadeId) + ".json")
+          .then(function (r) {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+          })
+          .then(function (data) {
+            cache[cidadeId] = data;
+            atual = data;
+            render();
+          })
+          .catch(function (e) {
+            console.warn("buscar.html: falha ao carregar índice da cidade", cidadeId, e);
+            status.textContent = "Não foi possível carregar o índice dessa cidade agora.";
+          });
+      }
+
+      sel.addEventListener("change", function () { carregar(sel.value); });
+      $("fCirc").addEventListener("input", render);
+      $("fDens").addEventListener("input", render);
+      $("fOrd").addEventListener("change", render);
+
+      if (inicial) carregar(inicial);
+    })();
+  </script>
+</body>
+</html>

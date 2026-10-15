@@ -160,6 +160,27 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = unquote(self.path.split("?")[0])
+        if path.startswith("/api/index/") and path.endswith(".json"):
+            # Serves the pre-computed street-ranking index built offline by
+            # build_street_index.py (data_cache/street_index_<cidade>.json).
+            # In production this route could instead hit a real precomputed
+            # backend; for the mock we just serve the committed static file.
+            slug = path[len("/api/index/"):-len(".json")]
+            if not re.fullmatch(r"[a-z0-9-]+", slug or ""):
+                self._send_json({"erro": "cidade inválida"}, status=400)
+                return
+            idx_path = (ROOT / "data_cache" / f"street_index_{slug}.json").resolve()
+            if ROOT not in idx_path.parents or not idx_path.exists():
+                self._send_json({"erro": "índice não encontrado para esta cidade"}, status=404)
+                return
+            data = idx_path.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(data)
+            return
         if path.startswith("/api/"):
             self._send_json({"ok": True, "v": {}})
             return
