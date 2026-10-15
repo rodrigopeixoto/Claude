@@ -8,3 +8,6 @@ dist/
 coverage/
 prisma/migrations/
 !prisma/migrations/.gitkeep
+__pycache__/
+spotlocal-clone/data_cache/ibge.json
+spotlocal-clone/data_cache/overpass.json

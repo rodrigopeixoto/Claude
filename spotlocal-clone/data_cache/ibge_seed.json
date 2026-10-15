@@ -1,0 +1,326 @@
+{
+ "aracaju": {
+  "nome": "Aracaju",
+  "uf": "SE",
+  "pop": 601565,
+  "renda": 3736,
+  "m2": 37.13,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -37.0925,
+   -10.9889
+  ]
+ },
+ "belem": {
+  "nome": "Belém",
+  "uf": "PA",
+  "pop": 1287370,
+  "renda": 3283,
+  "m2": 63.03,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -48.4421,
+   -1.3213
+  ]
+ },
+ "belo-horizonte": {
+  "nome": "Belo Horizonte",
+  "uf": "MG",
+  "pop": 2315560,
+  "renda": 4728,
+  "m2": 50.13,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -43.96,
+   -19.9027
+  ]
+ },
+ "boa-vista": {
+  "nome": "Boa Vista",
+  "uf": "RR",
+  "pop": 382449,
+  "renda": 3085,
+  "m2": 33,
+  "m2fonte": "estimado pela renda",
+  "centro": [
+   -60.7226,
+   2.8133
+  ]
+ },
+ "brasilia": {
+  "nome": "Brasília",
+  "uf": "DF",
+  "pop": 2817381,
+  "renda": 5712,
+  "m2": 54.22,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -47.7969,
+   -15.7812
+  ]
+ },
+ "campo-grande": {
+  "nome": "Campo Grande",
+  "uf": "MS",
+  "pop": 883825,
+  "renda": 3831,
+  "m2": 31.22,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -54.6188,
+   -20.4798
+  ]
+ },
+ "cuiaba": {
+  "nome": "Cuiabá",
+  "uf": "MT",
+  "pop": 520841,
+  "renda": 4507,
+  "m2": 48.48,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -56.055,
+   -15.6068
+  ]
+ },
+ "curitiba": {
+  "nome": "Curitiba",
+  "uf": "PR",
+  "pop": 1773718,
+  "renda": 5375,
+  "m2": 48.63,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -49.2882,
+   -25.4779
+  ]
+ },
+ "florianopolis": {
+  "nome": "Florianópolis",
+  "uf": "SC",
+  "pop": 519463,
+  "renda": 6239,
+  "m2": 60.82,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -48.4954,
+   -27.5705
+  ]
+ },
+ "fortaleza": {
+  "nome": "Fortaleza",
+  "uf": "CE",
+  "pop": 2428708,
+  "renda": 3103,
+  "m2": 41.08,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -38.528,
+   -3.7858
+  ]
+ },
+ "goiania": {
+  "nome": "Goiânia",
+  "uf": "GO",
+  "pop": 1435651,
+  "renda": 4636,
+  "m2": 43.11,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -49.2738,
+   -16.6435
+  ]
+ },
+ "joao-pessoa": {
+  "nome": "João Pessoa",
+  "uf": "PB",
+  "pop": 830789,
+  "renda": 3513,
+  "m2": 52.14,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -34.859,
+   -7.1619
+  ]
+ },
+ "macapa": {
+  "nome": "Macapá",
+  "uf": "AP",
+  "pop": 417159,
+  "renda": 3031,
+  "m2": 36,
+  "m2fonte": "estimado pela renda",
+  "centro": [
+   -51.1008,
+   0.0332
+  ]
+ },
+ "maceio": {
+  "nome": "Maceió",
+  "uf": "AL",
+  "pop": 957437,
+  "renda": 3031,
+  "m2": 56.58,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -35.7181,
+   -9.583
+  ]
+ },
+ "manaus": {
+  "nome": "Manaus",
+  "uf": "AM",
+  "pop": 2042232,
+  "renda": 2840,
+  "m2": 53.12,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -59.9817,
+   -3.0437
+  ]
+ },
+ "natal": {
+  "nome": "Natal",
+  "uf": "RN",
+  "pop": 751300,
+  "renda": 3620,
+  "m2": 42.25,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -35.232,
+   -5.8011
+  ]
+ },
+ "palmas": {
+  "nome": "Palmas",
+  "uf": "TO",
+  "pop": 272355,
+  "renda": 4343,
+  "m2": 38,
+  "m2fonte": "estimado pela renda",
+  "centro": [
+   -48.3258,
+   -10.2454
+  ]
+ },
+ "porto-alegre": {
+  "nome": "Porto Alegre",
+  "uf": "RS",
+  "pop": 1332845,
+  "renda": 5331,
+  "m2": 45.51,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -51.1645,
+   -30.0953
+  ]
+ },
+ "porto-velho": {
+  "nome": "Porto Velho",
+  "uf": "RO",
+  "pop": 284218,
+  "renda": 3688,
+  "m2": 34,
+  "m2fonte": "estimado pela renda",
+  "centro": [
+   -63.8792,
+   -8.7631
+  ]
+ },
+ "recife": {
+  "nome": "Recife",
+  "uf": "PE",
+  "pop": 1488920,
+  "renda": 4013,
+  "m2": 64.06,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -34.9342,
+   -8.0389
+  ]
+ },
+ "rio-branco": {
+  "nome": "Rio Branco",
+  "uf": "AC",
+  "pop": 331965,
+  "renda": 2823,
+  "m2": 33,
+  "m2fonte": "estimado pela renda",
+  "centro": [
+   -67.8159,
+   -9.9905
+  ]
+ },
+ "rio-de-janeiro": {
+  "nome": "Rio de Janeiro",
+  "uf": "RJ",
+  "pop": 6211223,
+  "renda": 4405,
+  "m2": 59.87,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -43.451,
+   -22.9232
+  ]
+ },
+ "salvador": {
+  "nome": "Salvador",
+  "uf": "BA",
+  "pop": 2417678,
+  "renda": 3105,
+  "m2": 53.67,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -38.4435,
+   -12.9054
+  ]
+ },
+ "sao-luis": {
+  "nome": "São Luís",
+  "uf": "MA",
+  "pop": 1024657,
+  "renda": 2886,
+  "m2": 56.89,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -44.2601,
+   -2.585
+  ]
+ },
+ "sao-paulo": {
+  "nome": "São Paulo",
+  "uf": "SP",
+  "pop": 11451999,
+  "renda": 4900,
+  "m2": 64.98,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -46.6481,
+   -23.6501
+  ]
+ },
+ "teresina": {
+  "nome": "Teresina",
+  "uf": "PI",
+  "pop": 788718,
+  "renda": 3078,
+  "m2": 31.89,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -42.782,
+   -5.0788
+  ]
+ },
+ "vitoria": {
+  "nome": "Vitória",
+  "uf": "ES",
+  "pop": 322869,
+  "renda": 5862,
+  "m2": 53.28,
+  "m2fonte": "FipeZap residencial jun/2026",
+  "centro": [
+   -40.2884,
+   -20.2789
+  ]
+ }
+}

@@ -19,149 +19,30 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote
 
+import real_model
+from real_model import NEGOCIOS, PONTOS, TIPO_NOME  # re-exported for any external imports
+
 ROOT = Path(__file__).resolve().parent
 PORT = 8080
 
-NEGOCIOS = {
-    "padaria": {"ticket": 14, "cmv": 50},
-    "lanchonete": {"ticket": 22, "cmv": 45},
-    "restaurante": {"ticket": 36, "cmv": 38},
-    "acai": {"ticket": 24, "cmv": 42},
-    "mercadinho": {"ticket": 38, "cmv": 68},
-    "farmacia": {"ticket": 60, "cmv": 67},
-    "barbearia": {"ticket": 40, "cmv": 25},
-    "pizzaria": {"ticket": 55, "cmv": 35},
-    "roupas": {"ticket": 110, "cmv": 50},
-    "pet": {"ticket": 85, "cmv": 45},
-    "academia": {"ticket": 10, "cmv": 4},
-    "estudio": {"ticket": 45, "cmv": 30},
-    "oficina": {"ticket": 700, "cmv": 45},
-    "restnoite": {"ticket": 70, "cmv": 38},
-    "clinica": {"ticket": 200, "cmv": 55},
-    "nicho": {"ticket": 50, "cmv": 45},
-    "escola": {"ticket": 30, "cmv": 45},
-    "cursinho": {"ticket": 22, "cmv": 40},
-    "suplemento": {"ticket": 140, "cmv": 60},
-}
-
-BAIRROS = [
-    {"id": "centro", "nome": "Centro", "faixa": "media"},
-    {"id": "boa-viagem", "nome": "Boa Viagem", "faixa": "alta"},
-    {"id": "casa-amarela", "nome": "Casa Amarela", "faixa": "media"},
-    {"id": "ibura", "nome": "Ibura", "faixa": "popular"},
-]
-
-PONTOS = ["local", "corredor", "polo", "orla"]
-TIPO_NOME = {
-    "local": "Rua interna",
-    "corredor": "Avenida / corredor",
-    "polo": "Polo comercial",
-    "orla": "Orla",
-}
-
 
 def rng(seed_text):
-    """Deterministic-ish small RNG seeded from a string, so repeat calls
-    with the same input are stable (nice for UI testing)."""
+    """Deterministic-ish small RNG seeded from a string. Only used now by
+    fake_sens()/fake_agente() for the parts that still have no real public
+    data source wired up (synthetic chat chatter, sensitivity-sweep
+    scaling) - the core revenue/profit numbers below come from
+    real_model.gerar_resultado(), not from this RNG."""
     h = abs(hash(str(seed_text))) % (10 ** 6)
     r = random.Random(h)
     return r
 
 
-def fake_cenario(neg_id, bairro, ponto, mult=1.0, seed="x"):
-    r = rng(f"{neg_id}|{bairro}|{ponto}|{seed}|{mult}")
-    base = NEGOCIOS.get(neg_id, {"ticket": 30, "cmv": 40})
-    ticket = base["ticket"] * (0.9 + 0.2 * r.random())
-    cli_dia = max(5, round(r.uniform(20, 140) * mult))
-    dias = 26
-    fat_salao = round(cli_dia * ticket * dias, 2)
-    fat_delivery = round(fat_salao * 0.15, 2) if r.random() > 0.4 else 0
-    fat = round(fat_salao + fat_delivery, 2)
-    cmv_pct = base["cmv"] / 100.0
-    custos_fixos = round(fat * r.uniform(0.25, 0.4), 2)
-    lucro = round(fat * (1 - cmv_pct) - custos_fixos, 2)
-    return {
-        "fat": fat,
-        "fatSalao": fat_salao,
-        "cliDia": cli_dia,
-        "dias": dias,
-        "lucro": lucro,
-    }
-
-
 def fake_resultado(params, variant="an"):
-    inp = (params or {}).get("I") or {}
-    cidade = (params or {}).get("c") or "recife"
-    neg_id = (inp.get("neg") or {}).get("id") if isinstance(inp.get("neg"), dict) else inp.get("neg") or "padaria"
-    bairro_id = (inp.get("bairro") or {}).get("id") if isinstance(inp.get("bairro"), dict) else inp.get("bairro") or "centro"
-    ponto_tipo = inp.get("ponto") or "local"
-    if ponto_tipo not in TIPO_NOME:
-        ponto_tipo = "local"
-
-    bairro = next((b for b in BAIRROS if b["id"] == bairro_id), BAIRROS[0])
-    r = rng(f"{cidade}|{neg_id}|{bairro_id}|{ponto_tipo}")
-
-    prov = fake_cenario(neg_id, bairro_id, ponto_tipo, mult=1.0, seed="prov")
-    pess = fake_cenario(neg_id, bairro_id, ponto_tipo, mult=0.75, seed="pess")
-    otim = fake_cenario(neg_id, bairro_id, ponto_tipo, mult=1.3, seed="otim")
-
-    cen = [pess, prov, otim]
-
-    aluguel = round(r.uniform(1500, 6000), 2)
-    base = NEGOCIOS.get(neg_id, {"ticket": 30, "cmv": 40})
-
-    delivery_on = r.random() > 0.5
-    delivery = {
-        "ligado": delivery_on,
-        "fatMes": round(prov["fat"] * 0.18, 2) if delivery_on else 0,
-        "pedidosDia": round(r.uniform(5, 40), 1) if delivery_on else 0,
-        "custoPct": round(r.uniform(12, 25), 1),
-        "densRaio": round(r.uniform(0.5, 3), 2),
-        "densRef": round(r.uniform(0.5, 3), 2),
-        "entrega": round(r.uniform(5, 15), 2),
-        "entregador": round(r.uniform(1200, 2200), 2),
-        "fixoMes": round(r.uniform(200, 800), 2),
-        "funcProducao": round(r.uniform(0.5, 2), 1),
-        "outros": round(r.uniform(100, 500), 2),
-        "raioKm": round(r.uniform(1, 5), 1),
-    }
-
-    result = {
-        "N": {"id": neg_id, "nome": neg_id.capitalize(), "area": round(r.uniform(25, 150))},
-        "B": {
-            "id": bairro["id"],
-            "nome": bairro["nome"],
-            "faixa": bairro["faixa"],
-            "concRaw": round(r.uniform(1, 20)),
-        },
-        "Pt": {
-            "nome": TIPO_NOME[ponto_tipo],
-            "tipo": ponto_tipo,
-            "veic": round(r.uniform(500, 15000)),
-            "ped": round(r.uniform(300, 8000)),
-            "curva": [round(r.uniform(0.5, 1.5), 2) for _ in range(12)],
-        },
-        "ctx": {"inp": inp},
-        "prov": prov,
-        "pess": pess,
-        "otim": otim,
-        "cen": cen,
-        "cliEqDia": round(prov["cliDia"] * r.uniform(0.9, 1.1), 1),
-        "limites": {
-            "aluguelMax": round(aluguel * 1.4, 2),
-            "ticketMin": round(base["ticket"] * 0.8, 2),
-            "clientesEq": round(prov["cliDia"] * 0.9, 1),
-        },
-        "delivery": delivery,
-        "ext": {
-            "dec": round(r.uniform(-0.1, 0.1), 3),
-            "dlvOn": delivery_on,
-            "tk": round(base["ticket"] * r.uniform(0.9, 1.3), 2),
-            "proj": [round(prov["lucro"] * (0.7 + 0.03 * m), 2) for m in range(13)],
-            "saz": [round(r.uniform(0.8, 1.2), 3) for _ in range(12)],
-        },
-    }
-    return result
+    """Real-data-driven scenario calculation. See real_model.py for the
+    IBGE population, OSM competitor-density and bundled street/bairro
+    traffic data that drives this, and for every assumption/multiplier
+    used in the formula (documented inline there)."""
+    return real_model.gerar_resultado(params, variant)
 
 
 def fake_sens(params):
