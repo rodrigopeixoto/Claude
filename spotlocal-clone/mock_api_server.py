@@ -205,9 +205,13 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     import sys
+    import threading
+    import webbrowser
     port = int(sys.argv[1]) if len(sys.argv) > 1 else PORT
     server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
-    print(f"Mock SpotLocal server running at http://localhost:{port}")
+    url = f"http://localhost:{port}"
+    print(f"Mock SpotLocal server running at {url}")
+    threading.Timer(1.0, lambda: webbrowser.open(url)).start()
     server.serve_forever()
 
 
