@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR" data-tema="{{temaDefault}}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex" />
+  <title>{{brand.name}} | {{page.pill}}</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <!-- mantém o tema que a pessoa viu na página do quiz -->
+  <script>try { var t = localStorage.getItem('f_tema'); if (t === 'claro' || t === 'escuro') document.documentElement.setAttribute('data-tema', t); } catch (e) {}</script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/">{{brand.name}}</a>
+  </header>
+  <main class="page">
+    <p class="pill">{{page.pill}}</p>
+    <h1 class="page-title">{{page.title}}</h1>
+    <p class="page-text">{{page.text}}</p>
+    {{{page.priceHtml}}}
+    <a class="btn btn--big" href="{{page.url}}" rel="noopener">{{page.cta}}</a>
+  </main>
+  <footer class="foot">
+    <p>© {{year}} {{brand.name}}. Feito por {{brand.author}}.</p>
+  </footer>
+</body>
+</html>

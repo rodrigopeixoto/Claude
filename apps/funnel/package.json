@@ -1,0 +1,19 @@
+{
+  "name": "funnel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Landing com quiz de qualificação: só lead com orçamento deixa contato; o resto vai para downsell ou material gratuito.",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && node dev-server.js",
+    "start": "node dev-server.js",
+    "test": "node --test test/*.test.js",
+    "db:schema": "psql \"$DATABASE_URL\" -f db/schema.sql"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

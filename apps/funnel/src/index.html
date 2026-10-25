@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-BR" data-tema="{{temaDefault}}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>{{seo.title}}</title>
+  <meta name="description" content="{{seo.description}}" />
+  <meta property="og:title" content="{{seo.title}}" />
+  <meta property="og:description" content="{{seo.description}}" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="/styles.css" />
+  <!-- Teste A/B de tema no mesmo link: sorteia claro/escuro e lembra neste navegador. ?tema=claro|escuro força.
+       Vindo do navegador do Instagram/Facebook, tenta abrir o navegador padrão do celular. -->
+  <script>
+    (function () {
+      var d = document.documentElement, q = new URLSearchParams(location.search), k = 'f_tema', t = q.get('tema');
+      var ok = function (v) { return v === 'claro' || v === 'escuro'; };
+      if (!ok(t)) { try { t = localStorage.getItem(k); } catch (e) {} }
+      if (!ok(t)) t = {{abTest}} ? (Math.random() < 0.5 ? 'claro' : 'escuro') : d.getAttribute('data-tema');
+      try { localStorage.setItem(k, t); } catch (e) {}
+      d.setAttribute('data-tema', t);
+      if (t === 'claro') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f5f5f7');
+
+      var ua = navigator.userAgent || '';
+      if (!/Instagram|FBAN|FBAV|FB_IAB|FBIOS/i.test(ua) || q.get('ext') === '1') return;
+      try { if (sessionStorage.getItem('f_ext')) return; sessionStorage.setItem('f_ext', '1'); } catch (e) {}
+      q.set('tema', t); q.set('ext', '1');
+      var rest = location.host + location.pathname + '?' + q.toString() + location.hash;
+      // só depois do load: se o app bloquear a saída, a pessoa continua com o site na tela
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          if (/Android/i.test(ua)) location.href = 'intent://' + rest + '#Intent;scheme=https;S.browser_fallback_url=' + encodeURIComponent('https://' + rest) + ';end';
+          else if (/iPhone|iPad|iPod/i.test(ua)) location.href = 'x-safari-https://' + rest;
+        }, 150);
+      });
+    })();
+  </script>
+</head>
+<body id="top">
+  <header class="top">
+    <a class="brand" href="/" aria-label="{{brand.name}}, início">{{brand.name}}</a>
+    <a class="top-cta" href="#quiz">Começar</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <h1 class="hero-title" id="heroTitle">{{{heroTitle}}}</h1>
+      <p class="hero-sub">{{{hero.sub}}}</p>
+      <a class="btn btn--big" href="#quiz">{{hero.cta}} <span class="arrow" aria-hidden="true">↓</span></a>
+
+      <!-- aparelho ilustrativo feito só de CSS: troque por screenshots reais de clientes quando tiver -->
+      <div class="stage" aria-hidden="true">
+        <div class="device">
+          <div class="device-screen">
+            <div class="mock">
+              <div class="mock-cover"></div>
+              <div class="mock-avatar"></div>
+              <p class="mock-name">{{brand.author}}</p>
+              <p class="mock-role">Sua profissão aqui</p>
+              <div class="mock-block mock-block--hero"></div>
+              <div class="mock-row"><div class="mock-block"></div><div class="mock-block"></div></div>
+              <div class="mock-block mock-block--wide"></div>
+              <div class="mock-block mock-block--wide"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quiz" id="quiz" aria-labelledby="quizTitle">
+      <div class="quiz-head">
+        <h2 id="quizTitle">{{quiz.title}}</h2>
+        <p>{{quiz.sub}}</p>
+      </div>
+
+      <form id="funnel" class="funnel" novalidate autocomplete="on">
+        <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+        <!-- honeypot anti-robô: pessoas não veem nem preenchem -->
+        <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off" /></label></div>
+{{{questionsHtml}}}
+
+        <section class="step" data-step="contato">
+          <p class="step-label">Último passo</p>
+          <h2>{{quiz.contactTitle}}</h2>
+          <p class="hint">{{quiz.contactHint}}</p>
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" autocomplete="name" placeholder="Nome e sobrenome" />
+            <span class="err">Informe seu nome.</span>
+          </div>
+          <div class="field">
+            <label for="instagram">Instagram</label>
+            <input id="instagram" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@seuperfil" />
+            <span class="err">Informe o @ do seu perfil.</span>
+          </div>
+          <div class="field">
+            <label for="whatsapp">WhatsApp</label>
+            <div class="phone-row">
+              <label class="ddi" title="País (DDI)">
+                <span id="ddiLabel">🇧🇷 +55</span>
+                <select id="ddi" name="ddi" aria-label="País (DDI)"></select>
+              </label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(11) 99999-9999" />
+            </div>
+            <span class="err" id="whatsappErr">Informe DDD + número de celular.</span>
+          </div>
+        </section>
+
+        <section class="step" data-step="aprovado">
+          <div class="ticket">
+            <div class="ticket-main">
+              <p class="step-label approved"><span class="mark mark--ok" aria-hidden="true"></span> Perfil aprovado</p>
+              <h2>{{quiz.approvedTitle}}<span id="okName"></span>.</h2>
+              <p class="hint">{{quiz.approvedHint}}</p>
+              <dl class="ticket-meta">
+                <div><dt>Titular</dt><dd id="tkName">—</dd></div>
+                <div><dt>Área</dt><dd id="tkArea">—</dd></div>
+                <div><dt>Entrega</dt><dd>{{quiz.delivery}}</dd></div>
+              </dl>
+            </div>
+            <div class="ticket-stub">
+              <a class="btn btn--wa" id="waGo" href="#" target="_blank" rel="noopener">{{quiz.approvedCta}}</a>
+              <p class="choice-note" id="waNote">Abre o WhatsApp com a sua mensagem pronta. É só enviar.</p>
+              <div class="ticket-code" aria-label="Código do seu cadastro">
+                <svg class="ticket-bars" id="tkBars" viewBox="0 0 120 28" preserveAspectRatio="none" aria-hidden="true"></svg>
+                <span id="tkCode">······</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div id="formError" class="notice" role="alert" hidden></div>
+
+        <div class="nav">
+          <button type="button" class="btn btn--ghost" id="back">← Voltar</button>
+          <button type="button" class="btn" id="next" disabled>Continuar</button>
+        </div>
+      </form>
+      <script type="application/json" id="quizData">{{{quizJson}}}</script>
+    </section>
+
+    <section class="compare" aria-labelledby="vsTitle">
+      <h2 class="section-title" id="vsTitle">{{{sections.compare.title}}}</h2>
+      <div class="compare-grid">
+        <article class="compare-col compare-col--them">
+          <h3>{{sections.compare.them.title}}</h3>
+          <ul>{{{compareThem}}}</ul>
+        </article>
+        <article class="compare-col compare-col--us">
+          <h3>{{sections.compare.us.title}}</h3>
+          <ul>{{{compareUs}}}</ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="close" aria-labelledby="closeTitle">
+      <h2 class="section-title" id="closeTitle">{{{sections.close.title}}}</h2>
+      <a class="btn btn--big" href="#quiz">{{sections.close.cta}}</a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot-quote">{{sections.footerQuote}}</p>
+    <p>© {{year}} {{brand.name}}. Feito por {{brand.author}}.</p>
+  </footer>
+
+  <script src="/js/phone.js"></script>
+  <script src="/js/qualify.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

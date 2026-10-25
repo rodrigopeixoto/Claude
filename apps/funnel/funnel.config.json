@@ -1,0 +1,114 @@
+{
+  "brand": {
+    "name": "SuaMarca",
+    "author": "Seu Nome",
+    "leadCodePrefix": "SM",
+    "themeDefault": "escuro",
+    "abTest": true
+  },
+  "contact": {
+    "whatsapp": "5511999999999",
+    "whatsappMessage": "Olá! Acabei de responder o quiz da {brand} e quero saber mais.{nameSentence} (código {code})"
+  },
+  "seo": {
+    "title": "SuaMarca | Sua página de links exclusiva em 24h",
+    "description": "Uma página de links feita para você, pronta em 24h. Responda 4 perguntas e veja se o seu perfil se qualifica."
+  },
+  "hero": {
+    "titleLines": ["Sua bio à altura", "do seu currículo."],
+    "sub": "Uma página de links exclusiva, feita para você e pronta em <strong>24 horas</strong>. A partir de R$&nbsp;750.",
+    "cta": "Responder 4 perguntas"
+  },
+  "quiz": {
+    "title": "Veja se o seu perfil se qualifica.",
+    "sub": "Quatro perguntas rápidas. Se fizer sentido, você fala direto com a gente no WhatsApp.",
+    "questions": [
+      {
+        "id": "segmento",
+        "title": "Qual é a sua área de atuação?",
+        "otherField": { "value": "outro", "label": "Qual é a sua profissão?", "placeholder": "Ex.: fisioterapeuta, contador, fotógrafo" },
+        "options": [
+          { "value": "saude", "label": "Saúde (médico, dentista, nutricionista, psicólogo…)" },
+          { "value": "direito", "label": "Direito (advocacia, consultoria jurídica)" },
+          { "value": "arquitetura", "label": "Arquitetura, engenharia ou design de interiores" },
+          { "value": "consultoria", "label": "Consultoria, mentoria ou serviços profissionais" },
+          { "value": "outro", "label": "Outra área" }
+        ]
+      },
+      {
+        "id": "particular",
+        "title": "Quem contrata o seu trabalho?",
+        "titleBy": {
+          "segmento": {
+            "saude": "Quem paga pelos seus atendimentos?",
+            "direito": "Quem paga pelos seus serviços?",
+            "arquitetura": "Quem contrata os seus projetos?"
+          }
+        },
+        "options": [
+          { "value": "sim", "label": "O próprio cliente, que me contrata direto." },
+          { "value": "misto", "label": "Parte direto, parte por empresa ou plataforma." },
+          { "value": "nao", "label": "Quase tudo vem de empresa, plataforma ou emprego fixo.", "outcome": "material" }
+        ]
+      },
+      {
+        "id": "fotos",
+        "title": "Você já tem fotos profissionais suas?",
+        "hint": "Sua página fica pronta em 24h. Com as fotos em mãos, a gente começa na hora.",
+        "options": [
+          { "value": "sim", "label": "Sim, tenho fotos profissionais prontas." },
+          { "value": "providenciar", "label": "Ainda não, mas consigo providenciar." },
+          { "value": "nao", "label": "Não tenho e não pretendo fazer agora." }
+        ]
+      },
+      {
+        "id": "investimento",
+        "title": "Você está disposto a investir na sua presença digital agora?",
+        "hint": "Uma página 100% exclusiva e sob medida, entregue em 24h. Em muitos negócios, 1 ou 2 novos clientes já pagam o projeto inteiro.",
+        "options": [
+          { "value": "basico", "label": "Sim, quero a página", "price": "a partir de R$ 750", "sub": "Página de links exclusiva, pronta em 24h" },
+          { "value": "completo", "label": "Quero a Estrutura Completa", "price": "R$ 1.500 a R$ 3.000", "sub": "Link na bio + página de vendas ou de agendamento" },
+          { "value": "pesquisando", "label": "Agora não", "sub": "Só estou pesquisando por enquanto", "outcome": "downsell" }
+        ]
+      }
+    ],
+    "contactTitle": "Para quem preparamos a sua página?",
+    "contactHint": "A gente olha o seu perfil antes de falar com você.",
+    "approvedTitle": "Seu perfil tem tudo para uma página exclusiva",
+    "approvedHint": "Fale agora com a gente no WhatsApp: você recebe exemplos, o valor e já pode começar hoje para receber a página amanhã.",
+    "approvedCta": "Falar no WhatsApp agora",
+    "delivery": "24 horas"
+  },
+  "sections": {
+    "compare": {
+      "title": "O link que todo mundo usa<br /> <span>não vende o seu preço.</span>",
+      "them": {
+        "title": "Link genérico",
+        "items": ["Template igual ao de todo mundo", "Botões soltos, sem estratégia", "Transmite amadorismo para quem pagaria bem", "Não leva o cliente até o contato"]
+      },
+      "us": {
+        "title": "Página exclusiva",
+        "items": ["Design com a identidade do seu negócio", "Estrutura pensada para o seu público", "Autoridade logo no primeiro toque", "Caminho claro do Instagram até a conversa"]
+      }
+    },
+    "close": { "title": "Amanhã, a sua bio<br /> já pode estar no&nbsp;ar.", "cta": "Responder 4 perguntas" },
+    "footerQuote": "Sua bio fala antes de você."
+  },
+  "pages": {
+    "downsell": {
+      "pill": "Obrigado pelas respostas",
+      "title": "Crie a sua própria página.",
+      "text": "Pelas suas respostas, contratar uma página sob medida não está nos seus planos agora. E tudo bem: com o nosso curso você cria a sua sozinho(a), passo a passo, sem programar.",
+      "price": "R$ 197",
+      "cta": "Conhecer o curso",
+      "url": "https://example.com/curso"
+    },
+    "material": {
+      "pill": "Obrigado pelas respostas",
+      "title": "Separamos um material gratuito para você.",
+      "text": "No momento, nosso serviço sob medida é voltado para negócios que já têm clientes diretos e estão em fase de crescimento. Este guia gratuito ajuda no seu posicionamento enquanto isso.",
+      "cta": "Baixar o guia gratuito",
+      "url": "https://example.com/guia"
+    }
+  }
+}
