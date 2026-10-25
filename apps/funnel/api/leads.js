@@ -1,25 +1,18 @@
-// POST: recebe o quiz e decide o destino. GET (com ADMIN_KEY): lista os leads.
+// POST: recebe o quiz e decide o destino. GET (painel): lista os leads com filtros.
 
-const crypto = require('node:crypto');
 const { send, readJson, clientIp, rateLimiter, handler } = require('../lib/http');
 const { loadConfig } = require('../lib/config');
 const { buildLead } = require('../lib/leads');
+const { parseFilters, searchParams } = require('../lib/filters');
+const { isAdmin } = require('../lib/auth');
 const store = require('../lib/store');
 
 const allow = rateLimiter({ max: 8, windowMs: 10 * 60 * 1000 });
 
-function authorized(req) {
-  const key = process.env.ADMIN_KEY;
-  const given = String(req.headers.authorization || '').replace(/^Bearer\s+/i, '');
-  if (!key || !given) return false;
-  const a = Buffer.from(key), b = Buffer.from(given);
-  return a.length === b.length && crypto.timingSafeEqual(a, b);
-}
-
 module.exports = handler(['POST', 'GET'], async (req, res) => {
   if (req.method === 'GET') {
-    if (!authorized(req)) return send(res, 401, { error: 'Não autorizado' });
-    return send(res, 200, { leads: await store.listLeads() });
+    if (!isAdmin(req)) return send(res, 401, { error: 'Não autorizado' });
+    return send(res, 200, await store.queryLeads(parseFilters(searchParams(req))));
   }
 
   const ip = clientIp(req);

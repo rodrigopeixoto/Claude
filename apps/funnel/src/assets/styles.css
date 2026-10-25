@@ -39,6 +39,7 @@
   --ink-3: #6e6e73;
   --link-ink: #0058db;
   --err: #d70015;
+  --ok: #248a3d;            /* verde mais fechado: texto verde sobre fundo claro precisa de contraste */
   --frame-1: #c7c8cc;
   --frame-2: #8e8f94;
   --top-bg: rgba(245, 245, 247, 0.78);

@@ -9,11 +9,23 @@ WhatsApp aberto e mensagem pronta (com o código do lead). Quem não se qualific
 
 ```bash
 pnpm install
-pnpm --filter funnel dev      # gera dist/ e sobe em http://localhost:3100
+ADMIN_PASSWORD=troque-isto pnpm --filter funnel dev   # gera dist/ e sobe em http://localhost:3100
 pnpm --filter funnel test
 ```
 
-Sem `DATABASE_URL`, os leads vão para `apps/funnel/.data/leads.json`.
+Sem `DATABASE_URL`, leads e visitas vão para `apps/funnel/.data/*.json`.
+
+## Painel (`/admin`)
+
+Entra com a senha de `ADMIN_PASSWORD` (sessão de 7 dias em cookie HttpOnly assinado; trocar a senha derruba as sessões).
+
+- **Visão geral** (por período): visitas, respostas, qualificados, cliques no WhatsApp, fechados; gráfico por dia;
+  funil; etapas de atendimento; origem (`utm_source`); teste A/B claro × escuro; distribuição de cada resposta.
+- **Leads**: busca por nome, @, WhatsApp ou código; filtros de status e etapa; paginação; exportar CSV (abre no Excel).
+- **Detalhe do lead**: respostas, origem, botões para WhatsApp e Instagram, etapa
+  (novo → contatado → negociando → fechado / perdido) e anotações.
+
+Os números da visão geral consideram até 5.000 leads por período.
 
 ## Personalizar
 
@@ -35,8 +47,15 @@ Variáveis de ambiente opcionais: `FUNNEL_WHATSAPP`, `FUNNEL_BRAND` sobrescrevem
 |---|---|
 | `GET /api/config` | marca, WhatsApp e modelo da mensagem para o navegador |
 | `POST /api/leads` | respostas do quiz → `{ status }` (+ `leadId`, `token`, `code` se qualificado). 422 com `fields`, 429 limite por IP |
-| `GET /api/leads` | lista leads. Header `Authorization: Bearer $ADMIN_KEY` |
 | `POST /api/whatsapp` | `{ leadId, token }`: marca o clique no WhatsApp |
+| `POST /api/visit` | `{ tema }`: conta visita para o teste A/B |
+| `GET/POST/DELETE /api/session` | estado do login / entrar `{ password }` / sair |
+| `GET /api/leads` 🔒 | lista com `from`, `to` (YYYY-MM-DD), `status`, `stage`, `q`, `limit`, `offset` |
+| `GET/PATCH /api/lead?id=` 🔒 | detalhe / atualiza `{ stage, notes }` |
+| `GET /api/stats` 🔒 | números da visão geral (`from`, `to`; padrão 30 dias) |
+| `GET /api/export` 🔒 | CSV com os mesmos filtros da lista |
+
+🔒 = sessão do painel ou `Authorization: Bearer $ADMIN_KEY` (para integrações).
 
 Proteções: honeypot, tempo mínimo de preenchimento (3s), limite de 8 envios por IP a cada 10 min,
 validação de WhatsApp por país, e a regra de qualificação (`shared/qualify.js`) é reavaliada no servidor.
@@ -44,8 +63,9 @@ validação de WhatsApp por país, e a regra de qualificação (`shared/qualify.
 ## Deploy na Vercel
 
 1. Novo projeto apontando para este repositório, **Root Directory** = `apps/funnel`.
-2. Variáveis: `DATABASE_URL` (Postgres: Neon, Supabase, Vercel Postgres) e `ADMIN_KEY`.
-3. Crie a tabela uma vez: `psql "$DATABASE_URL" -f apps/funnel/db/schema.sql`.
+2. Variáveis: `DATABASE_URL` (Postgres: Neon, Supabase, Vercel Postgres), `ADMIN_PASSWORD`
+   (senha forte) e, opcionais, `SESSION_SECRET` e `ADMIN_KEY`.
+3. Crie as tabelas: `psql "$DATABASE_URL" -f apps/funnel/db/schema.sql` (rode de novo ao atualizar: só cria o que falta).
 
 `vercel.json` já define build (`node build.mjs`), saída (`dist`) e URLs limpas.
 

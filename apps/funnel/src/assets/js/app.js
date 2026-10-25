@@ -43,6 +43,14 @@
   session.set('f_utm', utm);
   utm.tema = document.documentElement.dataset.tema;
 
+  // Teste A/B: conta uma visita por tema e por sessão (o lead leva o mesmo tema em utm.tema)
+  if (session.get('f_visit') !== utm.tema) {
+    const body = JSON.stringify({ tema: utm.tema });
+    const sent = navigator.sendBeacon?.('/api/visit', new Blob([body], { type: 'application/json' }));
+    if (!sent) fetch('/api/visit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => {});
+    session.set('f_visit', utm.tema);
+  }
+
   // ---------- país do WhatsApp: começa pelo idioma do navegador, Brasil por padrão ----------
   ddiSelect.innerHTML = FPhone.COUNTRIES.map((c) => `<option value="${c.ddi}">${c.flag} ${c.name} (+${c.ddi})</option>`).join('');
   const region = (navigator.language || '').split('-')[1]?.toUpperCase();

@@ -91,6 +91,7 @@ async function build() {
     await writeFile(path.join(out, file), html);
   };
   await write('index.html', 'index.html');
+  await write('admin.html', 'admin.html');
   for (const key of ['downsell', 'material']) {
     const page = cfg.pages[key];
     await write(`${key}.html`, 'page.html', {
