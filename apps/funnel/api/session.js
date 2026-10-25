@@ -2,12 +2,13 @@
 
 const { send, readJson, clientIp, rateLimiter, handler } = require('../lib/http');
 const auth = require('../lib/auth');
+const { isDemo } = require('../lib/store');
 
 const allow = rateLimiter({ max: 5, windowMs: 15 * 60 * 1000 });
 
 module.exports = handler(['GET', 'POST', 'DELETE'], async (req, res) => {
   if (req.method === 'GET') {
-    return send(res, 200, { configured: auth.configured(), authenticated: auth.isAdmin(req) });
+    return send(res, 200, { configured: auth.configured(), authenticated: auth.isAdmin(req), demo: isDemo() });
   }
   if (req.method === 'DELETE') {
     res.setHeader('Set-Cookie', auth.logoutCookie(req));

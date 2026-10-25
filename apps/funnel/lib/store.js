@@ -1,19 +1,18 @@
-// Onde os dados ficam. Com DATABASE_URL usa Postgres; sem ela grava em .data/*.json
-// (só para desenvolvimento: na Vercel o disco é temporário).
+// Onde os dados ficam. Com DATABASE_URL usa Postgres; sem ela roda em modo demonstração:
+// memória com leads e visitas fake (lib/demo.js). Leads novos entram na memória e somem quando a
+// instância reinicia. Na Vercel cada instância tem a sua memória.
 
-const fs = require('node:fs/promises');
-const path = require('node:path');
-
-const DIR = process.env.FUNNEL_DATA_DIR || path.join(__dirname, '..', '.data');
-const LEADS_FILE = path.join(DIR, 'leads.json');
-const VISITS_FILE = path.join(DIR, 'visits.json');
+const { generateDemo } = require('./demo');
+const { loadConfig } = require('./config');
 
 const STAGES = ['novo', 'contatado', 'negociando', 'fechado', 'perdido'];
 const STATUSES = ['qualified', 'downsell', 'material'];
 
+const isDemo = () => !process.env.DATABASE_URL;
+
 let pool;
 function db() {
-  if (!process.env.DATABASE_URL) return null;
+  if (isDemo()) return null;
   if (!pool) {
     const { Pool } = require('pg');
     pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 3, ssl: /localhost|127\.0\.0\.1/.test(process.env.DATABASE_URL) ? false : { rejectUnauthorized: false } });
@@ -21,26 +20,27 @@ function db() {
   return pool;
 }
 
-async function readJson(file, fallback) {
-  try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch { return fallback; }
+let mem;
+function memory() {
+  if (!mem) mem = generateDemo(loadConfig());
+  return mem;
 }
-async function writeJson(file, data) {
-  await fs.mkdir(DIR, { recursive: true });
-  await fs.writeFile(file, JSON.stringify(data, null, 2));
+// Para testes: recomeça a memória (com ou sem dados fake)
+function resetMemory(data) {
+  mem = data || null;
 }
 
 const COLUMNS = `id, code, status, stage, notes, answers, area_outro AS "areaOutro", nome, instagram, whatsapp, utm,
   elapsed_ms AS "elapsedMs", whatsapp_clicked_at AS "whatsappClickedAt", created_at AS "createdAt", updated_at AS "updatedAt"`;
 
-// O arquivo local guarda o lead inteiro; para fora sai sem token, IP e user agent
+// Para fora o lead sai sem token, IP e user agent
 const publicLead = ({ token, ip, userAgent, ...rest }) => ({ stage: 'novo', notes: '', updatedAt: null, whatsappClickedAt: null, ...rest });
 
 async function saveLead(l) {
   const p = db();
   if (!p) {
-    const rows = await readJson(LEADS_FILE, []);
-    rows.push({ stage: 'novo', notes: '', ...l });
-    return writeJson(LEADS_FILE, rows);
+    memory().leads.push({ stage: 'novo', notes: '', ...l });
+    return;
   }
   await p.query(
     `INSERT INTO leads (id, code, token, status, answers, area_outro, nome, instagram, whatsapp, utm, elapsed_ms, ip, user_agent, created_at)
@@ -53,11 +53,9 @@ async function saveLead(l) {
 async function markWhatsapp(id, token, now = new Date()) {
   const p = db();
   if (!p) {
-    const rows = await readJson(LEADS_FILE, []);
-    const row = rows.find((r) => r.id === id && r.token === token);
+    const row = memory().leads.find((r) => r.id === id && r.token === token);
     if (!row) return false;
     row.whatsappClickedAt ||= now.toISOString();
-    await writeJson(LEADS_FILE, rows);
     return true;
   }
   const r = await p.query(
@@ -85,7 +83,7 @@ async function queryLeads(f = {}) {
   const offset = Math.max(Number(f.offset) || 0, 0);
   const p = db();
   if (!p) {
-    const rows = (await readJson(LEADS_FILE, [])).filter((l) => matches(l, f)).reverse();
+    const rows = memory().leads.filter((l) => matches(l, f)).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
     return { total: rows.length, leads: rows.slice(offset, offset + limit).map(publicLead) };
   }
   const where = [], args = [];
@@ -108,7 +106,7 @@ async function queryLeads(f = {}) {
 async function getLead(id) {
   const p = db();
   if (!p) {
-    const row = (await readJson(LEADS_FILE, [])).find((r) => r.id === id);
+    const row = memory().leads.find((r) => r.id === id);
     return row ? publicLead(row) : null;
   }
   const r = await p.query(`SELECT ${COLUMNS} FROM leads WHERE id = $1`, [id]);
@@ -119,13 +117,11 @@ async function getLead(id) {
 async function updateLead(id, { stage, notes }, now = new Date()) {
   const p = db();
   if (!p) {
-    const rows = await readJson(LEADS_FILE, []);
-    const row = rows.find((r) => r.id === id);
+    const row = memory().leads.find((r) => r.id === id);
     if (!row) return null;
     if (stage !== undefined) row.stage = stage;
     if (notes !== undefined) row.notes = notes;
     row.updatedAt = now.toISOString();
-    await writeJson(LEADS_FILE, rows);
     return publicLead(row);
   }
   const r = await p.query(
@@ -142,11 +138,11 @@ async function addVisit(tema, now = new Date()) {
   const day = dayOf(now);
   const p = db();
   if (!p) {
-    const rows = await readJson(VISITS_FILE, []);
+    const rows = memory().visits;
     const row = rows.find((r) => r.day === day && r.tema === tema);
     if (row) row.count++;
     else rows.push({ day, tema, count: 1 });
-    return writeJson(VISITS_FILE, rows);
+    return;
   }
   await p.query(
     'INSERT INTO visits (day, tema, count) VALUES ($1, $2, 1) ON CONFLICT (day, tema) DO UPDATE SET count = visits.count + 1',
@@ -157,7 +153,7 @@ async function addVisit(tema, now = new Date()) {
 // from/to em YYYY-MM-DD (to exclusivo)
 async function listVisits(from, to) {
   const p = db();
-  if (!p) return (await readJson(VISITS_FILE, [])).filter((v) => (!from || v.day >= from) && (!to || v.day < to));
+  if (!p) return memory().visits.filter((v) => (!from || v.day >= from) && (!to || v.day < to));
   const r = await p.query(
     `SELECT to_char(day, 'YYYY-MM-DD') AS day, tema, count FROM visits
       WHERE ($1::date IS NULL OR day >= $1) AND ($2::date IS NULL OR day < $2)`,
@@ -166,4 +162,4 @@ async function listVisits(from, to) {
   return r.rows;
 }
 
-module.exports = { STAGES, STATUSES, dayOf, saveLead, markWhatsapp, queryLeads, getLead, updateLead, addVisit, listVisits };
+module.exports = { STAGES, STATUSES, isDemo, resetMemory, dayOf, saveLead, markWhatsapp, queryLeads, getLead, updateLead, addVisit, listVisits };

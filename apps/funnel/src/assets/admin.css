@@ -19,6 +19,9 @@
 .icon-btn:hover { background: var(--surface-2); color: var(--ink); }
 .btn--sm { min-height: 36px; padding: 6px 14px; font-size: 14px; }
 
+/* faixa do modo demonstração */
+.demo-bar { margin: 12px var(--gutter) 0; padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.4; color: var(--ink); background: color-mix(in srgb, #ffd60a 18%, var(--surface)); border: 1px solid color-mix(in srgb, #ffd60a 45%, transparent); }
+
 /* período */
 .toolbar { padding: 16px var(--gutter) 0; }
 .range { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }

@@ -13,7 +13,13 @@ ADMIN_PASSWORD=troque-isto pnpm --filter funnel dev   # gera dist/ e sobe em htt
 pnpm --filter funnel test
 ```
 
-Sem `DATABASE_URL`, leads e visitas vão para `apps/funnel/.data/*.json`.
+## Modo demonstração (sem banco)
+
+Sem `DATABASE_URL` o sistema roda com **dados fake em memória** (`lib/demo.js`): ~260 leads e visitas
+dos últimos 60 dias, com nomes, WhatsApp, origens, etapas e anotações de exemplo. Os dados são os mesmos
+para o mesmo dia (semente fixa). Leads que entram pelo quiz e alterações feitas no painel ficam só na
+memória: somem quando o servidor reinicia (na Vercel, a cada instância nova). O painel mostra uma faixa
+avisando. Para dados reais, defina `DATABASE_URL`.
 
 ## Painel (`/admin`)
 
@@ -63,9 +69,11 @@ validação de WhatsApp por país, e a regra de qualificação (`shared/qualify.
 ## Deploy na Vercel
 
 1. Novo projeto apontando para este repositório, **Root Directory** = `apps/funnel`.
-2. Variáveis: `DATABASE_URL` (Postgres: Neon, Supabase, Vercel Postgres), `ADMIN_PASSWORD`
-   (senha forte) e, opcionais, `SESSION_SECRET` e `ADMIN_KEY`.
-3. Crie as tabelas: `psql "$DATABASE_URL" -f apps/funnel/db/schema.sql` (rode de novo ao atualizar: só cria o que falta).
+2. Variável `ADMIN_PASSWORD` (senha forte). Só isso já sobe em modo demonstração.
+3. Quando quiser dados reais: crie um Postgres (Neon, Supabase, Vercel Postgres), defina `DATABASE_URL`
+   e rode `psql "$DATABASE_URL" -f apps/funnel/db/schema.sql` (pode rodar de novo ao atualizar: só cria o que falta).
+
+Opcionais: `SESSION_SECRET`, `ADMIN_KEY`.
 
 `vercel.json` já define build (`node build.mjs`), saída (`dist`) e URLs limpas.
 
@@ -77,7 +85,7 @@ build.mjs            src/ + config → dist/
 src/                 templates HTML + assets (styles.css, js/app.js)
 shared/              qualify.js e phone.js (rodam no navegador e no servidor)
 api/                 funções serverless
-lib/                 regras do lead, store (Postgres ou JSON), utilidades HTTP
+lib/                 regras do lead, store (Postgres ou memória com dados fake), auth, métricas
 db/schema.sql        tabela leads
 dev-server.js        servidor local que imita a Vercel
 ```

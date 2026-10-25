@@ -281,6 +281,7 @@
   }
 
   api('/api/session').then((s) => {
+    $('#demoBar').hidden = !s.demo;
     if (s.authenticated) startApp();
     else showLogin(s.configured ? null : 'Painel sem senha: defina ADMIN_PASSWORD nas variáveis de ambiente e reinicie.');
   }).catch(() => showLogin('Não foi possível falar com o servidor.'));
