@@ -8,10 +8,13 @@ WhatsApp aberto e mensagem pronta (com o código do lead). Quem não se qualific
 ## Rodar local
 
 ```bash
-pnpm install
-ADMIN_PASSWORD=troque-isto pnpm --filter funnel dev   # gera dist/ e sobe em http://localhost:3100
-pnpm --filter funnel test
+cd apps/funnel
+npm run dev        # gera dist/ e sobe em http://localhost:3100 (painel: /admin, senha "demo")
+npm test
 ```
+
+Em modo demonstração não precisa instalar nada além do Node 20+. `ADMIN_PASSWORD=outra npm run dev`
+troca a senha; `PORT=4000` troca a porta. A senha padrão "demo" vale só no servidor local.
 
 ## Modo demonstração (sem banco)
 

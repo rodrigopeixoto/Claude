@@ -9,6 +9,10 @@ const root = __dirname;
 const dist = path.join(root, 'dist');
 const port = Number(process.env.PORT) || 3100;
 
+// Só no servidor local: sem ADMIN_PASSWORD o painel abre com a senha "demo" (nunca em produção)
+const defaultPassword = !process.env.ADMIN_PASSWORD;
+if (defaultPassword) process.env.ADMIN_PASSWORD = 'demo';
+
 const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon' };
 
 function serveStatic(pathname, res) {
@@ -38,4 +42,9 @@ http.createServer((req, res) => {
     return require(file)(req, res);
   }
   serveStatic(pathname, res);
-}).listen(port, () => console.log(`Funil em http://localhost:${port}`));
+}).listen(port, () => {
+  console.log(`Landing: http://localhost:${port}`);
+  console.log(`Painel:  http://localhost:${port}/admin`);
+  console.log(process.env.DATABASE_URL ? 'Banco: Postgres (DATABASE_URL)' : 'Banco: nenhum, modo demonstração com dados fake');
+  if (defaultPassword) console.log('Senha do painel: demo  (defina ADMIN_PASSWORD para trocar)');
+});
