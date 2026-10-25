@@ -32,6 +32,7 @@
       <nav class="tabs" role="tablist" aria-label="Seções">
         <button type="button" role="tab" class="tab" data-view="overview" aria-selected="true">Visão geral</button>
         <button type="button" role="tab" class="tab" data-view="leads" aria-selected="false">Leads</button>
+        <button type="button" role="tab" class="tab" data-view="pages" aria-selected="false">Páginas</button>
       </nav>
       <div class="top-actions">
         <button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>
@@ -113,6 +114,54 @@
       </div>
     </main>
 
+    <!-- páginas de links -->
+    <main class="view" id="view-pages" hidden>
+      <section id="pagesList">
+        <div class="filters">
+          <p class="view-hint">Páginas de links dos clientes. Visitas e cliques do período escolhido acima.</p>
+          <button type="button" class="btn btn--sm" id="newPageBtn">+ Nova página</button>
+        </div>
+        <form class="card new-page" id="newPageForm" hidden>
+          <h2>Nova página</h2>
+          <div class="new-page-grid">
+            <div class="field"><label for="npName">Nome do cliente</label><input id="npName" required placeholder="Dra. Ana Lima" /></div>
+            <div class="field"><label for="npSlug">Endereço</label><div class="slug-input"><span>/</span><input id="npSlug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="dra-ana-lima" /></div></div>
+            <div class="field"><label for="npFrom">Começar de</label><select id="npFrom"><option value="">Página em branco</option></select></div>
+          </div>
+          <div id="npError" class="notice" role="alert" hidden></div>
+          <div class="drawer-save">
+            <button type="button" class="btn btn--ghost btn--sm" id="npCancel">Cancelar</button>
+            <button type="submit" class="btn btn--sm">Criar e editar</button>
+          </div>
+        </form>
+        <div class="table-wrap">
+          <table class="table" id="pagesTable">
+            <thead><tr><th>Página</th><th>Endereço</th><th>Visitas</th><th>Cliques</th><th>Taxa de clique</th><th>Atualizada</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <p class="empty" id="pagesEmpty" hidden>Nenhuma página ainda. Crie a primeira.</p>
+        </div>
+      </section>
+
+      <section id="pageEditor" hidden>
+        <div class="pe-bar">
+          <button type="button" class="btn btn--ghost btn--sm" id="peBack">← Páginas</button>
+          <div class="pe-title"><strong id="peName"></strong><a id="peOpen" target="_blank" rel="noopener"></a></div>
+          <span class="saved" id="peSaved" aria-live="polite"></span>
+          <button type="button" class="btn btn--ghost btn--sm pe-del" id="peDelete">Excluir</button>
+          <button type="button" class="btn btn--sm" id="peSave">Salvar</button>
+        </div>
+        <div class="pe-grid">
+          <form class="pe-form" id="peForm" novalidate></form>
+          <aside class="pe-side">
+            <div class="pe-phone"><iframe id="pePreview" title="Prévia da página" sandbox="allow-scripts allow-popups"></iframe></div>
+            <div id="pePreviewError" class="notice" role="alert" hidden></div>
+            <article class="card" id="peStats"></article>
+          </aside>
+        </div>
+      </section>
+    </main>
+
     <!-- detalhe do lead -->
     <div class="drawer-bg" id="drawerBg" hidden></div>
     <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden>
@@ -146,6 +195,8 @@
   </div>
 
   <script type="application/json" id="quizData">{{{quizJson}}}</script>
+  <script src="/js/pageSchema.js"></script>
   <script src="/js/admin.js"></script>
+  <script src="/js/admin-pages.js"></script>
 </body>
 </html>

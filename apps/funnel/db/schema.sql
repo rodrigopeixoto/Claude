@@ -33,3 +33,20 @@ CREATE TABLE IF NOT EXISTS visits (
   count  integer NOT NULL DEFAULT 0,
   PRIMARY KEY (day, tema)
 );
+
+-- Páginas de links dos clientes (o JSON completo da página)
+CREATE TABLE IF NOT EXISTS link_pages (
+  slug        text PRIMARY KEY,
+  data        jsonb NOT NULL,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  updated_at  timestamptz NOT NULL DEFAULT now()
+);
+
+-- Visitas ("view") e cliques (chave do link) por dia
+CREATE TABLE IF NOT EXISTS page_events (
+  day    date NOT NULL,
+  slug   text NOT NULL,
+  key    text NOT NULL,
+  count  integer NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, slug, key)
+);

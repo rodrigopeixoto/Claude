@@ -4,7 +4,7 @@
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 // Rotas da landing e do painel: um cliente não pode ter esse endereço
-export const RESERVED = ['index', 'admin', 'downsell', 'material', 'api', 'js', 'p', 'styles', 'linkpage'];
+export const RESERVED = ['index', 'admin', 'downsell', 'material', 'api', 'js', 'img', 'p', 'styles', 'linkpage'];
 
 // Ícones de traço (24x24), desenhados com currentColor
 const ICON_PATHS = {
@@ -45,6 +45,7 @@ const waUrl = (number, message) => `https://wa.me/${String(number).replace(/\D/g
 // Só http(s), mailto, tel, wa.me e caminhos locais: nada de javascript: num link vindo do JSON
 function safeUrl(u, where) {
   const s = String(u || '').trim();
+  if (!s) throw new Error(`${where}: falta o link (ou a mensagem de WhatsApp)`);
   if (/^(https?:\/\/|mailto:|tel:|\/|#)/i.test(s)) return s;
   throw new Error(`${where}: link inválido "${s}" (use https://, mailto:, tel: ou /caminho)`);
 }
@@ -61,7 +62,7 @@ const initials = (name) => name.replace(/^(dra?|prof)\.?\s+/i, '').split(/\s+/).
 // ---------- blocos ----------
 const BLOCKS = {
   // Card grande com imagem/gradiente, texto e botão: a oferta principal
-  highlight(b, page, where) {
+  highlight(b, page, where, i) {
     const href = b.button ? itemHref(b.button, page, `${where}.button`) : null;
     const media = b.image ? `<img src="${esc(safeUrl(b.image, `${where}.image`))}" alt="" loading="lazy" />` : '';
     return `
@@ -71,20 +72,20 @@ const BLOCKS = {
           ${b.tag ? `<span class="tag">${esc(b.tag)}</span>` : ''}
           <h2>${esc(b.title)}</h2>
           ${b.text ? `<p>${esc(b.text)}</p>` : ''}
-          ${href ? `<a class="btn" href="${esc(href)}"${target(href)}>${esc(b.button.label)} ${icon('arrow')}</a>` : ''}
+          ${href ? `<a class="btn" data-k="b${i}" href="${esc(href)}"${target(href)}>${esc(b.button.label)} ${icon('arrow')}</a>` : ''}
         </div>
       </section>`;
   },
 
   // Lista de botões com ícone, título e subtítulo
-  links(b, page, where) {
+  links(b, page, where, bi) {
     return `
       <section class="blk">
         ${b.title ? `<h3 class="blk-title">${esc(b.title)}</h3>` : ''}
         <div class="links">
           ${b.items.map((it, i) => {
             const href = itemHref(it, page, `${where}.items[${i}]`);
-            return `<a class="lk" href="${esc(href)}"${target(href)}>
+            return `<a class="lk" data-k="b${bi}-${i}" href="${esc(href)}"${target(href)}>
               <span class="lk-ic">${icon(it.icon || 'link')}</span>
               <span class="lk-txt"><strong>${esc(it.label)}</strong>${it.sub ? `<small>${esc(it.sub)}</small>` : ''}</span>
               ${icon('arrow', 'ic lk-go')}
@@ -95,14 +96,14 @@ const BLOCKS = {
   },
 
   // Vitrine em grade (produtos, serviços, projetos)
-  grid(b, page, where) {
+  grid(b, page, where, bi) {
     return `
       <section class="blk">
         ${b.title ? `<h3 class="blk-title">${esc(b.title)}</h3>` : ''}
         <div class="grid">
           ${b.items.map((it, i) => {
             const href = it.url || it.whatsapp || it.whatsappMessage ? itemHref(it, page, `${where}.items[${i}]`) : null;
-            const tagOpen = href ? `<a class="gi" href="${esc(href)}"${target(href)}>` : '<div class="gi">';
+            const tagOpen = href ? `<a class="gi" data-k="b${bi}-${i}" href="${esc(href)}"${target(href)}>` : '<div class="gi">';
             const thumb = it.image
               ? `<img src="${esc(safeUrl(it.image, `${where}.items[${i}].image`))}" alt="" loading="lazy" />`
               : `<span class="gi-ph" style="--h:${(i * 47) % 360}">${icon(it.icon || 'star')}</span>`;
@@ -113,13 +114,13 @@ const BLOCKS = {
   },
 
   // Vídeo do YouTube (domínio sem cookies), carrega só ao tocar
-  video(b, page, where) {
+  video(b, page, where, bi) {
     const id = String(b.youtube || '');
     if (!/^[\w-]{11}$/.test(id)) throw new Error(`${where}: "youtube" deve ser o id de 11 caracteres do vídeo`);
     return `
       <section class="blk">
         ${b.title ? `<h3 class="blk-title">${esc(b.title)}</h3>` : ''}
-        <button type="button" class="vid" data-yt="${id}" aria-label="Assistir: ${esc(b.title || 'vídeo')}">
+        <button type="button" class="vid" data-k="b${bi}" data-yt="${id}" aria-label="Assistir: ${esc(b.title || 'vídeo')}">
           <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" />
           ${icon('play', 'ic vid-play')}
         </button>
@@ -141,12 +142,12 @@ const BLOCKS = {
       </section>`;
   },
 
-  location(b, page, where) {
+  location(b, page, where, bi) {
     const maps = b.mapsUrl ? safeUrl(b.mapsUrl, `${where}.mapsUrl`) : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.address)}`;
     return `
       <section class="blk">
         ${b.title ? `<h3 class="blk-title">${esc(b.title)}</h3>` : ''}
-        <a class="loc" href="${esc(maps)}" target="_blank" rel="noopener">
+        <a class="loc" data-k="b${bi}" href="${esc(maps)}" target="_blank" rel="noopener">
           <span class="lk-ic">${icon('map')}</span>
           <span class="lk-txt"><strong>${esc(b.address)}</strong>${b.hours ? `<small>${icon('clock', 'ic ic-sm')} ${esc(b.hours)}</small>` : ''}</span>
           ${icon('arrow', 'ic lk-go')}
@@ -190,7 +191,8 @@ function validate(page, file) {
   need(!accent || /^#[0-9a-f]{6}$/i.test(accent), '"theme.accent" deve ser uma cor #rrggbb');
 }
 
-export function renderLinkPage(page, file) {
+// opts.track: conta visita e cliques (desligado na prévia do painel e na vitrine da landing)
+export function renderLinkPage(page, file, opts = {}) {
   validate(page, file);
   const theme = { style: 'claro', accent: '#0066ff', font: 'sans', ...page.theme };
   const font = FONTS[theme.font] || FONTS.sans;
@@ -203,12 +205,12 @@ export function renderLinkPage(page, file) {
     : `<div class="avatar avatar--txt" aria-hidden="true">${esc(initials(page.name))}</div>`;
 
   const social = Object.entries(page.social || {}).filter(([k, v]) => SOCIAL[k] && v)
-    .map(([k, v]) => `<a href="${esc(SOCIAL[k](v))}"${k === 'email' ? '' : ' target="_blank" rel="noopener"'} aria-label="${k}">${icon(k)}</a>`).join('');
+    .map(([k, v]) => `<a data-k="s-${k}" href="${esc(SOCIAL[k](v))}"${k === 'email' ? '' : ' target="_blank" rel="noopener"'} aria-label="${k}">${icon(k)}</a>`).join('');
 
-  const blocks = page.blocks.map((b, i) => BLOCKS[b.type](b, page, `${file}: blocks[${i}]`)).join('\n');
+  const blocks = page.blocks.map((b, i) => BLOCKS[b.type](b, page, `${file}: blocks[${i}]`, i)).join('\n');
 
   const cta = page.cta
-    ? `<a class="fab" href="${esc(waUrl(page.cta.whatsapp || page.whatsapp, page.cta.message))}" target="_blank" rel="noopener">${icon('whatsapp')} ${esc(page.cta.label || 'Falar no WhatsApp')}</a>`
+    ? `<a class="fab" data-k="cta" href="${esc(waUrl(page.cta.whatsapp || page.whatsapp, page.cta.message))}" target="_blank" rel="noopener">${icon('whatsapp')} ${esc(page.cta.label || 'Falar no WhatsApp')}</a>`
     : '';
 
   const title = `${page.name}${page.role ? ` | ${page.role}` : ''}`;
@@ -244,6 +246,20 @@ ${blocks}
     <footer class="lp-foot">${esc(page.footer || `© ${new Date().getFullYear()} ${page.name}`)}</footer>
   </main>
   ${cta}
+  ${opts.track ? `<script>
+    // visita e cliques por link (sendBeacon não segura a saída da página)
+    (function () {
+      var slug = ${JSON.stringify(page.slug)};
+      function hit(k) {
+        var body = JSON.stringify({ slug: slug, key: k });
+        if (!(navigator.sendBeacon && navigator.sendBeacon('/api/click', new Blob([body], { type: 'application/json' })))) {
+          fetch('/api/click', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+        }
+      }
+      try { if (!sessionStorage.getItem('v_' + slug)) { sessionStorage.setItem('v_' + slug, '1'); hit('view'); } } catch (e) { hit('view'); }
+      document.addEventListener('click', function (e) { var a = e.target.closest('[data-k]'); if (a) hit(a.dataset.k); });
+    })();
+  </script>` : ''}
   <script>
     // vídeo do YouTube só carrega quando a pessoa toca (página leve e sem cookies antes disso)
     document.querySelectorAll('.vid').forEach(function (b) {

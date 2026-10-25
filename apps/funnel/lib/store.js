@@ -2,8 +2,11 @@
 // memória com leads e visitas fake (lib/demo.js). Leads novos entram na memória e somem quando a
 // instância reinicia. Na Vercel cada instância tem a sua memória.
 
-const { generateDemo } = require('./demo');
+const fs = require('node:fs');
+const path = require('node:path');
+const { generateDemo, generatePageEvents } = require('./demo');
 const { loadConfig } = require('./config');
+const { clickTargets } = require('../shared/pageSchema');
 
 const STAGES = ['novo', 'contatado', 'negociando', 'fechado', 'perdido'];
 const STATUSES = ['qualified', 'downsell', 'material'];
@@ -20,9 +23,27 @@ function db() {
   return pool;
 }
 
+// Páginas de exemplo: os JSON de pages/ (no Postgres são copiadas uma vez por seedOnce)
+function examplePages() {
+  const dir = path.join(__dirname, '..', 'pages');
+  let files = [];
+  try { files = fs.readdirSync(dir).filter((f) => f.endsWith('.json')); } catch {}
+  return files.map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));
+}
+
 let mem;
 function memory() {
-  if (!mem) mem = generateDemo(loadConfig());
+  if (!mem) {
+    const pages = examplePages();
+    const now = new Date().toISOString();
+    mem = {
+      ...generateDemo(loadConfig()),
+      pages: pages.map((data) => ({ slug: data.slug, data, createdAt: now, updatedAt: now })),
+      events: generatePageEvents(pages, clickTargets),
+    };
+  }
+  mem.pages ||= [];
+  mem.events ||= [];
   return mem;
 }
 // Para testes: recomeça a memória (com ou sem dados fake)
@@ -162,4 +183,114 @@ async function listVisits(from, to) {
   return r.rows;
 }
 
-module.exports = { STAGES, STATUSES, isDemo, resetMemory, dayOf, saveLead, markWhatsapp, queryLeads, getLead, updateLead, addVisit, listVisits };
+// ---------- páginas de links ----------
+
+async function listPages() {
+  const p = db();
+  if (p) await seedOnce();
+  if (!p) return memory().pages.map((r) => ({ ...r })).sort((a, b) => a.data.name.localeCompare(b.data.name));
+  const r = await p.query(`SELECT slug, data, created_at AS "createdAt", updated_at AS "updatedAt" FROM link_pages ORDER BY data->>'name'`);
+  return r.rows;
+}
+
+async function getPage(slug) {
+  const p = db();
+  if (p) await seedOnce();
+  if (!p) {
+    const row = memory().pages.find((r) => r.slug === slug);
+    return row ? { ...row } : null;
+  }
+  const r = await p.query(`SELECT slug, data, created_at AS "createdAt", updated_at AS "updatedAt" FROM link_pages WHERE slug = $1`, [slug]);
+  return r.rows[0] || null;
+}
+
+// Cria ou substitui. create: true recusa se já existir (devolve false)
+async function savePage(data, { create = false } = {}, now = new Date()) {
+  const p = db();
+  const iso = now.toISOString();
+  if (!p) {
+    const pages = memory().pages;
+    const row = pages.find((r) => r.slug === data.slug);
+    if (row && create) return false;
+    if (row) Object.assign(row, { data, updatedAt: iso });
+    else pages.push({ slug: data.slug, data, createdAt: iso, updatedAt: iso });
+    return true;
+  }
+  if (create) {
+    const r = await p.query('INSERT INTO link_pages (slug, data, created_at, updated_at) VALUES ($1, $2, $3, $3) ON CONFLICT (slug) DO NOTHING', [data.slug, data, now]);
+    return r.rowCount > 0;
+  }
+  await p.query(
+    'INSERT INTO link_pages (slug, data, created_at, updated_at) VALUES ($1, $2, $3, $3) ON CONFLICT (slug) DO UPDATE SET data = $2, updated_at = $3',
+    [data.slug, data, now],
+  );
+  return true;
+}
+
+async function deletePage(slug) {
+  const p = db();
+  if (!p) {
+    const m = memory();
+    const before = m.pages.length;
+    m.pages = m.pages.filter((r) => r.slug !== slug);
+    m.events = m.events.filter((e) => e.slug !== slug);
+    return m.pages.length < before;
+  }
+  await p.query('DELETE FROM page_events WHERE slug = $1', [slug]);
+  const r = await p.query('DELETE FROM link_pages WHERE slug = $1', [slug]);
+  return r.rowCount > 0;
+}
+
+// No Postgres vazio, copia os exemplos de pages/ uma vez por instância (para não começar em branco)
+let seeding;
+function seedOnce() {
+  seeding ||= (async () => {
+    const p = db();
+    const r = await p.query('SELECT count(*)::int AS n FROM link_pages');
+    if (!r.rows[0].n) for (const data of examplePages()) await savePage(data, { create: true });
+  })().catch((err) => { seeding = null; throw err; });
+  return seeding;
+}
+
+async function addPageEvent(slug, key, now = new Date()) {
+  const day = dayOf(now);
+  const p = db();
+  if (!p) {
+    const ev = memory().events;
+    const row = ev.find((e) => e.day === day && e.slug === slug && e.key === key);
+    if (row) row.count++;
+    else ev.push({ day, slug, key, count: 1 });
+    return;
+  }
+  await p.query(
+    'INSERT INTO page_events (day, slug, key, count) VALUES ($1, $2, $3, 1) ON CONFLICT (day, slug, key) DO UPDATE SET count = page_events.count + 1',
+    [day, slug, key],
+  );
+}
+
+// Soma por página e chave no período: [{ slug, key, count }]. from/to em YYYY-MM-DD (to exclusivo)
+async function pageEventTotals(from, to, slug) {
+  const p = db();
+  if (!p) {
+    const sums = new Map();
+    for (const e of memory().events) {
+      if ((from && e.day < from) || (to && e.day >= to) || (slug && e.slug !== slug)) continue;
+      const k = `${e.slug}|${e.key}`;
+      sums.set(k, (sums.get(k) || 0) + e.count);
+    }
+    return [...sums].map(([k, count]) => { const [s, key] = k.split('|'); return { slug: s, key, count }; });
+  }
+  const r = await p.query(
+    `SELECT slug, key, sum(count)::int AS count FROM page_events
+      WHERE ($1::date IS NULL OR day >= $1) AND ($2::date IS NULL OR day < $2) AND ($3::text IS NULL OR slug = $3)
+      GROUP BY slug, key`,
+    [from || null, to || null, slug || null],
+  );
+  return r.rows;
+}
+
+module.exports = {
+  STAGES, STATUSES, isDemo, resetMemory, dayOf,
+  saveLead, markWhatsapp, queryLeads, getLead, updateLead, addVisit, listVisits,
+  listPages, getPage, savePage, deletePage, addPageEvent, pageEventTotals,
+};

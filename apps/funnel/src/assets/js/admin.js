@@ -89,13 +89,16 @@
     $$('.tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.view === view)));
     $('#view-overview').hidden = view !== 'overview';
     $('#view-leads').hidden = view !== 'leads';
-    history.replaceState(null, '', view === 'leads' ? '#leads' : '#');
+    $('#view-pages').hidden = view !== 'pages';
+    // #pages/<slug> (editor aberto) continua no endereço ao recarregar
+    if (!(view !== 'overview' && location.hash.startsWith(`#${view}`))) history.replaceState(null, '', view === 'overview' ? '#' : `#${view}`);
     reload();
   }
   $$('.tab').forEach((t) => t.addEventListener('click', () => setView(t.dataset.view)));
 
   function reload() {
     if (state.view === 'overview') loadOverview();
+    else if (state.view === 'pages') window.FAdminPages?.reload();
     else { state.offset = 0; loadLeads(); }
   }
 
@@ -272,12 +275,16 @@
     }
   });
 
+  // a aba Páginas (admin-pages.js) usa as mesmas utilidades
+  window.FAdmin = { $, $$, esc, api, nf, pct, dt, range };
+
   // ---------- início ----------
   function startApp() {
     $('#login').hidden = true;
     $('#app').hidden = false;
     if (!$('#from').value) setRange(30);
-    setView(location.hash === '#leads' ? 'leads' : 'overview');
+    const h = location.hash.slice(1).split('/')[0];
+    setView(['leads', 'pages'].includes(h) ? h : 'overview');
   }
 
   api('/api/session').then((s) => {

@@ -7,9 +7,26 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
-  ]
+  ],
+  "rewrites": [
+    {
+      "source": "/:slug([a-z0-9]+(?:-[a-z0-9]+)*)",
+      "destination": "/api/page?slug=:slug"
+    }
+  ],
+  "functions": {
+    "api/*.js": {
+      "includeFiles": "{pages/**,linkpage.mjs}"
+    }
+  }
 }

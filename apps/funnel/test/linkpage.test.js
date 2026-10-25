@@ -45,3 +45,21 @@ test('linkpage: texto do cliente é escapado e WhatsApp vira wa.me', async () =>
   assert.match(html, /https:\/\/wa\.me\/5511999999999\?text=Oi%20%26%20tchau/);
   assert.match(html, /https:\/\/wa\.me\/5511999999999\?text=Quero%20agendar/);
 });
+
+test('pageSchema: página nova e blocos novos já são válidos', async () => {
+  const { renderLinkPage } = await load();
+  const S = require('../shared/pageSchema');
+  const page = S.newPage('nova', 'Nova');
+  for (const type of Object.keys(S.BLOCKS)) if (type !== 'video') page.blocks.push(S.newBlock(type));
+  assert.match(renderLinkPage(S.clean(page), 'x'), /<h1>Nova/);
+  assert.throws(() => renderLinkPage({ ...base, blocks: [{ type: 'links', items: [{ label: 'x' }] }] }, 'x'), /falta o link/);
+});
+
+test('pageSchema: clickTargets bate com os data-k do HTML', async () => {
+  const { renderLinkPage } = await load();
+  const S = require('../shared/pageSchema');
+  const page = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'pages', 'dra-ana-lima.json'), 'utf8'));
+  const html = renderLinkPage(page, 'x');
+  const keys = [...new Set([...html.matchAll(/data-k="([^"]+)"/g)].map((m) => m[1]))].sort();
+  assert.deepEqual(S.clickTargets(page).map((t) => t.key).sort(), keys);
+});

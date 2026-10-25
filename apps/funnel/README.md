@@ -38,13 +38,28 @@ Os números da visão geral consideram até 5.000 leads por período.
 
 ## Páginas de links dos clientes (o produto)
 
-Cada cliente é um arquivo `pages/<slug>.json`. O build gera a página em `/<slug>`
-(ex.: `pages/dra-ana-lima.json` → http://localhost:3100/dra-ana-lima). Exemplos prontos:
-`dra-ana-lima` (nutricionista, claro), `rodrigo-alves-advocacia` (advogado, escuro com serifa),
-`studio-marina-costa` (arquiteta, vitrine de projetos). Eles também aparecem ao vivo nos celulares
-do topo da landing (`hero.showcase` no config).
+Cada cliente tem uma página em `/<endereço>` (ex.: http://localhost:3100/dra-ana-lima), criada e editada
+no painel, aba **Páginas**. Exemplos prontos: `dra-ana-lima` (nutricionista, claro),
+`rodrigo-alves-advocacia` (advogado, escuro com serifa), `studio-marina-costa` (arquiteta, vitrine de
+projetos). Eles também aparecem ao vivo nos celulares do topo da landing (`hero.showcase` no config).
 
-**Novo cliente:** copie um exemplo, troque `slug` e o conteúdo, rode `npm run dev`.
+**Pelo painel (aba Páginas):**
+- lista com visitas, cliques e taxa de clique de cada página no período;
+- **Nova página**: nome, endereço (sugerido a partir do nome) e começar em branco ou como cópia de outra;
+- editor com cabeçalho, visual (tema, cor, fonte), contato e redes, e blocos: adicionar, mover ↑↓,
+  remover, editar itens; **prévia ao vivo** do celular ao lado;
+- erros (link inválido, vídeo sem id...) aparecem na prévia e impedem salvar;
+- cliques por link (botão fixo, redes, cada item) no período; excluir página.
+
+As páginas são servidas na hora (`api/page`). Cada visita (uma por sessão) e cada clique contam;
+a prévia do painel e a vitrine da landing (`?embed=1`) não contam. Os cliques são guardados pela
+posição do link: mover blocos ou itens mistura o histórico daquele link.
+
+Os arquivos `pages/*.json` são os exemplos iniciais: no modo demonstração carregam na memória (com
+visitas e cliques fake); no Postgres são copiados uma vez para a tabela `link_pages` quando ela está vazia.
+O formato abaixo vale para os dois (o editor do painel grava o mesmo JSON).
+
+**Exemplo novo por arquivo:** copie um JSON de `pages/`, troque `slug` e o conteúdo, rode `npm run dev`.
 O build avisa o que estiver errado (slug inválido ou repetido, bloco inexistente, link inválido, cor fora do formato).
 
 Campos do topo:
@@ -104,6 +119,10 @@ Variáveis de ambiente opcionais: `FUNNEL_WHATSAPP`, `FUNNEL_BRAND` sobrescrevem
 | `GET/PATCH /api/lead?id=` 🔒 | detalhe / atualiza `{ stage, notes }` |
 | `GET /api/stats` 🔒 | números da visão geral (`from`, `to`; padrão 30 dias) |
 | `GET /api/export` 🔒 | CSV com os mesmos filtros da lista |
+| `GET /<endereço>` | página de links (`?embed=1` não conta visita) |
+| `POST /api/click` | `{ slug, key }`: visita (`view`) ou clique |
+| `GET/POST/PUT/DELETE /api/pages` 🔒 | listar (com visitas/cliques) / criar `{ slug, name, from? }` / salvar `?slug=` / excluir `?slug=` |
+| `POST /api/preview` 🔒 | HTML da página em edição, sem salvar |
 
 🔒 = sessão do painel ou `Authorization: Bearer $ADMIN_KEY` (para integrações).
 

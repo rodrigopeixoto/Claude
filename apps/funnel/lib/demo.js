@@ -122,4 +122,28 @@ function generateDemo(cfg, { now = new Date(), days = 60, seed = 20261025 } = {}
   return { leads, visits };
 }
 
-module.exports = { generateDemo };
+// Visitas e cliques fake das páginas de links: [{ day, slug, key, count }]
+function generatePageEvents(pages, clickTargets, { now = new Date(), days = 60, seed = 777 } = {}) {
+  const rand = rng(seed);
+  const today = new Date(`${now.toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' })}T12:00:00-03:00`);
+  const events = [];
+  pages.forEach((page, pi) => {
+    const targets = clickTargets(page);
+    const scale = 25 + pi * 12;
+    for (let d = days - 1; d >= 0; d--) {
+      const day = new Date(today.getTime() - d * DAY_MS).toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
+      const views = Math.round(scale * (0.6 + rand() * 0.8) * (0.7 + ((days - d) / days) * 0.6));
+      if (!views) continue;
+      events.push({ day, slug: page.slug, key: 'view', count: views });
+      // o botão fixo e os primeiros links levam a maior parte dos cliques
+      targets.forEach((t, ti) => {
+        const weight = t.key === 'cta' ? 0.22 : 0.12 / (1 + ti * 0.5);
+        const c = Math.round(views * weight * (0.5 + rand()));
+        if (c) events.push({ day, slug: page.slug, key: t.key, count: c });
+      });
+    }
+  });
+  return events;
+}
+
+module.exports = { generateDemo, generatePageEvents };

@@ -142,3 +142,87 @@
   .facts div { grid-template-columns: 1fr; gap: 2px; }
   #leadsTable th:nth-child(5), #leadsTable td:nth-child(5), #leadsTable th:nth-child(6), #leadsTable td:nth-child(6) { display: none; }
 }
+
+/* ---------- aba Páginas ---------- */
+.view-hint { flex: 1; align-self: center; color: var(--ink-3); font-size: 13px; }
+.pg-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; }
+#pagesTable td small { padding-left: 18px; }
+#pagesTable tbody tr { cursor: pointer; }
+#pagesTable tbody tr:hover, #pagesTable tbody tr:focus-visible { background: var(--surface-2); outline: none; }
+.pg-link { color: var(--link-ink); text-decoration: none; }
+.pg-link:hover { text-decoration: underline; }
+
+.new-page { margin-bottom: 12px; }
+.new-page-grid { display: grid; grid-template-columns: 1.2fr 1.2fr 1fr; gap: 0 12px; }
+.new-page .field { margin-top: 0; }
+.slug-input { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-2); padding-left: 12px; }
+.slug-input span { color: var(--ink-3); }
+.slug-input input { border: 0 !important; background: transparent !important; padding-left: 2px !important; }
+.admin .field input, .admin .field select { min-height: 42px; font-size: 15px; padding: 9px 12px; }
+.admin .field input:not([type='checkbox']):not([type='color']) { width: 100%; background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: 15px; }
+
+/* editor */
+.pe-bar {
+  position: sticky; top: 56px; z-index: 5;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin: -16px calc(-1 * var(--gutter)) 16px; padding: 10px var(--gutter);
+  background: var(--top-bg); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.pe-title { flex: 1; display: grid; min-width: 0; }
+.pe-title strong { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pe-title a { font-size: 13px; color: var(--link-ink); text-decoration: none; }
+.pe-del { color: var(--err); }
+.pe-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 20px; align-items: start; }
+.pe-side { position: sticky; top: 124px; display: grid; gap: 12px; }
+
+.pe-sec { margin-bottom: 12px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+.pe-sec > summary { list-style: none; cursor: pointer; padding: 16px 20px; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; }
+.pe-sec > summary::-webkit-details-marker { display: none; }
+.pe-sec > summary::after { content: '▾'; color: var(--ink-3); transition: transform 0.2s; }
+.pe-sec:not([open]) > summary::after { transform: rotate(-90deg); }
+.pe-sec-body { padding: 0 20px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.pe-sec-body > .field:has(textarea), .pe-sec-body > .check, .pe-sec-body > .pe-block, .pe-sec-body > .pe-add { grid-column: 1 / -1; }
+.pe-sec-body .field { margin-top: 12px; }
+.check { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 14px; color: var(--ink-2); }
+.check input { width: 18px; height: 18px; accent-color: var(--link); }
+.color-row { display: flex; align-items: center; gap: 10px; }
+.color-row input[type='color'] { width: 48px; height: 40px; padding: 2px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); cursor: pointer; }
+.color-row code { font-size: 13px; color: var(--ink-2); }
+
+.pe-block { margin-top: 14px; padding: 14px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--line); }
+.pe-block-head { display: flex; align-items: center; gap: 8px; }
+.pe-block-head strong { font-size: 14px; }
+.pe-block-head small { flex: 1; min-width: 0; color: var(--ink-3); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pe-tools { display: inline-flex; gap: 2px; margin-left: auto; }
+.pe-tools .icon-btn { width: 30px; height: 30px; font-size: 14px; }
+.pe-tools .icon-btn:disabled { opacity: 0.3; cursor: default; }
+.pe-item-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.pe-item-grid > .field:has(textarea) { grid-column: 1 / -1; }
+.pe-item-grid .field { margin-top: 10px; }
+.pe-block .field input, .pe-block .field select, .pe-block .field textarea { background: var(--surface) !important; }
+.pe-items { display: grid; gap: 8px; margin-top: 12px; }
+.pe-item { padding: 10px 12px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.pe-item .field input, .pe-item .field select, .pe-item .field textarea { background: var(--surface-2) !important; }
+.pe-item-head { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.pe-item-head > span:first-child { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pe-items > .btn { justify-self: start; }
+.pe-add { display: flex; gap: 8px; margin-top: 16px; }
+.pe-add select { flex: 1; font: inherit; font-size: 14px; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 7px 10px; }
+
+/* prévia: o iframe tem 390×845 (um celular) reduzido para a coluna */
+.pe-phone { width: 340px; height: calc(340px * 845 / 390); margin: 0 auto; padding: 10px; border-radius: 44px; background: linear-gradient(145deg, var(--frame-1), var(--frame-2)); overflow: hidden; }
+.pe-phone iframe { width: 390px; height: 845px; border: 0; border-radius: 40px; background: #fff; transform: scale(calc(320 / 390)); transform-origin: 0 0; }
+.pe-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+.pe-kpis div { padding: 10px; border-radius: 12px; background: var(--surface-2); text-align: center; }
+.pe-kpis strong { display: block; font-size: 20px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.pe-kpis small { color: var(--ink-3); font-size: 12px; }
+
+@media (max-width: 1080px) {
+  .pe-grid { grid-template-columns: 1fr; }
+  .pe-side { position: static; }
+}
+@media (max-width: 640px) {
+  .new-page-grid, .pe-sec-body, .pe-item-grid { grid-template-columns: 1fr; }
+  .pe-phone { transform: scale(0.9); transform-origin: top center; }
+}

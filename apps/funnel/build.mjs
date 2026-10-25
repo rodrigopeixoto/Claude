@@ -66,7 +66,7 @@ function listHtml(items, icon) {
   return items.map((t) => `<li><span class="mark mark--${icon}" aria-hidden="true"></span>${esc(t)}</li>`).join('');
 }
 
-// Páginas de links dos clientes: pages/*.json → dist/<slug>.html
+// Páginas de exemplo (pages/*.json): validadas aqui, servidas por api/page
 async function loadLinkPages() {
   const dir = path.join(root, 'pages');
   const files = (await readdir(dir).catch(() => [])).filter((f) => f.endsWith('.json'));
@@ -92,7 +92,7 @@ function showcaseHtml(slugs, pages) {
   const order = found.length === 3 ? [found[1], found[0], found[2]] : found;
   return order.map((p, i) => {
     const side = found.length === 3 && i !== 1 ? ' device--side' : '';
-    return `<div class="device${side}"><div class="device-screen"><iframe src="/${esc(p.slug)}" title="Página de exemplo: ${esc(p.name)}" tabindex="-1" aria-hidden="true"></iframe></div></div>`;
+    return `<div class="device${side}"><div class="device-screen"><iframe src="/${esc(p.slug)}?embed=1" title="Página de exemplo: ${esc(p.name)}" tabindex="-1" aria-hidden="true"></iframe></div></div>`;
   }).join('');
 }
 
@@ -128,7 +128,7 @@ async function build() {
   await rm(out, { recursive: true, force: true });
   await mkdir(path.join(out, 'js'), { recursive: true });
   await cp(path.join(root, 'src', 'assets'), out, { recursive: true });
-  for (const f of ['qualify.js', 'phone.js']) await cp(path.join(root, 'shared', f), path.join(out, 'js', f));
+  for (const f of ['qualify.js', 'phone.js', 'pageSchema.js']) await cp(path.join(root, 'shared', f), path.join(out, 'js', f));
 
   const write = async (file, tpl, extra = {}) => {
     const html = render(await readFile(path.join(root, 'src', tpl), 'utf8'), { ...ctx, ...extra });
@@ -142,8 +142,9 @@ async function build() {
       page: { ...page, priceHtml: page.price ? `<p class="page-price">${esc(page.price)}</p>` : '' },
     });
   }
-  for (const p of linkPages) await writeFile(path.join(out, `${p.slug}.html`), renderLinkPage(p, p.file));
-  console.log(`dist/ gerado (${linkPages.length} página(s) de links: ${linkPages.map((p) => '/' + p.slug).join(', ') || 'nenhuma'})`);
+  // As páginas de links são servidas na hora (api/page) a partir do store; aqui só validamos os exemplos
+  for (const p of linkPages) renderLinkPage(p, p.file);
+  console.log(`dist/ gerado (${linkPages.length} página(s) de exemplo: ${linkPages.map((p) => '/' + p.slug).join(', ') || 'nenhuma'})`);
 }
 
 build().catch((err) => { console.error(err); process.exit(1); });

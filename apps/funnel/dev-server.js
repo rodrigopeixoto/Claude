@@ -1,4 +1,4 @@
-// Servidor local que imita a Vercel: arquivos de dist/ (com URLs limpas) e funções de api/.
+// Servidor local que imita a Vercel: arquivos de dist/ (com URLs limpas), funções de api/ e /<slug> das páginas de links.
 // Uso: pnpm dev (gera dist/ antes). Porta: PORT ou 3100.
 
 const http = require('node:http');
@@ -23,11 +23,11 @@ function serveStatic(pathname, res) {
     if (!file.startsWith(dist)) break; // nada de ../ para fora de dist
     if (fs.existsSync(file) && fs.statSync(file).isFile()) {
       res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
-      return fs.createReadStream(file).pipe(res);
+      fs.createReadStream(file).pipe(res);
+      return true;
     }
   }
-  res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-  res.end('Não encontrado');
+  return false;
 }
 
 http.createServer((req, res) => {
@@ -41,7 +41,17 @@ http.createServer((req, res) => {
     }
     return require(file)(req, res);
   }
-  serveStatic(pathname, res);
+  if (serveStatic(pathname, res)) return;
+  // /<slug> sem arquivo estático: página de links (igual ao rewrite da Vercel)
+  const page = pathname.match(/^\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
+  if (page) {
+    const q = new URL(req.url, 'http://localhost').searchParams;
+    q.set('slug', page[1]);
+    req.url = `/api/page?${q}`;
+    return require(path.join(root, 'api', 'page.js'))(req, res);
+  }
+  res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+  res.end('Não encontrado');
 }).listen(port, () => {
   console.log(`Landing: http://localhost:${port}`);
   console.log(`Painel:  http://localhost:${port}/admin`);
