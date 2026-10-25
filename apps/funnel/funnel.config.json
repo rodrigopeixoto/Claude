@@ -17,7 +17,8 @@
   "hero": {
     "titleLines": ["Sua bio à altura", "do seu currículo."],
     "sub": "Uma página de links exclusiva, feita para você e pronta em <strong>24 horas</strong>. A partir de R$&nbsp;750.",
-    "cta": "Responder 4 perguntas"
+    "cta": "Responder 4 perguntas",
+    "showcase": ["dra-ana-lima", "rodrigo-alves-advocacia", "studio-marina-costa"]
   },
   "quiz": {
     "title": "Veja se o seu perfil se qualifica.",

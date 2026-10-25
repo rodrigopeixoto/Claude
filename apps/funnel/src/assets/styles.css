@@ -131,7 +131,7 @@ strong { font-weight: 600; color: var(--ink); }
 @keyframes device { from { transform: translateY(60px) rotateX(12deg); opacity: 0; } }
 
 /* aparelho ilustrativo cortado pela borda de baixo */
-.stage { margin: clamp(44px, 7vw, 80px) auto 0; height: clamp(300px, 42vw, 460px); overflow: hidden; perspective: 1400px; }
+.stage { margin: clamp(44px, 7vw, 80px) calc(-1 * var(--gutter)) 0; /* até a borda da tela: a sombra não fica cortada em retângulo */ height: clamp(300px, 42vw, 460px); overflow: hidden; perspective: 1400px; }
 .device {
   width: min(300px, 72vw); margin: 0 auto;
   padding: 10px; border-radius: 48px;
@@ -140,6 +140,14 @@ strong { font-weight: 600; color: var(--ink); }
   animation: device 1.2s 0.35s var(--ease-out) both;
 }
 .device-screen { border-radius: 38px; overflow: hidden; background: #0b0b0d; aspect-ratio: 9 / 19.5; }
+/* palco com páginas reais: o iframe tem 390×845 (um celular) e é reduzido para caber na tela do aparelho */
+.stage--live { display: flex; justify-content: center; align-items: flex-start; /* corta embaixo, como saindo da tela */ gap: clamp(12px, 3vw, 36px); height: clamp(420px, 52vw, 560px); }
+.stage--live .device { flex: none; width: 300px; margin: 0; --s: calc(280 / 390); }
+.stage--live .device--side { width: 260px; --s: calc(240 / 390); margin-top: 56px; animation-delay: 0.5s; }
+.stage--live .device-screen { position: relative; background: #fff; }
+.stage--live iframe { position: absolute; top: 0; left: 0; width: 390px; height: 845px; border: 0; transform: scale(var(--s)); transform-origin: 0 0; pointer-events: none; }
+@media (max-width: 860px) { .stage--live .device--side { display: none; } }
+
 .mock { display: grid; gap: 10px; padding: 0 16px 16px; text-align: center; }
 .mock-cover { height: 120px; margin: 0 -16px; background: linear-gradient(160deg, #1d3b8f, #0a0f2c 70%); }
 .mock-avatar { width: 76px; height: 76px; margin: -48px auto 0; border-radius: 50%; border: 3px solid #0b0b0d; background: linear-gradient(135deg, #c9a27e, #7a5236); }

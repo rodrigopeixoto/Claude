@@ -1,0 +1,42 @@
+{
+  "slug": "rodrigo-alves-advocacia",
+  "name": "Rodrigo Alves",
+  "role": "Advogado · Direito do Trabalho e Família",
+  "location": "Curitiba · Atendimento em todo o Brasil",
+  "bio": "Defendo os seus direitos com clareza: você entende cada passo do seu processo.",
+  "verified": true,
+  "badges": ["OAB/PR 98.765", "12 anos de atuação"],
+  "theme": { "style": "escuro", "accent": "#c8a24a", "font": "serif" },
+  "whatsapp": "5541999999999",
+  "social": { "instagram": "exemplo.advocacia", "linkedin": "exemplo-advocacia", "email": "contato@exemplo.com" },
+  "cta": { "label": "Falar com o advogado", "message": "Olá, Dr. Rodrigo! Preciso de orientação jurídica." },
+  "blocks": [
+    {
+      "type": "highlight",
+      "tag": "Primeiro passo",
+      "title": "Análise do seu caso em até 24h",
+      "text": "Envie um resumo pelo WhatsApp e receba uma orientação inicial sobre seus direitos.",
+      "button": { "label": "Enviar meu caso", "whatsappMessage": "Olá! Quero enviar meu caso para análise." }
+    },
+    {
+      "type": "links",
+      "title": "Áreas de atuação",
+      "items": [
+        { "icon": "doc", "label": "Direito do Trabalho", "sub": "Rescisão, horas extras, assédio", "whatsappMessage": "Olá! Tenho uma dúvida trabalhista." },
+        { "icon": "chat", "label": "Família e Sucessões", "sub": "Divórcio, guarda, pensão, inventário", "whatsappMessage": "Olá! Tenho uma questão de família." },
+        { "icon": "book", "label": "Guia gratuito: seus direitos na demissão", "sub": "PDF de 12 páginas", "url": "https://example.com/guia" }
+      ]
+    },
+    { "type": "stats", "items": [ { "value": "+800", "label": "casos atendidos" }, { "value": "12", "label": "anos de OAB" }, { "value": "24h", "label": "para retorno" } ] },
+    {
+      "type": "faq",
+      "title": "Antes de falar comigo",
+      "items": [
+        { "q": "A primeira conversa é paga?", "a": "A orientação inicial pelo WhatsApp é gratuita. Honorários só depois que você decidir seguir." },
+        { "q": "Atende fora de Curitiba?", "a": "Sim. Processos eletrônicos permitem atuar em todo o Brasil, com reuniões por vídeo." },
+        { "q": "Quanto tempo demora um processo?", "a": "Depende do caso e da vara. Na análise inicial eu explico prazos realistas para a sua situação." }
+      ]
+    },
+    { "type": "location", "title": "Escritório", "address": "Av. Exemplo, 456 · Centro, Curitiba", "hours": "Seg a sex, 9h às 18h" }
+  ]
+}

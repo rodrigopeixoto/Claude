@@ -1,0 +1,50 @@
+{
+  "slug": "dra-ana-lima",
+  "name": "Dra. Ana Lima",
+  "role": "Nutricionista clínica e esportiva",
+  "location": "São Paulo · Atendimento online",
+  "bio": "Ajudo mulheres a emagrecer com saúde, sem dieta da moda e sem cortar o que você ama.",
+  "verified": true,
+  "badges": ["CRN-3 12345", "+2.000 pacientes"],
+  "theme": { "style": "claro", "accent": "#2f9e6b", "font": "rounded" },
+  "whatsapp": "5511999999999",
+  "social": { "instagram": "exemplo.nutri", "youtube": "exemplo.nutri", "email": "contato@exemplo.com" },
+  "cta": { "label": "Agendar consulta", "message": "Olá, Dra. Ana! Vim pelo Instagram e quero agendar uma consulta." },
+  "blocks": [
+    { "type": "stats", "items": [ { "value": "8 anos", "label": "de clínica" }, { "value": "4,9", "label": "no Google" }, { "value": "100%", "label": "online ou presencial" } ] },
+    {
+      "type": "highlight",
+      "tag": "Turma aberta",
+      "title": "Programa Leve em 90 dias",
+      "text": "Acompanhamento semanal, cardápio flexível e grupo de apoio. Vagas limitadas.",
+      "button": { "label": "Quero participar", "whatsappMessage": "Olá! Quero saber do Programa Leve em 90 dias." }
+    },
+    {
+      "type": "links",
+      "title": "Atendimento",
+      "items": [
+        { "icon": "calendar", "label": "Consulta presencial", "sub": "Vila Mariana · seg a sex", "whatsappMessage": "Olá! Quero agendar uma consulta presencial." },
+        { "icon": "chat", "label": "Consulta online", "sub": "Por vídeo, de qualquer lugar", "whatsappMessage": "Olá! Quero agendar uma consulta online." },
+        { "icon": "gift", "label": "E-book grátis: 21 lanches práticos", "sub": "Baixe agora", "url": "https://example.com/ebook" }
+      ]
+    },
+    {
+      "type": "testimonials",
+      "title": "Quem já passou por aqui",
+      "items": [
+        { "text": "Perdi 9 kg sem passar fome. Pela primeira vez consegui manter.", "author": "Juliana, 34" },
+        { "text": "Atendimento humano e cardápio que cabe na minha rotina corrida.", "author": "Camila, 41" },
+        { "text": "Melhorei meus exames em 3 meses. Recomendo de olhos fechados.", "author": "Patrícia, 52" }
+      ]
+    },
+    { "type": "location", "title": "Consultório", "address": "Rua Exemplo, 123 · Vila Mariana, São Paulo", "hours": "Seg a sex, 8h às 19h" },
+    {
+      "type": "faq",
+      "title": "Dúvidas frequentes",
+      "items": [
+        { "q": "Atende por convênio?", "a": "O atendimento é particular, com recibo para reembolso no seu plano." },
+        { "q": "Como funciona a consulta online?", "a": "Por videochamada, com o mesmo acompanhamento e cardápio da presencial." }
+      ]
+    }
+  ]
+}

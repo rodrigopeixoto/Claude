@@ -49,23 +49,8 @@
       <p class="hero-sub">{{{hero.sub}}}</p>
       <a class="btn btn--big" href="#quiz">{{hero.cta}} <span class="arrow" aria-hidden="true">↓</span></a>
 
-      <!-- aparelho ilustrativo feito só de CSS: troque por screenshots reais de clientes quando tiver -->
-      <div class="stage" aria-hidden="true">
-        <div class="device">
-          <div class="device-screen">
-            <div class="mock">
-              <div class="mock-cover"></div>
-              <div class="mock-avatar"></div>
-              <p class="mock-name">{{brand.author}}</p>
-              <p class="mock-role">Sua profissão aqui</p>
-              <div class="mock-block mock-block--hero"></div>
-              <div class="mock-row"><div class="mock-block"></div><div class="mock-block"></div></div>
-              <div class="mock-block mock-block--wide"></div>
-              <div class="mock-block mock-block--wide"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- páginas de exemplo (hero.showcase) ao vivo nos celulares; sem exemplos, um desenho em CSS -->
+      <div class="{{stageClass}}" aria-hidden="true">{{{stageInner}}}</div>
     </section>
 
     <section class="quiz" id="quiz" aria-labelledby="quizTitle">

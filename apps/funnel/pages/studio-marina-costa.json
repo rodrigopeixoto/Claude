@@ -1,0 +1,46 @@
+{
+  "slug": "studio-marina-costa",
+  "name": "Marina Costa",
+  "role": "Arquitetura e Interiores",
+  "location": "Belo Horizonte",
+  "bio": "Projetos que parecem com quem mora neles. Residencial e comercial, do conceito à obra.",
+  "badges": ["CAU A123456-7", "+120 projetos entregues"],
+  "theme": { "style": "claro", "accent": "#b5573a", "font": "serif" },
+  "whatsapp": "5531999999999",
+  "social": { "instagram": "exemplo.arq", "email": "projetos@exemplo.com" },
+  "cta": { "label": "Pedir orçamento", "message": "Olá, Marina! Quero um orçamento de projeto." },
+  "blocks": [
+    {
+      "type": "grid",
+      "title": "Projetos recentes",
+      "items": [
+        { "title": "Apartamento Savassi", "price": "Residencial · 98 m²", "icon": "star" },
+        { "title": "Café Pampulha", "price": "Comercial · 60 m²", "icon": "cart" },
+        { "title": "Casa Lagoa", "price": "Residencial · 240 m²", "icon": "map" },
+        { "title": "Clínica Lourdes", "price": "Saúde · 130 m²", "icon": "check" }
+      ]
+    },
+    {
+      "type": "highlight",
+      "tag": "Novo",
+      "title": "Interiores em 30 dias",
+      "text": "Projeto completo de um ambiente com 3D, lista de compras e acompanhamento online.",
+      "button": { "label": "Quero o meu", "whatsappMessage": "Olá! Quero saber do Interiores em 30 dias." }
+    },
+    {
+      "type": "links",
+      "items": [
+        { "icon": "doc", "label": "Portfólio completo", "sub": "PDF com 20 projetos", "url": "https://example.com/portfolio" },
+        { "icon": "calendar", "label": "Visita técnica", "sub": "Agende uma conversa no local", "whatsappMessage": "Olá! Quero agendar uma visita técnica." }
+      ]
+    },
+    {
+      "type": "testimonials",
+      "title": "Clientes",
+      "items": [
+        { "text": "A Marina entendeu nosso jeito de viver. O apartamento ficou a nossa cara.", "author": "Família Rocha" },
+        { "text": "Entregou o café no prazo e o movimento dobrou depois da reforma.", "author": "Lucas, Café Pampulha" }
+      ]
+    }
+  ]
+}

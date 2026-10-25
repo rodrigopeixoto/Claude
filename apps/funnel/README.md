@@ -36,6 +36,47 @@ Entra com a senha de `ADMIN_PASSWORD` (sessão de 7 dias em cookie HttpOnly assi
 
 Os números da visão geral consideram até 5.000 leads por período.
 
+## Páginas de links dos clientes (o produto)
+
+Cada cliente é um arquivo `pages/<slug>.json`. O build gera a página em `/<slug>`
+(ex.: `pages/dra-ana-lima.json` → http://localhost:3100/dra-ana-lima). Exemplos prontos:
+`dra-ana-lima` (nutricionista, claro), `rodrigo-alves-advocacia` (advogado, escuro com serifa),
+`studio-marina-costa` (arquiteta, vitrine de projetos). Eles também aparecem ao vivo nos celulares
+do topo da landing (`hero.showcase` no config).
+
+**Novo cliente:** copie um exemplo, troque `slug` e o conteúdo, rode `npm run dev`.
+O build avisa o que estiver errado (slug inválido ou repetido, bloco inexistente, link inválido, cor fora do formato).
+
+Campos do topo:
+
+| Campo | Exemplo |
+|---|---|
+| `slug` | `dra-ana-lima` (minúsculas, números e hífen) |
+| `name`, `role`, `location`, `bio` | textos do cabeçalho |
+| `verified` | `true` mostra o selo |
+| `badges` | `["CRN-3 12345", "+2.000 pacientes"]` |
+| `avatar`, `cover.image` | URL ou `/img/arquivo.jpg` (sem foto: iniciais e gradiente na cor da marca) |
+| `theme` | `{ "style": "claro" ou "escuro", "accent": "#2f9e6b", "font": "sans", "serif" ou "rounded" }` |
+| `whatsapp` | número com DDI, usado pelos botões |
+| `cta` | botão fixo de WhatsApp: `{ "label": "Agendar consulta", "message": "Olá!..." }` |
+| `social` | `instagram`, `youtube`, `tiktok`, `linkedin`, `email` |
+
+Blocos (`blocks`, na ordem em que aparecem):
+
+| `type` | Para quê | Campos |
+|---|---|---|
+| `highlight` | oferta principal | `tag`, `title`, `text`, `image`, `button: { label, url ou whatsappMessage }` |
+| `links` | lista de botões | `title`, `items: [{ icon, label, sub, url ou whatsappMessage }]` |
+| `grid` | vitrine de produtos/projetos | `title`, `items: [{ title, price, image, icon, url }]` |
+| `video` | vídeo do YouTube (carrega ao tocar) | `title`, `youtube` (id de 11 caracteres) |
+| `testimonials` | depoimentos em carrossel | `title`, `items: [{ text, author }]` |
+| `location` | endereço com link para o mapa | `title`, `address`, `hours`, `mapsUrl` |
+| `faq` | perguntas e respostas | `title`, `items: [{ q, a }]` |
+| `stats` | números/credenciais | `items: [{ value, label }]` |
+
+Ícones: `whatsapp instagram youtube tiktok linkedin email phone calendar link map play star cart book doc gift check arrow clock chat`.
+Imagens locais vão em `src/assets/img/` e são usadas como `/img/arquivo.jpg`.
+
 ## Personalizar
 
 Tudo em `funnel.config.json` (rode `pnpm --filter funnel build` depois de editar):
@@ -85,7 +126,9 @@ Opcionais: `SESSION_SECRET`, `ADMIN_KEY`.
 ```
 funnel.config.json   textos, perguntas, regras
 build.mjs            src/ + config → dist/
-src/                 templates HTML + assets (styles.css, js/app.js)
+src/                 templates HTML + assets (styles.css, admin.css, linkpage.css, js/)
+pages/               uma página de links por cliente (JSON)
+linkpage.mjs         gera a página de links a partir do JSON
 shared/              qualify.js e phone.js (rodam no navegador e no servidor)
 api/                 funções serverless
 lib/                 regras do lead, store (Postgres ou memória com dados fake), auth, métricas
