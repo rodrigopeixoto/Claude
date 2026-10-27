@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SourceType {
+  GOOGLE_NEWS
+  GDELT
+  RSS
+  APP_STORE
+  PLAY_STORE
+  YOUTUBE
+  RECLAME_AQUI
+  LINKEDIN
+  INSTAGRAM
+  FACEBOOK
+}
+
+enum Channel {
+  NEWS
+  APP_STORE
+  PLAY_STORE
+  RECLAME_AQUI
+  YOUTUBE
+  LINKEDIN
+  INSTAGRAM
+  FACEBOOK
+}
+
+enum RunStatus {
+  OK
+  ERROR
+}
+
+enum SentimentLabel {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+}
+
+enum AlertKind {
+  SEVERE_MENTION
+  VOLUME_SPIKE
+  SCORE_DROP
+}
+
+model Client {
+  id           String           @id @default(cuid())
+  name         String
+  description  String?
+  keywords     String[]
+  excludeTerms String[]
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  sources      Source[]
+  mentions     Mention[]
+  snapshots    HealthSnapshot[]
+  alerts       Alert[]
+}
+
+model Source {
+  id              String         @id @default(cuid())
+  clientId        String
+  client          Client         @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  type            SourceType
+  name            String
+  config          Json           @default("{}")
+  intervalMinutes Int            @default(360)
+  enabled         Boolean        @default(true)
+  lastRunAt       DateTime?
+  lastStatus      RunStatus?
+  lastError       String?
+  lastItemsNew    Int?
+  createdAt       DateTime       @default(now())
+  runs            CollectorRun[]
+  mentions        Mention[]
+
+  @@index([clientId])
+}
+
+model CollectorRun {
+  id         String    @id @default(cuid())
+  sourceId   String
+  source     Source    @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  startedAt  DateTime  @default(now())
+  finishedAt DateTime?
+  status     RunStatus?
+  itemsFound Int       @default(0)
+  itemsNew   Int       @default(0)
+  error      String?
+
+  @@index([sourceId, startedAt])
+}
+
+model Mention {
+  id             String          @id @default(cuid())
+  clientId       String
+  client         Client          @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  sourceId       String?
+  source         Source?         @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  channel        Channel
+  hash           String
+  externalId     String
+  url            String?
+  title          String?
+  content        String
+  author         String?
+  publishedAt    DateTime
+  collectedAt    DateTime        @default(now())
+  rating         Int?
+  engagement     Int?
+  raw            Json?
+  analyzedAt     DateTime?
+  analysisMethod String?
+  relevant       Boolean         @default(true)
+  sentiment      Float?
+  sentimentLabel SentimentLabel?
+  topic          String?
+  severity       Int?
+  isComplaint    Boolean?
+  summary        String?
+  alerts         Alert[]
+
+  @@unique([clientId, hash])
+  @@index([clientId, publishedAt])
+  @@index([analyzedAt])
+}
+
+model HealthSnapshot {
+  id            String   @id @default(cuid())
+  clientId      String
+  client        Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  date          DateTime @db.Date
+  score         Float?
+  components    Json
+  mentions7d    Int
+  negative7d    Int
+  complaints7d  Int
+  avgRating30d  Float?
+  createdAt     DateTime @default(now())
+
+  @@unique([clientId, date])
+}
+
+model Alert {
+  id           String    @id @default(cuid())
+  clientId     String
+  client       Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  mentionId    String?
+  mention      Mention?  @relation(fields: [mentionId], references: [id], onDelete: SetNull)
+  kind         AlertKind
+  dedupeKey    String
+  title        String
+  detail       String?
+  acknowledged Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+
+  @@unique([clientId, dedupeKey])
+  @@index([clientId, createdAt])
+}
