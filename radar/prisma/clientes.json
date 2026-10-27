@@ -1,0 +1,607 @@
+[
+  {
+    "name": "Publicis",
+    "description": "Grupo global de comunicação e publicidade",
+    "keywords": [
+      "Publicis"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Publicis",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Publicis",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Rede D'Or",
+    "description": "Rede hospitalar brasileira",
+    "keywords": [
+      "Rede D'Or",
+      "Rede DOr"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "\"Rede D'Or\"",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "APP_STORE",
+        "name": "App Store BR",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "6757244056",
+          "country": "br",
+          "pages": 2
+        }
+      },
+      {
+        "type": "PLAY_STORE",
+        "name": "Google Play BR",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "br.com.rededor",
+          "lang": "pt",
+          "country": "br",
+          "num": 150
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Entain CILA",
+    "description": "Entain (Sportingbet no Brasil), operação CILA",
+    "keywords": [
+      "Entain",
+      "Sportingbet"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Entain OR Sportingbet",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Entain",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "FTD",
+    "description": "FTD Educação, editora e soluções educacionais",
+    "keywords": [
+      "FTD Educação",
+      "Editora FTD"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "\"FTD Educação\" OR \"Editora FTD\"",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Betway Africa",
+    "description": "Apostas esportivas, operação na África do Sul",
+    "keywords": [
+      "Betway"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News ZA",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Betway",
+          "hl": "en-ZA",
+          "gl": "ZA",
+          "ceid": "ZA:en"
+        }
+      },
+      {
+        "type": "APP_STORE",
+        "name": "App Store ZA",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "1274057509",
+          "country": "za",
+          "pages": 2
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "FutureBrand",
+    "description": "Consultoria de branding",
+    "keywords": [
+      "FutureBrand"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "FutureBrand",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "FutureBrand",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Publicis/Sebrae",
+    "description": "Conta Sebrae atendida pela Publicis",
+    "keywords": [
+      "Sebrae"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Sebrae",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Springpod",
+    "description": "Plataforma britânica de experiências de carreira para jovens",
+    "keywords": [
+      "Springpod"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Springpod",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Raízen",
+    "description": "Energia e combustíveis (Shell no Brasil)",
+    "keywords": [
+      "Raízen",
+      "Shell Box"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Raízen OR \"Shell Box\"",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "APP_STORE",
+        "name": "Shell Box iOS",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "1037433060",
+          "country": "br",
+          "pages": 2
+        }
+      },
+      {
+        "type": "PLAY_STORE",
+        "name": "Shell Box Android",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "com.raizen.acelera",
+          "lang": "pt",
+          "country": "br",
+          "num": 150
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Syngenta",
+    "description": "Agronegócio: defensivos e sementes",
+    "keywords": [
+      "Syngenta"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Syngenta",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Syngenta",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Origin",
+    "description": "A confirmar: qual empresa é a Origin? (nome ambíguo, sem fontes ainda)",
+    "keywords": [
+      "Origin"
+    ],
+    "sources": [],
+    "excludeTerms": []
+  },
+  {
+    "name": "Betway",
+    "description": "Apostas esportivas e cassino, operação Reino Unido",
+    "keywords": [
+      "Betway"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Betway",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      },
+      {
+        "type": "APP_STORE",
+        "name": "App Store UK",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "538775096",
+          "country": "gb",
+          "pages": 2
+        }
+      },
+      {
+        "type": "PLAY_STORE",
+        "name": "Google Play UK",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "com.betway.sports",
+          "lang": "en",
+          "country": "gb",
+          "num": 150
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Bliss",
+    "description": "A confirmar: qual empresa é a Bliss? (nome ambíguo, sem fontes ainda)",
+    "keywords": [
+      "Bliss"
+    ],
+    "sources": [],
+    "excludeTerms": []
+  },
+  {
+    "name": "Emma",
+    "description": "Emma – The Sleep Company (confirmar)",
+    "keywords": [
+      "Emma Sleep"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "\"Emma Sleep\"",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Cogna",
+    "description": "Educação (Kroton, Anhanguera, Vasta, Saber)",
+    "keywords": [
+      "Cogna"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Cogna",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "PLAY_STORE",
+        "name": "Anhanguera Aluno Android",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "br.com.cogna.ava",
+          "lang": "pt",
+          "country": "br",
+          "num": 150
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Hyphen",
+    "description": "Hyphen, site britânico de notícias e cultura muçulmana (confirmar)",
+    "keywords": [
+      "Hyphen"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "\"Hyphen\"",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "PactoMais",
+    "description": "A confirmar: site ou setor da PactoMais (sem resultados na busca)",
+    "keywords": [
+      "PactoMais",
+      "Pacto Mais"
+    ],
+    "sources": [],
+    "excludeTerms": []
+  },
+  {
+    "name": "Gerdau",
+    "description": "Siderurgia",
+    "keywords": [
+      "Gerdau"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Gerdau",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Amadeus",
+    "description": "Tecnologia para viagens e turismo",
+    "keywords": [
+      "Amadeus"
+    ],
+    "excludeTerms": [
+      "Mozart",
+      "ópera",
+      "concerto"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "Amadeus viagens OR \"Amadeus IT\" OR \"Amadeus Brasil\"",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News UK",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "\"Amadeus IT\"",
+          "hl": "en-GB",
+          "gl": "GB",
+          "ceid": "GB:en"
+        }
+      }
+    ]
+  },
+  {
+    "name": "PicPay",
+    "description": "Banco digital e carteira de pagamentos",
+    "keywords": [
+      "PicPay"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News BR",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "PicPay",
+          "hl": "pt-BR",
+          "gl": "BR",
+          "ceid": "BR:pt-419"
+        }
+      },
+      {
+        "type": "APP_STORE",
+        "name": "App Store BR",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "561524792",
+          "country": "br",
+          "pages": 2
+        }
+      },
+      {
+        "type": "PLAY_STORE",
+        "name": "Google Play BR",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "com.picpay",
+          "lang": "pt",
+          "country": "br",
+          "num": 150
+        }
+      }
+    ],
+    "excludeTerms": []
+  },
+  {
+    "name": "Gauge",
+    "description": "A confirmar: site ou setor da Gauge (nome ambíguo, sem fontes ainda)",
+    "keywords": [
+      "Gauge"
+    ],
+    "sources": [],
+    "excludeTerms": []
+  },
+  {
+    "name": "Novo Banco",
+    "description": "Banco português",
+    "keywords": [
+      "Novo Banco",
+      "novobanco"
+    ],
+    "sources": [
+      {
+        "type": "GOOGLE_NEWS",
+        "name": "Google News PT",
+        "intervalMinutes": 60,
+        "config": {
+          "query": "\"Novo Banco\" OR novobanco",
+          "hl": "pt-PT",
+          "gl": "PT",
+          "ceid": "PT:pt-150"
+        }
+      },
+      {
+        "type": "APP_STORE",
+        "name": "App Store PT",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "1523033450",
+          "country": "pt",
+          "pages": 2
+        }
+      },
+      {
+        "type": "PLAY_STORE",
+        "name": "Google Play PT",
+        "intervalMinutes": 360,
+        "config": {
+          "appId": "pt.novobanco.nbsmarter",
+          "lang": "pt",
+          "country": "pt",
+          "num": 150
+        }
+      }
+    ],
+    "excludeTerms": []
+  }
+]

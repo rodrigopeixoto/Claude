@@ -1,33 +1,45 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import type { Prisma, SourceType } from "@prisma/client";
 import { loadEnv } from "@/lib/loadEnv";
 import { prisma } from "@/lib/db";
-import { SOURCE_TEMPLATES } from "@/lib/sourceTemplates";
 
 loadEnv();
 
-// Example client so the dashboard has something to show. Safe to re-run.
+interface SeedClient {
+  name: string;
+  description?: string;
+  keywords: string[];
+  excludeTerms?: string[];
+  sources: { type: SourceType; name: string; intervalMinutes: number; config: Prisma.InputJsonValue }[];
+}
+
+// Loads the agency's client list from prisma/clientes.json.
+// Default: only when the database has no clients (first run). --force adds any missing by name.
 async function main() {
-  const existing = await prisma.client.findFirst({ where: { name: "Nubank (exemplo)" } });
-  if (existing) {
-    console.log("Cliente de exemplo já existe:", existing.id);
+  const force = process.argv.includes("--force");
+  const existing = await prisma.client.findMany({ select: { name: true } });
+  if (existing.length > 0 && !force) {
+    console.log(`Banco já tem ${existing.length} cliente(s); nada a carregar (use --force para adicionar os que faltam).`);
     return;
   }
-  const client = await prisma.client.create({
-    data: {
-      name: "Nubank (exemplo)",
-      description: "Banco digital brasileiro",
-      keywords: ["Nubank", "Nu Holdings"],
-      excludeTerms: ["vaga", "vagas"],
-      sources: {
-        create: [
-          { type: "GOOGLE_NEWS", name: "Google News", intervalMinutes: 60, config: { query: "" } },
-          { type: "GDELT", name: "GDELT", intervalMinutes: 180, config: SOURCE_TEMPLATES.GDELT.config as object },
-          { type: "APP_STORE", name: "App Store BR", intervalMinutes: 360, config: { appId: "814456780", country: "br", pages: 2 } },
-          { type: "PLAY_STORE", name: "Google Play BR", intervalMinutes: 360, config: { appId: "com.nu.production", lang: "pt", country: "br", num: 150 } },
-        ],
+  const names = new Set(existing.map((c) => c.name));
+  const list: SeedClient[] = JSON.parse(readFileSync(path.join(import.meta.dirname, "clientes.json"), "utf8"));
+  let created = 0;
+  for (const c of list) {
+    if (names.has(c.name)) continue;
+    await prisma.client.create({
+      data: {
+        name: c.name,
+        description: c.description,
+        keywords: c.keywords,
+        excludeTerms: c.excludeTerms ?? [],
+        sources: { create: c.sources },
       },
-    },
-  });
-  console.log("Cliente de exemplo criado:", client.id);
+    });
+    created++;
+  }
+  console.log(`${created} cliente(s) carregados de clientes.json`);
 }
 
 main().finally(() => prisma.$disconnect());

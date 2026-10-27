@@ -126,6 +126,8 @@ async function main() {
 
   log("Atualizando estrutura do banco…");
   run("prisma", ["db", "push", "--skip-generate"]);
+  // First run only: load the client list from prisma/clientes.json.
+  run("tsx", ["prisma/seed.ts"]);
 
   if (!existsSync(path.join(ROOT, ".next", "BUILD_ID")) || process.argv.includes("--rebuild")) {
     log("Preparando o painel (só na primeira vez, ~1 min)…");
