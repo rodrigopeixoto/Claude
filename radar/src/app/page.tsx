@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Delta, ScoreNumber, StatusChip } from "@/components/ScoreBadge";
+import { Change, Motivos, Stars } from "@/components/Signals";
 import { Sparkline } from "@/components/Sparkline";
 import { getOverview } from "@/lib/queries";
 
@@ -12,13 +13,14 @@ const LEVEL_LABEL: Record<string, string> = { baixo: "Baixo", medio: "Médio", a
 
 const SORTS: Record<string, { label: string; value: (c: Row) => number | string | null; desc?: boolean }> = {
   nome: { label: "Cliente", value: (c) => c.name.toLowerCase() },
-  score: { label: "Saúde", value: (c) => c.latest?.score ?? null, desc: true },
+  conta: { label: "Saúde da conta", value: (c) => c.account.score, desc: true },
+  score: { label: "Reputação", value: (c) => c.latest?.score ?? null, desc: true },
   variacao: { label: "Δ 7d", value: (c) => c.delta },
   mencoes: { label: "Menções 7d", value: (c) => c.latest?.mentions7d ?? 0, desc: true },
   negativas: { label: "Negativas 7d", value: (c) => c.latest?.negative7d ?? 0, desc: true },
   pctneg: { label: "% neg.", value: (c) => (c.latest?.mentions7d ? c.latest.negative7d / c.latest.mentions7d : null), desc: true },
   reclamacoes: { label: "Reclamações 7d", value: (c) => c.latest?.complaints7d ?? 0, desc: true },
-  nota: { label: "Nota apps", value: (c) => c.latest?.avgRating30d ?? null },
+  nota: { label: "Nota lojas 30d", value: (c) => c.ratings.avg },
   acao30: { label: "Ação 30d", value: (c) => c.stock30 },
   churn: { label: "Risco canc.", value: (c) => (c.churn ? LEVEL[c.churn] : null), desc: true },
   expansao: { label: "Expansão", value: (c) => (c.expansion ? LEVEL[c.expansion] : null), desc: true },
@@ -26,7 +28,7 @@ const SORTS: Record<string, { label: string; value: (c: Row) => number | string 
 };
 
 function sortRows(rows: Row[], key: string) {
-  const s = SORTS[key] ?? SORTS.score;
+  const s = SORTS[key] ?? SORTS.conta;
   return [...rows].sort((a, b) => {
     const va = s.value(a);
     const vb = s.value(b);
@@ -43,13 +45,16 @@ const fmt1 = (n: number) => n.toLocaleString("pt-BR", { maximumFractionDigits: 1
 export default async function Home({ searchParams }: { searchParams: Promise<{ ordem?: string; visao?: string }> }) {
   const sp = await searchParams;
   const clients = await getOverview();
-  const ordem = sp.ordem && sp.ordem in SORTS ? sp.ordem : "score";
+  const ordem = sp.ordem && sp.ordem in SORTS ? sp.ordem : "conta";
   // Risk and expansion come from the strategic reading (needs ANTHROPIC_API_KEY).
   const cards = sp.visao === "cartoes";
   const sorted = sortRows(clients, ordem);
-  const withData = clients.filter((c) => c.latest?.score != null);
-  const avg = withData.length ? withData.reduce((a, c) => a + c.latest!.score!, 0) / withData.length : null;
-  const atRisk = withData.filter((c) => c.latest!.score! < 60).length;
+  const withData = clients.filter((c) => c.account.score != null);
+  const avg = withData.length ? withData.reduce((a, c) => a + c.account.score!, 0) / withData.length : null;
+  const atRisk = withData.filter((c) => c.account.score! < 60).length;
+  const rated = clients.filter((c) => c.ratings.count > 0);
+  const ratingCount = rated.reduce((a, c) => a + c.ratings.count, 0);
+  const ratingAvg = ratingCount ? rated.reduce((a, c) => a + c.ratings.avg! * c.ratings.count, 0) / ratingCount : null;
   const totalMentions = clients.reduce((a, c) => a + (c.latest?.mentions7d ?? 0), 0);
   const totalNeg = clients.reduce((a, c) => a + (c.latest?.negative7d ?? 0), 0);
   const openAlerts = clients.reduce((a, c) => a + c.openAlerts, 0);
@@ -59,7 +64,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-2xl font-semibold">Clientes</h1>
-          <p className="text-sm text-ink-2">Comparativo de saúde de reputação, janela de 7 dias.</p>
+          <p className="text-sm text-ink-2">Saúde de cada conta: reputação (7 dias), bolsa comparada ao índice e leitura estratégica.</p>
         </div>
         <div className="flex gap-2">
           <div className="inline-flex overflow-hidden rounded-lg border border-line text-sm">
@@ -71,11 +76,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
       </div>
 
       {clients.length > 0 && (
-        <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <dl className="grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {[
             ["Clientes monitorados", `${clients.length}`, `${withData.length} com dados`],
-            ["Saúde média", avg == null ? "—" : fmt1(avg), "entre os clientes com dados"],
-            ["Em atenção ou pior", `${atRisk}`, "score abaixo de 60"],
+            ["Saúde média das contas", avg == null ? "—" : fmt1(avg), "reputação, bolsa e leitura estratégica"],
+            ["Em atenção ou pior", `${atRisk}`, "saúde da conta abaixo de 60"],
+            ["Nota média nas lojas (30 dias)", ratingAvg == null ? "—" : `${fmt1(ratingAvg)} ★`, `${ratingCount.toLocaleString("pt-BR")} avaliações de ${rated.length} clientes`],
             ["Menções 7d", totalMentions.toLocaleString("pt-BR"), `${totalNeg.toLocaleString("pt-BR")} negativas`],
             ["Alertas abertos", `${openAlerts}`, "todas as contas"],
           ].map(([label, value, sub]) => (
@@ -101,11 +107,11 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
                   <h2 className="truncate font-semibold">{c.name}</h2>
                   {c.description && <p className="truncate text-xs text-ink-3">{c.description}</p>}
                 </div>
-                <StatusChip score={c.latest?.score ?? null} />
+                <StatusChip score={c.account.score} />
               </div>
               <div className="mt-4 flex items-end justify-between gap-2">
                 <div>
-                  <ScoreNumber score={c.latest?.score ?? null} />
+                  <ScoreNumber score={c.account.score} />
                   <div><Delta value={c.delta} /></div>
                 </div>
                 <Sparkline points={c.trend.map((t) => t.score)} />
@@ -113,14 +119,14 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
               <dl className="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-3 text-center text-xs">
                 <div><dt className="text-ink-3">Menções 7d</dt><dd className="text-base font-medium">{c.latest?.mentions7d ?? 0}</dd></div>
                 <div><dt className="text-ink-3">Negativas</dt><dd className="text-base font-medium">{c.latest?.negative7d ?? 0}</dd></div>
-                <div><dt className="text-ink-3">Nota apps</dt><dd className="text-base font-medium">{c.latest?.avgRating30d ? `${c.latest.avgRating30d.toFixed(1)}★` : "—"}</dd></div>
+                <div><dt className="text-ink-3">Nota lojas</dt><dd className="text-base font-medium"><Stars avg={c.ratings.avg} count={c.ratings.count} /></dd></div>
               </dl>
             </Link>
           ))}
         </div>
       ) : (
         <div className="card overflow-x-auto">
-          <table className="w-full min-w-[78rem] text-sm">
+          <table className="w-full min-w-[88rem] text-sm">
             <thead className="text-left text-xs text-ink-3">
               <tr className="border-b border-line">
                 {Object.entries(SORTS).map(([key, s]) => (
@@ -137,6 +143,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
               {sorted.map((c) => {
                 const l = c.latest;
                 const pct = l?.mentions7d ? l.negative7d / l.mentions7d : null;
+                const a = c.account;
                 return (
                   <tr key={c.id} className="border-b border-line last:border-0 hover:bg-surface-2">
                     <td className="px-3 py-2">
@@ -149,21 +156,19 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
                     </td>
                     <td className="px-3 py-2 text-right">
                       <div className="flex items-center justify-end gap-2">
-                        <div className="hidden h-1.5 w-20 rounded-full bg-surface-2 md:block" aria-hidden>
-                          {l?.score != null && <div className="h-1.5 rounded-full" style={{ width: `${l.score}%`, background: "var(--seq)" }} />}
-                        </div>
-                        <span className="w-10 font-medium">{l?.score == null ? "—" : fmt1(l.score)}</span>
-                        <span title={`${c.explain.faixa}. ${c.explain.motivo}`}><StatusChip score={l?.score ?? null} /></span>
+                        <span className="w-10 font-medium">{a.score == null ? "—" : fmt1(a.score)}</span>
+                        <StatusChip score={a.score} />
                       </div>
-                      <div className="mt-0.5 max-w-xs text-left text-xs text-ink-3">{c.explain.motivo}</div>
+                      <div className="mt-1 max-w-sm text-left"><Motivos items={a.motivos} /></div>
                     </td>
-                    <td className="px-3 py-2 text-right text-ink-2">{c.delta == null ? "—" : `${c.delta > 0 ? "+" : ""}${fmt1(c.delta)}`}</td>
+                    <td className="px-3 py-2 text-right" title={`${c.explain.faixa}. ${c.explain.motivo}`}>{l?.score == null ? "—" : fmt1(l.score)}</td>
+                    <td className="px-3 py-2 text-right"><Change value={c.delta} unit="pts" /></td>
                     <td className="px-3 py-2 text-right">{l?.mentions7d ?? 0}</td>
                     <td className="px-3 py-2 text-right">{l?.negative7d ?? 0}</td>
                     <td className="px-3 py-2 text-right">{pct == null ? "—" : `${Math.round(pct * 100)}%`}</td>
                     <td className="px-3 py-2 text-right">{l?.complaints7d ?? 0}</td>
-                    <td className="px-3 py-2 text-right">{l?.avgRating30d ? `${l.avgRating30d.toFixed(1)}★` : "—"}</td>
-                    <td className="px-3 py-2 text-right">{c.stock30 == null ? "—" : `${c.stock30 > 0 ? "+" : ""}${(c.stock30 * 100).toFixed(1)}%`}</td>
+                    <td className="px-3 py-2 text-right"><Stars avg={c.ratings.avg} count={c.ratings.count} /></td>
+                    <td className="px-3 py-2 text-right"><Change value={c.stock30} /></td>
                     <td className="px-3 py-2 text-right">{c.churn ? LEVEL_LABEL[c.churn] : "—"}</td>
                     <td className="px-3 py-2 text-right">{c.expansion ? LEVEL_LABEL[c.expansion] : "—"}</td>
                     <td className="px-3 py-2 text-right">{c.openAlerts || ""}</td>

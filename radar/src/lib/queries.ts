@@ -1,11 +1,60 @@
 import { Prisma, type Channel, type SentimentLabel } from "@prisma/client";
 import { prisma } from "./db";
+import { computeAccountHealth, type AccountHealth } from "./health/account";
 import { explainScore } from "./health/explain";
 import type { HealthComponent } from "./health/score";
 import { getStock } from "./stocks";
 import { latestStrategy } from "./strategy";
 
 const DAY = 24 * 3600_000;
+
+/** Store ratings over the last 30 days, overall and per store. */
+export async function storeRatings(clientId: string) {
+  const rows = await prisma.mention.groupBy({
+    by: ["channel"],
+    where: { clientId, relevant: true, rating: { not: null }, publishedAt: { gte: new Date(Date.now() - 30 * DAY) } },
+    _avg: { rating: true },
+    _count: { _all: true },
+  });
+  const count = rows.reduce((a, r) => a + r._count._all, 0);
+  const avg = count ? rows.reduce((a, r) => a + (r._avg.rating ?? 0) * r._count._all, 0) / count : null;
+  return { avg, count, byStore: rows.map((r) => ({ channel: r.channel, avg: r._avg.rating, count: r._count._all })) };
+}
+
+type Snapshot = { score: number | null; components: Prisma.JsonValue; mentions7d: number; negative7d: number } | null;
+
+export function accountHealthFor(
+  latest: Snapshot,
+  ratings: { avg: number | null; count: number },
+  stock: Awaited<ReturnType<typeof getStock>>,
+  strategy: Awaited<ReturnType<typeof latestStrategy>>,
+): AccountHealth {
+  return computeAccountHealth({
+    reputation: latest?.score ?? null,
+    reputationComponents: (latest?.components ?? []) as unknown as HealthComponent[],
+    mentions7d: latest?.mentions7d ?? 0,
+    negative7d: latest?.negative7d ?? 0,
+    rating: ratings.avg != null ? { avg: ratings.avg, count: ratings.count } : null,
+    stock: stock
+      ? {
+          ret7: stock.returns[7],
+          ret30: stock.returns[30],
+          ex30: stock.excess[30],
+          ex90: stock.excess[90],
+          bench7: stock.benchmark?.returns[7] ?? null,
+          benchName: stock.benchmark?.name ?? null,
+        }
+      : null,
+    strategy: strategy
+      ? {
+          churn: strategy.data.risco_cancelamento.nivel,
+          expansion: strategy.data.potencial_expansao.nivel,
+          churnWhy: strategy.data.risco_cancelamento.motivos,
+          expansionWhy: strategy.data.potencial_expansao.motivos,
+        }
+      : null,
+  });
+}
 
 export async function getOverview() {
   const since = new Date(Date.now() - 31 * DAY);
@@ -19,7 +68,11 @@ export async function getOverview() {
   });
   return Promise.all(clients.map(async (c) => {
     const latest = c.snapshots.at(-1) ?? null;
-    const [stock, strategy] = await Promise.all([c.ticker ? getStock(c.ticker) : null, latestStrategy(c.id)]);
+    const [stock, strategy, ratings] = await Promise.all([
+      c.ticker ? getStock(c.ticker, c.market) : null,
+      latestStrategy(c.id),
+      storeRatings(c.id),
+    ]);
     const weekAgo = [...c.snapshots].reverse().find((s) => latest && s.date.getTime() <= latest.date.getTime() - 7 * DAY);
     return {
       id: c.id,
@@ -36,6 +89,8 @@ export async function getOverview() {
       stock30: stock?.returns[30] ?? null,
       churn: strategy?.data.risco_cancelamento.nivel ?? null,
       expansion: strategy?.data.potencial_expansao.nivel ?? null,
+      ratings,
+      account: accountHealthFor(latest, ratings, stock, strategy),
     };
   }));
 }

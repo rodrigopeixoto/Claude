@@ -3,6 +3,24 @@ import { prisma } from "./db";
 const DAY = 24 * 3600_000;
 export const PERIODS = [7, 30, 60, 90, 365] as const;
 
+/** Main index of the exchange where each ticker trades, to tell market moves from company moves. */
+const BENCHMARKS: [RegExp, string, string][] = [
+  [/\.SA$/, "^BVSP", "Ibovespa"],
+  [/\.L$/, "^FTSE", "FTSE 100"],
+  [/\.PA$/, "^FCHI", "CAC 40"],
+  [/\.MC$/, "^IBEX", "IBEX 35"],
+  [/\.JO$/, "^J203.JO", "JSE All Share"],
+  [/^[A-Z.]+$/, "^GSPC", "S&P 500"],
+];
+
+export function benchmarkFor(ticker: string, market?: string | null): { ticker: string; name: string } | null {
+  if (ticker.startsWith("^")) return null;
+  // A Brazilian business listed abroad moves with Brazil, not with its host exchange.
+  if (market === "BR" && !ticker.endsWith(".SA")) return { ticker: "EWZ", name: "Brasil em dólar (EWZ)" };
+  const hit = BENCHMARKS.find(([re]) => re.test(ticker));
+  return hit ? { ticker: hit[1], name: hit[2] } : null;
+}
+
 interface Quote {
   date: Date;
   close: number;
@@ -74,10 +92,16 @@ export async function refreshTicker(ticker: string) {
 }
 
 export async function refreshAllTickers(log = console.log) {
-  const tickers = await prisma.client.findMany({ where: { ticker: { not: null } }, select: { ticker: true }, distinct: ["ticker"] });
-  for (const { ticker } of tickers) {
+  const rows = await prisma.client.findMany({ where: { ticker: { not: null } }, select: { ticker: true, market: true } });
+  const tickers = new Set<string>();
+  for (const { ticker } of rows) {
+    tickers.add(ticker!);
+    const b = benchmarkFor(ticker!, rows.find((r) => r.ticker === ticker)?.market);
+    if (b) tickers.add(b.ticker);
+  }
+  for (const ticker of tickers) {
     try {
-      const n = await refreshTicker(ticker!);
+      const n = await refreshTicker(ticker);
       log(`[bolsa] ${ticker}: ${n} cotações`);
     } catch (err) {
       log(`[bolsa] ${ticker}: ERRO ${err instanceof Error ? err.message : err}`);
@@ -85,15 +109,32 @@ export async function refreshAllTickers(log = console.log) {
   }
 }
 
-export async function getStock(ticker: string): Promise<(StockReturns & { history: Quote[] }) | null> {
+export interface StockWithBenchmark extends StockReturns {
+  history: Quote[];
+  benchmark: { ticker: string; name: string; returns: StockReturns["returns"] } | null;
+  /** Stock return minus benchmark return per period: what the market move does not explain. */
+  excess: Record<(typeof PERIODS)[number], number | null>;
+}
+
+async function loadReturns(ticker: string) {
   const rows = await prisma.stockQuote.findMany({
     where: { ticker, date: { gte: new Date(Date.now() - 400 * DAY) } },
     orderBy: { date: "asc" },
   });
-  const returns = computeReturns(rows);
+  return { rows, returns: computeReturns(rows) };
+}
+
+export async function getStock(ticker: string, market?: string | null): Promise<StockWithBenchmark | null> {
+  const { rows, returns } = await loadReturns(ticker);
   const last = rows.at(-1);
   if (!returns || !last) return null;
+  const b = benchmarkFor(ticker, market);
+  const bench = b ? (await loadReturns(b.ticker)).returns : null;
+  const excess = {} as StockWithBenchmark["excess"];
+  for (const p of PERIODS) excess[p] = returns[p] != null && bench?.[p] != null ? returns[p]! - bench[p]! : null;
   return {
+    benchmark: b && bench ? { ...b, returns: bench } : null,
+    excess,
     ticker,
     currency: last.currency,
     last: last.close,

@@ -1,7 +1,8 @@
-import { PERIODS, type StockReturns } from "@/lib/stocks";
+import { PERIODS, type StockWithBenchmark } from "@/lib/stocks";
+import { Change } from "./Signals";
 import { Sparkline } from "./Sparkline";
 
-export function StockPanel({ stock }: { stock: (StockReturns & { history: { date: Date; close: number }[] }) | null }) {
+export function StockPanel({ stock }: { stock: StockWithBenchmark | null }) {
   if (!stock) return null;
   const year = stock.history.filter((q) => q.date.getTime() >= stock.asOf.getTime() - 365 * 86_400_000);
   return (
@@ -15,19 +16,39 @@ export function StockPanel({ stock }: { stock: (StockReturns & { history: { date
         </div>
         <Sparkline points={year.map((q) => q.close)} width={220} height={44} min={Math.min(...year.map((q) => q.close))} max={Math.max(...year.map((q) => q.close))} label="Cotação em 12 meses" />
       </div>
-      <dl className="mt-3 grid grid-cols-5 gap-2 text-center">
-        {PERIODS.map((p) => {
-          const v = stock.returns[p];
-          return (
-            <div key={p} className="rounded-lg bg-surface-2 py-2">
-              <dt className="text-xs text-ink-3">{p === 365 ? "12 meses" : `${p} dias`}</dt>
-              <dd className="font-semibold">
-                {v == null ? "—" : `${v > 0 ? "▲ +" : v < 0 ? "▼ " : ""}${(v * 100).toFixed(1)}%`}
-              </dd>
-            </div>
-          );
-        })}
-      </dl>
+      <div className="mt-3 overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead className="text-xs text-ink-3">
+            <tr>
+              <th className="py-1 text-left font-normal"></th>
+              {PERIODS.map((p) => <th key={p} className="py-1 text-right font-normal">{p === 365 ? "12 meses" : `${p} dias`}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t border-line">
+              <td className="py-1.5 font-medium">{stock.ticker}</td>
+              {PERIODS.map((p) => <td key={p} className="py-1.5 text-right font-medium"><Change value={stock.returns[p]} /></td>)}
+            </tr>
+            {stock.benchmark && (
+              <>
+                <tr className="border-t border-line">
+                  <td className="py-1.5 text-ink-2">{stock.benchmark.name}</td>
+                  {PERIODS.map((p) => <td key={p} className="py-1.5 text-right text-ink-2"><Change value={stock.benchmark!.returns[p]} /></td>)}
+                </tr>
+                <tr className="border-t border-line">
+                  <td className="py-1.5 text-ink-2">Diferença (empresa − índice)</td>
+                  {PERIODS.map((p) => <td key={p} className="py-1.5 text-right"><Change value={stock.excess[p]} /></td>)}
+                </tr>
+              </>
+            )}
+          </tbody>
+        </table>
+        {stock.benchmark && (
+          <p className="mt-2 text-xs text-ink-3">
+            A diferença mostra o que o movimento do mercado não explica. Uma queda grande com diferença perto de zero é efeito de mercado (ex.: o pregão de 26/10/2026, após a eleição); diferença muito negativa aponta algo específico da empresa.
+          </p>
+        )}
+      </div>
     </section>
   );
 }

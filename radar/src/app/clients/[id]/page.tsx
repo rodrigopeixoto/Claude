@@ -6,13 +6,14 @@ import { DailyMentionsChart } from "@/components/charts/DailyMentionsChart";
 import { TrendChart } from "@/components/charts/TrendChart";
 import { fmtDateTime, MentionItem } from "@/components/MentionItem";
 import { Delta, ScoreNumber, StatusChip } from "@/components/ScoreBadge";
+import { AccountPanel, SentimentHelp } from "@/components/AccountPanel";
 import { StockPanel } from "@/components/StockPanel";
 import { StrategyPanel } from "@/components/StrategyPanel";
 import { SubmitButton } from "@/components/SubmitButton";
 import { explainScore } from "@/lib/health/explain";
 import { getStock } from "@/lib/stocks";
 import { latestStrategy } from "@/lib/strategy";
-import { getClientDashboard, PAGE_SIZE } from "@/lib/queries";
+import { accountHealthFor, getClientDashboard, PAGE_SIZE, storeRatings } from "@/lib/queries";
 import { CHANNEL_LABELS, TOPIC_LABELS } from "@/lib/sourceTemplates";
 
 export const dynamic = "force-dynamic";
@@ -34,7 +35,12 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
   });
   if (!data) notFound();
   const { client, latest } = data;
-  const [stock, strategy] = await Promise.all([client.ticker ? getStock(client.ticker) : null, latestStrategy(client.id)]);
+  const [stock, strategy, ratings] = await Promise.all([
+    client.ticker ? getStock(client.ticker, client.market) : null,
+    latestStrategy(client.id),
+    storeRatings(client.id),
+  ]);
+  const account = accountHealthFor(latest, ratings, stock, strategy);
   const explain = explainScore(latest?.score ?? null, data.components);
   const weekAgo = data.trend.length > 7 ? data.trend[data.trend.length - 8] : null;
   const delta = latest?.score != null && weekAgo?.score != null ? latest.score - weekAgo.score : null;
@@ -61,10 +67,12 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
         </div>
       </div>
 
+      <AccountPanel account={account} ratings={ratings} />
+
       <div className="grid gap-4 lg:grid-cols-3">
         <section className="card p-5">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-medium text-ink-2">Saúde (7 dias)</h2>
+            <h2 className="text-sm font-medium text-ink-2">Reputação (7 dias)</h2>
             <StatusChip score={latest?.score ?? null} />
           </div>
           <div className="mt-2">
@@ -87,6 +95,7 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
             ))}
             {data.components.length === 0 && <li className="text-sm text-ink-3">Dados insuficientes. Configure fontes e rode a coleta.</li>}
           </ul>
+          <SentimentHelp llm={Boolean(process.env.ANTHROPIC_API_KEY)} />
         </section>
         <section className="card min-w-0 p-5 lg:col-span-2">
           <h2 className="mb-2 text-sm font-medium text-ink-2">Score de saúde — 30 dias</h2>

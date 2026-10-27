@@ -93,7 +93,7 @@ export async function buildContext(clientId: string): Promise<string> {
       orderBy: { publishedAt: "desc" },
       take: 60,
     }),
-    client.ticker ? getStock(client.ticker) : Promise.resolve(null),
+    client.ticker ? getStock(client.ticker, client.market) : Promise.resolve(null),
   ]);
   const loc = MACRO_QUERIES[client.market ?? "GLOBAL"] ?? MACRO_QUERIES.GLOBAL;
   const [macro, segment] = await Promise.all([
