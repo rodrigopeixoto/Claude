@@ -13,7 +13,7 @@ export const SOURCE_TEMPLATES: Record<SourceType, SourceTemplate> = {
     label: "Google News",
     intervalMinutes: 60,
     config: { query: "" },
-    help: "Busca no Google News (últimos 7 dias). query vazia = palavras-chave do cliente. Aceita operadores: \"Nubank\" -vaga.",
+    help: "Busca no Google News (90 dias na primeira coleta, depois só o que é novo). query vazia = palavras-chave do cliente. Aceita operadores: \"Nubank\" -vaga.",
   },
   GDELT: {
     label: "GDELT (notícias globais)",

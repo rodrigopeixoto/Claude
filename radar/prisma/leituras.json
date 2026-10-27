@@ -1,0 +1,990 @@
+{
+ "Publicis": {
+  "leitura_macro": "Juros altos e inflação acima da meta no Reino Unido e na zona do euro, crescimento global moderado. No Brasil, a eleição de 25/10 derrubou a bolsa em 13,9% e levou o dólar a R$ 5,42, o que barateia o designer brasileiro para contratos em moeda forte.",
+  "leitura_segmento": "As holdings de publicidade estão em consolidação: a Omnicom corta ~15 mil vagas após absorver a IPG. A Publicis é a exceção em crescimento e vence concorrências com dados e IA.",
+  "leitura_cliente": "No 3º tri a receita cresceu 5,0% orgânico, com América Latina em +23,8%; a unidade de tecnologia (Sapient) caiu levemente. Comprou a LiveRamp por US$ 2,2 bi (mai/26). A ação sobe 14,9% em 12 meses e foi pouco afetada pela eleição. Reputação estável, sem menções negativas na semana.",
+  "risco_cancelamento": {
+   "nivel": "baixo",
+   "motivos": [
+    "Crescimento forte na América Latina e guidance confirmado",
+    "Sem notícias de cortes ou reestruturação na Publicis"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "alto",
+   "motivos": [
+    "LatAm +23,8% orgânico puxa demanda por produto digital",
+    "Aquisição da LiveRamp amplia projetos de dados e experiência"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Boa conta para ampliar a alocação de designers seniores com IA, sobretudo em projetos de dados e CX ligados à LiveRamp.",
+   "hunting": "Demanda provável por perfis de product design e research com dados; Sapient em leve queda pede atenção a vagas dessa unidade."
+  },
+  "sinais": [
+   {
+    "tipo": "positivo",
+    "titulo": "América Latina cresce 23,8%",
+    "evidencia": "Resultado do 3º tri divulgado em 13/10/2026.",
+    "impacto": "Abre espaço para mais designers alocados em contas da região.",
+    "plano_acao": [
+     "Mapear com o sponsor as contas LatAm que mais cresceram",
+     "Propor squad de UX dedicado a 1 conta piloto",
+     "Levar 2 cases de IA aplicada a design"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Publicis Sapient (tecnologia) em leve queda",
+    "evidencia": "Unidade de tecnologia recuou em dígito baixo no 3º tri.",
+    "impacto": "Projetos alocados via Sapient podem sofrer revisão de escopo.",
+    "plano_acao": [
+     "Listar designers alocados em projetos Sapient",
+     "Antecipar renovação desses contratos",
+     "Oferecer formato flexível por entrega"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "positivo",
+    "titulo": "Compra da LiveRamp (US$ 2,2 bi)",
+    "evidencia": "Anunciada em maio/2026.",
+    "impacto": "Integração gera demanda por UX de produtos de dados.",
+    "plano_acao": [
+     "Preparar oferta de UX para plataformas de dados",
+     "Pedir introdução ao time de integração"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Head comercial"
+   }
+  ]
+ },
+ "Rede D'Or": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "Hospitais seguem em expansão; as operadoras de saúde tiveram sinistralidade de 81,9% no 1º semestre e lucro menor.",
+  "leitura_cliente": "Lucro ajustado de R$ 1,28 bi no 2º tri (+8,5%) e alavancagem de 1,71x. A ação caiu 21% em 7 dias, quase toda no pregão pós-eleição de 26/10, e acumula -18% em 12 meses. O app tem nota alta (4,3) e há 8 menções negativas na semana, a maioria de atendimento e acesso.",
+  "risco_cancelamento": {
+   "nivel": "baixo",
+   "motivos": [
+    "Fundamentos sólidos e caixa para investir",
+    "Queda da ação é efeito de mercado, não do negócio"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Expansão da rede e app próprio bem avaliado pedem evolução contínua",
+    "Choque de mercado pode adiar novos projetos no curto prazo"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Manter a alocação atual; propor melhorias na jornada do app a partir das reclamações coletadas.",
+   "hunting": "Hunting pode desacelerar no 4º tri por cautela pós-eleição; retomar no 1º tri."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Ação caiu 21% em 7 dias",
+    "evidencia": "Queda concentrada em 26/10, junto com o Ibovespa (-13,9%).",
+    "impacto": "Diretoria pode congelar despesas novas no fim do ano.",
+    "plano_acao": [
+     "Confirmar orçamento de 2027 com o sponsor",
+     "Evitar propor aumento de escopo até a poeira baixar",
+     "Mostrar ROI dos designers alocados"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "negativo",
+    "titulo": "Reclamações de acesso e atendimento no app",
+    "evidencia": "8 menções negativas nos últimos 7 dias (lojas).",
+    "impacto": "Oportunidade de mostrar valor do time de UX.",
+    "plano_acao": [
+     "Agrupar as reclamações por tema",
+     "Levar 3 quick wins ao product owner",
+     "Medir nota do app 30 dias depois"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Líder de UX alocado"
+   }
+  ]
+ },
+ "Entain CILA": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "A MP 1.394/2026, de 25/09, proibiu apostas de quota fixa e jogos online no Brasil e a publicidade do setor; os sites saíram do ar em 06/10. O STF deve julgar as ações após o 2º turno e a MP pode caducar por volta de mar/2027.",
+  "leitura_cliente": "A Entain cumpre a proibição e projeta o ano no piso do guidance (o Brasil era ~5% da receita online). A ação cai 44% em 12 meses. A operação brasileira (Sportingbet) está parada, sem receita.",
+  "risco_cancelamento": {
+   "nivel": "alto",
+   "motivos": [
+    "Operação brasileira proibida desde 06/10",
+    "Sem receita local, orçamento de produto no Brasil tende a ser congelado"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Só retorna se o STF derrubar a MP ou ela caducar"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Risco alto para os designers alocados no Brasil; buscar realocação em outras operações da Entain (Reino Unido, Europa) ou em outros clientes.",
+   "hunting": "Vagas de hunting para o Brasil devem ser canceladas; possível oportunidade de recolocar profissionais da própria Entain."
+  },
+  "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Apostas proibidas no Brasil (MP 1.394/2026)",
+    "evidencia": "Sites fora do ar desde 06/10/2026; julgamento no STF pendente.",
+    "impacto": "Contrato pode ser suspenso ou cancelado a qualquer momento.",
+    "plano_acao": [
+     "Reunião com o sponsor esta semana para entender planos",
+     "Propor pausa remunerada ou redução gradual em vez de corte imediato",
+     "Mapear vagas para realocar cada designer",
+     "Acompanhar o julgamento no STF"
+    ],
+    "prazo": "7 dias",
+    "responsavel": "Diretor de contas + Head de talentos"
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Possível retomada se a MP cair",
+    "evidencia": "~100 emendas no Congresso; MP pode caducar em mar/2027.",
+    "impacto": "Se o mercado reabrir, haverá urgência de reconstruir produto.",
+    "plano_acao": [
+     "Manter relacionamento ativo com o time de produto",
+     "Deixar proposta de retomada pronta"
+    ],
+    "prazo": "90 dias",
+    "responsavel": "Head comercial"
+   }
+  ]
+ },
+ "FTD": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "Educação básica é impulsionada pelo PNLD (programa federal de livros didáticos); o setor privado sofre com juros altos.",
+  "leitura_cliente": "Sandro Bonás assumiu como diretor-geral em 27/07/2026. Poucas notícias recentes e reputação estável, sem negativas na semana. Empresa fechada (sem ações).",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Novo CEO pode revisar fornecedores e prioridades"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Produtos digitais (como a plataforma iônica) dependem de UX",
+    "PNLD sustenta a receita"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Mostrar resultados ao novo CEO antes de uma revisão de fornecedores.",
+   "hunting": "Baixa demanda de hunting até a nova gestão definir prioridades."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Novo diretor-geral desde julho",
+    "evidencia": "Sandro Bonás nomeado em 27/07/2026.",
+    "impacto": "Troca de liderança costuma reabrir contratos.",
+    "plano_acao": [
+     "Agendar apresentação de resultados para o novo diretor",
+     "Preparar plano de 6 meses alinhado à nova gestão",
+     "Identificar o novo sponsor de produto digital"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ]
+ },
+ "Betway Africa": {
+  "leitura_macro": "O SARB subiu a taxa para 7,25% em 23/09, o PIB caiu 0,2% no 2º tri e o desemprego está em 33,6%. Cenário de pressão sobre o consumo e sobre preço de fornecedores.",
+  "leitura_segmento": "O Tesouro sul-africano desenha um imposto nacional de 20% sobre receita de apostas online (detalhes no orçamento de 2027); o cassino online segue sem legalização nacional.",
+  "leitura_cliente": "A Super Group (dona da Betway) teve receita de US$ 684 mi no 2º tri (+18%) e elevou o guidance para mais de US$ 2,6 bi. A ação caiu 29% em 90 dias. A reputação local é razoável (nota 3,3 na App Store).",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Juros subindo e economia fraca na África do Sul",
+    "Novo imposto pode levar a corte de custos"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Grupo crescendo e com guidance elevado"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Manter contratos curtos e preço em moeda forte; o real fraco torna o designer brasileiro mais competitivo.",
+   "hunting": "Hunting estável; foco em perfis seniores com experiência em apostas e pagamentos."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Imposto de 20% sobre apostas online em estudo",
+    "evidencia": "Sinalizado pelo Tesouro; detalhes no orçamento de 2027.",
+    "impacto": "Pressão de margem pode virar corte de fornecedores.",
+    "plano_acao": [
+     "Acompanhar o anúncio do orçamento",
+     "Propor modelo de custo variável por entrega"
+    ],
+    "prazo": "90 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Ação da Super Group caiu 29% em 90 dias",
+    "evidencia": "Cotação SGHC, 27/10/2026; resultado do 3º tri sai no início de novembro.",
+    "impacto": "Pode indicar revisão de expectativas e ajuste de custos.",
+    "plano_acao": [
+     "Ler o resultado do 3º tri assim que sair",
+     "Reforçar entregas de impacto antes da revisão de orçamento"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ]
+ },
+ "FutureBrand": {
+  "leitura_macro": "Juros altos e inflação acima da meta no Reino Unido e na zona do euro, crescimento global moderado. No Brasil, a eleição de 25/10 derrubou a bolsa em 13,9% e levou o dólar a R$ 5,42, o que barateia o designer brasileiro para contratos em moeda forte.",
+  "leitura_segmento": "A integração Omnicom–IPG elimina marcas (DDB, FCB e MullenLowe foram aposentadas) e corta ~15 mil vagas até o fim de 2026.",
+  "leitura_cliente": "A FutureBrand agora fica na Omnicom, via McCann. Simon Hill virou presidente global em jun/2026, depois de uma reorganização. Há poucas notícias recentes e nenhuma negativa. É uma empresa de capital fechado dentro do grupo.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Cortes da Omnicom podem levar a internalização ou revisão de fornecedores"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Grupo em fase de contenção de custos"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Proteger a alocação atual e mostrar custo menor que contratação interna.",
+   "hunting": "Pouca demanda nova; possível oferta de profissionais desligados no mercado."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Cortes de custo na Omnicom após absorver a IPG",
+    "evidencia": "~15 mil cortes previstos até o fim de 2026 (13/09/2026).",
+    "impacto": "Risco de revisão de fornecedores externos.",
+    "plano_acao": [
+     "Mapear quem decide a renovação dentro da nova estrutura",
+     "Apresentar comparativo de custo alocado vs. contratação",
+     "Propor contrato por entregas"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ]
+ },
+ "Publicis/Sebrae": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "O Sebrae é financiado por contribuição compulsória das empresas e contrata por licitação; o ciclo de contratos segue o calendário das concorrências.",
+  "leitura_cliente": "Em 09/10/2026 a Nova venceu pela quarta vez a licitação de publicidade do Sebrae Nacional (cerca de R$ 250 mi por ano), junto com Artplan e DeBrito, entre 13 agências. A Publicis não aparece entre as vencedoras.",
+  "risco_cancelamento": {
+   "nivel": "alto",
+   "motivos": [
+    "Licitação nacional vencida por outras agências",
+    "Se o escopo da agência estava sob esse contrato, ele tende a acabar"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Só via Sebrae estaduais ou pelas agências vencedoras"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Confirmar se os designers alocados atendem o Sebrae Nacional ou um Sebrae estadual.",
+   "hunting": "Oportunidade de oferecer UX às agências vencedoras (Nova, Artplan, DeBrito)."
+  },
+  "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Publicis fora da licitação do Sebrae Nacional",
+    "evidencia": "Resultado publicado em 09/10/2026.",
+    "impacto": "Contrato pode terminar com a transição de agência.",
+    "plano_acao": [
+     "Confirmar com a Publicis o escopo e a data de fim",
+     "Abordar Nova, Artplan e DeBrito para continuar no projeto",
+     "Planejar realocação dos designers"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas + Head comercial"
+   }
+  ]
+ },
+ "Springpod": {
+  "leitura_macro": "Bank Rate em 3,75% com viés de alta (3 votos por subir em set/26), inflação de 3,5% em setembro e PIB de +0,7% no trimestre. Os planos de investimento das empresas estão no menor nível desde a pandemia: compradores priorizam corte de custo e IA.",
+  "leitura_segmento": "Edtech de empregabilidade para jovens no Reino Unido: sem dados recentes do segmento.",
+  "leitura_cliente": "Não há notícias de captação, demissões ou aquisições; só parcerias de estágios virtuais com Marriott e Quickline. É uma empresa de capital fechado.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Reino Unido com investimento empresarial no menor nível pós-pandemia",
+    "Sem dados para avaliar a saúde financeira"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Sem sinais de investimento novo"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Contas pequenas no Reino Unido tendem a buscar custo menor: o real fraco ajuda.",
+   "hunting": "Baixa demanda."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Falta informação sobre o cliente",
+    "evidencia": "Nenhuma notícia financeira em 90 dias.",
+    "impacto": "Risco não mensurável.",
+    "plano_acao": [
+     "Perguntar ao sponsor o planejamento de 2027",
+     "Acompanhar no LinkedIn as vagas e as saídas do time de produto"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ]
+ },
+ "Raízen": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "Combustíveis e etanol: produção recorde de etanol e mistura obrigatória E30/E32, mas a ANP revogou licenças de distribuidoras irregulares em ago–set/2026.",
+  "leitura_cliente": "Em 30/07/2026 a Justiça homologou a recuperação extrajudicial de cerca de R$ 61,4 bi em dívidas, com conversão de dívida em ações e aporte de R$ 3,5 bi da Shell. Prejuízo de R$ 1,64 bi no 1º tri da safra 26/27, venda da operação na Argentina e capex menor. A ação vale R$ 0,33 (-65% em 12 meses). O Shell Box tem nota 4,2 nas lojas, com 21 negativas na semana.",
+  "risco_cancelamento": {
+   "nivel": "alto",
+   "motivos": [
+    "Recuperação extrajudicial e controle passando a credores e à Shell",
+    "Capex reduzido e foco em caixa"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Orçamento travado até a reestruturação terminar"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Alta chance de corte de escopo; defender só o que sustenta receita (como o app Shell Box).",
+   "hunting": "Hunting tende a ser congelado; possível saída de profissionais do time interno."
+  },
+  "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Recuperação extrajudicial de R$ 61,4 bi",
+    "evidencia": "Plano homologado em 30/07/2026; prejuízo de R$ 1,64 bi no trimestre.",
+    "impacto": "Risco alto de corte ou atraso de pagamento.",
+    "plano_acao": [
+     "Revisar o prazo de recebimento e reduzir a exposição em aberto",
+     "Concentrar a alocação no Shell Box (gera receita)",
+     "Ter plano de realocação dos designers"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas + Financeiro"
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Mudança de controle (Shell e credores)",
+    "evidencia": "Disputa entre Cosan e Shell sobre a estrutura.",
+    "impacto": "Novo dono pode trocar fornecedores.",
+    "plano_acao": [
+     "Mapear os novos decisores",
+     "Preparar apresentação de valor do Shell Box"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Head comercial"
+   },
+   {
+    "tipo": "negativo",
+    "titulo": "21 menções negativas no Shell Box na semana",
+    "evidencia": "Avaliações recentes nas lojas.",
+    "impacto": "Problemas no app ameaçam a única frente com orçamento.",
+    "plano_acao": [
+     "Levantar as principais reclamações",
+     "Propor correções de alto impacto e baixo custo"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Líder de UX alocado"
+   }
+  ]
+ },
+ "Syngenta": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "Defensivos agrícolas estão estáveis a levemente em queda no mundo (pressão de genéricos); juros altos e crédito rural apertado no Brasil.",
+  "leitura_cliente": "Receita global de US$ 12,2 bi no 1º semestre (-2%), mas o Brasil cresceu 7% em defensivos. Hengde Qin é o novo CEO desde 01/08/2026. O IPO em Hong Kong ficou para 2027 e há um programa de economia que corta até 150 vagas em Basileia. É uma empresa de capital fechado.",
+  "risco_cancelamento": {
+   "nivel": "baixo",
+   "motivos": [
+    "Brasil é motor de crescimento do grupo"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Apps de agricultura digital (Cropwise) dependem de UX"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Bom momento para propor UX nos produtos digitais para o agricultor.",
+   "hunting": "Demanda moderada; perfis com experiência em agro digital."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Novo CEO e programa de economia",
+    "evidencia": "CEO desde 01/08/2026; cortes em Basileia.",
+    "impacto": "Revisão de custos pode chegar às subsidiárias.",
+    "plano_acao": [
+     "Mostrar o impacto dos projetos no Brasil",
+     "Antecipar a renovação"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "positivo",
+    "titulo": "Brasil cresce 7% em defensivos",
+    "evidencia": "Resultado do 1º semestre (27–28/08/2026).",
+    "impacto": "Abre espaço para expandir no Brasil.",
+    "plano_acao": [
+     "Propor discovery para os apps de agricultor"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Head comercial"
+   }
+  ]
+ },
+ "Betway": {
+  "leitura_macro": "Bank Rate em 3,75% com viés de alta (3 votos por subir em set/26), inflação de 3,5% em setembro e PIB de +0,7% no trimestre. Os planos de investimento das empresas estão no menor nível desde a pandemia: compradores priorizam corte de custo e IA.",
+  "leitura_segmento": "Reino Unido: o imposto sobre jogos remotos subiu de 21% para 40% em abr/2026 e o de apostas vai de 15% para 25% em abr/2027. O setor reage com consolidação e corte de marketing.",
+  "leitura_cliente": "A Super Group estima impacto de ~6% no EBITDA de 2026 e quer compensar com cortes de marketing e sinergias. A receita no Reino Unido cresceu 34% no 2º tri. A ação caiu 29% em 90 dias. A reputação local está ruim: nota 1,6 nas lojas do Reino Unido e score de 52.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Cortes de custo para compensar o imposto"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Receita no Reino Unido crescendo 34%",
+    "Nota baixa no app pede trabalho de UX"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Usar a nota 1,6 do app para justificar o time de UX e mostrar ganho de conversão.",
+   "hunting": "Hunting seletivo; o real fraco favorece designers brasileiros remotos."
+  },
+  "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Nota 1,6 do app no Reino Unido",
+    "evidencia": "Avaliações recentes da App Store e do Google Play (UK).",
+    "impacto": "Pode ser argumento para cortar ou para ampliar UX.",
+    "plano_acao": [
+     "Levantar as reclamações mais frequentes",
+     "Propor sprint de correção com meta de nota",
+     "Reportar evolução quinzenal"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Líder de UX alocado"
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Imposto de jogos mais alto e plano de cortes",
+    "evidencia": "40% desde abr/2026; 25% sobre apostas em abr/2027.",
+    "impacto": "Fornecedores entram na mira de cortes.",
+    "plano_acao": [
+     "Oferecer modelo mais barato com designers do Brasil",
+     "Mostrar resultado por designer alocado"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ]
+ },
+ "Emma": {
+  "leitura_macro": "Bank Rate em 3,75% com viés de alta (3 votos por subir em set/26), inflação de 3,5% em setembro e PIB de +0,7% no trimestre. Os planos de investimento das empresas estão no menor nível desde a pandemia: compradores priorizam corte de custo e IA.",
+  "leitura_segmento": "Varejo direto ao consumidor no Reino Unido, com consumo pressionado por inflação de 3,5%.",
+  "leitura_cliente": "Emma está sob uma ordem de consentimento com a CMA (órgão de concorrência do Reino Unido) por contadores falsos e urgência nas vendas, com prazo de adequação em 20/06/2026. Há acusações semelhantes na Austrália, e a empresa abriu lojas na França e na Índia. Não há notícias financeiras recentes; é uma empresa de capital fechado.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Sem dados financeiros recentes",
+    "Consumo britânico fraco"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Adequação do checkout às regras de consumo é trabalho de UX"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Oferecer revisão de padrões de interface (dark patterns) e de conformidade no checkout.",
+   "hunting": "Perfis de UX com experiência em e-commerce e conformidade."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Processo da CMA sobre práticas de venda",
+    "evidencia": "Ordem de consentimento com prazo em 20/06/2026; caso semelhante na Austrália.",
+    "impacto": "Risco reputacional e oportunidade de projeto.",
+    "plano_acao": [
+     "Propor auditoria de padrões enganosos no site",
+     "Montar backlog de conformidade"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Head comercial"
+   }
+  ]
+ },
+ "Cogna": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "Ensino superior privado: as novas regras do MEC proíbem 100% EAD em direito, medicina, enfermagem, psicologia e odontologia e criam o modelo semipresencial. O JPMorgan estima impacto de ~4,9% na receita da Cogna.",
+  "leitura_cliente": "No 2º tri o lucro foi de R$ 148,9 mi (+25%), a receita de R$ 1,96 bi (+18%) e a Vasta cresceu 50,5% com o PNLD. Mas a ação caiu 42% em 7 dias (pós-eleição) e 39% em 12 meses. O app Anhanguera tem nota 2,8 e a reputação está em atenção (score 52).",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Ação em queda forte e pressão das novas regras de EAD",
+    "Ambiente de corte de gastos no Brasil"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Migração para o modelo semipresencial exige novos produtos digitais",
+    "Resultados operacionais fortes"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Posicionar o time de UX no redesenho da experiência semipresencial e do app do aluno.",
+   "hunting": "Pode haver demanda de hunting para produto educacional; atenção ao congelamento pós-eleição."
+  },
+  "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Ação caiu 42% em 7 dias",
+    "evidencia": "Queda pós-eleição em 26/10/2026; -39% em 12 meses.",
+    "impacto": "Pressão por corte de custos no 4º tri.",
+    "plano_acao": [
+     "Confirmar orçamento de 2027",
+     "Ligar entregas de UX a retenção e evasão de alunos"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "negativo",
+    "titulo": "App do aluno com nota 2,8",
+    "evidencia": "Avaliações recentes do Anhanguera Aluno (Google Play).",
+    "impacto": "Insatisfação de aluno afeta retenção.",
+    "plano_acao": [
+     "Mapear as falhas citadas (exercícios, acesso)",
+     "Propor plano de correção com meta de nota"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Líder de UX alocado"
+   },
+   {
+    "tipo": "positivo",
+    "titulo": "Novas regras de EAD pedem produto novo",
+    "evidencia": "Regulação do MEC; modelo semipresencial.",
+    "impacto": "Oportunidade de expansão do escopo.",
+    "plano_acao": [
+     "Propor discovery da jornada semipresencial"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Head comercial"
+   }
+  ]
+ },
+ "Hyphen": {
+  "leitura_macro": "Bank Rate em 3,75% com viés de alta (3 votos por subir em set/26), inflação de 3,5% em setembro e PIB de +0,7% no trimestre. Os planos de investimento das empresas estão no menor nível desde a pandemia: compradores priorizam corte de custo e IA.",
+  "leitura_segmento": "Mídia digital no Reino Unido sob pressão de receita.",
+  "leitura_cliente": "Em 21/10/2026 foi confirmado o fechamento do Hyphen: o grupo controlador, dos Emirados Árabes, deixa de financiar o site a partir de 2027, e cerca de 18 jornalistas estão em consulta de demissão. A reputação ainda parece boa (score 78) porque o noticiário é neutro: é o caso em que o score de reputação não mostra o risco.",
+  "risco_cancelamento": {
+   "nivel": "alto",
+   "motivos": [
+    "Site anunciou fechamento; financiamento termina em 2027"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Sem futuro para o produto"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Planejar o encerramento do contrato e realocar os designers.",
+   "hunting": "Nenhuma demanda; possível talento disponível no mercado."
+  },
+  "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Fechamento anunciado",
+    "evidencia": "Press Gazette, 21/10/2026.",
+    "impacto": "Fim do contrato.",
+    "plano_acao": [
+     "Confirmar data de término e cobrar valores em aberto",
+     "Realocar os designers em outras contas",
+     "Pedir depoimento e case antes do fim"
+    ],
+    "prazo": "7 dias",
+    "responsavel": "Diretor de contas + Financeiro"
+   }
+  ]
+ },
+ "Gerdau": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "Siderurgia: as tarifas americanas (Seção 232) favorecem a operação nos EUA; no Brasil, o antidumping contra o aço chinês deve reduzir importações em ~20% em 2026.",
+  "leitura_cliente": "Lucro de R$ 1,47 bi no 2º tri (+69,7%), com a América do Norte respondendo por ~65% do EBITDA. Em 22/10 a S&P mudou a perspectiva para positiva. O capex de 2026 é de R$ 4,7 bi. A ação sobe 36% em 12 meses (-6% na semana da eleição). Reputação estável.",
+  "risco_cancelamento": {
+   "nivel": "baixo",
+   "motivos": [
+    "Resultados fortes e rating em melhora"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Capex alto e digitalização industrial"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Boa conta para propor UX em produtos digitais B2B (portais de cliente, apps de obra).",
+   "hunting": "Possível demanda de hunting para times digitais, inclusive nos EUA."
+  },
+  "sinais": [
+   {
+    "tipo": "positivo",
+    "titulo": "S&P eleva perspectiva para positiva",
+    "evidencia": "Anúncio de 22/10/2026.",
+    "impacto": "Solidez financeira sustenta o contrato.",
+    "plano_acao": [
+     "Propor expansão para portais B2B e apps de campo"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Head comercial"
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Operação Brasil pressionada",
+    "evidencia": "Lucro bruto no Brasil -37% no 2º tri por importações.",
+    "impacto": "Cortes podem atingir projetos locais.",
+    "plano_acao": [
+     "Conferir se o escopo atual está na operação Brasil"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ]
+ },
+ "Amadeus": {
+  "leitura_macro": "Juros altos e inflação acima da meta no Reino Unido e na zona do euro, crescimento global moderado. No Brasil, a eleição de 25/10 derrubou a bolsa em 13,9% e levou o dólar a R$ 5,42, o que barateia o designer brasileiro para contratos em moeda forte.",
+  "leitura_segmento": "Tecnologia para viagens: a demanda é resiliente, mas exposta à geopolítica; o setor segue com aquisições em hotelaria, pagamentos e biometria.",
+  "leitura_cliente": "Receita de € 3,33 bi no 1º semestre (+5,1% em câmbio constante), mas o guidance foi revisado para baixo por causa do conflito no Oriente Médio, que afeta as reservas aéreas. Fechou um contrato de 5 anos com a CTM e a compra da IDEMIA Public Security segue pendente. Resultado do 3º tri sai em 06/11. A ação cai 16% em 12 meses.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Guidance revisado para baixo"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Aquisições (IDEMIA) e novos produtos de biometria e pagamentos"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Manter a alocação e acompanhar o resultado de 06/11.",
+   "hunting": "Demanda pontual em produtos de biometria e pagamentos."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Guidance revisado por geopolítica",
+    "evidencia": "Resultado do 1º semestre, 31/07/2026; 3º tri em 06/11.",
+    "impacto": "Possível contenção de custos.",
+    "plano_acao": [
+     "Ler o resultado de 06/11",
+     "Reforçar entregas em produtos que geram receita"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "positivo",
+    "titulo": "Compra da IDEMIA Public Security",
+    "evidencia": "Aprovações previstas até meados de 2027.",
+    "impacto": "Novos produtos para desenhar.",
+    "plano_acao": [
+     "Preparar oferta de UX para biometria"
+    ],
+    "prazo": "90 dias",
+    "responsavel": "Head comercial"
+   }
+  ]
+ },
+ "PicPay": {
+  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_segmento": "Fintech: o Banco Central apertou as regras de autorização (Res. 494/2025), o que acelera a consolidação; Pix e Open Finance seguem crescendo e favorecem quem tem escala.",
+  "leitura_cliente": "Abriu capital na Nasdaq (PICS) em 29/01/2026 a US$ 19; hoje está em US$ 7,59, com -46% em 7 dias após a eleição. No 2º tri o lucro ajustado foi de R$ 283 mi (+135%) e a receita de R$ 4,1 bi (+67%), mas a inadimplência subiu. O app tem nota 4,4, com 40 negativas na semana pelo volume alto.",
+  "risco_cancelamento": {
+   "nivel": "baixo",
+   "motivos": [
+    "Crescimento forte e escala"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "alto",
+   "motivos": [
+    "Receita +67% e novos produtos financeiros",
+    "Empresa listada precisa entregar crescimento"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Melhor candidato a expansão de designers alocados, mas a queda da ação pode trazer cautela no 4º tri.",
+   "hunting": "Alta demanda potencial de hunting para produto financeiro; perfis com experiência em crédito e cobrança."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Ação caiu 46% em 7 dias",
+    "evidencia": "US$ 7,59 em 27/10/2026, contra US$ 19 no IPO.",
+    "impacto": "Pressão de investidores por eficiência pode congelar contratações.",
+    "plano_acao": [
+     "Confirmar planos de contratação para o 1º tri",
+     "Mostrar ganhos de conversão e eficiência do time de UX"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Inadimplência subindo",
+    "evidencia": "Resultado do 2º tri (24/08/2026).",
+    "impacto": "Foco em cobrança e crédito responsável.",
+    "plano_acao": [
+     "Propor UX para jornadas de renegociação e cobrança"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Head comercial"
+   },
+   {
+    "tipo": "positivo",
+    "titulo": "Lucro +135% e receita +67%",
+    "evidencia": "Resultado do 2º tri.",
+    "impacto": "Espaço para ampliar o escopo.",
+    "plano_acao": [
+     "Propor squad adicional em uma linha de produto em crescimento"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ]
+ },
+ "Novo Banco": {
+  "leitura_macro": "O BCE subiu a taxa de depósito para 2,50% em 10/09 (nova decisão em 29/10). Portugal cresce ~2% em 2026 e os bancos seguem lucrativos, com margens em queda: é o mercado mais estável da carteira.",
+  "leitura_segmento": "Banca portuguesa lucrativa, mas com margens em queda e consolidação sob controle estrangeiro.",
+  "leitura_cliente": "O BPCE concluiu a compra de 100% do banco por € 6,7 bi em 30/04/2026 e conduz a integração (liderada por Olivier Delay). O lucro do 1º semestre foi de € 367 mi (-16%, segundo uma única fonte). O app tem nota 2,8 nas lojas de Portugal e a reputação está em atenção (score 58). Não há plano de demissões conhecido.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "A integração ao BPCE costuma revisar fornecedores e tecnologia"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "medio",
+   "motivos": [
+    "Possibilidade de atuar em outras empresas do grupo BPCE",
+    "App mal avaliado pede melhorias"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Mostrar resultados ao novo controlador e se posicionar para outras empresas do grupo BPCE.",
+   "hunting": "Demanda moderada; o euro forte favorece designers brasileiros remotos."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Integração ao grupo BPCE",
+    "evidencia": "Compra concluída em 30/04/2026.",
+    "impacto": "Revisão de fornecedores no médio prazo.",
+    "plano_acao": [
+     "Mapear decisores do BPCE na integração",
+     "Apresentar resultados do time de UX",
+     "Propor projeto piloto em outra empresa do grupo"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Diretor de contas"
+   },
+   {
+    "tipo": "negativo",
+    "titulo": "App com nota 2,8",
+    "evidencia": "Avaliações recentes na App Store e no Google Play de Portugal.",
+    "impacto": "Ponto fraco visível para o novo dono.",
+    "plano_acao": [
+     "Diagnóstico rápido das reclamações",
+     "Plano de melhoria com meta de nota"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Líder de UX alocado"
+   }
+  ]
+ },
+ "Origin": {
+  "leitura_macro": "Indisponível: falta confirmar qual empresa é o cliente.",
+  "leitura_segmento": "Indisponível.",
+  "leitura_cliente": "Ainda sem fontes configuradas, porque o nome é ambíguo e as buscas trouxeram só homônimos.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Sem dados para avaliar"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Sem dados para avaliar"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Indisponível.",
+   "hunting": "Indisponível."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Cliente sem monitoramento",
+    "evidencia": "Nome ambíguo; nenhuma fonte configurada.",
+    "impacto": "A agência fica sem alerta de risco para esta conta.",
+    "plano_acao": [
+     "Confirmar o site e o segmento do cliente",
+     "Cadastrar palavras-chave e apps no Radar"
+    ],
+    "prazo": "7 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ],
+  "sem_dados": true
+ },
+ "Bliss": {
+  "leitura_macro": "Indisponível: falta confirmar qual empresa é o cliente.",
+  "leitura_segmento": "Indisponível.",
+  "leitura_cliente": "Ainda sem fontes configuradas, porque o nome é ambíguo e as buscas trouxeram só homônimos.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Sem dados para avaliar"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Sem dados para avaliar"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Indisponível.",
+   "hunting": "Indisponível."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Cliente sem monitoramento",
+    "evidencia": "Nome ambíguo; nenhuma fonte configurada.",
+    "impacto": "A agência fica sem alerta de risco para esta conta.",
+    "plano_acao": [
+     "Confirmar o site e o segmento do cliente",
+     "Cadastrar palavras-chave e apps no Radar"
+    ],
+    "prazo": "7 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ],
+  "sem_dados": true
+ },
+ "Gauge": {
+  "leitura_macro": "Indisponível: falta confirmar qual empresa é o cliente.",
+  "leitura_segmento": "Indisponível.",
+  "leitura_cliente": "Ainda sem fontes configuradas, porque o nome é ambíguo e as buscas trouxeram só homônimos.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Sem dados para avaliar"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Sem dados para avaliar"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Indisponível.",
+   "hunting": "Indisponível."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Cliente sem monitoramento",
+    "evidencia": "Nome ambíguo; nenhuma fonte configurada.",
+    "impacto": "A agência fica sem alerta de risco para esta conta.",
+    "plano_acao": [
+     "Confirmar o site e o segmento do cliente",
+     "Cadastrar palavras-chave e apps no Radar"
+    ],
+    "prazo": "7 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ],
+  "sem_dados": true
+ },
+ "PactoMais": {
+  "leitura_macro": "Indisponível: falta confirmar qual empresa é o cliente.",
+  "leitura_segmento": "Indisponível.",
+  "leitura_cliente": "Ainda sem fontes configuradas, porque o nome é ambíguo e as buscas trouxeram só homônimos.",
+  "risco_cancelamento": {
+   "nivel": "medio",
+   "motivos": [
+    "Sem dados para avaliar"
+   ]
+  },
+  "potencial_expansao": {
+   "nivel": "baixo",
+   "motivos": [
+    "Sem dados para avaliar"
+   ]
+  },
+  "impacto_ux": {
+   "outsourcing": "Indisponível.",
+   "hunting": "Indisponível."
+  },
+  "sinais": [
+   {
+    "tipo": "atencao",
+    "titulo": "Cliente sem monitoramento",
+    "evidencia": "Nome ambíguo; nenhuma fonte configurada.",
+    "impacto": "A agência fica sem alerta de risco para esta conta.",
+    "plano_acao": [
+     "Confirmar o site e o segmento do cliente",
+     "Cadastrar palavras-chave e apps no Radar"
+    ],
+    "prazo": "7 dias",
+    "responsavel": "Diretor de contas"
+   }
+  ],
+  "sem_dados": true
+ }
+}

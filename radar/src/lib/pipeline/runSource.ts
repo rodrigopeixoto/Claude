@@ -4,7 +4,8 @@ import type { RawItem } from "../collectors/types";
 import { prisma } from "../db";
 import { containsAny, normalize, sha256, stripPublisherSuffix, truncate } from "../text";
 
-const DEFAULT_LOOKBACK_DAYS = 7;
+// First run reaches back far enough for the 7/30/60/90-day news views.
+const DEFAULT_LOOKBACK_DAYS = 90;
 
 export function mentionHash(item: RawItem): string {
   // News gets syndicated under many URLs; dedupe on the headline instead.
@@ -37,7 +38,7 @@ export async function runSource(sourceId: string): Promise<RunResult> {
 
 async function runLoadedSource(source: Source & { client: Client }): Promise<RunResult> {
   const run = await prisma.collectorRun.create({ data: { sourceId: source.id } });
-  // First run looks back a week; later runs overlap the previous one by a day so late items aren't lost.
+  // Later runs overlap the previous one by a day so late items aren't lost.
   const since = source.lastRunAt
     ? new Date(source.lastRunAt.getTime() - 24 * 3600_000)
     : new Date(Date.now() - DEFAULT_LOOKBACK_DAYS * 24 * 3600_000);

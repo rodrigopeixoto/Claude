@@ -6,13 +6,20 @@ import { DailyMentionsChart } from "@/components/charts/DailyMentionsChart";
 import { TrendChart } from "@/components/charts/TrendChart";
 import { fmtDateTime, MentionItem } from "@/components/MentionItem";
 import { Delta, ScoreNumber, StatusChip } from "@/components/ScoreBadge";
+import { StockPanel } from "@/components/StockPanel";
+import { StrategyPanel } from "@/components/StrategyPanel";
 import { SubmitButton } from "@/components/SubmitButton";
+import { explainScore } from "@/lib/health/explain";
+import { getStock } from "@/lib/stocks";
+import { latestStrategy } from "@/lib/strategy";
 import { getClientDashboard, PAGE_SIZE } from "@/lib/queries";
 import { CHANNEL_LABELS, TOPIC_LABELS } from "@/lib/sourceTemplates";
 
 export const dynamic = "force-dynamic";
 
-type Search = { channel?: string; sentiment?: string; q?: string; page?: string; all?: string };
+type Search = { channel?: string; sentiment?: string; q?: string; page?: string; all?: string; periodo?: string };
+
+const PERIODOS = ["7", "30", "60", "90"];
 
 export default async function ClientPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<Search> }) {
   const { id } = await params;
@@ -22,10 +29,13 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
     sentiment: ["POSITIVE", "NEUTRAL", "NEGATIVE"].includes(sp.sentiment ?? "") ? (sp.sentiment as SentimentLabel) : undefined,
     q: sp.q?.trim() || undefined,
     page: Number(sp.page) || 1,
+    days: PERIODOS.includes(sp.periodo ?? "") ? Number(sp.periodo) : undefined,
     showIrrelevant: sp.all === "1",
   });
   if (!data) notFound();
   const { client, latest } = data;
+  const [stock, strategy] = await Promise.all([client.ticker ? getStock(client.ticker) : null, latestStrategy(client.id)]);
+  const explain = explainScore(latest?.score ?? null, data.components);
   const weekAgo = data.trend.length > 7 ? data.trend[data.trend.length - 8] : null;
   const delta = latest?.score != null && weekAgo?.score != null ? latest.score - weekAgo.score : null;
   const maxTopic = Math.max(1, ...data.topics.map((t) => t.n));
@@ -61,6 +71,7 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
             <ScoreNumber score={latest?.score ?? null} size="xl" />
             <div><Delta value={delta} /></div>
           </div>
+          <p className="mt-2 text-xs text-ink-3">{explain.faixa}. {explain.motivo}</p>
           <ul className="mt-4 space-y-2.5">
             {data.components.map((c) => (
               <li key={c.key} className="text-sm">
@@ -82,6 +93,10 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
           <TrendChart points={data.trend} />
         </section>
       </div>
+
+      <StrategyPanel clientId={client.id} report={strategy} />
+
+      <StockPanel stock={stock} />
 
       <section className="card min-w-0 p-5">
         <h2 className="mb-2 text-sm font-medium text-ink-2">Menções por dia — 30 dias</h2>
@@ -162,6 +177,10 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-sm font-medium text-ink-2">Menções ({data.total})</h2>
           <form className="flex flex-wrap gap-2" method="get">
+            <select name="periodo" defaultValue={sp.periodo ?? ""} className="input w-36" aria-label="Período">
+              <option value="">Todo período</option>
+              {PERIODOS.map((p) => <option key={p} value={p}>Últimos {p} dias</option>)}
+            </select>
             <input name="q" defaultValue={sp.q} placeholder="Buscar texto ou autor" className="input w-48" />
             <select name="channel" defaultValue={sp.channel ?? ""} className="input w-36">
               <option value="">Todos os canais</option>
@@ -177,7 +196,7 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
               <input type="checkbox" name="all" value="1" defaultChecked={sp.all === "1"} /> incluir irrelevantes
             </label>
             <button className="btn">Filtrar</button>
-            {(sp.q || sp.channel || sp.sentiment || sp.all) && <Link href={`/clients/${id}`} className="btn">Limpar</Link>}
+            {(sp.q || sp.channel || sp.sentiment || sp.all || sp.periodo) && <Link href={`/clients/${id}`} className="btn">Limpar</Link>}
           </form>
         </div>
         <ul>

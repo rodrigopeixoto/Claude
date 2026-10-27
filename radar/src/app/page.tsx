@@ -7,15 +7,21 @@ export const dynamic = "force-dynamic";
 
 type Row = Awaited<ReturnType<typeof getOverview>>[number];
 
+const LEVEL: Record<string, number> = { baixo: 1, medio: 2, alto: 3 };
+const LEVEL_LABEL: Record<string, string> = { baixo: "Baixo", medio: "Médio", alto: "Alto" };
+
 const SORTS: Record<string, { label: string; value: (c: Row) => number | string | null; desc?: boolean }> = {
   nome: { label: "Cliente", value: (c) => c.name.toLowerCase() },
-  score: { label: "Saúde", value: (c) => c.latest?.score ?? null },
+  score: { label: "Saúde", value: (c) => c.latest?.score ?? null, desc: true },
   variacao: { label: "Δ 7d", value: (c) => c.delta },
   mencoes: { label: "Menções 7d", value: (c) => c.latest?.mentions7d ?? 0, desc: true },
   negativas: { label: "Negativas 7d", value: (c) => c.latest?.negative7d ?? 0, desc: true },
   pctneg: { label: "% neg.", value: (c) => (c.latest?.mentions7d ? c.latest.negative7d / c.latest.mentions7d : null), desc: true },
   reclamacoes: { label: "Reclamações 7d", value: (c) => c.latest?.complaints7d ?? 0, desc: true },
   nota: { label: "Nota apps", value: (c) => c.latest?.avgRating30d ?? null },
+  acao30: { label: "Ação 30d", value: (c) => c.stock30 },
+  churn: { label: "Risco canc.", value: (c) => (c.churn ? LEVEL[c.churn] : null), desc: true },
+  expansao: { label: "Expansão", value: (c) => (c.expansion ? LEVEL[c.expansion] : null), desc: true },
   alertas: { label: "Alertas", value: (c) => c.openAlerts, desc: true },
 };
 
@@ -38,6 +44,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
   const sp = await searchParams;
   const clients = await getOverview();
   const ordem = sp.ordem && sp.ordem in SORTS ? sp.ordem : "score";
+  // Risk and expansion come from the strategic reading (needs ANTHROPIC_API_KEY).
   const cards = sp.visao === "cartoes";
   const sorted = sortRows(clients, ordem);
   const withData = clients.filter((c) => c.latest?.score != null);
@@ -113,7 +120,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
         </div>
       ) : (
         <div className="card overflow-x-auto">
-          <table className="w-full min-w-[60rem] text-sm">
+          <table className="w-full min-w-[78rem] text-sm">
             <thead className="text-left text-xs text-ink-3">
               <tr className="border-b border-line">
                 {Object.entries(SORTS).map(([key, s]) => (
@@ -146,8 +153,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
                           {l?.score != null && <div className="h-1.5 rounded-full" style={{ width: `${l.score}%`, background: "var(--seq)" }} />}
                         </div>
                         <span className="w-10 font-medium">{l?.score == null ? "—" : fmt1(l.score)}</span>
-                        <StatusChip score={l?.score ?? null} />
+                        <span title={`${c.explain.faixa}. ${c.explain.motivo}`}><StatusChip score={l?.score ?? null} /></span>
                       </div>
+                      <div className="mt-0.5 max-w-xs text-left text-xs text-ink-3">{c.explain.motivo}</div>
                     </td>
                     <td className="px-3 py-2 text-right text-ink-2">{c.delta == null ? "—" : `${c.delta > 0 ? "+" : ""}${fmt1(c.delta)}`}</td>
                     <td className="px-3 py-2 text-right">{l?.mentions7d ?? 0}</td>
@@ -155,6 +163,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
                     <td className="px-3 py-2 text-right">{pct == null ? "—" : `${Math.round(pct * 100)}%`}</td>
                     <td className="px-3 py-2 text-right">{l?.complaints7d ?? 0}</td>
                     <td className="px-3 py-2 text-right">{l?.avgRating30d ? `${l.avgRating30d.toFixed(1)}★` : "—"}</td>
+                    <td className="px-3 py-2 text-right">{c.stock30 == null ? "—" : `${c.stock30 > 0 ? "+" : ""}${(c.stock30 * 100).toFixed(1)}%`}</td>
+                    <td className="px-3 py-2 text-right">{c.churn ? LEVEL_LABEL[c.churn] : "—"}</td>
+                    <td className="px-3 py-2 text-right">{c.expansion ? LEVEL_LABEL[c.expansion] : "—"}</td>
                     <td className="px-3 py-2 text-right">{c.openAlerts || ""}</td>
                     <td className="px-3 py-2"><div className="flex justify-end"><Sparkline points={c.trend.map((t) => t.score)} width={90} height={24} /></div></td>
                   </tr>

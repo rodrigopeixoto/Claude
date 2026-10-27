@@ -29,7 +29,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "PUB.PA",
+    "market": "GLOBAL",
+    "segment": "publicidade e holdings de comunicação"
   },
   {
     "name": "Rede D'Or",
@@ -72,7 +75,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "RDOR3.SA",
+    "market": "BR",
+    "segment": "hospitais e saúde privada"
   },
   {
     "name": "Entain CILA",
@@ -105,7 +111,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "ENT.L",
+    "market": "BR",
+    "segment": "apostas esportivas online"
   },
   {
     "name": "FTD",
@@ -127,7 +136,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": "BR",
+    "segment": "editoras e soluções educacionais"
   },
   {
     "name": "Betway Africa",
@@ -158,7 +170,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "SGHC",
+    "market": "ZA",
+    "segment": "apostas esportivas online"
   },
   {
     "name": "FutureBrand",
@@ -190,7 +205,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": "GLOBAL",
+    "segment": "consultoria de branding"
   },
   {
     "name": "Publicis/Sebrae",
@@ -211,7 +229,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": "BR",
+    "segment": "apoio a micro e pequenas empresas"
   },
   {
     "name": "Springpod",
@@ -232,7 +253,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": "GB",
+    "segment": "edtech e empregabilidade de jovens"
   },
   {
     "name": "Raízen",
@@ -275,7 +299,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "RAIZ4.SA",
+    "market": "BR",
+    "segment": "combustíveis, etanol e energia"
   },
   {
     "name": "Syngenta",
@@ -307,7 +334,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": "BR",
+    "segment": "defensivos agrícolas e sementes"
   },
   {
     "name": "Origin",
@@ -316,7 +346,10 @@
       "Origin"
     ],
     "sources": [],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": null,
+    "segment": null
   },
   {
     "name": "Betway",
@@ -358,7 +391,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "SGHC",
+    "market": "GB",
+    "segment": "apostas esportivas online"
   },
   {
     "name": "Bliss",
@@ -367,7 +403,10 @@
       "Bliss"
     ],
     "sources": [],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": null,
+    "segment": null
   },
   {
     "name": "Emma",
@@ -388,7 +427,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": "GB",
+    "segment": "colchões e varejo direto ao consumidor"
   },
   {
     "name": "Cogna",
@@ -420,7 +462,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "COGN3.SA",
+    "market": "BR",
+    "segment": "ensino superior privado"
   },
   {
     "name": "Hyphen",
@@ -441,7 +486,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": "GB",
+    "segment": "mídia digital"
   },
   {
     "name": "PactoMais",
@@ -451,7 +499,10 @@
       "Pacto Mais"
     ],
     "sources": [],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": null,
+    "segment": null
   },
   {
     "name": "Gerdau",
@@ -472,7 +523,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "GGBR4.SA",
+    "market": "BR",
+    "segment": "siderurgia"
   },
   {
     "name": "Amadeus",
@@ -508,7 +562,10 @@
           "ceid": "GB:en"
         }
       }
-    ]
+    ],
+    "ticker": "AMS.MC",
+    "market": "GLOBAL",
+    "segment": "tecnologia para viagens"
   },
   {
     "name": "PicPay",
@@ -550,7 +607,10 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": "PICS",
+    "market": "BR",
+    "segment": "bancos digitais e meios de pagamento"
   },
   {
     "name": "Gauge",
@@ -559,7 +619,10 @@
       "Gauge"
     ],
     "sources": [],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": null,
+    "segment": null
   },
   {
     "name": "Novo Banco",
@@ -602,6 +665,9 @@
         }
       }
     ],
-    "excludeTerms": []
+    "excludeTerms": [],
+    "ticker": null,
+    "market": "PT",
+    "segment": "bancos"
   }
 ]

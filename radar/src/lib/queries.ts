@@ -1,6 +1,9 @@
 import { Prisma, type Channel, type SentimentLabel } from "@prisma/client";
 import { prisma } from "./db";
+import { explainScore } from "./health/explain";
 import type { HealthComponent } from "./health/score";
+import { getStock } from "./stocks";
+import { latestStrategy } from "./strategy";
 
 const DAY = 24 * 3600_000;
 
@@ -14,8 +17,9 @@ export async function getOverview() {
       sources: { select: { lastStatus: true, enabled: true } },
     },
   });
-  return clients.map((c) => {
+  return Promise.all(clients.map(async (c) => {
     const latest = c.snapshots.at(-1) ?? null;
+    const [stock, strategy] = await Promise.all([c.ticker ? getStock(c.ticker) : null, latestStrategy(c.id)]);
     const weekAgo = [...c.snapshots].reverse().find((s) => latest && s.date.getTime() <= latest.date.getTime() - 7 * DAY);
     return {
       id: c.id,
@@ -27,11 +31,18 @@ export async function getOverview() {
       openAlerts: c._count.alerts,
       sourceCount: c._count.sources,
       failingSources: c.sources.filter((s) => s.enabled && s.lastStatus === "ERROR").length,
+      explain: explainScore(latest?.score ?? null, (latest?.components ?? []) as unknown as HealthComponent[]),
+      ticker: c.ticker,
+      stock30: stock?.returns[30] ?? null,
+      churn: strategy?.data.risco_cancelamento.nivel ?? null,
+      expansion: strategy?.data.potencial_expansao.nivel ?? null,
     };
-  });
+  }));
 }
 
 export interface MentionFilters {
+  /** Only mentions published in the last N days. */
+  days?: number;
   channel?: Channel;
   sentiment?: SentimentLabel;
   q?: string;
@@ -49,6 +60,7 @@ export async function getClientDashboard(clientId: string, filters: MentionFilte
   const where: Prisma.MentionWhereInput = {
     clientId,
     ...(filters.showIrrelevant ? {} : { relevant: true }),
+    ...(filters.days ? { publishedAt: { gte: new Date(Date.now() - filters.days * DAY) } } : {}),
     ...(filters.channel ? { channel: filters.channel } : {}),
     ...(filters.sentiment ? { sentimentLabel: filters.sentiment } : {}),
     ...(filters.q

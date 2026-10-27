@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { refreshHealth } from "@/lib/health/compute";
 import { SOURCE_TEMPLATES } from "@/lib/sourceTemplates";
+import { generateStrategy } from "@/lib/strategy";
 import { collectNow } from "@/worker/cycle";
 
 function list(value: FormDataEntryValue | null): string[] {
@@ -132,4 +133,17 @@ export async function toggleRelevant(mentionId: string) {
   await refreshHealth([m.clientId]);
   revalidatePath(`/clients/${m.clientId}`);
   revalidatePath("/");
+}
+
+export type StrategyState = { error?: string; ok?: boolean };
+
+export async function generateStrategyAction(clientId: string, _prev: StrategyState): Promise<StrategyState> {
+  try {
+    await generateStrategy(clientId);
+  } catch (err) {
+    return { error: err instanceof Error ? err.message : String(err) };
+  }
+  revalidatePath(`/clients/${clientId}`);
+  revalidatePath("/");
+  return { ok: true };
 }

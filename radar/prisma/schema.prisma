@@ -52,6 +52,12 @@ model Client {
   id           String           @id @default(cuid())
   name         String
   description  String?
+  /// Yahoo Finance symbol, e.g. RDOR3.SA, PUB.PA, ENT.L
+  ticker       String?
+  /// Main market: BR, GB, ZA, PT or GLOBAL — picks the macro news used in the strategic reading
+  market       String?
+  /// Business segment in plain words, used to search segment news
+  segment      String?
   keywords     String[]
   excludeTerms String[]
   createdAt    DateTime         @default(now())
@@ -60,6 +66,7 @@ model Client {
   mentions     Mention[]
   snapshots    HealthSnapshot[]
   alerts       Alert[]
+  reports      StrategicReport[]
 }
 
 model Source {
@@ -160,5 +167,25 @@ model Alert {
   createdAt    DateTime  @default(now())
 
   @@unique([clientId, dedupeKey])
+  @@index([clientId, createdAt])
+}
+
+model StockQuote {
+  ticker   String
+  date     DateTime @db.Date
+  close    Float
+  currency String
+
+  @@id([ticker, date])
+}
+
+model StrategicReport {
+  id        String   @id @default(cuid())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  model     String
+  data      Json
+
   @@index([clientId, createdAt])
 }
