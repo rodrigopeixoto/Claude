@@ -60,6 +60,24 @@
     "prazo": "60 dias",
     "responsavel": "Head comercial"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Dados sem UX viram dashboard que ninguém usa",
+    "gancho": "Segmento: holdings apostam em dados e IA (Publicis comprou a LiveRamp por US$ 2,2 bi)",
+    "pauta": "Mostrar como research e design transformam plataformas de dados em decisões do time de mídia e do cliente final. Exemplo de antes e depois de um painel.",
+    "argumento": "Objeção \"já temos time de dados\": dado só gera valor quando alguém entende e usa. UX é a ponte entre o dado e a decisão.",
+    "cta": "Convidar para um diagnóstico de usabilidade de uma ferramenta interna."
+   },
+   {
+    "formato": "Artigo",
+    "titulo": "Como escalar squads de CX na América Latina sem inflar o headcount",
+    "gancho": "Segmento: América Latina cresceu 23,8% orgânico no 3º tri",
+    "pauta": "Modelo de outsourcing com designers dedicados, que entram no ritual do time e saem quando o pico passa.",
+    "argumento": "Objeção \"terceirizado não entende a cultura\": onboarding estruturado e o mesmo designer no squad do início ao fim.",
+    "cta": "Oferecer squad piloto de 90 dias em uma conta."
+   }
   ]
  },
  "Rede D'Or": {
@@ -111,6 +129,24 @@
     "prazo": "30 dias",
     "responsavel": "Líder de UX alocado"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Carrossel",
+    "titulo": "5 atritos que afastam o paciente do app do hospital",
+    "gancho": "Avaliações recentes nas lojas citam acesso e atendimento",
+    "pauta": "Agendamento, login, resultado de exame, carteirinha e contato: um slide por atrito, com a correção de UX.",
+    "argumento": "Benefício: cada atrito resolvido no app é uma ligação a menos na central de atendimento.",
+    "cta": "Levantamento gratuito das 10 reclamações mais frequentes do app."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Por que contratar designer que entende saúde, LGPD e acessibilidade",
+    "gancho": "Segmento: rede hospitalar em expansão e app próprio bem avaliado",
+    "pauta": "O que diferencia um designer de saúde: linguagem para pacientes em estado de estresse, dados sensíveis e acessibilidade.",
+    "argumento": "Objeção \"qualquer designer resolve\": em saúde, um erro de interface vira erro de atendimento. Hunting especializado reduz a curva.",
+    "cta": "Apresentar shortlist de perfis em 10 dias."
+   }
   ]
  },
  "Entain CILA": {
@@ -161,6 +197,24 @@
     "prazo": "90 dias",
     "responsavel": "Head comercial"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Artigo",
+    "titulo": "UX de jogo responsável: o que os mercados regulados ensinam",
+    "gancho": "Segmento: regulação de apostas apertou no Brasil e no Reino Unido",
+    "pauta": "Limites de depósito, pausas e alertas desenhados para serem usados, não escondidos. Exemplos de boas práticas do Reino Unido.",
+    "argumento": "Benefício: conformidade bem desenhada vira diferencial de confiança quando o mercado reabrir.",
+    "cta": "Oferecer revisão de jornadas de jogo responsável."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Produto em pausa: como manter o conhecimento sem manter o custo fixo",
+    "gancho": "Segmento: operações suspensas ou em revisão por mudança regulatória",
+    "pauta": "Modelo flexível: reduzir a alocação sem perder o histórico de decisões e o design system.",
+    "argumento": "Objeção \"contratar UX agora é arriscado\": capacidade sob demanda se ajusta ao cenário regulatório.",
+    "cta": "Conversa sobre modelo de alocação flexível."
+   }
   ]
  },
  "FTD": {
@@ -197,6 +251,24 @@
     ],
     "prazo": "30 dias",
     "responsavel": "Diretor de contas"
+   }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Material didático digital: o professor também é usuário",
+    "gancho": "Segmento: PNLD impulsiona materiais didáticos",
+    "pauta": "Mostrar como entrevistas com professores mudam a navegação de uma plataforma educacional.",
+    "argumento": "Benefício: adoção pelo professor puxa o uso pelo aluno e a renovação do contrato da escola.",
+    "cta": "Convite para uma sessão de research com professores."
+   },
+   {
+    "formato": "Artigo",
+    "titulo": "Novo ciclo de gestão? Comece com um diagnóstico de UX em 30 dias",
+    "gancho": "Cliente: nova diretoria-geral desde julho/2026",
+    "pauta": "Roteiro de diagnóstico rápido: métricas de uso, entrevistas e quick wins para os primeiros 100 dias.",
+    "argumento": "Objeção \"projeto de UX é longo e caro\": diagnóstico curto e com entregas já no primeiro mês.",
+    "cta": "Proposta de diagnóstico de 30 dias."
    }
   ]
  },
@@ -246,6 +318,24 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Margem apertada? Conversão é o corte de custo mais inteligente",
+    "gancho": "Segmento: imposto de 20% sobre apostas online em estudo na África do Sul",
+    "pauta": "Como pequenas melhorias de UX no cadastro e no depósito aumentam a receita sem aumentar o marketing.",
+    "argumento": "Objeção \"não é hora de investir\": UX focada em conversão se paga dentro do trimestre.",
+    "cta": "Oferecer auditoria de funil de cadastro e depósito."
+   },
+   {
+    "formato": "Artigo",
+    "titulo": "Nearshore de UX: designers brasileiros para operações em rand e libra",
+    "gancho": "Macro: real mais fraco após a eleição torna o talento brasileiro mais competitivo",
+    "pauta": "Fuso, inglês, experiência em apostas e pagamentos: por que o Brasil é um polo de UX para a África do Sul.",
+    "argumento": "Benefício: perfil sênior com custo menor do que contratar localmente.",
+    "cta": "Apresentar perfis disponíveis."
+   }
   ]
  },
  "FutureBrand": {
@@ -281,6 +371,24 @@
     ],
     "prazo": "30 dias",
     "responsavel": "Diretor de contas"
+   }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Artigo",
+    "titulo": "Marca é experiência: do brandbook ao produto digital",
+    "gancho": "Segmento: branding cada vez mais medido pela experiência digital",
+    "pauta": "Como levar a estratégia de marca para interfaces, microtextos e jornadas, com exemplos de consistência.",
+    "argumento": "Benefício: a marca deixa de ser promessa e vira experiência mensurável.",
+    "cta": "Workshop conjunto de marca e UX."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Reestruturação não precisa parar as entregas",
+    "gancho": "Segmento: integração Omnicom–IPG com cortes de equipe",
+    "pauta": "Capacidade de UX sob demanda para manter projetos em andamento durante a reorganização.",
+    "argumento": "Objeção \"custo fixo alto\": designers alocados por projeto, sem aumentar o quadro.",
+    "cta": "Conversa sobre capacidade sob demanda."
    }
   ]
  },
@@ -319,6 +427,24 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas + Head comercial"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Carrossel",
+    "titulo": "3 melhorias de UX que cabem no orçamento de um pequeno negócio",
+    "gancho": "Segmento: apoio a micro e pequenas empresas",
+    "pauta": "Página de contato clara, checkout simples e linguagem do cliente: uma melhoria por slide, com antes e depois.",
+    "argumento": "Benefício: mostra o valor do UX para o público que o Sebrae atende.",
+    "cta": "Oferecer conteúdo em parceria para canais de empreendedores."
+   },
+   {
+    "formato": "Artigo",
+    "titulo": "Serviço público digital: acessibilidade e linguagem simples",
+    "gancho": "Segmento: serviços digitais de entidades públicas",
+    "pauta": "Como linguagem simples e acessibilidade ampliam o alcance de serviços para empreendedores.",
+    "argumento": "Objeção \"UX é para produto comercial\": em serviço público, UX é inclusão e economia de atendimento.",
+    "cta": "Apresentar case de linguagem simples."
+   }
   ]
  },
  "Springpod": {
@@ -354,6 +480,24 @@
     ],
     "prazo": "30 dias",
     "responsavel": "Diretor de contas"
+   }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Como entrar em UX: o que as empresas avaliam em perfis júnior",
+    "gancho": "Segmento: empregabilidade de jovens e estágios virtuais",
+    "pauta": "O que olhamos no hunting: portfólio com processo, colaboração e curiosidade, não só telas bonitas.",
+    "argumento": "Benefício: posiciona a agência como referência em formação e seleção de talentos de UX.",
+    "cta": "Convidar para um webinar com a Springpod."
+   },
+   {
+    "formato": "Webinar",
+    "titulo": "Estágio virtual em design: da experiência ao primeiro emprego",
+    "gancho": "Cliente: parcerias de estágios virtuais com grandes empresas",
+    "pauta": "Co-marketing com a Springpod: como um estágio virtual de UX funciona e o que as empresas ganham.",
+    "argumento": "Objeção \"júnior não entrega\": com mentoria e escopo certo, júniores aceleram o time.",
+    "cta": "Propor um piloto de micro-estágio em UX."
    }
   ]
  },
@@ -416,6 +560,24 @@
     "prazo": "30 dias",
     "responsavel": "Líder de UX alocado"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Carrossel",
+    "titulo": "Apps de fidelidade em postos: onde o usuário desiste",
+    "gancho": "Segmento: apps de pagamento e fidelidade em combustíveis",
+    "pauta": "Pagamento na bomba, cashback e cupom: os pontos de abandono mais comuns e como resolver cada um.",
+    "argumento": "Benefício: mais transações no app significam mais dados e mais retorno do cliente ao posto.",
+    "cta": "Oferecer análise das avaliações do app."
+   },
+   {
+    "formato": "Artigo",
+    "titulo": "Em tempo de corte de capex, UX protege a receita digital",
+    "gancho": "Segmento: empresas de energia priorizando caixa",
+    "pauta": "Por que cortar UX em produto que gera receita custa mais caro do que mantê-lo.",
+    "argumento": "Objeção \"UX é custo\": UX mantém conversão e retenção quando o marketing é cortado.",
+    "cta": "Proposta de squad enxuto focado em receita."
+   }
   ]
  },
  "Syngenta": {
@@ -461,6 +623,24 @@
     ],
     "prazo": "60 dias",
     "responsavel": "Head comercial"
+   }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "O agricultor também é usuário: UX de campo, offline e sob sol forte",
+    "gancho": "Segmento: digitalização do agro; o Brasil cresceu 7% em defensivos",
+    "pauta": "Contraste, uso com luva, sinal fraco: os desafios de desenhar para o campo, com exemplos.",
+    "argumento": "Benefício: app que funciona no campo é usado e gera dado de verdade.",
+    "cta": "Convite para research de campo."
+   },
+   {
+    "formato": "Artigo",
+    "titulo": "O perfil que falta no agro digital: designer com vivência no campo",
+    "gancho": "Segmento: empresas de agro ampliando produtos digitais",
+    "pauta": "O que buscar no hunting: research rural, sistemas B2B e linguagem técnica agronômica.",
+    "argumento": "Objeção \"é difícil achar esse perfil\": hunting especializado e banco de talentos do segmento.",
+    "cta": "Apresentar shortlist em 15 dias."
    }
   ]
  },
@@ -511,6 +691,24 @@
     "prazo": "60 dias",
     "responsavel": "Diretor de contas"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Nota abaixo de 2 na loja custa caro: o retorno de consertar a experiência",
+    "gancho": "Segmento: apps de apostas no Reino Unido com avaliações baixas",
+    "pauta": "Como a nota na loja afeta a aquisição e quais correções de UX costumam subir a nota mais rápido. Não citar o cliente.",
+    "argumento": "Benefício: cada estrela a mais reduz o custo de aquisição.",
+    "cta": "Oferecer diagnóstico de avaliações."
+   },
+   {
+    "formato": "Artigo",
+    "titulo": "O imposto subiu: eficiência de produto com squads flexíveis",
+    "gancho": "Segmento: imposto sobre jogos remotos foi de 21% para 40% no Reino Unido",
+    "pauta": "Como manter o roadmap com squads de UX ajustáveis, incluindo talento remoto do Brasil.",
+    "argumento": "Objeção \"precisamos cortar\": substituir custo fixo por capacidade flexível corta sem parar o produto.",
+    "cta": "Simulação de custo do squad flexível."
+   }
   ]
  },
  "Emma": {
@@ -546,6 +744,24 @@
     ],
     "prazo": "30 dias",
     "responsavel": "Head comercial"
+   }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Artigo",
+    "titulo": "Dark patterns saíram caro: como a regulação britânica mudou o e-commerce",
+    "gancho": "Segmento: a CMA agiu contra urgência falsa e contadores em lojas online",
+    "pauta": "Exemplos de padrões enganosos e alternativas honestas que também convertem.",
+    "argumento": "Benefício: design ético reduz risco regulatório e aumenta a confiança na marca.",
+    "cta": "Oferecer auditoria de padrões enganosos."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Auditoria de padrões enganosos em 2 semanas",
+    "gancho": "Segmento: varejo direto ao consumidor sob escrutínio regulatório",
+    "pauta": "O que a auditoria cobre: checkout, preços, urgência, cancelamento e consentimento.",
+    "argumento": "Objeção \"vai derrubar a conversão\": transparência bem desenhada mantém a conversão e reduz devoluções.",
+    "cta": "Agendar conversa de 30 minutos."
    }
   ]
  },
@@ -607,6 +823,32 @@
     "prazo": "60 dias",
     "responsavel": "Head comercial"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Artigo",
+    "titulo": "Semipresencial: a nova jornada do aluno precisa ser desenhada",
+    "gancho": "Segmento: novas regras do MEC para EAD criam o modelo semipresencial",
+    "pauta": "Como mapear a jornada híbrida (aula, polo, app e avaliação) para evitar evasão.",
+    "argumento": "Benefício: jornada clara reduz evasão, o maior custo do ensino superior privado.",
+    "cta": "Workshop de jornada do aluno semipresencial."
+   },
+   {
+    "formato": "Carrossel",
+    "titulo": "A evasão começa no app: 4 sinais nas avaliações",
+    "gancho": "Cliente: app do aluno com nota 2,8 nas lojas",
+    "pauta": "Exercícios que não carregam, login, notas e suporte: o que as avaliações revelam e como corrigir. Não citar o cliente.",
+    "argumento": "Objeção \"app é suporte, não produto\": para o aluno a distância, o app é a faculdade.",
+    "cta": "Oferecer análise das avaliações do app."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Designer de produto educacional: o perfil que as instituições estão buscando",
+    "gancho": "Segmento: digitalização acelerada no ensino",
+    "pauta": "Hunting de designers com experiência em aprendizagem, acessibilidade e dados de engajamento.",
+    "argumento": "Benefício: perfil especializado encurta a curva de aprendizado do time.",
+    "cta": "Apresentar perfis disponíveis."
+   }
   ]
  },
  "Hyphen": {
@@ -642,6 +884,16 @@
     ],
     "prazo": "7 dias",
     "responsavel": "Diretor de contas + Financeiro"
+   }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Artigo",
+    "titulo": "Fim de um produto digital: como documentar e reaproveitar o design",
+    "gancho": "Segmento: mídia digital sob pressão de receita",
+    "pauta": "Boas práticas de encerramento: design system, pesquisas e aprendizados que valem para o próximo produto. Não citar o cliente.",
+    "argumento": "Benefício: o conhecimento do time não se perde quando o produto acaba.",
+    "cta": "Oferecer apoio na transição e realocação de talentos."
    }
   ]
  },
@@ -688,6 +940,24 @@
     "prazo": "30 dias",
     "responsavel": "Diretor de contas"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "UX no B2B industrial: o portal do cliente que vende mais",
+    "gancho": "Segmento: siderurgia investindo em digitalização (capex de R$ 4,7 bi em 2026)",
+    "pauta": "Cotação, pedido e acompanhamento de entrega: onde o cliente industrial perde tempo e como o design resolve.",
+    "argumento": "Objeção \"B2B não precisa de UX\": comprador B2B também abandona processo ruim e liga para o comercial.",
+    "cta": "Diagnóstico do portal do cliente."
+   },
+   {
+    "formato": "Artigo",
+    "titulo": "Designers no Brasil para operações nos EUA: fuso compatível e custo menor",
+    "gancho": "Cliente: América do Norte responde por ~65% do resultado",
+    "pauta": "Como montar times de UX no Brasil para produtos da operação americana.",
+    "argumento": "Benefício: mesmo horário comercial e custo menor que contratar nos EUA.",
+    "cta": "Apresentar modelo de squad nearshore."
+   }
   ]
  },
  "Amadeus": {
@@ -733,6 +1003,24 @@
     ],
     "prazo": "90 dias",
     "responsavel": "Head comercial"
+   }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Artigo",
+    "titulo": "Biometria em viagens: confiança se desenha",
+    "gancho": "Segmento: travel tech investe em biometria e pagamentos (IDEMIA)",
+    "pauta": "Consentimento, privacidade e fluxo de embarque: como o UX define a adoção da biometria.",
+    "argumento": "Benefício: confiança do viajante acelera a adoção de produtos novos.",
+    "cta": "Workshop de UX para biometria."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Medir antes de construir: UX research em travel tech",
+    "gancho": "Segmento: guidance revisado leva a priorizar investimentos",
+    "pauta": "Research rápido para validar hipóteses antes de investir em desenvolvimento.",
+    "argumento": "Objeção \"research atrasa\": evita construir o que o mercado não vai usar.",
+    "cta": "Oferecer sprint de research de 2 semanas."
    }
   ]
  },
@@ -792,6 +1080,32 @@
     "prazo": "30 dias",
     "responsavel": "Diretor de contas"
    }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Artigo",
+    "titulo": "Renegociação com empatia: o UX que recupera crédito",
+    "gancho": "Cliente: inadimplência subiu no 2º tri de 2026",
+    "pauta": "Linguagem, simulação e opções claras na jornada de renegociação aumentam o acordo.",
+    "argumento": "Benefício: jornada bem desenhada recupera mais e reduz custo de cobrança.",
+    "cta": "Proposta de redesenho da jornada de cobrança."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Escalar o time de produto financeiro em 30 dias",
+    "gancho": "Cliente: receita +67% e novos produtos financeiros",
+    "pauta": "Hunting de designers com experiência em crédito, investimentos e Open Finance.",
+    "argumento": "Objeção \"contratar demora\": banco de talentos pronto e shortlist em 10 dias.",
+    "cta": "Apresentar shortlist."
+   },
+   {
+    "formato": "Carrossel",
+    "titulo": "Pix, Open Finance e a próxima geração de UX bancária",
+    "gancho": "Segmento: consolidação de fintechs e crescimento do Pix",
+    "pauta": "Tendências de UX financeira: pagamentos invisíveis, agregação de contas e segurança sem atrito.",
+    "argumento": "Benefício: posiciona a agência como especialista em fintech.",
+    "cta": "Convite para conversa sobre roadmap."
+   }
   ]
  },
  "Novo Banco": {
@@ -840,6 +1154,24 @@
     ],
     "prazo": "30 dias",
     "responsavel": "Líder de UX alocado"
+   }
+  ],
+  "sugestoes_conteudo": [
+   {
+    "formato": "Artigo",
+    "titulo": "Integração bancária sem perder o cliente: UX na migração de sistemas",
+    "gancho": "Cliente: integração ao grupo BPCE em curso",
+    "pauta": "Como comunicar mudanças, migrar dados e manter a confiança durante a integração.",
+    "argumento": "Benefício: migração bem desenhada evita perda de clientes e sobrecarga no atendimento.",
+    "cta": "Workshop de jornada de migração."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Designers brasileiros para bancos europeus: fuso, idioma e custo",
+    "gancho": "Macro: euro forte e real fraco",
+    "pauta": "Português nativo, fuso próximo e experiência em banco digital: o caso do talento brasileiro em Portugal.",
+    "argumento": "Objeção \"time remoto não funciona\": rituais, sobreposição de horário e alocação dedicada.",
+    "cta": "Apresentar modelo de alocação."
    }
   ]
  },

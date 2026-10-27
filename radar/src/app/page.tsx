@@ -50,6 +50,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
   const cards = sp.visao === "cartoes";
   const sorted = sortRows(clients, ordem);
   const withData = clients.filter((c) => c.account.score != null);
+  const missing = clients.filter((c) => c.account.score == null).sort((a, b) => a.name.localeCompare(b.name));
   const avg = withData.length ? withData.reduce((a, c) => a + c.account.score!, 0) / withData.length : null;
   const atRisk = withData.filter((c) => c.account.score! < 60).length;
   const rated = clients.filter((c) => c.ratings.count > 0);
@@ -78,7 +79,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ o
       {clients.length > 0 && (
         <dl className="grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {[
-            ["Clientes monitorados", `${clients.length}`, `${withData.length} com dados`],
+            ["Clientes monitorados", `${clients.length}`, `${withData.length} com dados${missing.length ? `. Faltam: ${missing.map((c) => `${c.name} (${c.sourceCount === 0 ? "sem fontes: confirmar a empresa" : "sem menções em 7 dias"})`).join(", ")}` : ""}`],
             ["Saúde média das contas", avg == null ? "—" : fmt1(avg), "reputação, bolsa e leitura estratégica"],
             ["Em atenção ou pior", `${atRisk}`, "saúde da conta abaixo de 60"],
             ["Nota média nas lojas (30 dias)", ratingAvg == null ? "—" : `${fmt1(ratingAvg)} ★`, `${ratingCount.toLocaleString("pt-BR")} avaliações de ${rated.length} clientes`],

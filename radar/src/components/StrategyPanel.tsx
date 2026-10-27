@@ -76,6 +76,24 @@ export function StrategyPanel({
               ))}
             </ul>
           </div>
+          {d.sugestoes_conteudo && d.sugestoes_conteudo.length > 0 && (
+            <div>
+              <p className="mb-1 text-xs font-medium text-ink-3">Sugestões de conteúdo com base no segmento e nas notícias do cliente</p>
+              <p className="mb-2 text-xs text-ink-3">Em publicações, use o tema do segmento e não exponha problemas do cliente.</p>
+              <ul className="grid gap-3 md:grid-cols-2">
+                {d.sugestoes_conteudo.map((c, i) => (
+                  <li key={i} className="rounded-lg border border-line p-3 text-sm">
+                    <span className="rounded-full border border-line px-2 text-xs text-ink-3">{c.formato}</span>
+                    <p className="mt-1 font-medium">{c.titulo}</p>
+                    <p className="text-ink-2"><span className="text-xs text-ink-3">Gancho: </span>{c.gancho}</p>
+                    <p className="text-ink-2"><span className="text-xs text-ink-3">Pauta: </span>{c.pauta}</p>
+                    <p className="text-ink-2"><span className="text-xs text-ink-3">Benefício ou objeção: </span>{c.argumento}</p>
+                    <p className="text-ink-2"><span className="text-xs text-ink-3">Chamada: </span>{c.cta}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </section>

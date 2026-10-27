@@ -30,6 +30,19 @@ export const StrategySchema = z.object({
       responsavel: z.string(),
     }),
   ),
+  /** Publication ideas tying the client's segment and news to UX, hunting and outsourcing. */
+  sugestoes_conteudo: z
+    .array(
+      z.object({
+        formato: z.string(),
+        titulo: z.string(),
+        gancho: z.string(),
+        pauta: z.string(),
+        argumento: z.string(),
+        cta: z.string(),
+      }),
+    )
+    .optional(),
 });
 export type Strategy = z.infer<typeof StrategySchema>;
 
@@ -46,6 +59,7 @@ Você recebe os dados que o Radar coletou sobre um cliente da agência e o notic
 - potencial_expansao: chance de ampliar o contrato (mais designers alocados, mais vagas de hunting), com motivos concretos.
 - impacto_ux: o que isso significa para a operação de outsourcing e para a de hunting de UX nesse cliente.
 - sinais: de 3 a 7 sinais. Cada um com evidência (cite o dado ou a manchete com a data), impacto na operação da agência e, para todo sinal negativo ou de atenção, um plano de ação com passos práticos, prazo e responsável sugerido (ex.: diretor de contas, head de talentos). Para sinais positivos, o plano descreve como aproveitar a oportunidade.
+- sugestoes_conteudo: de 2 a 3 pautas de publicação para a agência (post de LinkedIn, artigo, carrossel, webinar), com olhar de head de UX estrategista. Cada uma liga o segmento e as notícias do cliente a UX, hunting e outsourcing e mostra um benefício ou quebra uma objeção a contratar profissionais de UX. Campos: formato, titulo, gancho (o fato do segmento ou notícia que motiva a pauta), pauta (o que dizer), argumento (benefício ou objeção quebrada) e cta (chamada para ação). Nunca exponha problemas do cliente publicamente: use o tema do segmento.
 Use apenas os dados fornecidos e conhecimento geral estável; não invente números nem fatos. Quando faltar dado, diga que falta e o que coletar.`;
 
 const MACRO_QUERIES: Record<string, { q: string; hl: string; gl: string; ceid: string }> = {
