@@ -1,8 +1,11 @@
+import { loadEnv } from "@/lib/loadEnv";
 import { analyzePending } from "@/lib/analysis/analyze";
 import { prisma } from "@/lib/db";
 import { refreshHealth, snapshotClient } from "@/lib/health/compute";
 import { runSource } from "@/lib/pipeline/runSource";
 import { cycle } from "./cycle";
+
+loadEnv();
 
 // npm run collect                 → one full cycle (only due sources)
 // npm run collect -- --all        → run every enabled source now

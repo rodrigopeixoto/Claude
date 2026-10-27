@@ -1,5 +1,8 @@
+import { loadEnv } from "@/lib/loadEnv";
 import { refreshHealth } from "@/lib/health/compute";
 import { cycle } from "./cycle";
+
+loadEnv();
 
 const TICK_MS = Number(process.env.WORKER_TICK_SECONDS ?? 60) * 1000;
 const HEALTH_EVERY_MS = 60 * 60_000;

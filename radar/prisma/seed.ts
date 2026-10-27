@@ -1,5 +1,8 @@
+import { loadEnv } from "@/lib/loadEnv";
 import { prisma } from "@/lib/db";
 import { SOURCE_TEMPLATES } from "@/lib/sourceTemplates";
+
+loadEnv();
 
 // Example client so the dashboard has something to show. Safe to re-run.
 async function main() {

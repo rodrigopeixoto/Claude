@@ -51,12 +51,25 @@ Faixas: ≥ 75 saudável, 60–74 atenção, 45–59 risco, < 45 crítico.
 
 Menções podem ser marcadas como irrelevantes no dashboard (homônimos, spam); elas saem do cálculo na hora.
 
-## Rodando local
+## Rodar no Mac com um clique
+
+1. Baixe e descompacte a pasta `radar`.
+2. Dê duplo clique em **`Radar.command`**. Na primeira vez o macOS pode bloquear por ser um arquivo baixado: clique com o botão direito → **Abrir** → **Abrir**.
+3. Na primeira execução ele baixa o Node.js (se você não tiver), instala as dependências, cria o banco local e prepara o painel (3–5 min). Nas próximas, abre em segundos.
+4. O navegador abre em http://localhost:3000. Deixe a janela do Terminal aberta enquanto usa; feche-a (ou Ctrl+C) para parar.
+
+Chaves (Anthropic, YouTube, Apify) vão no arquivo `.env`, criado na primeira execução. Para editar: abra o Terminal na pasta e rode `open -e .env`, ou pressione Cmd+Shift+. no Finder para ver arquivos ocultos. Depois de editar, feche e abra o Radar de novo.
+
+Os dados ficam em `radar/data/`. Não precisa de Docker nem de Postgres instalado: o banco é embutido.
+
+Se o duplo clique não funcionar, abra o Terminal e rode: `bash ~/Downloads/radar/Radar.command` (ajuste o caminho).
+
+## Rodando local (desenvolvimento)
 
 ```bash
 cd radar
-cp .env.example .env          # ajuste DATABASE_URL e as chaves que tiver
-docker compose up -d          # Postgres na porta 5433
+cp .env.example .env          # DATABASE_URL=postgresql://radar:radar@localhost:5433/radar + chaves
+docker compose up -d          # Postgres na porta 5433 (ou use `npm run local`, que embute o banco)
 npm install
 npm run db:push               # cria as tabelas
 npm run db:seed               # opcional: cliente de exemplo com 4 fontes
