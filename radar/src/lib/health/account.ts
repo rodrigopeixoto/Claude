@@ -42,6 +42,7 @@ const WEIGHTS = { reputacao: 0.35, mercado: 0.15, estrategico: 0.5 };
 const CHURN_SCORE: Record<Nivel, number> = { alto: 15, medio: 55, baixo: 90 };
 const EXPANSION_BONUS: Record<Nivel, number> = { alto: 10, medio: 0, baixo: -5 };
 const NIVEL_LABEL: Record<Nivel, string> = { baixo: "baixo", medio: "médio", alto: "alto" };
+const NIVEL_LABEL_F: Record<Nivel, string> = { baixo: "baixa", medio: "média", alto: "alta" };
 
 const clamp = (n: number) => Math.max(0, Math.min(100, n));
 const pct = (v: number) => `${v > 0 ? "+" : ""}${(v * 100).toFixed(1).replace(".", ",")}%`;
@@ -80,7 +81,7 @@ export function computeAccountHealth(input: AccountInput): AccountHealth {
       label: "Leitura estratégica",
       score: clamp(CHURN_SCORE[churn] + EXPANSION_BONUS[expansion]),
       weight: WEIGHTS.estrategico,
-      detail: `risco de cancelamento ${NIVEL_LABEL[churn]}, expansão ${NIVEL_LABEL[expansion]}`,
+      detail: `risco de cancelamento ${NIVEL_LABEL[churn]}, expansão ${NIVEL_LABEL_F[expansion]}`,
     });
     if (churn !== "baixo") motivos.push({ polaridade: "neg", texto: `Risco de cancelamento ${NIVEL_LABEL[churn]}: ${churnWhy[0] ?? "ver leitura"}` });
     if (expansion === "alto") motivos.push({ polaridade: "pos", texto: `Potencial de expansão alto: ${expansionWhy[0] ?? "ver leitura"}` });
