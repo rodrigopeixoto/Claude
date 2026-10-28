@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Mini Teleprompter",
+  "version": "1.0.0",
+  "description": "Mini teleprompter 400x240 no topo da tela, slide a slide, com atalho global.",
+  "permissions": ["storage", "system.display"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Mini Teleprompter" },
+  "commands": {
+    "next-slide": {
+      "suggested_key": { "default": "Alt+Shift+Right" },
+      "description": "Próximo slide"
+    },
+    "prev-slide": {
+      "suggested_key": { "default": "Alt+Shift+Left" },
+      "description": "Slide anterior"
+    }
+  }
+}
