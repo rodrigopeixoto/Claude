@@ -1,6 +1,17 @@
 import type { Strategy } from "@/lib/strategy";
 import { StrategyButton } from "./StrategyButton";
 
+function sourceName(u: string) {
+  if (/finance\.yahoo\./.test(u)) return "Yahoo Finance";
+  if (/play\.google\./.test(u)) return "Google Play";
+  if (/apps\.apple\./.test(u)) return "App Store";
+  try {
+    return new URL(u).hostname.replace(/^www\./, "");
+  } catch {
+    return "fonte";
+  }
+}
+
 const LEVEL = { baixo: "Baixo", medio: "Médio", alto: "Alto" } as const;
 const TIPO = {
   negativo: { label: "Negativo", icon: "▼", color: "var(--critical)" },
@@ -67,6 +78,15 @@ export function StrategyPanel({
                     {s.titulo}
                   </p>
                   <p className="mt-1 text-ink-2"><span className="text-xs text-ink-3">Evidência: </span>{s.evidencia}</p>
+                  {s.fontes && s.fontes.length > 0 && (
+                    <p className="mt-1 flex flex-wrap gap-2 text-xs">
+                      {s.fontes.filter((u) => /^https?:\/\//.test(u)).map((u) => (
+                        <a key={u} href={u} target="_blank" rel="noreferrer" className="text-accent hover:underline">
+                          {sourceName(u)} ↗
+                        </a>
+                      ))}
+                    </p>
+                  )}
                   <p className="text-ink-2"><span className="text-xs text-ink-3">Impacto: </span>{s.impacto}</p>
                   <div className="mt-1">
                     <span className="text-xs text-ink-3">Plano de ação ({s.prazo} · {s.responsavel}):</span>

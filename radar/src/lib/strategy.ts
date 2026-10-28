@@ -28,6 +28,8 @@ export const StrategySchema = z.object({
       plano_acao: z.array(z.string()),
       prazo: z.string(),
       responsavel: z.string(),
+      /** Links to where the evidence came from (news, filings, store pages, quotes). */
+      fontes: z.array(z.string()).optional(),
     }),
   ),
   /** Publication ideas tying the client's segment and news to UX, hunting and outsourcing. */
