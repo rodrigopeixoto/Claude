@@ -4,8 +4,10 @@
   "leitura_segmento": "As holdings de publicidade estão em consolidação: a Omnicom corta ~15 mil vagas após absorver a IPG. A Publicis é a exceção em crescimento e vence concorrências com dados e IA.",
   "leitura_cliente": "No 3º tri a receita cresceu 5,0% orgânico, com América Latina em +23,8%; a unidade de tecnologia (Sapient) caiu levemente. Comprou a LiveRamp por US$ 2,2 bi (mai/26). A ação sobe 14,9% em 12 meses e foi pouco afetada pela eleição. Reputação estável, sem menções negativas na semana.",
   "risco_cancelamento": {
-   "nivel": "baixo",
+   "nivel": "medio",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
+    "A operação no Brasil sente o congelamento dos anunciantes, mesmo com o grupo crescendo",
     "Crescimento forte na América Latina e guidance confirmado",
     "Sem notícias de cortes ou reestruturação na Publicis"
    ]
@@ -14,7 +16,8 @@
    "nivel": "alto",
    "motivos": [
     "LatAm +23,8% orgânico puxa demanda por produto digital",
-    "Aquisição da LiveRamp amplia projetos de dados e experiência"
+    "Aquisição da LiveRamp amplia projetos de dados e experiência",
+    "Janela provável de expansão: a partir do 2º tri de 2027, depois do congelamento"
    ]
   },
   "impacto_ux": {
@@ -22,6 +25,25 @@
    "hunting": "Demanda provável por perfis de product design e research com dados; Sapient em leve queda pede atenção a vagas dessa unidade."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "positivo",
     "titulo": "América Latina cresce 23,8%",
@@ -94,8 +116,9 @@
   "leitura_segmento": "Hospitais seguem em expansão; as operadoras de saúde tiveram sinistralidade de 81,9% no 1º semestre e lucro menor.",
   "leitura_cliente": "Lucro ajustado de R$ 1,28 bi no 2º tri (+8,5%) e alavancagem de 1,71x. A ação caiu 21% em 7 dias, quase toda no pregão pós-eleição de 26/10, e acumula -18% em 12 meses. O app tem nota alta (4,3) e há 8 menções negativas na semana, a maioria de atendimento e acesso.",
   "risco_cancelamento": {
-   "nivel": "baixo",
+   "nivel": "medio",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "Fundamentos sólidos e caixa para investir",
     "Queda da ação é efeito de mercado, não do negócio"
    ]
@@ -112,6 +135,25 @@
    "hunting": "Hunting pode desacelerar no 4º tri por cautela pós-eleição; retomar no 1º tri."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "atencao",
     "titulo": "Ação caiu 21% em 7 dias",
@@ -173,6 +215,7 @@
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "Operação brasileira proibida desde 06/10",
     "Sem receita local, orçamento de produto no Brasil tende a ser congelado"
    ]
@@ -188,6 +231,25 @@
    "hunting": "Vagas de hunting para o Brasil devem ser canceladas; possível oportunidade de recolocar profissionais da própria Entain."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "negativo",
     "titulo": "Apostas proibidas no Brasil (MP 1.394/2026)",
@@ -246,8 +308,10 @@
   "leitura_segmento": "Educação básica é impulsionada pelo PNLD (programa federal de livros didáticos); o setor privado sofre com juros altos.",
   "leitura_cliente": "Sandro Bonás assumiu como diretor-geral em 27/07/2026. Poucas notícias recentes e reputação estável, sem negativas na semana. Empresa fechada (sem ações).",
   "risco_cancelamento": {
-   "nivel": "medio",
+   "nivel": "alto",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
+    "Soma-se à troca de liderança, que já pedia revisão de fornecedores",
     "Novo CEO pode revisar fornecedores e prioridades"
    ]
   },
@@ -263,6 +327,25 @@
    "hunting": "Baixa demanda de hunting até a nova gestão definir prioridades."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "atencao",
     "titulo": "Novo diretor-geral desde julho",
@@ -437,6 +520,7 @@
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "Licitação nacional vencida por outras agências",
     "Se o escopo da agência estava sob esse contrato, ele tende a acabar"
    ]
@@ -452,6 +536,25 @@
    "hunting": "Oportunidade de oferecer UX às agências vencedoras (Nova, Artplan, DeBrito)."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "negativo",
     "titulo": "Publicis fora da licitação do Sebrae Nacional",
@@ -552,6 +655,7 @@
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "Recuperação extrajudicial e controle passando a credores e à Shell",
     "Capex reduzido e foco em caixa"
    ]
@@ -567,6 +671,25 @@
    "hunting": "Hunting tende a ser congelado; possível saída de profissionais do time interno."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "negativo",
     "titulo": "Recuperação extrajudicial de R$ 61,4 bi",
@@ -640,8 +763,10 @@
   "leitura_segmento": "Defensivos agrícolas estão estáveis a levemente em queda no mundo (pressão de genéricos); juros altos e crédito rural apertado no Brasil.",
   "leitura_cliente": "Receita global de US$ 12,2 bi no 1º semestre (-2%), mas o Brasil cresceu 7% em defensivos. Hengde Qin é o novo CEO desde 01/08/2026. O IPO em Hong Kong ficou para 2027 e há um programa de economia que corta até 150 vagas em Basileia. É uma empresa de capital fechado.",
   "risco_cancelamento": {
-   "nivel": "baixo",
+   "nivel": "medio",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
+    "O Brasil cresce, mas crédito rural caro e juros altos pressionam o orçamento local",
     "Brasil é motor de crescimento do grupo"
    ]
   },
@@ -656,6 +781,25 @@
    "hunting": "Demanda moderada; perfis com experiência em agro digital."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "atencao",
     "titulo": "Novo CEO e programa de economia",
@@ -843,8 +987,10 @@
   "leitura_segmento": "Ensino superior privado: as novas regras do MEC proíbem 100% EAD em direito, medicina, enfermagem, psicologia e odontologia e criam o modelo semipresencial. O JPMorgan estima impacto de ~4,9% na receita da Cogna.",
   "leitura_cliente": "No 2º tri o lucro foi de R$ 148,9 mi (+25%), a receita de R$ 1,96 bi (+18%) e a Vasta cresceu 50,5% com o PNLD. Mas a ação caiu 42% em 7 dias (pós-eleição) e 39% em 12 meses. O app Anhanguera tem nota 2,8 e a reputação está em atenção (score 52).",
   "risco_cancelamento": {
-   "nivel": "medio",
+   "nivel": "alto",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
+    "Soma-se à queda de 42% da ação em 7 dias e às novas regras de EAD",
     "Ação em queda forte e pressão das novas regras de EAD",
     "Ambiente de corte de gastos no Brasil"
    ]
@@ -861,6 +1007,25 @@
    "hunting": "Pode haver demanda de hunting para produto educacional; atenção ao congelamento pós-eleição."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "negativo",
     "titulo": "Ação caiu 42% em 7 dias",
@@ -988,8 +1153,10 @@
   "leitura_segmento": "Siderurgia: as tarifas americanas (Seção 232) favorecem a operação nos EUA; no Brasil, o antidumping contra o aço chinês deve reduzir importações em ~20% em 2026.",
   "leitura_cliente": "Lucro de R$ 1,47 bi no 2º tri (+69,7%), com a América do Norte respondendo por ~65% do EBITDA. Em 22/10 a S&P mudou a perspectiva para positiva. O capex de 2026 é de R$ 4,7 bi. A ação sobe 36% em 12 meses (-6% na semana da eleição). Reputação estável.",
   "risco_cancelamento": {
-   "nivel": "baixo",
+   "nivel": "medio",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
+    "Exposição menor que a média: ~65% do resultado vem da América do Norte",
     "Resultados fortes e rating em melhora"
    ]
   },
@@ -1004,6 +1171,25 @@
    "hunting": "Possível demanda de hunting para times digitais, inclusive nos EUA."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "positivo",
     "titulo": "S&P eleva perspectiva para positiva",
@@ -1127,8 +1313,10 @@
   "leitura_segmento": "Fintech: o Banco Central apertou as regras de autorização (Res. 494/2025), o que acelera a consolidação; Pix e Open Finance seguem crescendo e favorecem quem tem escala.",
   "leitura_cliente": "Abriu capital na Nasdaq (PICS) em 29/01/2026 a US$ 19; hoje está em US$ 7,59, com -46% em 7 dias após a eleição. No 2º tri o lucro ajustado foi de R$ 283 mi (+135%) e a receita de R$ 4,1 bi (+67%), mas a inadimplência subiu. O app tem nota 4,4, com 40 negativas na semana pelo volume alto.",
   "risco_cancelamento": {
-   "nivel": "baixo",
+   "nivel": "medio",
    "motivos": [
+    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
+    "Ação caiu 46% em 7 dias e investidores devem cobrar eficiência",
     "Crescimento forte e escala"
    ]
   },
@@ -1136,7 +1324,8 @@
    "nivel": "alto",
    "motivos": [
     "Receita +67% e novos produtos financeiros",
-    "Empresa listada precisa entregar crescimento"
+    "Empresa listada precisa entregar crescimento",
+    "Janela provável de expansão: a partir do 2º tri de 2027, depois do congelamento"
    ]
   },
   "impacto_ux": {
@@ -1144,6 +1333,25 @@
    "hunting": "Alta demanda potencial de hunting para produto financeiro; perfis com experiência em crédito e cobrança."
   },
   "sinais": [
+   {
+    "tipo": "negativo",
+    "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
+    "plano_acao": [
+     "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
+     "Mostrar o resultado de cada designer alocado (entregas, métricas, economia gerada)",
+     "Oferecer alternativas ao corte: redução gradual, pausa remunerada ou contrato por entrega",
+     "Propor renovação antecipada com condição de preço para garantir 2027"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
+     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
    {
     "tipo": "atencao",
     "titulo": "Ação caiu 46% em 7 dias",
