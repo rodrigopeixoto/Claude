@@ -1100,51 +1100,114 @@
   ]
  },
  "Hyphen": {
-  "leitura_macro": "Bank Rate em 3,75% com viés de alta (3 votos por subir em set/26), inflação de 3,5% em setembro e PIB de +0,7% no trimestre. Os planos de investimento das empresas estão no menor nível desde a pandemia: compradores priorizam corte de custo e IA.",
-  "leitura_segmento": "Mídia digital no Reino Unido sob pressão de receita.",
-  "leitura_cliente": "Em 21/10/2026 foi confirmado o fechamento do Hyphen: o grupo controlador, dos Emirados Árabes, deixa de financiar o site a partir de 2027, e cerca de 18 jornalistas estão em consulta de demissão. A reputação ainda parece boa (score 78) porque o noticiário é neutro: é o caso em que o score de reputação não mostra o risco.",
+  "leitura_macro": "O BCE subiu a taxa de depósito para 2,50% em 10/09 (nova decisão em 29/10). Portugal cresce ~2% em 2026 e os bancos seguem lucrativos, com margens em queda: é o mercado mais estável da carteira. O real mais fraco após a eleição brasileira barateia o talento do Brasil para quem fatura em euro, como a Hyphen.",
+  "leitura_segmento": "Consultorias de UX em Portugal crescem com a digitalização de bancos, seguros, telecom e varejo, mas a IA pressiona o modelo de alocação de horas: os clientes pedem menos pessoas, mais seniores e fluentes em IA, e projetos de ponta a ponta.",
+  "leitura_cliente": "A Hyphen (SPARK2D, Grupo Tangível) faturou € 5,9 mi em 2025 (+27%) e prevê € 7,3 mi em 2026 (+20% ou mais). Em 2025 deixou de ser focada em outsourcing para virar consultoria de experiência digital de ponta a ponta, com IA em mais de 80% dos projetos, e aposta em expansão internacional. Tem equipe em Portugal e no Brasil e clientes como Santander, Millennium BCP, Novo Banco, Cofidis, EDP, Vodafone e Worten. Também atua com outsourcing de UX, ou seja, é ao mesmo tempo cliente e concorrente da agência. Há pouco noticiário recente (1 menção nos últimos 90 dias).",
   "risco_cancelamento": {
-   "nivel": "alto",
+   "nivel": "medio",
    "motivos": [
-    "Site anunciou fechamento; financiamento termina em 2027"
+    "A mudança de modelo, de outsourcing para consultoria de ponta a ponta, pode levar a internalizar designers hoje alocados pela agência",
+    "A IA em mais de 80% dos projetos tende a reduzir a demanda por pessoas em tarefas operacionais",
+    "A Hyphen também oferece outsourcing de UX: é cliente e concorrente ao mesmo tempo",
+    "Portugal é o mercado mais estável da carteira, sem congelamento previsto"
    ]
   },
   "potencial_expansao": {
-   "nivel": "baixo",
+   "nivel": "alto",
    "motivos": [
-    "Sem futuro para o produto"
+    "Crescimento acima de 20% em 2026 e expansão internacional pedem mais gente rapidamente",
+    "Real fraco torna designers brasileiros mais baratos para uma empresa que fatura em euro",
+    "Demanda por perfis seniores fluentes em IA, que são difíceis de achar"
    ]
   },
   "impacto_ux": {
-   "outsourcing": "Planejar o encerramento do contrato e realocar os designers.",
-   "hunting": "Nenhuma demanda; possível talento disponível no mercado."
+   "outsourcing": "Posicionar a agência como parceira de capacidade para os picos de projeto e para a expansão internacional, não como fornecedora de horas: squads com designers seniores fluentes em IA e alocação flexível.",
+   "hunting": "Boa oportunidade de hunting para a expansão: designers seniores com IA, research e acessibilidade (WCAG), inclusive no Brasil e com contratação via Tech Visa em Portugal."
   },
   "sinais": [
    {
-    "tipo": "negativo",
-    "titulo": "Fechamento anunciado",
-    "evidencia": "Press Gazette, 21/10/2026.",
-    "impacto": "Fim do contrato.",
+    "tipo": "positivo",
+    "titulo": "Faturação +27% em 2025 e previsão de € 7,3 mi em 2026",
+    "evidencia": "€ 5,9 mi em 2025; crescimento previsto acima de 20% em 2026 (imprensa portuguesa, abr/2026).",
+    "impacto": "Mais projetos e mais contratações ao longo de 2026.",
     "plano_acao": [
-     "Confirmar data de término e cobrar valores em aberto",
-     "Realocar os designers em outras contas",
-     "Pedir depoimento e case antes do fim"
+     "Mapear com a liderança as frentes que mais crescem",
+     "Propor um squad dedicado para a expansão internacional",
+     "Oferecer shortlist de designers seniores para as vagas abertas"
     ],
-    "prazo": "7 dias",
-    "responsavel": "Diretor de contas + Financeiro",
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas",
     "fontes": [
-     "https://pressgazette.co.uk/publishers/digital-journalism/lifestyle-and-news-site-for-british-muslims-hyphen-set-to-close/"
+     "https://executivedigest.sapo.pt/hyphen-fatura-59-milhoes-em-2025-e-preve-crescer-para-73-milhoes-em-2026/",
+     "https://jornaleconomico.sapo.pt/noticias/hyphen-cresce-acima-de-20-e-aposta-na-expansao-internacional-e-na-integracao-de-ia/"
+    ]
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Mudança de modelo: de outsourcing para consultoria de ponta a ponta",
+    "evidencia": "Em 2025 a Hyphen evoluiu de um modelo focado em outsourcing para consultoria end-to-end de experiência digital.",
+    "impacto": "Designers alocados pela agência podem ser internalizados ou trocados por equipes próprias.",
+    "plano_acao": [
+     "Entender qual parte do trabalho a Hyphen quer manter interna",
+     "Reposicionar a oferta como capacidade complementar para picos e especialidades",
+     "Propor modelo por entrega em vez de horas"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://jornaleconomico.sapo.pt/noticias/hyphen-cresce-acima-de-20-e-aposta-na-expansao-internacional-e-na-integracao-de-ia/"
+    ]
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "IA em mais de 80% dos projetos",
+    "evidencia": "Rui Sousa Pedro, head de inovação, prevê IA integrada intensivamente em mais de 80% dos projetos até o fim do ano; o co-CEO diz que há \"oportunidade gigantesca\" de produtividade com IA (04/11/2026).",
+    "impacto": "Menos demanda por tarefas operacionais de UX; mais demanda por perfis seniores fluentes em IA.",
+    "plano_acao": [
+     "Mostrar como os designers da agência usam IA no dia a dia",
+     "Ajustar o portfólio de perfis alocados para seniores com IA",
+     "Oferecer capacitação em IA para os designers alocados"
+    ],
+    "prazo": "60 dias",
+    "responsavel": "Head de talentos",
+    "fontes": [
+     "https://www.ntech.news/hyphen-preve-faturar-73-milhoes-em-2026/",
+     "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQNjRxbXI3bWpGbmM5Sm1Qb3VwZWc2aGJjN0wybVM2SHl4SDJ6aWRHODhQNmxHVjdCR1ZaTTVWLVpYcDBTTU1RVDdmaHg3c09nek9qSk4wdG14UWxlVWQ1N2hXLVl0SUFJQ2d6UmFBcnR6M3JfZndvNnZFTzRBOTdfRVFkR0M5V1ZXZUs5MWZOeVl3M3E5MWlERHFhZ2pWbWJDX0tra2lweUI1R2ZVSDE1cDAwQXFPMkhKTkQ3U2VBcklSZFdfdTNwT05iRUFuaHlQOW0zLXBSVkp1TlA5c0ZOQ01aYUFXT0E2WnhQTWE0cGFZSzN0NmpOTEJ3?oc=5"
+    ]
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Cliente que também é concorrente",
+    "evidencia": "A Hyphen nasceu em 2019 como outsourcing de UX e atende bancos e varejistas em Portugal e no Reino Unido.",
+    "impacto": "Risco de disputar os mesmos clientes (por exemplo, Novo Banco, também cliente da agência).",
+    "plano_acao": [
+     "Definir regras de não concorrência ou de parceria por conta",
+     "Propor parceria formal para clientes em comum"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Head comercial",
+    "fontes": [
+     "https://hrportugal.sapo.pt/hyphen-digital-experience-outsourcing-especializado-em-user-experience/",
+     "https://www.hyphenteam.com/"
     ]
    }
   ],
   "sugestoes_conteudo": [
    {
     "formato": "Artigo",
-    "titulo": "Fim de um produto digital: como documentar e reaproveitar o design",
-    "gancho": "Segmento: mídia digital sob pressão de receita",
-    "pauta": "Boas práticas de encerramento: design system, pesquisas e aprendizados que valem para o próximo produto. Não citar o cliente.",
-    "argumento": "Benefício: o conhecimento do time não se perde quando o produto acaba.",
-    "cta": "Oferecer apoio na transição e realocação de talentos."
+    "titulo": "De horas para resultado: como a IA está mudando o outsourcing de UX",
+    "gancho": "Segmento: consultorias de UX migram de alocação para projetos de ponta a ponta",
+    "pauta": "O novo papel do designer alocado quando a IA acelera o trabalho operacional: menos volume, mais estratégia e research.",
+    "argumento": "Objeção \"a IA vai substituir o designer\": ela substitui tarefas, não o julgamento de quem entende o usuário.",
+    "cta": "Convidar para um debate sobre o futuro do outsourcing de UX."
+   },
+   {
+    "formato": "Post LinkedIn",
+    "titulo": "Talento brasileiro para consultorias europeias de UX",
+    "gancho": "Macro: real fraco e euro forte",
+    "pauta": "Fuso próximo, português nativo e experiência em bancos digitais: por que o Brasil é a reserva de talento das consultorias portuguesas.",
+    "argumento": "Benefício: escalar a equipe para a expansão internacional com custo competitivo.",
+    "cta": "Apresentar modelo de parceria de capacidade."
    }
   ]
  },

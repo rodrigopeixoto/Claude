@@ -469,27 +469,33 @@
   },
   {
     "name": "Hyphen",
-    "description": "Hyphen, site britânico de notícias e cultura muçulmana (confirmar)",
+    "description": "Consultoria portuguesa de UX e design de produto com IA (Hyphen / SPARK2D, Grupo Tangível), hyphenteam.com",
     "keywords": [
-      "Hyphen"
+      "Hyphen",
+      "André Esteves de Carvalho",
+      "Grupo Tangível"
     ],
     "sources": [
       {
         "type": "GOOGLE_NEWS",
-        "name": "Google News UK",
+        "name": "Google News PT",
         "intervalMinutes": 60,
         "config": {
-          "query": "\"Hyphen\"",
-          "hl": "en-GB",
-          "gl": "GB",
-          "ceid": "GB:en"
+          "query": "\"Hyphen\" (UX OR design OR consultora OR \"experiência digital\") OR \"André Esteves de Carvalho\" OR \"Grupo Tangível\"",
+          "hl": "pt-PT",
+          "gl": "PT",
+          "ceid": "PT:pt-150"
         }
       }
     ],
-    "excludeTerms": [],
+    "excludeTerms": [
+      "British Muslims",
+      "Muslim",
+      "Link Media"
+    ],
     "ticker": null,
-    "market": "GB",
-    "segment": "mídia digital"
+    "market": "PT",
+    "segment": "consultoria de UX e design de produto"
   },
   {
     "name": "PactoMais",
