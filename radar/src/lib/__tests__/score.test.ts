@@ -13,6 +13,9 @@ describe("computeHealth", () => {
   it("returns null without data", () => {
     expect(computeHealth({ recent: [], baselineNegativePerWeek: null, ratings30d: [] }).score).toBeNull();
   });
+  it("too few mentions means no reputation score", () => {
+    expect(computeHealth({ recent: [m(0), m(0)], baselineNegativePerWeek: 0, ratings30d: [] }).score).toBeNull();
+  });
   it("all positive, no risk → high score", () => {
     const r = computeHealth({ recent: [m(1), m(0.8), m(0.9)], baselineNegativePerWeek: null, ratings30d: [5, 5, 4] });
     expect(r.score).toBeGreaterThan(85);

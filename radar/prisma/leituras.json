@@ -1,8 +1,8 @@
 {
  "Publicis": {
-  "leitura_macro": "No Brasil, o choque pós-eleição (Ibovespa −13,9% e dólar +8,8% em 26/10) e a Selic em 13,75% levam anunciantes a congelar verba no 4º tri e no 1º tri. No mundo, juros altos na Europa e crescimento fraco no Reino Unido mantêm os clientes cautelosos; a Publicis compensa com dados e IA, e a ação sobe 15% em 12 meses.",
+  "leitura_macro": "No Brasil, o choque pós-eleição (Ibovespa −13,9% em 26/10, sem recuperação até 04/11, e dólar a R$ 5,45) e a Selic mantida em 13,75% pelo Copom em 04/11 levam anunciantes a congelar verba no 4º tri e no 1º tri. No mundo, juros altos na Europa e crescimento fraco no Reino Unido mantêm os clientes cautelosos; a Publicis compensa com dados e IA, e a ação sobe 15% em 12 meses.",
   "leitura_segmento": "As holdings de publicidade estão em consolidação: a Omnicom corta ~15 mil vagas após absorver a IPG. A Publicis é a exceção em crescimento e vence concorrências com dados e IA.",
-  "leitura_cliente": "No 3º tri a receita cresceu 5,0% orgânico, com América Latina em +23,8%; a unidade de tecnologia (Sapient) caiu levemente. Comprou a LiveRamp por US$ 2,2 bi (mai/26). A ação sobe 14,9% em 12 meses e foi pouco afetada pela eleição. Reputação estável, sem menções negativas na semana.",
+  "leitura_cliente": "No 3º tri a receita cresceu 5,0% orgânico, com América Latina em +23,8%; a unidade de tecnologia (Sapient) caiu levemente. Concluiu a compra da LiveRamp (US$ 2,2 bi) em 02/11. A ação sobe 11% em 30 dias, 7 pontos acima do CAC 40. Reputação estável, sem menções negativas na semana.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
@@ -15,7 +15,7 @@
    "nivel": "alto",
    "motivos": [
     "LatAm +23,8% orgânico puxa demanda por produto digital",
-    "Aquisição da LiveRamp amplia projetos de dados e experiência",
+    "Compra da LiveRamp concluída em 02/11 amplia projetos de dados e experiência",
     "Janela provável de expansão: a partir do 2º tri de 2027, depois do congelamento"
    ]
   },
@@ -27,7 +27,7 @@
    {
     "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -38,8 +38,10 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
     ]
    },
@@ -77,8 +79,8 @@
    },
    {
     "tipo": "positivo",
-    "titulo": "Compra da LiveRamp (US$ 2,2 bi)",
-    "evidencia": "Anunciada em maio/2026.",
+    "titulo": "Compra da LiveRamp concluída (US$ 2,2 bi)",
+    "evidencia": "A Publicis concluiu a compra em 02/11/2026, depois de a FTC aprovar o acordo com condições em 19/10.",
     "impacto": "Integração gera demanda por UX de produtos de dados.",
     "plano_acao": [
      "Preparar oferta de UX para plataformas de dados",
@@ -87,7 +89,8 @@
     "prazo": "60 dias",
     "responsavel": "Head comercial",
     "fontes": [
-     "https://www.adweek.com/?p=58728"
+     "https://www.publicisgroupe.com/en/news/press-releases",
+     "https://www.ftc.gov/news-events/news/press-releases/2026/10/ftc-order-preserves-competition-digital-advertising-ecosystem-part-publiciss-acquisition-liveramp"
     ]
    }
   ],
@@ -112,15 +115,15 @@
   "macro_rotulo": "Brasil e global"
  },
  "Rede D'Or": {
-  "leitura_macro": "Com a Selic a 13,75%, a dívida usada na expansão de hospitais fica mais cara, e a inflação de 4,58% pressiona custos médicos; o dólar alto encarece equipamentos importados. A ação caiu 21% em 7 dias, quase tudo efeito do mercado (Ibovespa −15,6%).",
+  "leitura_macro": "Com a Selic mantida em 13,75% em 04/11, a dívida usada na expansão de hospitais segue cara, e a inflação projetada de 5,6% para 2026 pressiona custos médicos; o dólar a R$ 5,45 encarece equipamentos importados. A ação caiu 26% em 30 dias, 7 pontos pior que o Ibovespa (−19%).",
   "leitura_segmento": "Hospitais seguem em expansão; as operadoras de saúde tiveram sinistralidade de 81,9% no 1º semestre e lucro menor.",
-  "leitura_cliente": "Lucro ajustado de R$ 1,28 bi no 2º tri (+8,5%) e alavancagem de 1,71x. A ação caiu 21% em 7 dias, quase toda no pregão pós-eleição de 26/10, e acumula -18% em 12 meses. O app tem nota alta (4,3) e há 8 menções negativas na semana, a maioria de atendimento e acesso.",
+  "leitura_cliente": "Lucro ajustado de R$ 1,28 bi no 2º tri (+8,5%) e alavancagem de 1,71x; o 3º tri ainda não foi divulgado. A ação caiu 26% em 30 dias (R$ 43,73 em 23/10 para R$ 32,54 em 04/11), 7 pontos pior que o Ibovespa. A reputação melhorou: nota 4,6 no app em 86 avaliações e 3 menções negativas na semana.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
     "Com juros altos, a expansão de hospitais fica mais cara e projetos digitais não essenciais tendem a ser adiados no 4º tri e no 1º tri",
-    "As operadoras de saúde, inclusive a SulAmérica, do grupo, têm sinistralidade em alta, o que pressiona custos",
-    "8 menções negativas na semana sobre acesso e atendimento no app: se o time de UX não mostrar resultado, vira alvo de corte"
+    "Ação −26% em 30 dias, 7 pontos pior que o Ibovespa: pressão de investidores por custo",
+    "As operadoras de saúde, inclusive a SulAmérica, do grupo, têm sinistralidade em alta, o que pressiona custos"
    ]
   },
   "potencial_expansao": {
@@ -138,7 +141,7 @@
    {
     "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -149,15 +152,17 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
     ]
    },
    {
     "tipo": "atencao",
-    "titulo": "Ação caiu 21% em 7 dias",
-    "evidencia": "Queda concentrada em 26/10, junto com o Ibovespa (-13,9%).",
+    "titulo": "Ação caiu 26% em 30 dias",
+    "evidencia": "RDOR3 foi de R$ 43,73 (23/10) a R$ 32,54 (04/11); o Ibovespa caiu 19% em 30 dias.",
     "impacto": "Diretoria pode congelar despesas novas no fim do ano.",
     "plano_acao": [
      "Confirmar orçamento de 2027 com o sponsor",
@@ -172,9 +177,9 @@
     ]
    },
    {
-    "tipo": "negativo",
-    "titulo": "Reclamações de acesso e atendimento no app",
-    "evidencia": "8 menções negativas nos últimos 7 dias (lojas).",
+    "tipo": "atencao",
+    "titulo": "Reclamações no app diminuíram, mas seguem",
+    "evidencia": "3 menções negativas nos últimos 7 dias, contra 8 na semana de 27/10; nota média de 4,6 em 86 avaliações em 30 dias.",
     "impacto": "Oportunidade de mostrar valor do time de UX.",
     "plano_acao": [
      "Agrupar as reclamações por tema",
@@ -210,14 +215,14 @@
   "macro_rotulo": "Brasil"
  },
  "Entain CILA": {
-  "leitura_macro": "No Brasil, além do choque pós-eleição, o governo proibiu as apostas online pela MP 1.394/2026 em 25/09. Para a Entain, o regulatório pesa mais que o macro: sem operar, não há receita local, e a ação acumula −44% em 12 meses.",
+  "leitura_macro": "No Brasil, além do choque pós-eleição, o governo proibiu as apostas online pela MP 1.394/2026 em 25/09, e na audiência pública do STF de 03/11 o relator defendeu banir as bets. Para a Entain, o regulatório pesa mais que o macro: sem operar, não há receita local. Em Londres a ação sobe 17% em 30 dias, 14 pontos acima do FTSE 100, puxada pelo resto do grupo.",
   "leitura_segmento": "A MP 1.394/2026, de 25/09, proibiu apostas de quota fixa e jogos online no Brasil e a publicidade do setor; os sites saíram do ar em 06/10. O STF deve julgar as ações após o 2º turno e a MP pode caducar por volta de mar/2027.",
-  "leitura_cliente": "A Entain cumpre a proibição e projeta o ano no piso do guidance (o Brasil era ~5% da receita online). A ação cai 44% em 12 meses. A operação brasileira (Sportingbet) está parada, sem receita.",
+  "leitura_cliente": "A Entain cumpre a proibição no Brasil; a receita brasileira caiu 36% no 3º tri (trading update de 15/10). Na audiência do STF de 03/11, o relator defendeu banir as bets, sem decisão ainda. Em Londres a ação sobe 17% em 30 dias, 14 pontos acima do FTSE 100.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
     "Operação brasileira proibida desde 06/10 pela MP 1.394/2026: sem receita local",
-    "A empresa projeta o ano no piso do guidance e a ação acumula −44% em 12 meses",
+    "O relator no STF, ministro Fux, defendeu banir as bets na audiência de 03/11; a receita no Brasil caiu 36% no 3º tri",
     "O congelamento de gastos no Brasil reduz a chance de manter projetos à espera do julgamento no STF"
    ]
   },
@@ -235,7 +240,7 @@
    {
     "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -246,8 +251,10 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
     ]
    },
@@ -270,18 +277,20 @@
     ]
    },
    {
-    "tipo": "atencao",
-    "titulo": "Possível retomada se a MP cair",
-    "evidencia": "~100 emendas no Congresso; MP pode caducar em mar/2027.",
-    "impacto": "Se o mercado reabrir, haverá urgência de reconstruir produto.",
+    "tipo": "negativo",
+    "titulo": "STF: relator defende banir as bets",
+    "evidencia": "Na audiência pública de 03/11/2026 (cerca de 10 horas, 34 expositores), o relator, ministro Fux, disse que as bets \"devem ser banidas\". Ainda não há decisão. No trading update de 15/10, a receita da Entain no Brasil caiu 36%.",
+    "impacto": "Diminui a chance de reabertura do mercado brasileiro no curto prazo.",
     "plano_acao": [
-     "Manter relacionamento ativo com o time de produto",
-     "Deixar proposta de retomada pronta"
+     "Planejar o encerramento ou a pausa da alocação no Brasil com o sponsor",
+     "Oferecer a mesma equipe para as operações da Entain fora do Brasil",
+     "Manter proposta de retomada pronta caso a MP caia"
     ],
     "prazo": "90 dias",
     "responsavel": "Head comercial",
     "fontes": [
-     "https://www.poder360.com.br/poder-justica/passado-o-2o-turno-fux-deve-decidir-se-mp-das-bets-vale-ou-nao/"
+     "https://www.migalhas.com.br/quentes/467683/apos-dez-horas-de-debate-stf-encerra-audiencia-sobre-bets",
+     "https://www.cnnbrasil.com.br/politica/fux-defende-banir-bets-e-diz-que-ja-ouviu-entidades-contrarias-as-apostas/"
     ]
    }
   ],
@@ -332,7 +341,7 @@
    {
     "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -343,8 +352,10 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
     ]
    },
@@ -386,15 +397,15 @@
   "macro_rotulo": "Brasil"
  },
  "Betway Africa": {
-  "leitura_macro": "Na África do Sul, o SARB subiu os juros para 7,25%, o PIB caiu 0,2% no 2º tri e o desemprego está em 33,6%: o apostador tem menos renda disponível. O Tesouro estuda um imposto nacional de 20% sobre apostas online.",
+  "leitura_macro": "Na África do Sul, o SARB manteve os juros em 7,25%, o PIB caiu 0,2% no 2º tri e o desemprego está em 33,6%, mas a confiança da indústria melhorou e as vendas de veículos subiram 10,4% em outubro. O imposto nacional de 20% sobre apostas online ficou para fevereiro de 2027. A ação da Super Group subiu 10% em 7 dias com o balanço e a recompra.",
   "leitura_segmento": "O Tesouro sul-africano desenha um imposto nacional de 20% sobre receita de apostas online (detalhes no orçamento de 2027); o cassino online segue sem legalização nacional.",
-  "leitura_cliente": "A Super Group (dona da Betway) teve receita de US$ 684 mi no 2º tri (+18%) e elevou o guidance para mais de US$ 2,6 bi. A ação caiu 29% em 90 dias. A reputação local é razoável (nota 3,3 na App Store).",
+  "leitura_cliente": "A Super Group (dona da Betway) teve receita de US$ 611 mi no 3º tri (+10% no ano), com a África crescendo 17% (US$ 262 mi), mas reduziu a projeção de 2026 para US$ 2,52–2,57 bi e anunciou recompra de US$ 150 mi. A ação subiu 10% em 7 dias. A reputação local piorou: nota 2,6 no app em 15 avaliações.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
-    "O imposto de 20% em estudo pode levar a corte de fornecedores",
-    "Consumo fraco e juros em alta reduzem a receita por apostador",
-    "Ação da Super Group −29% em 90 dias, 35 pontos pior que o S&P 500"
+    "Projeção de receita de 2026 do grupo foi reduzida em 03/11",
+    "O imposto de 20% sobre apostas online, adiado para o orçamento de fevereiro de 2027, pode levar a corte de fornecedores",
+    "Nota 2,6 no app sul-africano (15 avaliações em 30 dias)"
    ]
   },
   "potencial_expansao": {
@@ -410,8 +421,39 @@
   "sinais": [
    {
     "tipo": "atencao",
+    "titulo": "Super Group reduz projeção de receita de 2026",
+    "evidencia": "No 3º tri (03/11) a receita foi de US$ 611 mi (+10% no ano), mas a projeção de 2026 caiu para US$ 2,52–2,57 bi (antes, acima de US$ 2,6 bi). Resultados esportivos favoráveis aos apostadores tiraram ~US$ 40 mi.",
+    "impacto": "Grupo pode apertar custos no 4º tri.",
+    "plano_acao": [
+     "Ler o detalhe por região com o sponsor",
+     "Mostrar o ganho de conversão das entregas de UX"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.financialcontent.com/article/bizwire-2026-11-3-super-group-reports-financial-results-for-third-quarter-of-2026",
+     "https://www.yogonet.com/international/news/2026/11/04/127170-super-group-lowers-2026-revenue-outlook-as-africa-growth-offsets-sports-weakness"
+    ]
+   },
+   {
+    "tipo": "positivo",
+    "titulo": "África cresce 17% no 3º tri",
+    "evidencia": "Receita da África de US$ 262 mi (+17%) no 3º tri de 2026; recompra de ações de US$ 150 mi anunciada em 30/10.",
+    "impacto": "A região é o motor do grupo: espaço para ampliar o time.",
+    "plano_acao": [
+     "Propor ampliação do squad na África do Sul"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Head comercial",
+    "fontes": [
+     "https://www.financialcontent.com/article/bizwire-2026-11-3-super-group-reports-financial-results-for-third-quarter-of-2026",
+     "https://www.yogonet.com/international/news/2026/11/04/127170-super-group-lowers-2026-revenue-outlook-as-africa-growth-offsets-sports-weakness"
+    ]
+   },
+   {
+    "tipo": "atencao",
     "titulo": "Imposto de 20% sobre apostas online em estudo",
-    "evidencia": "Sinalizado pelo Tesouro; detalhes no orçamento de 2027.",
+    "evidencia": "O imposto de 20% sobre a receita bruta de apostas online ficou para o orçamento de fevereiro de 2027 e ainda não está decidido.",
     "impacto": "Pressão de margem pode virar corte de fornecedores.",
     "plano_acao": [
      "Acompanhar o anúncio do orçamento",
@@ -420,23 +462,8 @@
     "prazo": "90 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.enca.com/news/godonwana-signals-further-work-proposed-online-gambling-tax"
-    ]
-   },
-   {
-    "tipo": "atencao",
-    "titulo": "Ação da Super Group caiu 29% em 90 dias",
-    "evidencia": "Cotação SGHC, 27/10/2026; resultado do 3º tri sai no início de novembro.",
-    "impacto": "Pode indicar revisão de expectativas e ajuste de custos.",
-    "plano_acao": [
-     "Ler o resultado do 3º tri assim que sair",
-     "Reforçar entregas de impacto antes da revisão de orçamento"
-    ],
-    "prazo": "15 dias",
-    "responsavel": "Diretor de contas",
-    "fontes": [
-     "https://finance.yahoo.com/quote/SGHC",
-     "https://www.barchart.com/story/news/3645156/super-group-reports-financial-results-for-second-quarter-of-2026"
+     "https://sigma.world/news/south-africa-online-gambling-tax-2027-budget/",
+     "https://businessexplainer.co.za/finance-2/2026/11/02/proposed-gambling-tax-not-a-done-deal/"
     ]
    }
   ],
@@ -547,7 +574,7 @@
    {
     "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -558,8 +585,10 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
     ]
    },
@@ -662,13 +691,13 @@
  "Syngenta": {
   "leitura_macro": "Selic alta e crédito rural caro apertam o caixa do agricultor; o dólar mais alto encarece insumos importados, mas melhora a receita da safra exportada. O Brasil é o motor do grupo (+7% em defensivos no 1º semestre).",
   "leitura_segmento": "Defensivos agrícolas estão estáveis a levemente em queda no mundo (pressão de genéricos); juros altos e crédito rural apertado no Brasil.",
-  "leitura_cliente": "Receita global de US$ 12,2 bi no 1º semestre (-2%), mas o Brasil cresceu 7% em defensivos. Hengde Qin é o novo CEO desde 01/08/2026. O IPO em Hong Kong ficou para 2027 e há um programa de economia que corta até 150 vagas em Basileia. É uma empresa de capital fechado.",
+  "leitura_cliente": "Em nove meses, vendas de US$ 17,3 bi (−5%) e EBITDA de US$ 3,2 bi (+1%, margem de 18,4%); no 3º tri as vendas caíram 10% com a saída de negócios de menor margem (31/10). O Brasil cresceu 7% em defensivos no 1º semestre. Novo CEO global desde agosto e novo presidente de Sementes desde 01/11. Empresa de capital fechado.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
+    "Vendas do grupo caíram 10% no 3º tri e 5% em nove meses (31/10), com saída de negócios de menor margem",
     "Crédito rural caro reduz compras de insumos na safra 26/27 e pressiona o orçamento local",
-    "Novo CEO global e programa de economia (cortes em Basileia) podem chegar às subsidiárias",
-    "O congelamento de gastos no Brasil no 4º tri e no 1º tri atinge projetos digitais não essenciais"
+    "Mudanças de liderança (novo CEO global em agosto, novo presidente de Sementes em 01/11) e programa de economia podem chegar às subsidiárias"
    ]
   },
   "potencial_expansao": {
@@ -685,7 +714,7 @@
    {
     "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -696,9 +725,26 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
+    ]
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Vendas do 3º tri caem 10%",
+    "evidencia": "Nove meses: vendas de US$ 17,3 bi (−5%) e EBITDA de US$ 3,2 bi (+1%, margem 18,4%). 3º tri: vendas de US$ 5,2 bi (−10%). Gaël Hili assume Sementes em 01/11.",
+    "impacto": "Foco em margem pode cortar projetos não essenciais.",
+    "plano_acao": [
+     "Ligar as entregas de UX a margem e produtividade",
+     "Mapear o novo comando de Sementes"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.global-agriculture.com/crop-protection/syngenta-group-reports-9m-2026-results-with-higher-profitability/"
     ]
    },
    {
@@ -753,15 +799,15 @@
   "macro_rotulo": "Brasil"
  },
  "Betway": {
-  "leitura_macro": "No Reino Unido, juros a 3,75% com viés de alta e inflação de 3,5% apertam o consumo. O imposto sobre jogos remotos subiu de 21% para 40% em abr/2026 e o de apostas vai a 25% em abr/2027.",
+  "leitura_macro": "No Reino Unido, juros a 3,75% (com decisão do BoE em 05/11 e mercado esperando alta) e inflação de 3,5% apertam o consumo. O imposto sobre jogos remotos subiu de 21% para 40% em abr/2026 e o de apostas vai a 25% em abr/2027. A ação da Super Group subiu 10% em 7 dias com o balanço e a recompra de US$ 150 mi.",
   "leitura_segmento": "Reino Unido: o imposto sobre jogos remotos subiu de 21% para 40% em abr/2026 e o de apostas vai de 15% para 25% em abr/2027. O setor reage com consolidação e corte de marketing.",
-  "leitura_cliente": "A Super Group estima impacto de ~6% no EBITDA de 2026 e quer compensar com cortes de marketing e sinergias. A receita no Reino Unido cresceu 34% no 2º tri. A ação caiu 29% em 90 dias. A reputação local está ruim: nota 1,6 nas lojas do Reino Unido e score de 52.",
+  "leitura_cliente": "A Super Group estima impacto de ~6% no EBITDA de 2026 com o imposto britânico e quer compensar com cortes de marketing e sinergias. No 3º tri o negócio internacional cresceu só ~5% e a projeção de receita de 2026 caiu. A ação subiu 10% em 7 dias com o balanço. Reputação local fraca: nota 1,8 no app britânico.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
     "O imposto mais alto reduz a margem, e a Super Group já anunciou cortes de marketing e sinergias",
-    "Ação da Super Group −29% em 90 dias, 35 pontos pior que o S&P 500",
-    "Nota 1,6 no app britânico: pressão por resultado rápido do time de UX"
+    "Projeção de receita de 2026 reduzida em 03/11; o internacional cresceu só ~5% no 3º tri",
+    "Nota 1,8 no app britânico: pressão por resultado rápido do time de UX"
    ]
   },
   "potencial_expansao": {
@@ -772,14 +818,14 @@
    ]
   },
   "impacto_ux": {
-   "outsourcing": "Usar a nota 1,6 do app para justificar o time de UX e mostrar ganho de conversão.",
+   "outsourcing": "Usar a nota 1,8 do app para justificar o time de UX e mostrar ganho de conversão.",
    "hunting": "Hunting seletivo; o real fraco favorece designers brasileiros remotos."
   },
   "sinais": [
    {
     "tipo": "negativo",
-    "titulo": "Nota 1,6 do app no Reino Unido",
-    "evidencia": "Avaliações recentes da App Store e do Google Play (UK).",
+    "titulo": "Nota 1,8 do app no Reino Unido",
+    "evidencia": "Média de 1,8 em 10 avaliações dos últimos 30 dias na App Store e no Google Play do Reino Unido.",
     "impacto": "Pode ser argumento para cortar ou para ampliar UX.",
     "plano_acao": [
      "Levantar as reclamações mais frequentes",
@@ -791,6 +837,22 @@
     "fontes": [
      "https://apps.apple.com/gb/app/id538775096",
      "https://play.google.com/store/apps/details?id=com.betway.sports&gl=gb"
+    ]
+   },
+   {
+    "tipo": "atencao",
+    "titulo": "Super Group reduz projeção de receita de 2026",
+    "evidencia": "Receita de US$ 611 mi no 3º tri (03/11), mas projeção de 2026 caiu para US$ 2,52–2,57 bi; o negócio internacional cresceu ~5%.",
+    "impacto": "Possível aperto de custos no 4º tri.",
+    "plano_acao": [
+     "Antecipar a conversa de renovação",
+     "Mostrar resultado por designer alocado"
+    ],
+    "prazo": "15 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://www.financialcontent.com/article/bizwire-2026-11-3-super-group-reports-financial-results-for-third-quarter-of-2026",
+     "https://www.yogonet.com/international/news/2026/11/04/127170-super-group-lowers-2026-revenue-outlook-as-africa-growth-offsets-sports-weakness"
     ]
    },
    {
@@ -890,15 +952,15 @@
   "macro_rotulo": "Reino Unido"
  },
  "Cogna": {
-  "leitura_macro": "Juros altos e desemprego pesam na capacidade de pagar mensalidade e aumentam a evasão; o crédito estudantil privado fica mais caro. A ação caiu 42% em 7 dias, 26 pontos a mais que o Ibovespa, e acumula −39% em 12 meses.",
+  "leitura_macro": "Juros altos (Selic mantida em 13,75% em 04/11) e desemprego pesam na capacidade de pagar mensalidade e aumentam a evasão; o crédito estudantil privado fica mais caro. A ação foi de R$ 3,10 (23/10) a R$ 1,43 (04/11): −47% em 30 dias, 28 pontos pior que o Ibovespa, com rebaixamento do Citi para venda em 03/11.",
   "leitura_segmento": "Ensino superior privado: as novas regras do MEC proíbem 100% EAD em direito, medicina, enfermagem, psicologia e odontologia e criam o modelo semipresencial. O JPMorgan estima impacto de ~4,9% na receita da Cogna.",
-  "leitura_cliente": "No 2º tri o lucro foi de R$ 148,9 mi (+25%), a receita de R$ 1,96 bi (+18%) e a Vasta cresceu 50,5% com o PNLD. Mas a ação caiu 42% em 7 dias (pós-eleição) e 39% em 12 meses. O app Anhanguera tem nota 2,8 e a reputação está em atenção (score 52).",
+  "leitura_cliente": "No 2º tri o lucro foi de R$ 148,9 mi (+25%) e a receita de R$ 1,96 bi (+18%), com a Vasta crescendo 50,5% pelo PNLD; o 3º tri ainda não foi divulgado. A ação foi de R$ 3,10 (23/10) a R$ 1,43 (04/11), com rebaixamento do Citi para venda em 03/11. O app do aluno tem nota 2,9.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Queda da ação muito acima do mercado (−42% contra −16% do Ibovespa) indica pressão específica sobre a empresa",
+    "Ação −47% em 30 dias, 28 pontos pior que o Ibovespa; o Citi rebaixou para venda em 03/11",
     "As novas regras de EAD do MEC tiram ~4,9% da receita estimada (JPMorgan)",
-    "App do aluno com nota 2,8 e 9 menções negativas na semana: UX vira alvo se não reduzir a evasão"
+    "App do aluno com nota 2,9 em 23 avaliações e 5 menções negativas na semana: UX vira alvo se não reduzir a evasão"
    ]
   },
   "potencial_expansao": {
@@ -916,7 +978,7 @@
    {
     "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -927,15 +989,17 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
     ]
    },
    {
     "tipo": "negativo",
-    "titulo": "Ação caiu 42% em 7 dias",
-    "evidencia": "Queda pós-eleição em 26/10/2026; -39% em 12 meses.",
+    "titulo": "Ação caiu 47% em 30 dias e foi rebaixada pelo Citi",
+    "evidencia": "COGN3 de R$ 3,10 (23/10) a R$ 1,43 (04/11). Em 03/11 foi a maior queda do Ibovespa (−12,7% segundo o Money Times), atribuída ao rebaixamento do Citi de neutro para venda.",
     "impacto": "Pressão por corte de custos no 4º tri.",
     "plano_acao": [
      "Confirmar orçamento de 2027",
@@ -944,14 +1008,15 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://finance.yahoo.com/quote/COGN3.SA",
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/"
+     "https://moneytimes.com.br/ibovespa-3-11-26-lils",
+     "https://bpmoney.com.br/mercado/ibovespa-cai-142-antes-copom-dolar-sobe/",
+     "https://finance.yahoo.com/quote/COGN3.SA"
     ]
    },
    {
     "tipo": "negativo",
-    "titulo": "App do aluno com nota 2,8",
-    "evidencia": "Avaliações recentes do Anhanguera Aluno (Google Play).",
+    "titulo": "App do aluno com nota 2,9",
+    "evidencia": "Média de 2,9 em 23 avaliações do Anhanguera Aluno (Google Play) nos últimos 30 dias.",
     "impacto": "Insatisfação de aluno afeta retenção.",
     "plano_acao": [
      "Mapear as falhas citadas (exercícios, acesso)",
@@ -990,7 +1055,7 @@
    {
     "formato": "Carrossel",
     "titulo": "A evasão começa no app: 4 sinais nas avaliações",
-    "gancho": "Cliente: app do aluno com nota 2,8 nas lojas",
+    "gancho": "Cliente: app do aluno com nota 2,9 nas lojas",
     "pauta": "Exercícios que não carregam, login, notas e suporte: o que as avaliações revelam e como corrigir. Não citar o cliente.",
     "argumento": "Objeção \"app é suporte, não produto\": para o aluno a distância, o app é a faculdade.",
     "cta": "Oferecer análise das avaliações do app."
@@ -1119,23 +1184,23 @@
   "macro_rotulo": "Portugal"
  },
  "Gerdau": {
-  "leitura_macro": "Selic alta e PIB de 1,8% esfriam a construção civil, principal mercado do aço longo no Brasil; o dólar alto ajuda, porque ~65% do resultado vem da América do Norte. Na semana da eleição a ação caiu 6%, contra −16% do Ibovespa.",
+  "leitura_macro": "Selic mantida em 13,75% e PIB de 1,8% esfriam a construção civil, principal mercado do aço longo no Brasil; o dólar a R$ 5,45 ajuda, porque a América do Norte puxa o resultado. Em 30 dias a ação cai só 4%, 15 pontos melhor que o Ibovespa, mas em 03/11 a Gerdau encerrou a produção de aço em Divinópolis (MG) com demissões.",
   "leitura_segmento": "Siderurgia: as tarifas americanas (Seção 232) favorecem a operação nos EUA; no Brasil, o antidumping contra o aço chinês deve reduzir importações em ~20% em 2026.",
-  "leitura_cliente": "Lucro de R$ 1,47 bi no 2º tri (+69,7%), com a América do Norte respondendo por ~65% do EBITDA. Em 22/10 a S&P mudou a perspectiva para positiva. O capex de 2026 é de R$ 4,7 bi. A ação sobe 36% em 12 meses (-6% na semana da eleição). Reputação estável.",
+  "leitura_cliente": "3º tri forte (26/10): EBITDA ajustado de R$ 3,8 bi, margem de 20,2% (a maior desde 2023), puxada pela América do Norte, e dividendos de R$ 667 mi; a S&P mudou a perspectiva para positiva em 22/10. Na operação brasileira, porém, a empresa encerrou a produção de aço em Divinópolis (MG) com demissões em 03/11. A ação cai 4% em 30 dias, contra −19% do Ibovespa.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "A operação Brasil já teve lucro bruto −37% no 2º tri com a concorrência do aço importado",
+    "Encerrou a produção de aço em Divinópolis (MG) com demissões em 03/11: sinal de corte de custos na operação brasileira",
     "A construção civil desacelera com juros altos e com o congelamento de gastos no 4º tri e no 1º tri",
-    "Projetos digitais ligados à operação brasileira são os primeiros candidatos a corte"
+    "6 menções negativas na semana, todas sobre o fechamento e as demissões, com repercussão política"
    ]
   },
   "potencial_expansao": {
    "nivel": "medio",
    "motivos": [
     "Capex alto e digitalização industrial",
-    "Resultados fortes e rating em melhora",
-    "Exposição menor que a média: ~65% do resultado vem da América do Norte"
+    "Exposição menor que a média: ~65% do resultado vem da América do Norte",
+    "3º tri com margem de 20,2%, a maior desde 2023, e perspectiva positiva da S&P"
    ]
   },
   "impacto_ux": {
@@ -1145,8 +1210,25 @@
   "sinais": [
    {
     "tipo": "negativo",
+    "titulo": "Fim da produção em Divinópolis (MG) e demissões",
+    "evidencia": "Em 03/11/2026 a Gerdau confirmou o encerramento da produção de aço em Divinópolis e anunciou demissões; o caso chegou ao vice-presidente Alckmin.",
+    "impacto": "Operação brasileira em modo de corte de custos: projetos digitais locais ficam mais expostos.",
+    "plano_acao": [
+     "Confirmar se o escopo atendido tem ligação com a operação de Minas",
+     "Reforçar o valor das entregas para a operação norte-americana",
+     "Preparar plano de realocação"
+    ],
+    "prazo": "7 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPWm94TkRLLThZTHVEd1JXazR0VkJWTlk1UmUxd05VeV9qd3hwTm5LMjEzTVJrTWR4NjY4Rk9NY2FIdkhkZlhZZzlveDByUk9JWURhX01KQV8xTlJfa2hfRVR4REVIbmZKQlF0MmJqcjdiNHBZRUx5NzJaTmlqUUlES21WRkxjRXZ0UnZfRnI2Xy1QUl8zNHN6czJ2RVBaYWlyQ0pVS3RQOHIzd0p4R2M2VDlrNnp1bmlHTFhXa2ptTll5UVNpbFlESUh4Mk5OTDFpXzZiNTZZNkpkSVdEVGc?oc=5",
+     "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNbTJyc2F6VjVJU3FfLUlJZEUzSXFPcFZlZDRTbVpiZUh3NklFY05lN2NtSmJiRjg0bENxN1Bhd3N6cnBuOGlfTHliajZGaC1vSGY2Q2VUbXprVkppQWkyWWMwajhIOWR6WnlsZk9JUEJxWERBWVNfeVFTRW9BZ1ZqbW1TU1Y4akNHYzBiRzA2TzNDQ1dsRHc4bkVEU0h1ZjQtdjJTRDNlemRpWC1iSWdRaGdNUWpyQ2RXUFlYWW9KRk9kRW_SAdIBQVVfeXFMTW5PYmxPSXZUQWNRYWdKSUJ0M0NRNnVNT212bkpKdVBhYVBCaFY4czZOWDh6Rl9NMjZaVUM3OXllRkJmV0VlX3d3LWpGVTNWN1U3UFRWLUFuYWZydWtsWHk0RWxuRFZBYm83VHdUX2RJalhCdHpndjV3dXRKSTlObXFzOFVCbWRBUGN1TG9KdjltcW12MzhZUGxmb1RNcjM2cTRzRTJJVHV6dmhfOERTUmRBWkxzNTJMbVh4a0d1Uml4R0lmX2ZiRGhfNzhycHczZU1R?oc=5"
+    ]
+   },
+   {
+    "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -1157,15 +1239,17 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
     ]
    },
    {
     "tipo": "positivo",
-    "titulo": "S&P eleva perspectiva para positiva",
-    "evidencia": "Anúncio de 22/10/2026.",
+    "titulo": "3º tri forte e S&P com perspectiva positiva",
+    "evidencia": "3º tri (26/10): EBITDA ajustado de R$ 3,8 bi, margem de 20,2% (a maior desde 2023), puxada pela América do Norte; dividendos de R$ 667 mi. A S&P mudou a perspectiva para positiva em 22/10.",
     "impacto": "Solidez financeira sustenta o contrato.",
     "plano_acao": [
      "Propor expansão para portais B2B e apps de campo"
@@ -1173,6 +1257,8 @@
     "prazo": "60 dias",
     "responsavel": "Head comercial",
     "fontes": [
+     "https://investidor10.com.br/noticias/ggbr4-e-goau4-pagam-dividendos-ainda-em-2026-e-gerdau-mostra-resultados-do-3t26-123529/",
+     "https://euqueroinvestir.com/mercados/gerdau-balanco-3t26",
      "https://investidor10.com.br/acoes/link_comunicado/GGBR3/51196/"
     ]
    },
@@ -1285,15 +1371,15 @@
   "macro_rotulo": "Global"
  },
  "PicPay": {
-  "leitura_macro": "A Selic alta encarece o funding e aumenta a inadimplência do crédito, que já subiu no 2º tri. O real fraco e o choque pós-eleição derrubaram a ação: −46% em 7 dias, 26 pontos pior que o ETF de Brasil (EWZ).",
+  "leitura_macro": "A Selic mantida em 13,75% encarece o funding e aumenta a inadimplência do crédito, que já subiu no 2º tri. Com o real fraco e o choque pós-eleição, a ação foi de US$ 13,80 (23/10) a US$ 7,26 (04/11): −38% em 30 dias, 13 pontos pior que o ETF de Brasil (EWZ).",
   "leitura_segmento": "Fintech: o Banco Central apertou as regras de autorização (Res. 494/2025), o que acelera a consolidação; Pix e Open Finance seguem crescendo e favorecem quem tem escala.",
-  "leitura_cliente": "Abriu capital na Nasdaq (PICS) em 29/01/2026 a US$ 19; hoje está em US$ 7,59, com -46% em 7 dias após a eleição. No 2º tri o lucro ajustado foi de R$ 283 mi (+135%) e a receita de R$ 4,1 bi (+67%), mas a inadimplência subiu. O app tem nota 4,4, com 40 negativas na semana pelo volume alto.",
+  "leitura_cliente": "Abriu capital na Nasdaq (PICS) em 29/01/2026 a US$ 19; fechou 04/11 a US$ 7,26 (−47% desde 23/10). No 2º tri o lucro ajustado foi de R$ 283 mi (+135%) e a receita de R$ 4,1 bi (+67%), mas a inadimplência subiu; o 3º tri ainda não tem data confirmada. O app tem nota 4,4 em 500 avaliações, com 40 negativas na semana pelo volume alto.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Ação −46% em 7 dias e −60% desde o IPO: investidores vão cobrar eficiência e corte de despesas",
+    "Ação −47% desde 23/10 e −62% desde o IPO a US$ 19: investidores vão cobrar eficiência e corte de despesas",
     "Inadimplência em alta com juros altos pressiona o resultado do crédito",
-    "40 menções negativas na semana (14%), em volume alto de avaliações"
+    "40 menções negativas na semana (15%), em volume alto de avaliações"
    ]
   },
   "potencial_expansao": {
@@ -1312,7 +1398,7 @@
    {
     "tipo": "negativo",
     "titulo": "Congelamento de gastos e contratações no Brasil (4º tri e 1º tri)",
-    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% e o dólar subiu 8,8% em 26/10. Selic em 13,75%, com novos cortes incertos. Gastos de TI no Brasil devem crescer só ~5% em 2026, de forma seletiva.",
+    "evidencia": "Após a eleição de 25/10/2026, o Ibovespa caiu 13,9% em 26/10 e não se recuperou: fechou 04/11 em ~167 mil pontos, com o dólar a R$ 5,45. Em 04/11 o Copom manteve a Selic em 13,75%, interrompeu os cortes e elevou a projeção de IPCA 2026 para 5,6%. Há relatos de empresas pausando investimentos até a definição do ministro da Fazenda.",
     "impacto": "Despesas discricionárias e contratações tendem a ser congeladas: risco de pausa, redução de escopo ou não renovação do outsourcing, e de vagas de hunting canceladas ou adiadas.",
     "plano_acao": [
      "Confirmar com o sponsor, até 15/11, o orçamento de 2027 e o que está congelado",
@@ -1323,15 +1409,17 @@
     "prazo": "15 dias",
     "responsavel": "Diretor de contas",
     "fontes": [
-     "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/",
-     "https://atlaspublico.com.br/bcb/noticias/copom-reduz-selic-para-13-75pct-ao-ano-em-decisao-unanime-87748",
+     "https://analisa.genialinvestimentos.com.br/macro-strategy/analises/maiores-quedas-diarias-ibovespa-historia/",
+     "https://www.agrolink.com.br/noticias/ibovespa-sobe-1-15--e-dolar-fecha-a-r--5-45-nesta-quarta-feira_520587.html",
+     "https://www.otempo.com.br/economia/2026/11/4/copom-mantem-taxa-selic-em-13-75-e-interrompe-sequencia-de-cortes",
+     "https://brasilemfolhas.com.br/2026/11/empresas-suspendem-novos-investimentos-para-aguardar-politica-economica-de-lula/",
      "https://www.mobiletime.com.br/noticias/15/06/2026/ti-brasileiro-cresce-5/"
     ]
    },
    {
     "tipo": "atencao",
-    "titulo": "Ação caiu 46% em 7 dias",
-    "evidencia": "US$ 7,59 em 27/10/2026, contra US$ 19 no IPO.",
+    "titulo": "Ação caiu 47% desde 23/10",
+    "evidencia": "PICS de US$ 13,80 (23/10) a US$ 7,26 (04/11), contra US$ 19 no IPO; −38% em 30 dias, 13 pontos pior que o EWZ.",
     "impacto": "Pressão de investidores por eficiência pode congelar contratações.",
     "plano_acao": [
      "Confirmar planos de contratação para o 1º tri",
@@ -1404,13 +1492,13 @@
  "Novo Banco": {
   "leitura_macro": "Em Portugal, o BCE subiu a taxa de depósito para 2,50% e a economia cresce ~2%. Os bancos seguem lucrativos, mas com margens em queda e consolidação sob donos estrangeiros, como o próprio BPCE.",
   "leitura_segmento": "Banca portuguesa lucrativa, mas com margens em queda e consolidação sob controle estrangeiro.",
-  "leitura_cliente": "O BPCE concluiu a compra de 100% do banco por € 6,7 bi em 30/04/2026 e conduz a integração (liderada por Olivier Delay). O lucro do 1º semestre foi de € 367 mi (-16%, segundo uma única fonte). O app tem nota 2,8 nas lojas de Portugal e a reputação está em atenção (score 58). Não há plano de demissões conhecido.",
+  "leitura_cliente": "Controlado pelo BPCE desde 30/04/2026. Lucro de € 585,6 mi até setembro (−4,1%), com custos operacionais +11,1% ligados à venda e rentabilidade em queda (17,7% contra 21,6%). O app piorou: nota 2,4 em 20 avaliações, com queixas de lentidão e falhas em transferências e notificações.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
     "A integração ao BPCE costuma revisar fornecedores e tecnologia",
-    "Lucro do 1º semestre −16% (fonte única), com margens em queda",
-    "App com nota 2,8 nas lojas: ponto fraco visível para o novo dono"
+    "Lucro até setembro −4,1% (€ 585,6 mi), com custos operacionais +11,1% ligados à venda ao BPCE",
+    "App com nota 2,4 em 20 avaliações e reclamações de lentidão e falhas em transferências e notificações"
    ]
   },
   "potencial_expansao": {
@@ -1443,9 +1531,25 @@
     ]
    },
    {
+    "tipo": "atencao",
+    "titulo": "Lucro cai 4,1% até setembro com custos da integração",
+    "evidencia": "Lucro de € 585,6 mi até setembro (−4,1%); custos operacionais +11,1%; rentabilidade sobre capital tangível de 17,7% (21,6% um ano antes).",
+    "impacto": "Pressão por eficiência durante a integração.",
+    "plano_acao": [
+     "Mostrar como o UX reduz custo de atendimento",
+     "Propor melhorias no app com meta de nota"
+    ],
+    "prazo": "30 dias",
+    "responsavel": "Diretor de contas",
+    "fontes": [
+     "https://eco.sapo.pt/2026/11/03/venda-ao-bpce-penaliza-resultado-do-novobanco-lucro-cai-41-ate-setembro/",
+     "https://www.jornaldenegocios.pt/empresas/banca---financas/detalhe/custos-e-impostos-fazem-lucro-do-novo-banco-cair-para-585-milhoes-ate-setembro"
+    ]
+   },
+   {
     "tipo": "negativo",
-    "titulo": "App com nota 2,8",
-    "evidencia": "Avaliações recentes na App Store e no Google Play de Portugal.",
+    "titulo": "App com nota 2,4",
+    "evidencia": "Média de 2,4 em 20 avaliações dos últimos 30 dias; reclamações recentes de lentidão, falhas em transferências e notificações que não chegam.",
     "impacto": "Ponto fraco visível para o novo dono.",
     "plano_acao": [
      "Diagnóstico rápido das reclamações",

@@ -90,7 +90,8 @@ export function computeHealth(input: HealthInput): HealthResult {
     });
   }
 
-  if (recent.length > 0) {
+  // With fewer than MIN_SAMPLE mentions there is no reputation to read: one neutral headline is not a 100.
+  if (recent.length >= MIN_SAMPLE) {
     const critical = recent.filter((m) => m.severity >= 3).length;
     const high = recent.filter((m) => m.severity === 2).length;
     components.push({
@@ -104,7 +105,7 @@ export function computeHealth(input: HealthInput): HealthResult {
   }
 
   let spikeRatio: number | null = null;
-  if (input.baselineNegativePerWeek != null && recent.length > 0) {
+  if (input.baselineNegativePerWeek != null && recent.length >= MIN_SAMPLE) {
     spikeRatio = negativeCount / Math.max(1, input.baselineNegativePerWeek);
     components.push({
       key: "volume",
