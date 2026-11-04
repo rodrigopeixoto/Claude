@@ -103,7 +103,7 @@ export default async function ClientPage({ params, searchParams }: { params: Pro
         </section>
       </div>
 
-      <StrategyPanel clientId={client.id} report={strategy} />
+      <StrategyPanel clientId={client.id} market={client.market} report={strategy} />
 
       <StockPanel stock={stock} />
 

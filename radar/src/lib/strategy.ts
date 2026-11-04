@@ -13,6 +13,8 @@ const DAY = 24 * 3600_000;
 const Nivel = z.enum(["baixo", "medio", "alto"]);
 
 export const StrategySchema = z.object({
+  /** Market the macro reading refers to, e.g. "Brasil", "Reino Unido", "Brasil e global". */
+  macro_rotulo: z.string().optional(),
   leitura_macro: z.string(),
   leitura_segmento: z.string(),
   leitura_cliente: z.string(),
@@ -54,10 +56,11 @@ const AGENCY =
 
 const SYSTEM = `Você é estrategista de negócios de uma agência. ${AGENCY}
 Você recebe os dados que o Radar coletou sobre um cliente da agência e o noticiário recente do mercado e do segmento dele. Faça uma leitura objetiva, em português do Brasil:
-- leitura_macro: o que o cenário macroeconômico do mercado do cliente significa para ele agora (2 a 4 frases).
+- macro_rotulo: o mercado da leitura macro (ex.: "Brasil", "Reino Unido", "Portugal", "Brasil e global").
+- leitura_macro: como o cenário macroeconômico afeta ESTE cliente, pelos canais do negócio dele (juros e dívida, câmbio e insumos, consumo, crédito, orçamento público, regulação), cruzando com o movimento da ação e as notícias. Não repita um texto genérico do país: dois clientes do mesmo país devem ter leituras diferentes (2 a 4 frases).
 - leitura_segmento: como está o segmento/nicho do cliente (2 a 4 frases).
 - leitura_cliente: o que os dados do próprio cliente mostram (reputação, ações na bolsa, notícias), cruzando com macro e segmento (3 a 5 frases).
-- risco_cancelamento: chance de o cliente cortar ou cancelar o contrato com a agência, com motivos concretos. Seja coerente com a leitura macro: se o cenário do mercado do cliente indica congelamento de despesas ou de contratações, o risco de cancelamento de uma conta exposta a esse mercado é "alto", e você inclui um sinal negativo sobre o cenário macro, com plano de ação.
+- risco_cancelamento: chance de o cliente cortar ou cancelar o contrato com a agência. Os motivos são só fatores de risco (pontos positivos vão em potencial_expansao), específicos do cliente e com dado: segmento, ação comparada ao índice, notícias, reputação e o efeito do macro no negócio dele. Seja coerente com a leitura macro: se o cenário do mercado do cliente indica congelamento de despesas ou de contratações, o risco de cancelamento de uma conta exposta a esse mercado é "alto", e você inclui um sinal negativo sobre o cenário macro, com plano de ação.
 - potencial_expansao: chance de ampliar o contrato (mais designers alocados, mais vagas de hunting), com motivos concretos.
 - impacto_ux: o que isso significa para a operação de outsourcing e para a de hunting de UX nesse cliente.
 - sinais: de 3 a 7 sinais. Cada um com evidência (cite o dado ou a manchete com a data), impacto na operação da agência e, para todo sinal negativo ou de atenção, um plano de ação com passos práticos, prazo e responsável sugerido (ex.: diretor de contas, head de talentos). Para sinais positivos, o plano descreve como aproveitar a oportunidade.

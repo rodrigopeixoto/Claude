@@ -1,15 +1,14 @@
 {
  "Publicis": {
-  "leitura_macro": "Juros altos e inflação acima da meta no Reino Unido e na zona do euro, crescimento global moderado. No Brasil, a eleição de 25/10 derrubou a bolsa em 13,9% e levou o dólar a R$ 5,42, o que barateia o designer brasileiro para contratos em moeda forte.",
+  "leitura_macro": "No Brasil, o choque pós-eleição (Ibovespa −13,9% e dólar +8,8% em 26/10) e a Selic em 13,75% levam anunciantes a congelar verba no 4º tri e no 1º tri. No mundo, juros altos na Europa e crescimento fraco no Reino Unido mantêm os clientes cautelosos; a Publicis compensa com dados e IA, e a ação sobe 15% em 12 meses.",
   "leitura_segmento": "As holdings de publicidade estão em consolidação: a Omnicom corta ~15 mil vagas após absorver a IPG. A Publicis é a exceção em crescimento e vence concorrências com dados e IA.",
   "leitura_cliente": "No 3º tri a receita cresceu 5,0% orgânico, com América Latina em +23,8%; a unidade de tecnologia (Sapient) caiu levemente. Comprou a LiveRamp por US$ 2,2 bi (mai/26). A ação sobe 14,9% em 12 meses e foi pouco afetada pela eleição. Reputação estável, sem menções negativas na semana.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "A operação no Brasil sente o congelamento dos anunciantes, mesmo com o grupo crescendo",
-    "Crescimento forte na América Latina e guidance confirmado",
-    "Sem notícias de cortes ou reestruturação na Publicis"
+    "Anunciantes brasileiros devem congelar verbas no 4º tri e no 1º tri, e os projetos atendidos pela agência dependem desses anunciantes",
+    "A Publicis Sapient (tecnologia), unidade que mais contrata UX, já recuou no 3º tri",
+    "A consolidação das holdings (Omnicom corta ~15 mil vagas) pressiona toda a cadeia por custo menor"
    ]
   },
   "potencial_expansao": {
@@ -109,18 +108,19 @@
     "argumento": "Objeção \"terceirizado não entende a cultura\": onboarding estruturado e o mesmo designer no squad do início ao fim.",
     "cta": "Oferecer squad piloto de 90 dias em uma conta."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil e global"
  },
  "Rede D'Or": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "Com a Selic a 13,75%, a dívida usada na expansão de hospitais fica mais cara, e a inflação de 4,58% pressiona custos médicos; o dólar alto encarece equipamentos importados. A ação caiu 21% em 7 dias, quase tudo efeito do mercado (Ibovespa −15,6%).",
   "leitura_segmento": "Hospitais seguem em expansão; as operadoras de saúde tiveram sinistralidade de 81,9% no 1º semestre e lucro menor.",
   "leitura_cliente": "Lucro ajustado de R$ 1,28 bi no 2º tri (+8,5%) e alavancagem de 1,71x. A ação caiu 21% em 7 dias, quase toda no pregão pós-eleição de 26/10, e acumula -18% em 12 meses. O app tem nota alta (4,3) e há 8 menções negativas na semana, a maioria de atendimento e acesso.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "Fundamentos sólidos e caixa para investir",
-    "Queda da ação é efeito de mercado, não do negócio"
+    "Com juros altos, a expansão de hospitais fica mais cara e projetos digitais não essenciais tendem a ser adiados no 4º tri e no 1º tri",
+    "As operadoras de saúde, inclusive a SulAmérica, do grupo, têm sinistralidade em alta, o que pressiona custos",
+    "8 menções negativas na semana sobre acesso e atendimento no app: se o time de UX não mostrar resultado, vira alvo de corte"
    ]
   },
   "potencial_expansao": {
@@ -206,18 +206,19 @@
     "argumento": "Objeção \"qualquer designer resolve\": em saúde, um erro de interface vira erro de atendimento. Hunting especializado reduz a curva.",
     "cta": "Apresentar shortlist de perfis em 10 dias."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "Entain CILA": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "No Brasil, além do choque pós-eleição, o governo proibiu as apostas online pela MP 1.394/2026 em 25/09. Para a Entain, o regulatório pesa mais que o macro: sem operar, não há receita local, e a ação acumula −44% em 12 meses.",
   "leitura_segmento": "A MP 1.394/2026, de 25/09, proibiu apostas de quota fixa e jogos online no Brasil e a publicidade do setor; os sites saíram do ar em 06/10. O STF deve julgar as ações após o 2º turno e a MP pode caducar por volta de mar/2027.",
   "leitura_cliente": "A Entain cumpre a proibição e projeta o ano no piso do guidance (o Brasil era ~5% da receita online). A ação cai 44% em 12 meses. A operação brasileira (Sportingbet) está parada, sem receita.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "Operação brasileira proibida desde 06/10",
-    "Sem receita local, orçamento de produto no Brasil tende a ser congelado"
+    "Operação brasileira proibida desde 06/10 pela MP 1.394/2026: sem receita local",
+    "A empresa projeta o ano no piso do guidance e a ação acumula −44% em 12 meses",
+    "O congelamento de gastos no Brasil reduz a chance de manter projetos à espera do julgamento no STF"
    ]
   },
   "potencial_expansao": {
@@ -301,18 +302,19 @@
     "argumento": "Objeção \"contratar UX agora é arriscado\": capacidade sob demanda se ajusta ao cenário regulatório.",
     "cta": "Conversa sobre modelo de alocação flexível."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "FTD": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "Escolas privadas sentem juros altos e inflação acima da meta nas mensalidades. O PNLD (compras do governo) sustenta parte da receita, mas depende de um orçamento federal apertado, com dívida bruta de 82,9% do PIB.",
   "leitura_segmento": "Educação básica é impulsionada pelo PNLD (programa federal de livros didáticos); o setor privado sofre com juros altos.",
   "leitura_cliente": "Sandro Bonás assumiu como diretor-geral em 27/07/2026. Poucas notícias recentes e reputação estável, sem negativas na semana. Empresa fechada (sem ações).",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "Soma-se à troca de liderança, que já pedia revisão de fornecedores",
-    "Novo CEO pode revisar fornecedores e prioridades"
+    "Novo diretor-geral desde julho: troca de liderança costuma revisar fornecedores",
+    "O congelamento de gastos cai justamente no período de planejamento do ano letivo de 2027",
+    "O orçamento federal apertado ameaça as compras públicas de material didático"
    ]
   },
   "potencial_expansao": {
@@ -380,17 +382,19 @@
     "argumento": "Objeção \"projeto de UX é longo e caro\": diagnóstico curto e com entregas já no primeiro mês.",
     "cta": "Proposta de diagnóstico de 30 dias."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "Betway Africa": {
-  "leitura_macro": "O SARB subiu a taxa para 7,25% em 23/09, o PIB caiu 0,2% no 2º tri e o desemprego está em 33,6%. Cenário de pressão sobre o consumo e sobre preço de fornecedores.",
+  "leitura_macro": "Na África do Sul, o SARB subiu os juros para 7,25%, o PIB caiu 0,2% no 2º tri e o desemprego está em 33,6%: o apostador tem menos renda disponível. O Tesouro estuda um imposto nacional de 20% sobre apostas online.",
   "leitura_segmento": "O Tesouro sul-africano desenha um imposto nacional de 20% sobre receita de apostas online (detalhes no orçamento de 2027); o cassino online segue sem legalização nacional.",
   "leitura_cliente": "A Super Group (dona da Betway) teve receita de US$ 684 mi no 2º tri (+18%) e elevou o guidance para mais de US$ 2,6 bi. A ação caiu 29% em 90 dias. A reputação local é razoável (nota 3,3 na App Store).",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
-    "Juros subindo e economia fraca na África do Sul",
-    "Novo imposto pode levar a corte de custos"
+    "O imposto de 20% em estudo pode levar a corte de fornecedores",
+    "Consumo fraco e juros em alta reduzem a receita por apostador",
+    "Ação da Super Group −29% em 90 dias, 35 pontos pior que o S&P 500"
    ]
   },
   "potencial_expansao": {
@@ -453,16 +457,19 @@
     "argumento": "Benefício: perfil sênior com custo menor do que contratar localmente.",
     "cta": "Apresentar perfis disponíveis."
    }
-  ]
+  ],
+  "macro_rotulo": "África do Sul"
  },
  "FutureBrand": {
-  "leitura_macro": "Juros altos e inflação acima da meta no Reino Unido e na zona do euro, crescimento global moderado. No Brasil, a eleição de 25/10 derrubou a bolsa em 13,9% e levou o dólar a R$ 5,42, o que barateia o designer brasileiro para contratos em moeda forte.",
+  "leitura_macro": "Juros altos e crescimento fraco na Europa e no Reino Unido deixam os clientes de branding cautelosos; no Brasil, o choque pós-eleição reforça cortes de verba de marca.",
   "leitura_segmento": "A integração Omnicom–IPG elimina marcas (DDB, FCB e MullenLowe foram aposentadas) e corta ~15 mil vagas até o fim de 2026.",
   "leitura_cliente": "A FutureBrand agora fica na Omnicom, via McCann. Simon Hill virou presidente global em jun/2026, depois de uma reorganização. Há poucas notícias recentes e nenhuma negativa. É uma empresa de capital fechado dentro do grupo.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
-    "Cortes da Omnicom podem levar a internalização ou revisão de fornecedores"
+    "A integração Omnicom–IPG corta ~15 mil vagas até o fim de 2026, e fornecedores entram na revisão",
+    "Verba de marca é das primeiras a ser cortada com juros altos",
+    "Liderança global nova desde junho, depois de uma reorganização"
    ]
   },
   "potencial_expansao": {
@@ -511,18 +518,19 @@
     "argumento": "Objeção \"custo fixo alto\": designers alocados por projeto, sem aumentar o quadro.",
     "cta": "Conversa sobre capacidade sob demanda."
    }
-  ]
+  ],
+  "macro_rotulo": "Global"
  },
  "Publicis/Sebrae": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "O Sebrae é financiado por contribuição sobre a folha das empresas: a arrecadação acompanha emprego e atividade, que desaceleram com PIB de 1,8% em 2026. O choque pós-eleição reforça a cautela nos gastos públicos.",
   "leitura_segmento": "O Sebrae é financiado por contribuição compulsória das empresas e contrata por licitação; o ciclo de contratos segue o calendário das concorrências.",
   "leitura_cliente": "Em 09/10/2026 a Nova venceu pela quarta vez a licitação de publicidade do Sebrae Nacional (cerca de R$ 250 mi por ano), junto com Artplan e DeBrito, entre 13 agências. A Publicis não aparece entre as vencedoras.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "Licitação nacional vencida por outras agências",
-    "Se o escopo da agência estava sob esse contrato, ele tende a acabar"
+    "A licitação do Sebrae Nacional foi vencida por Nova, Artplan e DeBrito em 09/10: a Publicis ficou de fora",
+    "Com o contrato nacional mudando de agência, o escopo atendido pode acabar na transição",
+    "O congelamento de gastos reduz a chance de projetos novos por fora da licitação"
    ]
   },
   "potencial_expansao": {
@@ -589,17 +597,19 @@
     "argumento": "Objeção \"UX é para produto comercial\": em serviço público, UX é inclusão e economia de atendimento.",
     "cta": "Apresentar case de linguagem simples."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "Springpod": {
-  "leitura_macro": "Bank Rate em 3,75% com viés de alta (3 votos por subir em set/26), inflação de 3,5% em setembro e PIB de +0,7% no trimestre. Os planos de investimento das empresas estão no menor nível desde a pandemia: compradores priorizam corte de custo e IA.",
+  "leitura_macro": "No Reino Unido, os planos de investimento das empresas estão no menor nível pós-pandemia, e programas de estágio e empregabilidade costumam ser cortados primeiro.",
   "leitura_segmento": "Edtech de empregabilidade para jovens no Reino Unido: sem dados recentes do segmento.",
   "leitura_cliente": "Não há notícias de captação, demissões ou aquisições; só parcerias de estágios virtuais com Marriott e Quickline. É uma empresa de capital fechado.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
-    "Reino Unido com investimento empresarial no menor nível pós-pandemia",
-    "Sem dados para avaliar a saúde financeira"
+    "As empresas parceiras podem cortar programas de estágio com investimento em baixa",
+    "Sem notícias financeiras em 90 dias: o risco não pode ser medido",
+    "Volume baixo de menções (4 em 7 dias) não permite medir a reputação"
    ]
   },
   "potencial_expansao": {
@@ -646,18 +656,19 @@
     "argumento": "Objeção \"júnior não entrega\": com mentoria e escopo certo, júniores aceleram o time.",
     "cta": "Propor um piloto de micro-estágio em UX."
    }
-  ]
+  ],
+  "macro_rotulo": "Reino Unido"
  },
  "Raízen": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "A Selic a 13,75% encarece a dívida de uma empresa em recuperação extrajudicial (R$ 61,4 bi); o dólar alto afeta combustíveis importados e o etanol depende do preço da gasolina. A ação caiu 20% em 7 dias e vale R$ 0,33 (−65% em 12 meses).",
   "leitura_segmento": "Combustíveis e etanol: produção recorde de etanol e mistura obrigatória E30/E32, mas a ANP revogou licenças de distribuidoras irregulares em ago–set/2026.",
   "leitura_cliente": "Em 30/07/2026 a Justiça homologou a recuperação extrajudicial de cerca de R$ 61,4 bi em dívidas, com conversão de dívida em ações e aporte de R$ 3,5 bi da Shell. Prejuízo de R$ 1,64 bi no 1º tri da safra 26/27, venda da operação na Argentina e capex menor. A ação vale R$ 0,33 (-65% em 12 meses). O Shell Box tem nota 4,2 nas lojas, com 21 negativas na semana.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "Recuperação extrajudicial e controle passando a credores e à Shell",
-    "Capex reduzido e foco em caixa"
+    "Recuperação extrajudicial e capex reduzido: qualquer gasto fora do essencial é cortado",
+    "O controle está passando a credores e à Shell, que podem trocar fornecedores",
+    "21 menções negativas na semana sobre o Shell Box, o único produto digital que gera receita"
    ]
   },
   "potencial_expansao": {
@@ -756,18 +767,19 @@
     "argumento": "Objeção \"UX é custo\": UX mantém conversão e retenção quando o marketing é cortado.",
     "cta": "Proposta de squad enxuto focado em receita."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "Syngenta": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "Selic alta e crédito rural caro apertam o caixa do agricultor; o dólar mais alto encarece insumos importados, mas melhora a receita da safra exportada. O Brasil é o motor do grupo (+7% em defensivos no 1º semestre).",
   "leitura_segmento": "Defensivos agrícolas estão estáveis a levemente em queda no mundo (pressão de genéricos); juros altos e crédito rural apertado no Brasil.",
   "leitura_cliente": "Receita global de US$ 12,2 bi no 1º semestre (-2%), mas o Brasil cresceu 7% em defensivos. Hengde Qin é o novo CEO desde 01/08/2026. O IPO em Hong Kong ficou para 2027 e há um programa de economia que corta até 150 vagas em Basileia. É uma empresa de capital fechado.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "O Brasil cresce, mas crédito rural caro e juros altos pressionam o orçamento local",
-    "Brasil é motor de crescimento do grupo"
+    "Crédito rural caro reduz compras de insumos na safra 26/27 e pressiona o orçamento local",
+    "Novo CEO global e programa de economia (cortes em Basileia) podem chegar às subsidiárias",
+    "O congelamento de gastos no Brasil no 4º tri e no 1º tri atinge projetos digitais não essenciais"
    ]
   },
   "potencial_expansao": {
@@ -848,16 +860,19 @@
     "argumento": "Objeção \"é difícil achar esse perfil\": hunting especializado e banco de talentos do segmento.",
     "cta": "Apresentar shortlist em 15 dias."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "Betway": {
-  "leitura_macro": "Bank Rate em 3,75% com viés de alta (3 votos por subir em set/26), inflação de 3,5% em setembro e PIB de +0,7% no trimestre. Os planos de investimento das empresas estão no menor nível desde a pandemia: compradores priorizam corte de custo e IA.",
+  "leitura_macro": "No Reino Unido, juros a 3,75% com viés de alta e inflação de 3,5% apertam o consumo. O imposto sobre jogos remotos subiu de 21% para 40% em abr/2026 e o de apostas vai a 25% em abr/2027.",
   "leitura_segmento": "Reino Unido: o imposto sobre jogos remotos subiu de 21% para 40% em abr/2026 e o de apostas vai de 15% para 25% em abr/2027. O setor reage com consolidação e corte de marketing.",
   "leitura_cliente": "A Super Group estima impacto de ~6% no EBITDA de 2026 e quer compensar com cortes de marketing e sinergias. A receita no Reino Unido cresceu 34% no 2º tri. A ação caiu 29% em 90 dias. A reputação local está ruim: nota 1,6 nas lojas do Reino Unido e score de 52.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
-    "Cortes de custo para compensar o imposto"
+    "O imposto mais alto reduz a margem, e a Super Group já anunciou cortes de marketing e sinergias",
+    "Ação da Super Group −29% em 90 dias, 35 pontos pior que o S&P 500",
+    "Nota 1,6 no app britânico: pressão por resultado rápido do time de UX"
    ]
   },
   "potencial_expansao": {
@@ -922,17 +937,19 @@
     "argumento": "Objeção \"precisamos cortar\": substituir custo fixo por capacidade flexível corta sem parar o produto.",
     "cta": "Simulação de custo do squad flexível."
    }
-  ]
+  ],
+  "macro_rotulo": "Reino Unido"
  },
  "Emma": {
-  "leitura_macro": "Bank Rate em 3,75% com viés de alta (3 votos por subir em set/26), inflação de 3,5% em setembro e PIB de +0,7% no trimestre. Os planos de investimento das empresas estão no menor nível desde a pandemia: compradores priorizam corte de custo e IA.",
+  "leitura_macro": "No Reino Unido, inflação de 3,5% e juros com viés de alta reduzem a compra de bens duráveis como colchões, e o varejo direto ao consumidor depende de marketing caro para vender.",
   "leitura_segmento": "Varejo direto ao consumidor no Reino Unido, com consumo pressionado por inflação de 3,5%.",
   "leitura_cliente": "Emma está sob uma ordem de consentimento com a CMA (órgão de concorrência do Reino Unido) por contadores falsos e urgência nas vendas, com prazo de adequação em 20/06/2026. Há acusações semelhantes na Austrália, e a empresa abriu lojas na França e na Índia. Não há notícias financeiras recentes; é uma empresa de capital fechado.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
-    "Sem dados financeiros recentes",
-    "Consumo britânico fraco"
+    "Colchão é uma compra que o consumidor britânico pode adiar com renda apertada",
+    "O processo da CMA sobre práticas de venda pode gerar custos e mudar prioridades",
+    "Sem dados financeiros recentes: a saúde da empresa não pode ser medida"
    ]
   },
   "potencial_expansao": {
@@ -980,19 +997,19 @@
     "argumento": "Objeção \"vai derrubar a conversão\": transparência bem desenhada mantém a conversão e reduz devoluções.",
     "cta": "Agendar conversa de 30 minutos."
    }
-  ]
+  ],
+  "macro_rotulo": "Reino Unido"
  },
  "Cogna": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "Juros altos e desemprego pesam na capacidade de pagar mensalidade e aumentam a evasão; o crédito estudantil privado fica mais caro. A ação caiu 42% em 7 dias, 26 pontos a mais que o Ibovespa, e acumula −39% em 12 meses.",
   "leitura_segmento": "Ensino superior privado: as novas regras do MEC proíbem 100% EAD em direito, medicina, enfermagem, psicologia e odontologia e criam o modelo semipresencial. O JPMorgan estima impacto de ~4,9% na receita da Cogna.",
   "leitura_cliente": "No 2º tri o lucro foi de R$ 148,9 mi (+25%), a receita de R$ 1,96 bi (+18%) e a Vasta cresceu 50,5% com o PNLD. Mas a ação caiu 42% em 7 dias (pós-eleição) e 39% em 12 meses. O app Anhanguera tem nota 2,8 e a reputação está em atenção (score 52).",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "Soma-se à queda de 42% da ação em 7 dias e às novas regras de EAD",
-    "Ação em queda forte e pressão das novas regras de EAD",
-    "Ambiente de corte de gastos no Brasil"
+    "Queda da ação muito acima do mercado (−42% contra −16% do Ibovespa) indica pressão específica sobre a empresa",
+    "As novas regras de EAD do MEC tiram ~4,9% da receita estimada (JPMorgan)",
+    "App do aluno com nota 2,8 e 9 menções negativas na semana: UX vira alvo se não reduzir a evasão"
    ]
   },
   "potencial_expansao": {
@@ -1097,10 +1114,11 @@
     "argumento": "Benefício: perfil especializado encurta a curva de aprendizado do time.",
     "cta": "Apresentar perfis disponíveis."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "Hyphen": {
-  "leitura_macro": "O BCE subiu a taxa de depósito para 2,50% em 10/09 (nova decisão em 29/10). Portugal cresce ~2% em 2026 e os bancos seguem lucrativos, com margens em queda: é o mercado mais estável da carteira. O real mais fraco após a eleição brasileira barateia o talento do Brasil para quem fatura em euro, como a Hyphen.",
+  "leitura_macro": "Em Portugal, o BCE subiu a taxa de depósito para 2,50% e a economia cresce ~2%: é o mercado mais estável da carteira. O real fraco após a eleição brasileira barateia o talento do Brasil para quem fatura em euro, como a Hyphen.",
   "leitura_segmento": "Consultorias de UX em Portugal crescem com a digitalização de bancos, seguros, telecom e varejo, mas a IA pressiona o modelo de alocação de horas: os clientes pedem menos pessoas, mais seniores e fluentes em IA, e projetos de ponta a ponta.",
   "leitura_cliente": "A Hyphen (SPARK2D, Grupo Tangível) faturou € 5,9 mi em 2025 (+27%) e prevê € 7,3 mi em 2026 (+20% ou mais). Em 2025 deixou de ser focada em outsourcing para virar consultoria de experiência digital de ponta a ponta, com IA em mais de 80% dos projetos, e aposta em expansão internacional. Tem equipe em Portugal e no Brasil e clientes como Santander, Millennium BCP, Novo Banco, Cofidis, EDP, Vodafone e Worten. Também atua com outsourcing de UX, ou seja, é ao mesmo tempo cliente e concorrente da agência. Há pouco noticiário recente (1 menção nos últimos 90 dias).",
   "risco_cancelamento": {
@@ -1108,8 +1126,7 @@
    "motivos": [
     "A mudança de modelo, de outsourcing para consultoria de ponta a ponta, pode levar a internalizar designers hoje alocados pela agência",
     "A IA em mais de 80% dos projetos tende a reduzir a demanda por pessoas em tarefas operacionais",
-    "A Hyphen também oferece outsourcing de UX: é cliente e concorrente ao mesmo tempo",
-    "Portugal é o mercado mais estável da carteira, sem congelamento previsto"
+    "A Hyphen também vende outsourcing de UX: é cliente e concorrente ao mesmo tempo"
    ]
   },
   "potencial_expansao": {
@@ -1209,24 +1226,27 @@
     "argumento": "Benefício: escalar a equipe para a expansão internacional com custo competitivo.",
     "cta": "Apresentar modelo de parceria de capacidade."
    }
-  ]
+  ],
+  "macro_rotulo": "Portugal"
  },
  "Gerdau": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "Selic alta e PIB de 1,8% esfriam a construção civil, principal mercado do aço longo no Brasil; o dólar alto ajuda, porque ~65% do resultado vem da América do Norte. Na semana da eleição a ação caiu 6%, contra −16% do Ibovespa.",
   "leitura_segmento": "Siderurgia: as tarifas americanas (Seção 232) favorecem a operação nos EUA; no Brasil, o antidumping contra o aço chinês deve reduzir importações em ~20% em 2026.",
   "leitura_cliente": "Lucro de R$ 1,47 bi no 2º tri (+69,7%), com a América do Norte respondendo por ~65% do EBITDA. Em 22/10 a S&P mudou a perspectiva para positiva. O capex de 2026 é de R$ 4,7 bi. A ação sobe 36% em 12 meses (-6% na semana da eleição). Reputação estável.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "Exposição menor que a média: ~65% do resultado vem da América do Norte",
-    "Resultados fortes e rating em melhora"
+    "A operação Brasil já teve lucro bruto −37% no 2º tri com a concorrência do aço importado",
+    "A construção civil desacelera com juros altos e com o congelamento de gastos no 4º tri e no 1º tri",
+    "Projetos digitais ligados à operação brasileira são os primeiros candidatos a corte"
    ]
   },
   "potencial_expansao": {
    "nivel": "medio",
    "motivos": [
-    "Capex alto e digitalização industrial"
+    "Capex alto e digitalização industrial",
+    "Resultados fortes e rating em melhora",
+    "Exposição menor que a média: ~65% do resultado vem da América do Norte"
    ]
   },
   "impacto_ux": {
@@ -1299,16 +1319,19 @@
     "argumento": "Benefício: mesmo horário comercial e custo menor que contratar nos EUA.",
     "cta": "Apresentar modelo de squad nearshore."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "Amadeus": {
-  "leitura_macro": "Juros altos e inflação acima da meta no Reino Unido e na zona do euro, crescimento global moderado. No Brasil, a eleição de 25/10 derrubou a bolsa em 13,9% e levou o dólar a R$ 5,42, o que barateia o designer brasileiro para contratos em moeda forte.",
+  "leitura_macro": "Juros altos na Europa e o conflito no Oriente Médio afetam as reservas aéreas; a demanda por viagens segue resiliente, mas exposta à geopolítica. A ação sobe 6% em 30 dias, mas cai 16% em 12 meses.",
   "leitura_segmento": "Tecnologia para viagens: a demanda é resiliente, mas exposta à geopolítica; o setor segue com aquisições em hotelaria, pagamentos e biometria.",
   "leitura_cliente": "Receita de € 3,33 bi no 1º semestre (+5,1% em câmbio constante), mas o guidance foi revisado para baixo por causa do conflito no Oriente Médio, que afeta as reservas aéreas. Fechou um contrato de 5 anos com a CTM e a compra da IDEMIA Public Security segue pendente. Resultado do 3º tri sai em 06/11. A ação cai 16% em 12 meses.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
-    "Guidance revisado para baixo"
+    "Guidance revisado para baixo por causa do conflito no Oriente Médio",
+    "Ação −16% em 12 meses, apesar da alta recente",
+    "O resultado do 3º tri, em 06/11, pode trazer contenção de custos"
    ]
   },
   "potencial_expansao": {
@@ -1369,18 +1392,19 @@
     "argumento": "Objeção \"research atrasa\": evita construir o que o mercado não vai usar.",
     "cta": "Oferecer sprint de research de 2 semanas."
    }
-  ]
+  ],
+  "macro_rotulo": "Global"
  },
  "PicPay": {
-  "leitura_macro": "Lula foi reeleito em 25/10 (51,8%) e Flávio Bolsonaro contesta o resultado. Em 26/10 o Ibovespa caiu 13,9% (circuit breaker) e o dólar subiu 8,8%, para R$ 5,42. Selic em 13,75% com novos cortes agora incertos, IPCA de 4,58% em 12 meses (acima do teto) e PIB 2026 projetado em 1,8%. Gastos de TI devem crescer só ~5% em 2026 e de forma seletiva: espere congelamento de despesas discricionárias e de contratações no 4º tri e no 1º tri.",
+  "leitura_macro": "A Selic alta encarece o funding e aumenta a inadimplência do crédito, que já subiu no 2º tri. O real fraco e o choque pós-eleição derrubaram a ação: −46% em 7 dias, 26 pontos pior que o ETF de Brasil (EWZ).",
   "leitura_segmento": "Fintech: o Banco Central apertou as regras de autorização (Res. 494/2025), o que acelera a consolidação; Pix e Open Finance seguem crescendo e favorecem quem tem escala.",
   "leitura_cliente": "Abriu capital na Nasdaq (PICS) em 29/01/2026 a US$ 19; hoje está em US$ 7,59, com -46% em 7 dias após a eleição. No 2º tri o lucro ajustado foi de R$ 283 mi (+135%) e a receita de R$ 4,1 bi (+67%), mas a inadimplência subiu. O app tem nota 4,4, com 40 negativas na semana pelo volume alto.",
   "risco_cancelamento": {
    "nivel": "alto",
    "motivos": [
-    "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
-    "Ação caiu 46% em 7 dias e investidores devem cobrar eficiência",
-    "Crescimento forte e escala"
+    "Ação −46% em 7 dias e −60% desde o IPO: investidores vão cobrar eficiência e corte de despesas",
+    "Inadimplência em alta com juros altos pressiona o resultado do crédito",
+    "40 menções negativas na semana (14%), em volume alto de avaliações"
    ]
   },
   "potencial_expansao": {
@@ -1485,16 +1509,19 @@
     "argumento": "Benefício: posiciona a agência como especialista em fintech.",
     "cta": "Convite para conversa sobre roadmap."
    }
-  ]
+  ],
+  "macro_rotulo": "Brasil"
  },
  "Novo Banco": {
-  "leitura_macro": "O BCE subiu a taxa de depósito para 2,50% em 10/09 (nova decisão em 29/10). Portugal cresce ~2% em 2026 e os bancos seguem lucrativos, com margens em queda: é o mercado mais estável da carteira.",
+  "leitura_macro": "Em Portugal, o BCE subiu a taxa de depósito para 2,50% e a economia cresce ~2%. Os bancos seguem lucrativos, mas com margens em queda e consolidação sob donos estrangeiros, como o próprio BPCE.",
   "leitura_segmento": "Banca portuguesa lucrativa, mas com margens em queda e consolidação sob controle estrangeiro.",
   "leitura_cliente": "O BPCE concluiu a compra de 100% do banco por € 6,7 bi em 30/04/2026 e conduz a integração (liderada por Olivier Delay). O lucro do 1º semestre foi de € 367 mi (-16%, segundo uma única fonte). O app tem nota 2,8 nas lojas de Portugal e a reputação está em atenção (score 58). Não há plano de demissões conhecido.",
   "risco_cancelamento": {
    "nivel": "medio",
    "motivos": [
-    "A integração ao BPCE costuma revisar fornecedores e tecnologia"
+    "A integração ao BPCE costuma revisar fornecedores e tecnologia",
+    "Lucro do 1º semestre −16% (fonte única), com margens em queda",
+    "App com nota 2,8 nas lojas: ponto fraco visível para o novo dono"
    ]
   },
   "potencial_expansao": {
@@ -1560,7 +1587,8 @@
     "argumento": "Objeção \"time remoto não funciona\": rituais, sobreposição de horário e alocação dedicada.",
     "cta": "Apresentar modelo de alocação."
    }
-  ]
+  ],
+  "macro_rotulo": "Portugal"
  },
  "Origin": {
   "leitura_macro": "Indisponível: falta confirmar qual empresa é o cliente.",
@@ -1596,7 +1624,8 @@
     "responsavel": "Diretor de contas"
    }
   ],
-  "sem_dados": true
+  "sem_dados": true,
+  "macro_rotulo": "—"
  },
  "Bliss": {
   "leitura_macro": "Indisponível: falta confirmar qual empresa é o cliente.",
@@ -1632,7 +1661,8 @@
     "responsavel": "Diretor de contas"
    }
   ],
-  "sem_dados": true
+  "sem_dados": true,
+  "macro_rotulo": "—"
  },
  "Gauge": {
   "leitura_macro": "Indisponível: falta confirmar qual empresa é o cliente.",
@@ -1668,7 +1698,8 @@
     "responsavel": "Diretor de contas"
    }
   ],
-  "sem_dados": true
+  "sem_dados": true,
+  "macro_rotulo": "—"
  },
  "PactoMais": {
   "leitura_macro": "Indisponível: falta confirmar qual empresa é o cliente.",
@@ -1704,6 +1735,7 @@
     "responsavel": "Diretor de contas"
    }
   ],
-  "sem_dados": true
+  "sem_dados": true,
+  "macro_rotulo": "—"
  }
 }

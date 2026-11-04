@@ -19,11 +19,15 @@ const TIPO = {
   positivo: { label: "Positivo", icon: "▲", color: "var(--good)" },
 } as const;
 
+const MARKET_LABEL: Record<string, string> = { BR: "Brasil", GB: "Reino Unido", ZA: "África do Sul", PT: "Portugal", GLOBAL: "global" };
+
 export function StrategyPanel({
   clientId,
+  market,
   report,
 }: {
   clientId: string;
+  market?: string | null;
   report: { createdAt: Date; model: string; data: Strategy } | null;
 }) {
   const d = report?.data;
@@ -58,14 +62,15 @@ export function StrategyPanel({
               );
             })}
           </div>
-          <div className="grid gap-3 text-sm md:grid-cols-3">
-            <div><p className="text-xs font-medium text-ink-3">Cenário macro</p><p className="text-ink-2">{d.leitura_macro}</p></div>
-            <div><p className="text-xs font-medium text-ink-3">Segmento</p><p className="text-ink-2">{d.leitura_segmento}</p></div>
-            <div><p className="text-xs font-medium text-ink-3">Cliente</p><p className="text-ink-2">{d.leitura_cliente}</p></div>
-          </div>
           <div className="grid gap-3 text-sm sm:grid-cols-2">
+            <div><p className="text-xs font-medium text-ink-3">Cliente</p><p className="text-ink-2">{d.leitura_cliente}</p></div>
+            <div><p className="text-xs font-medium text-ink-3">Segmento</p><p className="text-ink-2">{d.leitura_segmento}</p></div>
             <div><p className="text-xs font-medium text-ink-3">Impacto no outsourcing de UX</p><p className="text-ink-2">{d.impacto_ux.outsourcing}</p></div>
             <div><p className="text-xs font-medium text-ink-3">Impacto no hunting de UX</p><p className="text-ink-2">{d.impacto_ux.hunting}</p></div>
+            <div className="sm:col-span-2">
+              <p className="text-xs font-medium text-ink-3">Base: cenário macro {d.macro_rotulo ?? MARKET_LABEL[market ?? ""] ?? ""}</p>
+              <p className="text-ink-2">{d.leitura_macro}</p>
+            </div>
           </div>
           <div>
             <p className="mb-2 text-xs font-medium text-ink-3">Sinais e planos de ação</p>
