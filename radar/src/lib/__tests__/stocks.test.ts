@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeReturns } from "../stocks";
+import { benchmarkFor, computeReturns } from "../stocks";
 
 const DAY = 24 * 3600_000;
 const day = (n: number) => new Date(Date.UTC(2026, 0, 1) + n * DAY);
@@ -20,5 +20,16 @@ describe("computeReturns", () => {
     const r = computeReturns(quotes)!;
     expect(r[30]).toBeNull();
     expect(r[7]).toBeCloseTo(0.1);
+  });
+});
+
+describe("benchmarkFor", () => {
+  it("uses the exchange index for listed tickers, even for Brazil-focused clients", () => {
+    expect(benchmarkFor("ENT.L", "BR")?.ticker).toBe("^FTSE");
+    expect(benchmarkFor("RDOR3.SA", "BR")?.ticker).toBe("^BVSP");
+  });
+  it("uses EWZ for a Brazilian business listed in the US", () => {
+    expect(benchmarkFor("PICS", "BR")?.ticker).toBe("EWZ");
+    expect(benchmarkFor("SGHC", "GB")?.ticker).toBe("^GSPC");
   });
 });

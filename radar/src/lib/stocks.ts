@@ -16,7 +16,8 @@ const BENCHMARKS: [RegExp, string, string][] = [
 export function benchmarkFor(ticker: string, market?: string | null): { ticker: string; name: string } | null {
   if (ticker.startsWith("^")) return null;
   // A Brazilian business listed abroad moves with Brazil, not with its host exchange.
-  if (market === "BR" && !ticker.endsWith(".SA")) return { ticker: "EWZ", name: "Brasil em dólar (EWZ)" };
+  // Only a plain US symbol (no exchange suffix) is treated as a Brazilian company listed abroad.
+  if (market === "BR" && !ticker.includes(".")) return { ticker: "EWZ", name: "Brasil em dólar (EWZ)" };
   const hit = BENCHMARKS.find(([re]) => re.test(ticker));
   return hit ? { ticker: hit[1], name: hit[2] } : null;
 }
