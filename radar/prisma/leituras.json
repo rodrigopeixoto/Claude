@@ -4,7 +4,7 @@
   "leitura_segmento": "As holdings de publicidade estão em consolidação: a Omnicom corta ~15 mil vagas após absorver a IPG. A Publicis é a exceção em crescimento e vence concorrências com dados e IA.",
   "leitura_cliente": "No 3º tri a receita cresceu 5,0% orgânico, com América Latina em +23,8%; a unidade de tecnologia (Sapient) caiu levemente. Comprou a LiveRamp por US$ 2,2 bi (mai/26). A ação sobe 14,9% em 12 meses e foi pouco afetada pela eleição. Reputação estável, sem menções negativas na semana.",
   "risco_cancelamento": {
-   "nivel": "medio",
+   "nivel": "alto",
    "motivos": [
     "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "A operação no Brasil sente o congelamento dos anunciantes, mesmo com o grupo crescendo",
@@ -116,7 +116,7 @@
   "leitura_segmento": "Hospitais seguem em expansão; as operadoras de saúde tiveram sinistralidade de 81,9% no 1º semestre e lucro menor.",
   "leitura_cliente": "Lucro ajustado de R$ 1,28 bi no 2º tri (+8,5%) e alavancagem de 1,71x. A ação caiu 21% em 7 dias, quase toda no pregão pós-eleição de 26/10, e acumula -18% em 12 meses. O app tem nota alta (4,3) e há 8 menções negativas na semana, a maioria de atendimento e acesso.",
   "risco_cancelamento": {
-   "nivel": "medio",
+   "nivel": "alto",
    "motivos": [
     "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "Fundamentos sólidos e caixa para investir",
@@ -763,7 +763,7 @@
   "leitura_segmento": "Defensivos agrícolas estão estáveis a levemente em queda no mundo (pressão de genéricos); juros altos e crédito rural apertado no Brasil.",
   "leitura_cliente": "Receita global de US$ 12,2 bi no 1º semestre (-2%), mas o Brasil cresceu 7% em defensivos. Hengde Qin é o novo CEO desde 01/08/2026. O IPO em Hong Kong ficou para 2027 e há um programa de economia que corta até 150 vagas em Basileia. É uma empresa de capital fechado.",
   "risco_cancelamento": {
-   "nivel": "medio",
+   "nivel": "alto",
    "motivos": [
     "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "O Brasil cresce, mas crédito rural caro e juros altos pressionam o orçamento local",
@@ -1153,7 +1153,7 @@
   "leitura_segmento": "Siderurgia: as tarifas americanas (Seção 232) favorecem a operação nos EUA; no Brasil, o antidumping contra o aço chinês deve reduzir importações em ~20% em 2026.",
   "leitura_cliente": "Lucro de R$ 1,47 bi no 2º tri (+69,7%), com a América do Norte respondendo por ~65% do EBITDA. Em 22/10 a S&P mudou a perspectiva para positiva. O capex de 2026 é de R$ 4,7 bi. A ação sobe 36% em 12 meses (-6% na semana da eleição). Reputação estável.",
   "risco_cancelamento": {
-   "nivel": "medio",
+   "nivel": "alto",
    "motivos": [
     "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "Exposição menor que a média: ~65% do resultado vem da América do Norte",
@@ -1313,7 +1313,7 @@
   "leitura_segmento": "Fintech: o Banco Central apertou as regras de autorização (Res. 494/2025), o que acelera a consolidação; Pix e Open Finance seguem crescendo e favorecem quem tem escala.",
   "leitura_cliente": "Abriu capital na Nasdaq (PICS) em 29/01/2026 a US$ 19; hoje está em US$ 7,59, com -46% em 7 dias após a eleição. No 2º tri o lucro ajustado foi de R$ 283 mi (+135%) e a receita de R$ 4,1 bi (+67%), mas a inadimplência subiu. O app tem nota 4,4, com 40 negativas na semana pelo volume alto.",
   "risco_cancelamento": {
-   "nivel": "medio",
+   "nivel": "alto",
    "motivos": [
     "Congelamento de despesas e de contratações esperado no Brasil no 4º tri de 2026 e no 1º tri de 2027, após o choque da eleição",
     "Ação caiu 46% em 7 dias e investidores devem cobrar eficiência",
