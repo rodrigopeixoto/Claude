@@ -259,52 +259,6 @@
     "segment": "edtech e empregabilidade de jovens"
   },
   {
-    "name": "Raízen",
-    "description": "Energia e combustíveis (Shell no Brasil)",
-    "keywords": [
-      "Raízen",
-      "Shell Box"
-    ],
-    "sources": [
-      {
-        "type": "GOOGLE_NEWS",
-        "name": "Google News BR",
-        "intervalMinutes": 60,
-        "config": {
-          "query": "Raízen OR \"Shell Box\"",
-          "hl": "pt-BR",
-          "gl": "BR",
-          "ceid": "BR:pt-419"
-        }
-      },
-      {
-        "type": "APP_STORE",
-        "name": "Shell Box iOS",
-        "intervalMinutes": 360,
-        "config": {
-          "appId": "1037433060",
-          "country": "br",
-          "pages": 2
-        }
-      },
-      {
-        "type": "PLAY_STORE",
-        "name": "Shell Box Android",
-        "intervalMinutes": 360,
-        "config": {
-          "appId": "com.raizen.acelera",
-          "lang": "pt",
-          "country": "br",
-          "num": 150
-        }
-      }
-    ],
-    "excludeTerms": [],
-    "ticker": "RAIZ4.SA",
-    "market": "BR",
-    "segment": "combustíveis, etanol e energia"
-  },
-  {
     "name": "Syngenta",
     "description": "Agronegócio: defensivos e sementes",
     "keywords": [

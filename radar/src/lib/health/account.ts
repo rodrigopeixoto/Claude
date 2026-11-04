@@ -40,6 +40,12 @@ export interface AccountHealth {
 
 const WEIGHTS = { reputacao: 0.35, mercado: 0.15, estrategico: 0.5 };
 const CHURN_SCORE: Record<Nivel, number> = { alto: 15, medio: 55, baixo: 90 };
+/**
+ * Churn risk caps the band: a client at medium risk cannot read as healthy, a client at high risk
+ * cannot read better than "risco". Healthy (75+) needs low churn risk.
+ */
+export const CHURN_CEILING: Record<Nivel, number> = { baixo: 100, medio: 74.9, alto: 59.9 };
+const CEILING_BAND: Record<Nivel, string> = { baixo: "", medio: "Atenção", alto: "Risco" };
 const EXPANSION_BONUS: Record<Nivel, number> = { alto: 10, medio: 0, baixo: -5 };
 const NIVEL_LABEL: Record<Nivel, string> = { baixo: "baixo", medio: "médio", alto: "alto" };
 const NIVEL_LABEL_F: Record<Nivel, string> = { baixo: "baixa", medio: "média", alto: "alta" };
@@ -136,7 +142,17 @@ export function computeAccountHealth(input: AccountInput): AccountHealth {
 
   if (!components.length) return { score: null, components, motivos: [{ polaridade: "neu", texto: "Sem dados: confirmar o cliente e configurar fontes" }] };
   const total = components.reduce((a, c) => a + c.weight, 0);
-  const score = Math.round((components.reduce((a, c) => a + c.score * c.weight, 0) / total) * 10) / 10;
+  let score = Math.round((components.reduce((a, c) => a + c.score * c.weight, 0) / total) * 10) / 10;
+  if (input.strategy) {
+    const ceiling = CHURN_CEILING[input.strategy.churn];
+    if (score > ceiling) {
+      motivos.unshift({
+        polaridade: "neg",
+        texto: `Limitada à faixa ${CEILING_BAND[input.strategy.churn]} pelo risco de cancelamento ${NIVEL_LABEL[input.strategy.churn]} (a média das leituras daria ${num(score)})`,
+      });
+      score = ceiling;
+    }
+  }
   return {
     score,
     components: components.map((c) => ({ ...c, score: Math.round(c.score * 10) / 10, weight: Math.round((c.weight / total) * 100) / 100 })),

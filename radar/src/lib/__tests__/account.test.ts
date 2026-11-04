@@ -19,6 +19,18 @@ describe("computeAccountHealth", () => {
   });
 });
 
+describe("churn risk caps the band", () => {
+  it("medium churn risk never reads as healthy", () => {
+    const r = computeAccountHealth({ ...base, reputation: 100, strategy: { churn: "medio", expansion: "alto", churnWhy: ["x"], expansionWhy: ["y"] } });
+    expect(r.score!).toBeLessThan(75);
+    expect(r.motivos[0].texto).toContain("Limitada à faixa Atenção");
+  });
+  it("high churn risk never reads better than risco", () => {
+    const r = computeAccountHealth({ ...base, reputation: 100, strategy: { churn: "alto", expansion: "alto", churnWhy: ["x"], expansionWhy: [] } });
+    expect(r.score!).toBeLessThan(60);
+  });
+});
+
 describe("market reading", () => {
   it("a drop in line with the index is the market's", () => {
     expect(describeMove(-0.21, -0.156, "Ibovespa").polaridade).toBe("neu");
